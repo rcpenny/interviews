@@ -48,9 +48,9 @@ public class UnionFind {
 
 		// 把一路上经过的点都指向老大哥,
 		while(x != j) {
-			tmp = f[x];
-			f[x] = j;
-			x = tmp;
+			tmp = f[x]; // use tmp to save x's father
+			f[x] = j;   // point x's father to big bro
+			x = tmp;    // now change x to x's previous father
 		}
 
 		// return老大哥
