@@ -72,8 +72,5 @@ public class UnionFind {
 		}
 	}
 
-	/**
-	  时间复杂度
-	  都是 O(log* n)，约等于 O(1)
-	 */ 
+	/** 时间复杂度都是 O(log* n)，约等于 O(1) */
 }
