@@ -20,7 +20,7 @@ public class UnionFind {
 	private int size;
 	private int[] f;
 
-	UnionFind(int n) {
+	public UnionFind(int n) {
 		this.size = n;
 		this.f = new int[size];
 
