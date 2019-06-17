@@ -7,7 +7,10 @@
 	• 用所在集合最顶层的老大哥节点来代表这个集合
 	合并两个集合
 	• 找到两个集合中最顶层的两个老大哥节点 A 和 B
-	• father[A] = B // or father[B] = A 如果无所谓谁合并谁的话 
+	• father[A] = B // or father[B] = A 如果无所谓谁合并谁的话
+	
+	O(1) 合并两个集合 - Union
+	O(1) 查询元素所属集合 - Find
 */
 
 public class UnionFind {
@@ -73,4 +76,5 @@ public class UnionFind {
 	}
 
 	/** 时间复杂度都是 O(log* n)，约等于 O(1) */
+	// prooof: https://en.wikipedia.org/wiki/Proof_of_O(log*n)_time_complexity_of_union%E2
 }
