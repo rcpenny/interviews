@@ -70,7 +70,7 @@ public class UnionFind {
 		int b_bigbro = find(b, parent);
 
 		if (a_bigbro != b_bigbro) {
-			// 所有a的师兄弟 都和b的老大哥混了
+			// 所有a的师兄弟 都和b的老大哥b_bigbro混了
 			parent[a_bigbro] = b_bigbro;
 		}
 	}
