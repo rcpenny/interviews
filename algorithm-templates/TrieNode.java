@@ -6,14 +6,14 @@ import sun.security.krb5.internal.Ticket;
  * Insert 插入一个单词
  */
 public class TrieNode {
-	public TrieNode[] sons;
+	public TrieNode[] children;
 	public boolean isWord;
 	public String word;
 
 	public TrieNode() {
-		this.sons = new TrieNode[26];
+		this.children = new TrieNode[26];
 		for (int i = 0; i < 26; i++) {
-			this.sons[i] = null;
+			this.children[i] = null;
 		}
 		isWord = false;
 	}
@@ -22,11 +22,11 @@ public class TrieNode {
 		char[] s = word.toCharArray();
 		for (int i = 0; i < s.length; i++) {
 			int c = s[i] - 'a';
-			if (p.sons[c] == null) {
-				p.sons[c] = new TrieNode();
+			if (p.children[c] == null) {
+				p.children[c] = new TrieNode();
 			}
 
-			p = p.sons[c];
+			p = p.children[c];
 		}
 
 		p.isWord = true;
