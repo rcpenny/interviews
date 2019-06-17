@@ -77,4 +77,21 @@ public class UnionFind {
 
 	/** 时间复杂度都是 O(log* n)，约等于 O(1) */
 	// prooof: https://en.wikipedia.org/wiki/Proof_of_O(log*n)_time_complexity_of_union%E2
+
+	/**
+	 * 跟连通性有关的问题
+   * 都可以使用 BFS 和 Union Find
+   * 什么时候无法使用 Union Find?
+   * 需要拆开两个集合的时候无法使用Union Find
+	 */
+
+	 /**
+		* 并查集总结
+    * 1. 合并两个集合
+    * 2. 查询某个元素所在集合
+    * 3. 判断两个元素是否在同一个集合
+    * 4. 获得某个集合的元素个数
+    * 5. 统计当前集合个数
+    * 关键操作：快速寻找老大哥节点
+	  */
 }
