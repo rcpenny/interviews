@@ -40,14 +40,14 @@ public class MaxAreaOfIslands {
   }
 
   private int traverseIsland(int[][] grid, int i, int j) {
-    int size = 0;
+    int area = 0;
     Queue<Point> queue = new LinkedList<>();
     queue.offer(new Point(i, j));
     grid[i][j] = SEA;
 
     while (!queue.isEmpty()) {
       Point p = queue.poll();
-      size++;
+      area++;
       for (int move = 0; move < 4; move++) {
         Point adj = new Point(p.x + dx[move], p.y + dy[move]);
         if (!canMove(adj, grid)) continue;
@@ -55,7 +55,7 @@ public class MaxAreaOfIslands {
         queue.offer(adj);
       } 
     }
-    return size;
+    return area;
   }
 
   private boolean canMove(Point p, int[][] grid) {
