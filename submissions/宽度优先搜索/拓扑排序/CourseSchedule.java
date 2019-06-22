@@ -1,0 +1,61 @@
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
+
+/**
+ * https://www.lintcode.com/problem/course-schedule/
+ * 问是否存在拓扑序（是否可以被拓扑排序）
+ * 
+ * 现在你总共有 n 门课需要选，记为 0 到 n - 1.
+ * 一些课程在修之前需要先修另外的一些课程，
+ * 比如要学习课程 0 你需要先学习课程 1 ，表示为[0,1]
+ * 给定n门课以及他们的先决条件，判断是否可能完成所有课程？
+ */
+public class CourseSchedule {
+
+	public boolean canFinish(int numCourses, int[][] prerequisites) {
+		if (numCourses == 0 || prerequisites.length == 0) return true;
+
+		HashMap<Integer, List<Integer>> graph = new HashMap<>(); 
+		int[] indegreeOfCourse = new int[numCourses];
+
+		// 建立图
+		// 忘了这一步造成null pointer exception
+		for (int i = 0; i < numCourses; i++) graph.put(i, new ArrayList<Integer>());
+		for (int[] pair : prerequisites) {
+			int course = pair[0];
+			int preCourse = pair[1];
+			graph.get(course).add(preCourse);
+		}
+
+		// 建立入度
+		for (Integer course : graph.keySet()) {
+			for (Integer preCourse : graph.get(course)) {
+				indegreeOfCourse[preCourse]++;
+			}
+		}
+
+		// 将所有入度为 0 的点，也就是那些没有任何依赖的点，放到宽度优先搜索的队列中
+		int count = 0;
+		Queue<Integer> queue = new LinkedList<>();
+		for (int i = 0; i < numCourses; i++) {
+			if (indegreeOfCourse[i] != 0) continue;
+			queue.offer(i);
+			count++;
+		}
+
+		while (!queue.isEmpty()) {
+			int course = queue.poll();
+			for (Integer precourse : graph.get(course)) {
+				indegreeOfCourse[precourse]--;
+				if (indegreeOfCourse[precourse] != 0) continue;
+				queue.offer(precourse);
+				count++;
+			}
+		}
+
+		return count == numCourses;
+	}
+}
