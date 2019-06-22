@@ -1,19 +1,4 @@
-/**
-	底层数据结构
-	• 父亲表示法，用一个数组/哈希表记录每个节点的父亲是谁。
-	• father[“Nokia”] = “Microsoft”
-	• father[“Instagram”] = “Facebook”
-	查询所在集合
-	• 用所在集合最顶层的老大哥节点来代表这个集合
-	合并两个集合
-	• 找到两个集合中最顶层的两个老大哥节点 A 和 B
-	• father[A] = B // or father[B] = A 如果无所谓谁合并谁的话
-	
-	O(1) 合并两个集合 - Union
-	O(1) 查询元素所属集合 - Find
-*/
-
-public class UnionFind {
+public class UnionFindTemplate {
 	public int size;
 	public int[] parent;
 
@@ -74,28 +59,4 @@ public class UnionFind {
 			parent[a_bigbro] = b_bigbro;
 		}
 	}
-
-	/** 时间复杂度都是 O(log* n)，约等于 O(1) */
-	// prooof: https://en.wikipedia.org/wiki/Proof_of_O(log*n)_time_complexity_of_union%E2
-
-	/**
-	 * 跟连通性有关的问题
-   * 都可以使用 BFS 和 Union Find
-   * 什么时候无法使用 Union Find?
-   * 需要拆开两个集合的时候无法使用Union Find
-	 */
-
-	 /**
-		* 并查集总结
-    * 1. 合并两个集合
-    * 2. 查询某个元素所在集合
-    * 3. 判断两个元素是否在同一个集合
-    * 4. 获得某个集合的元素个数
-    * 5. 统计当前集合个数
-		* 关键操作：快速寻找老大哥节点
-		
-			– 路径压缩寻找老大哥节点
-			– 动态合并集合与查询节点所在集合
-			– 不能分拆集合
-	  */
 }

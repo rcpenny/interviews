@@ -4,7 +4,8 @@ import java.util.Queue;
 import java.util.Set;
 
 /**
- *
+ * 能够用 BFS 解决的问题，一定不要用 DFS 去做！ 
+ * 因为用 Recursion 实现的 DFS 可能造成 StackOverflow
  */
 public class BFS {
 
