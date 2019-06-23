@@ -5,7 +5,7 @@
  * 也可以用result type试着做一下
  */
 
- public class TreeNode {
+public class TreeNode {
 	public int val;
 	public TreeNode left, right;
 	public TreeNode(int val) {
