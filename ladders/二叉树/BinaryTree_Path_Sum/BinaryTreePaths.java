@@ -9,7 +9,7 @@ import java.util.List;
  * Output：["1->2->5","1->3"]
  */
 
-public class TreeNode {
+class TreeNode {
 	public int val;
 	public TreeNode left, right;
 	public TreeNode(int val) {
