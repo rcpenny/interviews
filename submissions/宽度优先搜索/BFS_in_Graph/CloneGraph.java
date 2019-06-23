@@ -10,7 +10,7 @@ class UndirectedGraphNode {
 		label = x; 
 		neighbors = new ArrayList<UndirectedGraphNode>(); 
 	}
-};
+}
 
 public class CloneGraph {
 
