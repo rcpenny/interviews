@@ -41,7 +41,7 @@ public class LowestCommonAncestor {
 		if (left.afound && left.bfound) return left;
 		if (right.afound && right.bfound) return right;
 
-		// 还没找到LCA,说明 A B中至少有一个没有找到
+		// 还没找到LCA,说明 A B中至少有一个没有找到,与node的值合并
 		boolean afound = left.afound || right.afound || root.val == a.val;
 		boolean bfound = left.bfound || right.bfound || root.val == b.val;
 		return new ResultType(afound, bfound, root);

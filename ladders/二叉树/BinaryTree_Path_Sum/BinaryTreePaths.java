@@ -28,18 +28,9 @@ public class BinaryTreePaths {
 	}
 
 	private void helper(TreeNode node, String s) {
-		if (node == null) return;
+		if (node.left == null && node.right == null) results.add(s);
 
-		if (node.left == null && node.right == null) {
-			results.add(s);
-			return;
-		}
-		
-		if (node.left != null) {
-			helper(node.left, s + "->" + String.valueOf(node.left.val));
-		}
-		if (node.right != null) {
-			helper(node.right, s + "->" + String.valueOf(node.right.val));
-		}
+		if (node.left != null) helper(node.left, s + "->" + String.valueOf(node.left.val));
+		if (node.right != null) helper(node.right, s + "->" + String.valueOf(node.right.val));
 	}
 }
