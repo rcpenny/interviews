@@ -16,7 +16,7 @@ stack 中保存一路走到当前节点的所有节点，stack.peek() 一直指�
 
 挪到下一个点的算法如下：
 
-如果当前点存在右子树，那么就是右子树中“一路向西”最左边的那个点
+如果当前点存在右子树，那么就是右子树中“一路向左下”的那个点
 如果当前点不存在右子树，则是走到当前点的路径中，第一个左拐的点
 访问所有节点用时O(n)，所以均摊下来访问每个节点的时间复杂度时O(1)
 	*/
@@ -49,7 +49,9 @@ public class BSTIterator {
 		TreeNode currentNode = stack.peek();
 		TreeNode node = currentNode;
 
-		if (node.right == null) { // -1的情况和6的情况
+		if (node.right == null) { 
+			// -1的情况和6的情况，-1在左🌲，1即是下一个，6在右🌲，1已经被访问过，返回到10
+			// 则是走到当前点的路径中，第一个左拐的点
 			node = stack.pop();
 			while (!stack.empty() && stack.peek().right == node) {
 				node = stack.pop();
