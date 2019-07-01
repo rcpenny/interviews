@@ -34,9 +34,9 @@ public class CombinationSum {
 
 			for (int i = start; i < candidates.length; i++) {
 				// 类似two sum类里面的去重
-				if (i != 0 && candidates[i] == candidates[i - 1]) continue;
+				if (i != start && candidates[i] == candidates[i - 1]) continue;
 				comb.add(candidates[i]);
-				// i 不用增加呀，一个数可以重复选
+				// i 不用增加 一个数可以重复选
 				dfs(candidates, target - candidates[i], i, comb, results);
 				comb.remove(comb.size() - 1);
 			}
