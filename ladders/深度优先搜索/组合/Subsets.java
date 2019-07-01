@@ -21,9 +21,7 @@ public class Subsets {
 	private void dfs(int[] nums, int start, List<Integer> subset, 
 		List<List<Integer>> results) {
 			results.add(new ArrayList<Integer>(subset));
-
 			for (int i = start; i < nums.length; i++) {
-				if (i != 0 && nums[i] == nums[i - 1]) continue;
 				subset.add(nums[i]);
 				dfs(nums, i + 1, subset, results);
 				subset.remove(subset.size() - 1);
