@@ -1,2 +1,2 @@
-Submissions:
-This directory contains my satisfied submission of a Leetcode problem.
+## ladder
+This directory contains my satisfied submission of a specific type of problems

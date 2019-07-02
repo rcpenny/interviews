@@ -34,4 +34,10 @@ public class Permutation2 {
 			visisted[i] = false;
 		}
 	}
+
+	// [1, 1, 2, 3, 3, 4]
+	// 为什么是!visisted[i - 1]呢？
+	// 比如说第一个1 开头找的所有的Path结束了。 一个tree, 结束， visisited[0]变成 false
+	// 这个时候第二个1就不用再考虑了。
+	// 类比所有情况
 }
