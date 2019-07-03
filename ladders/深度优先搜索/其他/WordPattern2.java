@@ -17,33 +17,42 @@ final class WordPattern2 {
 
   public boolean wordPatternMatch(String pattern, String str) {
 		char[] letters = pattern.toCharArray();
-		Map<Character, String> map = new HashMap<>();
 
-		match(letters, 0, map, str);
+		Map<Character, String> map = new HashMap<>();
+		match(str, letters, 0, map);
+
 		return can_match;
 	}
 
-	// index is the current char in pattern that is being visisted
-	private void match(char[] letters, int index, Map<Character, String> map, String str) {
-		// recursion exit
+	// 递归的定义: 原始数据str与letters，控制条件index:letters检查字母的起始位置，DFS当前位置的状态:对应模式map
+	private void match(String str, char[] letters, int index, Map<Character, String> map) {
+		// 递归的出口：str被切完了，index查到letters最后一位，能match
 		if (str.length() == 0 && index == letters.length) can_match = true;
 		if (can_match || str.length() == 0 || index == letters.length) return;
 
 		char current = letters[index];
 	
+		// 递归的拆解： 有char的对应模式
 		if (map.containsKey(current)) {
+			// 进入递归的条件： substring不符合当前对应模式
 			String word = map.get(current);
 			if (!str.startsWith(word)) return;
-			match(letters, index + 1, map, str.substring(word.length()));
+
+			String follow = str.substring(word.length());
+			match(follow, letters, index + 1, map);
 			return;
 		}
 
-		// when char not in map
+		// else
+		// 递归的拆解： 无char的对应模式,由1 -> str.end一个个试
 		for (int i = 1; i <= str.length(); i++) {
+			// 进入递归的条件：当前对应模式不存在下一个substring
 			String sub = str.substring(0, i);
 			if (map.containsValue(sub)) continue;
+
 			map.put(current, sub);
-			match(letters, index + 1, map, str.substring(i));
+			String following = str.substring(i);
+			match(following, letters, index + 1, map);
 			map.remove(current);
 		}
 	}
