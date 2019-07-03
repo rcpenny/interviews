@@ -16,29 +16,31 @@ import java.util.List;
  */
 public class CombinationSum {
 	public List<List<Integer>> combinationSum(int[] candidates, int target) {
+		// 数据初始化 与 corner case
 		List<List<Integer>> results = new ArrayList<>();
 		if (candidates == null || candidates.length == 0) return results;
 
+		// 操作
 		Arrays.sort(candidates);
 		dfs(candidates, target, 0, new ArrayList<>(), results);
+
+		// 返回值
 		return results;
 	}
 
 	private void dfs(int[] candidates, int target, int start,
 		List<Integer> comb, List<List<Integer>> results) {
-			if (target < 0) return;
-			if (target == 0) {
-				results.add(new ArrayList<Integer>(comb));
-				return;
-			}
+		// 以remain target(一个数字的大小)作为return exit condition
+		if (target == 0) results.add(new ArrayList<Integer>(comb));
+		if (target <= 0) return;
 
-			for (int i = start; i < candidates.length; i++) {
-				// 类似two sum类里面的去重
-				if (i != start && candidates[i] == candidates[i - 1]) continue;
-				comb.add(candidates[i]);
-				// i 不用增加 一个数可以重复选
-				dfs(candidates, target - candidates[i], i, comb, results);
-				comb.remove(comb.size() - 1);
-			}
+		for (int i = start; i < candidates.length; i++) {
+			// 注意是i != start，去重，控制在这个层级（树），这个index的数可不可以选
+			if (i != start && candidates[i] == candidates[i - 1]) continue;
+			comb.add(candidates[i]);
+			// i不变 进入下一层级时，这个的数可以被重复选
+			dfs(candidates, target - candidates[i], i, comb, results);
+			comb.remove(comb.size() - 1);
+		}
 	}
 }

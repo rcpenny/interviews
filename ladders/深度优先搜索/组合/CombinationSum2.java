@@ -3,7 +3,6 @@ import java.util.List;
 
 /**
  * 给定一个数组 candiates 和一个整数 target. 找到 candiates 中所有的数字之和为 target 的组合.
- * can
  * 在同一个组合中, candiates 中的每一个数字仅能被使用一次.
  * 所有数值 (包括 target ) 都是正整数.
  * 返回的每一个组合内的数字必须是非降序的.
@@ -14,22 +13,23 @@ public class CombinationSum2 {
   public List<List<Integer>> combinationSum2(int[] candiates, int target) {
 		List<List<Integer>> results = new ArrayList<>();
 		if (candiates == null) return results;
+
 		Arrays.sort(candiates);
 		dfs(candiates, target, 0, new ArrayList<Integer>(), results);
+
 		return results;
 	}
 
 	private void dfs(int[] candiates, int target, int start, List<Integer> comb, 
 		List<List<Integer>> results) {
-		if (target < 0) return;
-		if (target == 0) {
-			results.add(new ArrayList<Integer>(comb));
-			return;
-		}
+		if (target == 0) results.add(new ArrayList<Integer>(comb));
+		if (target <= 0) return;
 
 		for (int i = start; i < candiates.length; i++) {
+			// 注意是i != start，去重，控制在这个层级（树），这个index的数可不可以选
 			if (i != start && candiates[i] == candiates[i - 1]) continue;
 			comb.add(candiates[i]);
+			// i + 1 说明进入下一层级时，此数字不能被重复选
 			dfs(candiates, target - candiates[i], i + 1, comb, results);
 			comb.remove(comb.size() - 1);
 		}
