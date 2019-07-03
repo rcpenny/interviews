@@ -9,26 +9,28 @@ public class NQueens {
 	public List<List<String>> solveNQueens(int n) {
 		List<List<String>> results = new ArrayList<>();
 		if (n <= 0) return results;
+
 		search(results, new ArrayList<Integer>(), n);
+		
 		return results;
 }
 
-private void search(List<List<String>> results, List<Integer> cols, 
-		int n) {
+	private void search(List<List<String>> results, List<Integer> cols, int n) {
 		if (cols.size() == n) {
-				results.add(drawChessBoard(cols));
-				return;
+			results.add(drawChessBoard(cols));
+			return;
 		}
 		
+		// 扫描此行
 		for (int colIndex = 0; colIndex < n; colIndex++) {
-				if (canAttack(cols, colIndex)) continue;
-				cols.add(colIndex);
-				search(results, cols, n);
-				cols.remove(cols.size() - 1);
+			if (canAttack(cols, colIndex)) continue;
+			cols.add(colIndex);
+			search(results, cols, n);
+			cols.remove(cols.size() - 1);
 		}
-}
+	}
 
-private List<String> drawChessBoard(List<Integer> cols) {
+	private List<String> drawChessBoard(List<Integer> cols) {
 		List<String> board = new ArrayList<>();
 		for (int index : cols) {
 				StringBuilder sb = new StringBuilder();
@@ -38,9 +40,9 @@ private List<String> drawChessBoard(List<Integer> cols) {
 				board.add(sb.toString());
 		}
 		return board;
-}
+	}
 
-private boolean canAttack(List<Integer> cols, int column) {
+	private boolean canAttack(List<Integer> cols, int column) {
 		int row = cols.size();
 		for (int rowIndex = 0; rowIndex < cols.size(); rowIndex++) {
 				// in same column
