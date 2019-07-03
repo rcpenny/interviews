@@ -17,7 +17,9 @@ public class LetterCombinationPhoneNumber {
   public List<String> letterCombinations(String digits) {
 		List<String> results = new ArrayList<>();
 		if (digits == null || digits.length() == 0) return results;
+
 		dfs(digits, 0, new StringBuilder(), results);
+		
 		return results;
 	}
 

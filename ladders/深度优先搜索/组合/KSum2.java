@@ -12,22 +12,21 @@ public class KSum2 {
   public List<List<Integer>> kSumII(int[] nums, int k, int target) {
 		List<List<Integer>> results = new ArrayList<>();
 		if (nums == null) return results;
-		Arrays.sort(nums);
 
-		find(nums, k, 0, target, new ArrayList<>(), results);
+		Arrays.sort(nums);
+		find(nums, 0, k, target, new ArrayList<>(), results);
+
 		return results;
 	}
 
-	private void find(int[] nums, int k, int start, int target, 
+	private void find(int[] nums, int start, int k, int target, 
 		List<Integer> list, List<List<Integer>> results) {
-		if (k == 0) {
-			if (target == 0) results.add(new ArrayList<>(list));
-			return;
-		}
+		if (target == 0) results.add(new ArrayList<>(list));
+		if (k == 0 || target == 0) return;
 
 		for (int i = start; i < nums.length; i++) {
 			list.add(nums[i]);
-			find(nums, k - 1, i + 1, target - nums[i], list, results);
+			find(nums, i + 1, k - 1, target - nums[i], list, results);
 			list.remove(list.size() - 1);
 		}
 	}
