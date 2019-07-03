@@ -12,7 +12,8 @@ public class GenerateParentheses {
     List<String> combs = new ArrayList<>();
     if (n <= 0) return combs;
 
-    generate(n, 0, 0, new StringBuilder(), combs);
+		generate(n, 0, 0, new StringBuilder(), combs);
+
     return combs;
   }
 

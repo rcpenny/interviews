@@ -13,21 +13,19 @@ import java.util.List;
  */
 public class Factorization {
   public List<List<Integer>> getFactors(int n) {
-    int[] factors = allFactorsInAscendOrder(n);
     List<List<Integer>> results = new ArrayList<>();
     if (n < 2) return results;
 
-    factorize(factors, 0, n, new ArrayList<>(), results);
+		int[] factors = allFactorsInAscendOrder(n);
+		factorize(factors, 0, n, new ArrayList<>(), results);
+
     return results;
   }
 
   private void factorize(int[] factors, int startIndex, int n, 
     List<Integer> list, List<List<Integer>> results) {
-    if (n < 1) return;
-    if (n == 1) {
-      results.add(new ArrayList<>(list));
-      return;
-    }
+		if (n == 1) results.add(new ArrayList<>(list));
+		if (n <= 1) return;
 
     for (int i = startIndex; i < factors.length; i++) {
       // 12 / 2 / 2 / 2 / 2 = 1 :)
