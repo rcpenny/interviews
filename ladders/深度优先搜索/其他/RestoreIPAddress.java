@@ -10,25 +10,34 @@ import java.util.List;
  */
 public class RestoreIPAddress {
   public List<String> restoreIpAddresses(String s) {
+		// 初始化答案与考虑corner case
 		List<String> results = new ArrayList<>();
 		if (s == null || s.length() < 4 || s.length() > 12) return results;
+
+		// 递归操作
 		split(s, 0, new ArrayList<String>(), results);
+
+		// 返回值
 		return results;
 	}
 
+	// 递归的定义：原始数据string s, 控制变量 s 查看起点index, dfs当前节点状态fields
 	private void split(String s, int index, List<String> fields, 
 		List<String> results) {
-		if (fields.size() >= 4 || index >= s.length()) {
-			if (fields.size() == 4 && index == s.length()) {
-				results.add(generateIp(fields));
-			}
-			return;
+		// 递归的出口: index超过s长度，fields大于4个
+		if (index == s.length() && fields.size() == 4) {
+			String ip = generateIp(fields);
+			results.add(new ArrayList<>(ip));
 		}
+		if (fields.size() >= 4 || index >= s.length()) return;
 
+		// 递归的拆解：进入下层有三种切割可能性
 		for (int i = 1; i <= 3; i++) {
+			// 进入递归的条件：index不越界，substring是合理的ip数字
 			if (index + i > s.length()) continue;
 			String field = s.substring(index, index + i);
 			if (!isValidNumber(field)) continue;
+	
 			fields.add(field);
 			split(s, index + i, fields, results);
 			fields.remove(fields.size() - 1);
@@ -37,10 +46,7 @@ public class RestoreIPAddress {
 
 	private String generateIp(List<String> fields) {
 		StringBuilder ip = new StringBuilder();
-		for (int i = 0; i < 3; i++) {
-			ip.append(fields.get(i));
-			ip.append('.');
-		}
+		for (int i = 0; i < 3; i++) ip.append(fields.get(i) + ".");
 		ip.append(fields.get(3));
 		return ip.toString();
 	}

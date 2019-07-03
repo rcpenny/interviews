@@ -14,25 +14,24 @@ public class SplitString {
 		if (s == null) return results;
 
 		split(s, 0, new ArrayList<String>(), results);
+
 		return results;
 	}
 
+	// 递归的定义：原始数据str, 控制变量start index, dfs当前节点的状态string subs
 	private void split(String s, int start, List<String> subs,
 		List<List<String>> results) {
-		if (start == s.length()) {
-			results.add(new ArrayList<String>(subs));
-			return;
-		}
+		// 递归的出口: subs不管作用，控制变量start index到头了
+		if (start == s.length()) results.add(new ArrayList<String>(subs));
+		if (start >= s.length()) return;
 
-		if (start + 1 <= s.length()) {
-			subs.add(s.substring(start, start + 1));
-			split(s, start + 1, subs, results);
-			subs.remove(subs.size() - 1);
-		}
-
-		if (start + 2 <= s.length()) {
-			subs.add(s.substring(start, start + 2));
-			split(s, start + 2, subs, results);
+		// 递归的拆解： 切1,或者切2
+		for (int len = 1; len <= 2; len++) {
+			// 进入递归的条件：index不越界
+			if (start + len > s.length()) continue;
+	
+			subs.add(s.substring(start, start + len));
+			split(s, start + len, subs, results);
 			subs.remove(subs.size() - 1);
 		}
 	}
