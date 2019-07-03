@@ -2,7 +2,8 @@ import java.awt.List;
 import java.util.ArrayList;
 
 /**
- * Given a list of numbers with duplicate number in it. Find all unique permutations.
+ * Given a list of numbers with duplicate number in it. 
+ * Find all unique permutations.
  */
 public class Permutation2 {
   public List<List<Integer>> permuteUnique(int[] nums) {
@@ -11,8 +12,8 @@ public class Permutation2 {
 
 		boolean[] visisted = new boolean[nums.length];
 		Arrays.sort(nums);
-
 		dfs(nums, visisted, new ArrayList<Integer>(), results);
+
 		return results;
 	}
 
@@ -23,10 +24,13 @@ public class Permutation2 {
 			return;
 		}
 
-		// permuate 不需要 start index
 		for (int i = 0; i < nums.length; i++) {
+			// 进入下个递归前的额外操作：去重？去掉特殊条件？
+			// 判断这个这个位置的数字是否被选过
 			if (visisted[i]) continue;
+			// 该层是否以这个数字开头过了
 			if (i != 0 && nums[i] == nums[i - 1] && !visisted[i - 1]) continue;
+
 			permute.add(nums[i]);
 			visisted[i] = true;
 			dfs(nums, visisted, permute, results);
