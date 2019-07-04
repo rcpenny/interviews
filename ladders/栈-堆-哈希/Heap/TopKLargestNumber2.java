@@ -11,10 +11,12 @@ import java.util.PriorityQueue;
 // k is given when we create the data structure.
 
 public class TopKLargestNumber2 {
-  PriorityQueue<Integer> pq;
+	PriorityQueue<Integer> pq;
+	int size;
 
   public TopKLargestNumber2(int k) {
-    this.pq = new PriorityQueue<>(k, Collections.reverseOrder());
+		this.pq = new PriorityQueue<>(k);
+		this.size = k;
   }
 
   public void add(int num) {
@@ -23,7 +25,7 @@ public class TopKLargestNumber2 {
       return;
     }
     if (num > pq.peek()) {
-      pq.poll();
+			pq.poll();
       pq.offer(num);
     }
   }
@@ -32,7 +34,7 @@ public class TopKLargestNumber2 {
     List<Integer> topKNumbers = new ArrayList<>();
     Iterator it = pq.iterator();
     while (it.hasNext()) topKNumbers.add((Integer) it.next());
-    Collections.reverse(topKNumbers);
+    Collections.sort(topKNumbers, Collections.reverseOrder());
     return topKNumbers;
   }
 }
