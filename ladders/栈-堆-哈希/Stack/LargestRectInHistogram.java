@@ -2,14 +2,6 @@ import java.util.Stack;
 
 // 给出的n个非负整数表示每个直方图的高度，每个直方图的宽均为1，在直方图中找到最大的矩形面积。
 
-// 输入：[2,1,5,6,2,3]
-// 输出：10
-// 解释：
-// 第三个和第四个直方图截取矩形面积为2*5=10
-
-// stack([1,5,6]).push(2) => stack([1,2]  
-// pop掉了5与6，找到了比5小的第一个高度：1
-
 public class LargestRectInHistogram {
 	public int max = 0;
 
@@ -46,3 +38,18 @@ public class LargestRectInHistogram {
 		stack.push(current_index);
 	}
 }
+
+// 输入：[2,1,5,6,2,3]
+// 输出：10
+// 解释：
+// 第三个和第四个直方图截取矩形面积为2*5=10
+
+// 自我归纳：单调递增栈
+// heights向右找，找到第一个下降点，比如：
+
+// stack([1,5,6]).push(2) => stack([1,2]  
+// pop掉了5与6，找到了比5小的第一个高度：1
+
+// 2是5,6高度向右第一个比他们小的高度
+// 然后打擂台计算5，6当时的面积
+// 因为5小于6, 所以在6的width就是(2的index - 5的index - 1)
