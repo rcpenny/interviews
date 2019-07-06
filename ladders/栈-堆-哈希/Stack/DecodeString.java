@@ -17,7 +17,7 @@ import java.util.Stack;
 
 public class DecodeString {
   public String expressionExpand(String s) {
-		// 用object厉害了
+		// 用object厉害了，或者用两个stack，一个存数字，一个存字符串
 		Stack<Object> stack = new Stack<>();
 		int number = 0;
 
