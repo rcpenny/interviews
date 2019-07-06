@@ -2,41 +2,47 @@ import java.util.Stack;
 
 // 给出的n个非负整数表示每个直方图的高度，每个直方图的宽均为1，在直方图中找到最大的矩形面积。
 
-// Example
-// 样例 1:
-
 // 输入：[2,1,5,6,2,3]
 // 输出：10
 // 解释：
 // 第三个和第四个直方图截取矩形面积为2*5=10
 
-public class LargestRectInHistogram {
-  public int largestRectangleArea(int[] height) {
-		int max = 0;
-		if (height == null || height.length == 0) return max;
+// stack([1,5,6]).push(2) => stack([1,2]  
+// pop掉了5与6，找到了比5小的第一个高度：1
 
-		Stack<Integer> stack = new Stack<>(); // 维护此栈单调递增
+public class LargestRectInHistogram {
+	public int max = 0;
+
+  public int largestRectangleArea(int[] height) {
+		if (height == null || height.length == 0) return 0;
+
+		Stack<Integer> stack = new Stack<>(); 
 		for (int i = 0; i <= height.length; i++) {
-			int current = (i == height.length) ? -1 : height[i];
-			while (!stack.empty() && current <= height[stack.peek()]) {
-				int h = height[stack.pop()];
-				int w = stack.empty() ? i : i - stack.peek() - 1;
-				max = Math.max(max, h * w);
-			}
-			stack.push(i);
+			maintainMonoStack(height, i, stack);
 		}
 
 		return max;
 	}
-}
 
-// 分析：
-// • 最大矩形一定是某一个柱形往左往右直到不能前进，形成的矩形
-// • 需要知道一个数字往左和往右第一个小于这个数字的位置
-// • 单调递增栈
-// – 压栈时弹出大于等于自己的值
-// – 最后停下来时碰到的栈顶就是左边第一个比自己小的值
-// – 一个数X被新来的值R弹出栈顶，那么R就是X右边第一个小于等于X的值
-// • 如果有相同的数，那么最靠右的bar会求得最大面积
-// • 最后插入-1
-// • 时间复杂度O(N)
+	private void maintainMonoStack(int[] height, int current_index, Stack<Integer> stack) {
+		// 多出一位 -1，保证最后个直方图3也能向左找
+		int current_height = (current_index == height.length) ? -1 : height[current_index];
+
+		// 栈非空 且 当前高度 <= 栈顶index高度时，需要维护单调栈
+		while (!stack.empty() && current_height <= height[stack.peek()]) {
+			// 维护过程中（pop掉比current height大的高度时，然后当前面积打擂台）
+			// 计算的是tmp_index向左的面积
+			int tmp_index, tmp_height, tmp_width;
+
+			tmp_index = stack.pop();
+			tmp_height = height[tmp_index];
+
+			if (stack.empty()) tmp_width = current_index;
+			else tmp_width = current_index - stack.peek() - 1;
+
+			max = Math.max(max, tmp_height * tmp_width);
+		}
+
+		stack.push(current_index);
+	}
+}
