@@ -4,10 +4,8 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.PriorityQueue;
 
-// 每个学生有两个属性 id 和 scores。找到每个学生最高的5个分数的平均值。
-
-// Example
-// 例1:
+// 每个学生有两个属性 id 和 scores 找到每个学生最高的5个分数的平均值 
+// 看到top 5这种就想到 heap :)
 
 // 输入: 
 // [[1,91],[1,92],[2,93],[2,99],[2,98],[2,97],[1,60],[1,58],[2,100],[1,61]]
@@ -24,11 +22,6 @@ class Record {
 }
 
 public class HighFive {
-	/**
-	 * @param results a list of <student_id, score>
-	 * @return find the average of 5 highest scores for each person
-	 * Map<Integer, Double> (student_id, average_score)
-	 */
 	public Map<Integer, Double> highFive(Record[] results) {
 		Map<Integer, Double> scores = new HashMap<>();
 
