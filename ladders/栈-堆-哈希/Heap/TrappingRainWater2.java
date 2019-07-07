@@ -10,6 +10,7 @@ import java.util.PriorityQueue;
 // 盛水量 = cell.height - 这个格子的高度
 // 当然如果这个值是负数，盛水量就等于 0
 
+// 你看这个自定义Cell类，只有height用来排序;x,y用来记录位置,但是也要扔进heap呀
 class Cell {
 	int x;
 	int y;
@@ -26,10 +27,7 @@ public class TrappingRainWater2 {
 	private int[] dy = new int[] {0, 0, 1, -1};
 
 	private Comparator<Cell> cellcpt = new Comparator<Cell>() {
-		@Override
-		public int compare(Cell a, Cell b) {
-			return a.height - b.height;
-		}
+		@Override public int compare(Cell a, Cell b) {return a.height - b.height;}
 	};
 
   public int trapRainWater(int[][] heights) {
@@ -63,8 +61,8 @@ public class TrappingRainWater2 {
 
 				if (0 > nx || nx >= row || 0 > ny || ny >= col) continue; 
 				if (visited[nx][ny]) continue;
-
 				visited[nx][ny] = true;
+				
 				// 因为更矮的cell先被poll了，所以新cell计算的是四个方向最矮的一个cell，没毛病
 				minheap.offer(new Cell(nx, ny, Math.max(cell.height, heights[nx][ny])));
 				water = water + Math.max(0, cell.height - heights[nx][ny]);

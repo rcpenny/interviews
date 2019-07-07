@@ -1,50 +1,49 @@
+import java.util.Comparator;
 import java.util.PriorityQueue;
 
 // 给定一些 points 和一个 origin，从 points 中找到 k 个离 origin 最近的点。
-// 按照距离由小到大返回。如果两个点有相同距离，则按照x值来排序；若x值也相同，就再按照y值排序。
-
-// Example
-// 例1:
+// 按照距离由小到大返回。如果两个点有相同距离，则按照x值来排序；若x值也相同，就再按照y值排序
 
 // 输入: points = [[4,6],[4,7],[4,4],[2,5],[1,1]], origin = [0, 0], k = 3 
 // 输出: [[1,1],[2,5],[4,4]]
-// 例2:
-
-// 输入: points = [[0,0],[0,9]], origin = [3, 1], k = 1
-// 输出: [[0,0]]
-
 class Point {
 	int x;
 	int y;
-	Point() { x = 0; y = 0; }
-	Point(int a, int b) { x = a; y = b; }
+	Point(int x, int y) { 
+		this.x = x; 
+		this.y = y; 
+	}
 }
 
 public class KClosestPoints {
   public Point[] kClosest(Point[] points, Point origin, int k) {
-
-		PriorityQueue<Point> heap = new PriorityQueue<>(k, new Comparator<Point>() {
+		// 写comparator时考虑清楚，会造成peek是什么情况，最后pop时的顺序要不要reverse
+		Comparator<Point> pointComparator = new Comparator<Point>() {
 			@Override
 			public int compare(Point a, Point b) {
-				int dis_a = getDistance(a, origin);
-				int dis_b = getDistance(b, origin);
-				if (dis_a != dis_b) {
-					return dis_a - dis_b;
-				} else if (a.x != b.x) {
-					return a.x - b.x;
-				}
-				return a.y - b.y;
+				int a_orgin = getDistance(a, origin);
+				int b_orgin = getDistance(b, origin);
+				if (a_orgin != b_orgin) return b_orgin - a_orgin;
+				if (a.x != b.x) return b.x - a.x;
+				return b.y - a.y;
 			}
-		});
+		};
+		PriorityQueue<Point> minheap = new PriorityQueue<>(k, pointComparator);
+		Point[] result = new Point[k];
 
 		for (Point point : points) {
-			heap.offer(point);
+			if (minheap.size() < k) {
+				minheap.offer(point);
+				continue;
+			}
+			// top k 就这么处理，少于k就不停加，到了k就和peek比，要不要加
+			if (pointComparator.compare(point, minheap.peek()) > 0) {
+			  minheap.poll();
+				minheap.offer(point);
+			}
 		}
 
-		Point[] result = new Point[k];
-		for (int i = 0; i < k; i++) {
-			result[i] = heap.poll();
-		}
+		for (int i = k - 1; i >= 0; i--) result[i] = minheap.poll();
 		return result;
 	}
 

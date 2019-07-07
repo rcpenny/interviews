@@ -23,29 +23,24 @@ class ListNode {
 }
 
 public class MergeKSortedList {
-
 	private Comparator<ListNode> cpt = new Comparator<ListNode>() {
-		public int compare(ListNode a, ListNode b) {
-			return a.val - b.val;
-		}
+		@Override public int compare(ListNode a, ListNode b) {return a.val - b.val;}
 	};
 
-  public ListNode mergeKLists(List<ListNode> lists) {  
-		if (lists == null) return null;
-		
+  public ListNode mergeKLists(List<ListNode> lists) {  		
 		PriorityQueue<ListNode> heap = new PriorityQueue<ListNode>(lists.size(), cpt);
 
 		// add head listnode to heap
 		for (ListNode cur : lists) if (cur != null) heap.offer(cur);
 
-		// 操作生成List的方法
+		// 生成List的方法, dummy, 
 		ListNode dummy = new ListNode(0);
-		ListNode current = dummy;
+		ListNode tail = dummy;
 
 		while (!heap.isEmpty()) {
 			ListNode tmp = heap.poll();
-			current.next = tmp;
-			current = tmp;
+			tail.next = tmp;
+			tail = tmp;
 	
 			if (tmp.next == null) continue;
 			heap.offer(tmp.next);
