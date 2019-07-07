@@ -22,7 +22,7 @@ public class LRUCache {
 	private ListNode tail;
 
 	// 哈希表 keyToPrev（current node's key -> prev node）
-	// 本质：使用哈希表对链表达到O(1)的访问速度
+	// 本质：使用哈希表对链表达到O(1)的查找速度
 	// 链表又有O(1)添加删除速度，空间换时间, wow!
 	private Map<Integer, ListNode> keyToPrev;
 
