@@ -6,19 +6,6 @@ import java.util.PriorityQueue;
 import sun.reflect.generics.tree.ReturnType;
 
 // 给一个单词列表，求出这个列表中出现频次最高的K个单词。
-// Example
-// 样例 1:
-// 输入:
-//   [
-//     "yes", "lint", "code",
-//     "yes", "code", "baby",
-//     "you", "baby", "chrome",
-//     "safari", "lint", "code",
-//     "body", "lint", "code"
-//   ]
-//   k = 3
-// 输出: ["code", "lint", "baby"]
-
 // 用 O（n log k)的时间和 O(n) 的额外空间完成。
 
 // 你需要按照单词的词频排序后输出，越高频的词排在越前面。如果两个单词出现的次数相同，则词典序小的排在前面。
@@ -46,8 +33,8 @@ public class TopKFrequentWords {
 	private Comparator<Pair> pairComparator = new Comparator<Pair>() {
 		@Override
 		public int compare(Pair a, Pair b) {
-			if (a.frequency != b.frequency) return a.frequency - b.frequency;
-			return b.word.compareTo(a.word);
+			if (a.frequency != b.frequency) return b.frequency - a.frequency;
+			return a.word.compareTo(b.word);
 		}
 	};
 
@@ -56,34 +43,26 @@ public class TopKFrequentWords {
 		if (k == 0) return results;
 
 		Map<String, Integer> wordToFreq = new HashMap<>();
-		for (String word : words) {
-			wordToFreq.put(word, wordToFreq.getOrDefault(word, 0) + 1);
-		}
+		for (String word : words) wordToFreq.put(word, wordToFreq.getOrDefault(word, 0) + 1);
 
-		PriorityQueue<Pair> heap = new PriorityQueue<Pair>(k, pairComparator);
+		PriorityQueue<Pair> maxheap = new PriorityQueue<Pair>(k, pairComparator);
 
 		for (String word : wordToFreq.keySet()) {
 			Pair current = new Pair(word, wordToFreq.get(word));
-			if (heap.size() < k) {
-				heap.offer(current);
-			} else if (pairComparator.compare(current, heap.peek()) > 0) {
-				heap.poll();
-				heap.offer(current);
+			if (maxheap.size() < k) {
+				maxheap.offer(current);
+				continue;
+			} 
+			
+			// 这里用自定义compartor来比较
+			if(pairComparator.compare(current, maxheap.peek()) > 0) {
+				maxheap.poll();
+				maxheap.offer(current);
 			}
 		}
 
-		for (int i = 0; i < k; i++) results[i] = heap.poll().word;
-
-		// reverse
-		int left = 0, right = results.length - 1;
-		while (left < right) {
-			String tmp = results[left];
-			results[left] = results[right];
-			results[right] = tmp;
-			right--;
-			left++;
-		}
-
+		// comparator已经排好了顺序，不用reverse直接poll就行了
+		for (int i = 0; i < k; i++) results[i] = maxheap.poll().word;
 		return results;
 	}
 }

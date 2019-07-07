@@ -11,28 +11,28 @@ import java.util.PriorityQueue;
 // k is given when we create the data structure.
 
 public class TopKLargestNumber2 {
-	PriorityQueue<Integer> pq;
+	PriorityQueue<Integer> minheap;
 	int size;
 
   public TopKLargestNumber2(int k) {
-		this.pq = new PriorityQueue<>(k);
+		this.minheap = new PriorityQueue<>(k);
 		this.size = k;
   }
 
   public void add(int num) {
-    if (pq.size() < this.size) {
-      pq.offer(num);
+    if (minheap.size() < this.size) {
+      minheap.offer(num);
       return;
     }
-    if (num > pq.peek()) {
-			pq.poll();
-      pq.offer(num);
+    if (num > minheap.peek()) {
+			minheap.poll();
+      minheap.offer(num);
     }
   }
 
   public List<Integer> topk() {
     List<Integer> topKNumbers = new ArrayList<>();
-    Iterator it = pq.iterator();
+    Iterator it = minheap.iterator();
     while (it.hasNext()) topKNumbers.add((Integer) it.next());
     Collections.sort(topKNumbers, Collections.reverseOrder());
     return topKNumbers;
