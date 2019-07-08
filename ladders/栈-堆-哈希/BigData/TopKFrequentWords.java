@@ -3,8 +3,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.PriorityQueue;
 
-import sun.reflect.generics.tree.ReturnType;
-
 // 给一个单词列表，求出这个列表中出现频次最高的K个单词。
 // 用 O（n log k)的时间和 O(n) 的额外空间完成。
 
@@ -54,7 +52,7 @@ public class TopKFrequentWords {
 				continue;
 			} 
 			
-			// 这里用自定义compartor来比较
+			// 这里用自定义compartor来与peek比较
 			if(pairComparator.compare(current, maxheap.peek()) > 0) {
 				maxheap.poll();
 				maxheap.offer(current);
