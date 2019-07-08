@@ -28,6 +28,39 @@ public class MovieNetwork {
 	};
 
   public int[] topKMovie(int[] rating, int[][] G, int S, int K) {
+		PriorityQueue<Movie> minheap = new PriorityQueue<>(K, moive_cpt);
+		Queue<Movie> queue = new LinkedList<>();
+		Set<Integer> visited = new HashSet<>();
 
+		Movie first = new Movie(S, rating[S]);
+		// S不用加入heap
+		queue.offer(first);
+		visited.add(S);
+
+		while (!queue.isEmpty()) {
+			Movie tmp = queue.poll();
+			for (int relation_id : G[tmp.id]) {
+				if (visited.contains(relation_id)) continue;
+				Movie relation = new Movie(relation_id, rating[relation_id]);
+				queue.offer(relation);
+				visited.add(relation_id);
+				addMovie(minheap, relation, K);
+			}
+		}
+
+		int[] topk = new int[minheap.size()];
+		for (int i = 0; i < topk.length; i++) topk[i] = minheap.poll().id;
+		return topk;
+	}
+
+	private void addMovie(PriorityQueue<Movie> minheap, Movie movie, int k) {
+		if (minheap.size() < k) {
+			minheap.offer(movie);
+			return;
+		}
+		if (movie.rate > minheap.peek().rate) {
+			minheap.poll();
+			minheap.offer(movie);
+		}
 	}
 }
