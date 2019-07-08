@@ -77,12 +77,12 @@ public class LRUCache {
 			return;
 		}
 
-		// 2. 缓存满了，把原链表头对应的哈希pair删了，再存进新的pair
-		ListNode first = dummy.next;
-		keyToPrev.remove(first.key);
+		// 2. 缓存满了，把原链表头对应的 K->V pair删了，再存进新的pair
+		ListNode head = dummy.next;
+		keyToPrev.remove(head.key);
 
-		first.key = key;
-		first.val = value;
+		head.key = key;
+		head.val = value;
 		keyToPrev.put(key, dummy);
 		
 		// 新头挪到尾部

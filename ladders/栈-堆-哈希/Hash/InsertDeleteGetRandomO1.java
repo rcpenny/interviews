@@ -11,6 +11,7 @@ import java.util.Map;
  */
 
 public class InsertDeleteGetRandomO1 {
+	// 有点像LRU cache啊，用map指向list，让list查找时间从O(n)降至O(1) 
 	Map<Integer, Integer> valueToIndex;
 	List<Integer> list;
 
