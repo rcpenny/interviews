@@ -5,15 +5,8 @@ import java.util.Stack;
  * Number represents the number of repetitions inside the brackets(can be a string or another expression)．
  * Please expand expression to be a string.
  */
-// Example2
-
 // Input: S = 3[2[ad]3[pf]]xyz
 // Output: "adadpfpfpfadadpfpfpfadadpfpfpfxyz"
-// Challenge
-// Can you do it without recursion?
-
-// Notice
-// Numbers can only appear in front of “[]”.
 
 public class DecodeString {
   public String expressionExpand(String s) {
