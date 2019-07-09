@@ -1,0 +1,33 @@
+// 输入: [4, 5, 1, 2, 3] and target=1
+// 输出: 2  你可以假设数组中不存在重复的元素
+
+public class SearchInRotatedSortedArray {
+  public int search(int[] nums, int target) {
+    if (nums == null || nums.length == 0) return -1;
+    
+    int tail = nums[nums.length - 1];
+    int start = 0, end = nums.length - 1;
+
+    while (start + 1 < end) {
+      int middle = start + (end - start) / 2;
+      if (nums[middle] == target) return middle;
+
+      // target在大数线(画图分析)
+      if (tail < target) {
+        if (nums[middle] > target || nums[middle] <= tail) end = middle;
+        else start = middle;
+        continue;
+      }
+
+      // target在小数线
+      if (target <= tail) {
+        if (nums[middle] < target || nums[middle] > tail) start = middle;
+        else end = middle;
+      }
+    }
+
+    if (nums[start] == target) return start;
+    if (nums[end] == target) return end;
+    return -1;
+  }
+}
