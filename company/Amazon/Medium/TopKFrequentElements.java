@@ -1,4 +1,5 @@
 // 高频题
+// follow up, what if freq overflow?
 
 class Element {
   int val;
