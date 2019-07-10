@@ -13,6 +13,7 @@ public class Interval {
   }
 }
 
+// 自定义class的好处就是可以写comparator来排顺序.像heap
 class Stamp {
   int time;
   int status; // 1 is meeting begin, 0 is meeting over
@@ -36,6 +37,7 @@ public class MeetingRooms {
   public int minMeetingRooms(List<Interval> intervals) {
     int min = 0;
 
+    // 以区间的两端点，建数据并排序
     List<Stamp> stamps = new ArrayList<>();
     for (Interval interval : intervals) {
       stamps.add(new Stamp(interval.start, BEGIN));
