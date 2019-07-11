@@ -32,7 +32,7 @@ public class FindDuplicateNumber {
 	// O(n)
 	private int count(int[] nums, int mid) {
 		int cnt = 0;
-		for (int item : nums) if (item <= mid) nt++;
+		for (int item : nums) if (item <= mid) cnt++;
 		return cnt;
 	}
 }
