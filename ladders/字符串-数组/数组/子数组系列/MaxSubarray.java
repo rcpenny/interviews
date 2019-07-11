@@ -12,8 +12,9 @@ public class MaxSubarray {
 		for (int i = 0; i < nums.length; i++) {
 			prefix_sum = prefix_sum + nums[i];
 
-			// 先算此点前缀和，与前一个点的min_sum.
+			// 先算此点前缀和，于之前min_sum的差.
 			max_sum = Math.max(max_sum, prefix_sum - min_sum_sofar);
+			// 更新min_sum
 			min_sum_sofar = Math.min(min_sum_sofar, prefix_sum);
 		}
 
