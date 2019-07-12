@@ -1,7 +1,7 @@
 import java.util.HashMap;
 import java.util.Map;
 
-// singly linked list version
+// singly linked list version，多回想几遍，步骤漏的有点厉害
 public class LRUCache {
 
 	class ListNode {
@@ -18,6 +18,8 @@ public class LRUCache {
 
 	private int capacity;
 	private int size;
+
+	// 生成Singly linked list
 	private ListNode dummy;
 	private ListNode tail;
 
@@ -34,6 +36,7 @@ public class LRUCache {
 		this.keyToPrev = new HashMap<Integer, ListNode>();
 	}
 
+	// 确定key存在了才会调用这个method
 	private void moveToTail(int key) {
 		ListNode prev = keyToPrev.get(key);
 		ListNode current = prev.next;
@@ -71,6 +74,8 @@ public class LRUCache {
 		if (size < capacity) {
 			size++;
 			ListNode current = new ListNode(key, value);
+			// 这步忘写了，得把两个listNode连起来，这是实体连接
+			// 更新keytoPrev只是更新了 查找的表格~
 			tail.next = current;
 			keyToPrev.put(key, tail);
 			tail = current;
