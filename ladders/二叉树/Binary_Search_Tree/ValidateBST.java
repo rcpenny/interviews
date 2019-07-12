@@ -39,9 +39,11 @@ public class ValidateBST {
 		// 先判断validBST为false的情况可以减少计算。
 		if (!left.validBST || !right.validBST) return new State(0, 0, false);
 
+		// child是null的情况要判断
 		if (left.max >= node.val && node.left != null) return new State(0, 0, false);
 		if (right.min <= node.val && node.right != null) return new State(0, 0, false);
 
+		// 处理 null child Integer极值的情况
 		int currentMax = Math.max(node.val, right.max);
 		int currentMin = Math.min(node.val, left.min);
 		return new State(currentMin, currentMax, true);
