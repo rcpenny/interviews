@@ -8,15 +8,20 @@ import java.util.Map;
 // FB round 1 Q1
 public class SearchSubarray {
   public int searchSubarray(int[] arr, int k) {
-    Map<Long, Integer> sumToIndex = new HashMap<>();
-    long prefix_sum = 0;
-    for (int i = 0; i < arr.length; i++) {
-      prefix_sum = prefix_sum + (long) arr[i];
-      if (sumToIndex.containsKey(prefix_sum - (long) k)) {
-        return i + 1 - sumToIndex.get(prefix_sum - (long) k);
+    Map<Integer, Integer> map = new HashMap<>();
+      int sum = 0;
+      for(int i = arr.length - 1; i >= 0; i--){
+        sum += arr[i];
+        map.put(sum, i);
+      }      
+      sum = 0;
+      int res = -1;
+      for (int i = arr.length - 1; i >= 0; i--){
+        if(map.containsKey(sum + k) && map.get(sum + k) <= i){
+          res = i - map.get(sum + k) + 1;
+        }
+        sum += arr[i];
       }
-      sumToIndex.put(prefix_sum, i + 1);
-    }
-    return -1;
+    return res;
   }
 }
