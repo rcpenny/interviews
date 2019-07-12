@@ -12,6 +12,11 @@ import java.util.List;
 // 将其二进制第一位(从高位数)与0异或, 得到的结果为格雷码的第一位
 // 之后依次将原数的第i位与生成的格雷码第i-1位做异或运算, 即可得到格雷码的第i位
 
+// ArrayList<Integer> result = new ArrayList<Integer>();
+//         for (int i = 0; i < (1 << n); i++)
+//             result.add(i ^ (i >> 1));
+//         return result;
+
 public class GrayCode {
   public List<Integer> grayCode(int n) {
     List<Integer> codes = new ArrayList<>();
