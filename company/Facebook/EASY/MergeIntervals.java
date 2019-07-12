@@ -40,7 +40,7 @@ public class MergeIntervals {
         continue;
       }
       // 有重叠，merge
-      // bug点，没有比较max
+      // bug点，没有比\较max
       current.end = Math.max(current.end, intervals.get(i).end);
     }
 
