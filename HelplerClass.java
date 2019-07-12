@@ -15,4 +15,4 @@ public class Interval {
   }
 }
 
-public class Helper {}
+public class HelperClass {}
