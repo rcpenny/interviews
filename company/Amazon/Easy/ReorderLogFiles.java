@@ -1,10 +1,10 @@
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Comparator;
-import java.util.PriorityQueue;
+import java.util.List;
 
 // You have an array of logs.  Each log is a space delimited string of words.
-
 // For each log, the first word in each log is an alphanumeric identifier.  Then, either:
-
 // Each word after the identifier will consist only of lowercase letters, or;
 // Each word after the identifier will consist only of digits.
 // We will call these two varieties of logs letter-logs and digit-logs.  
@@ -19,41 +19,53 @@ import java.util.PriorityQueue;
 // Input: ["a1 9 2 3 1","g1 act car","zo4 4 7","ab1 off key dog","a8 act zoo"]
 // Output: ["g1 act car","a8 act zoo","ab1 off key dog","a1 9 2 3 1","zo4 4 7"]
 
-@Todo(improve code with a helper class)
-public class ReorderLogFiles {
-  private Comparator<String> letter_cpt = new Comparator<String>() {
-    @Override
-    public int compare(String a, String b) {
-      int a_sp_index = a.indexOf(' ');
-      int b_sp_index = a.indexOf(' ');
+class Log {
+	String id;
+	String log;
+	Log(String id, String log) {
+		this.id = id;
+		this.log = log;
+	}
+}
 
-      String a_sub = a.substring(a_sp_index);
-      String b_sub = b.substring(b_sp_index);
-      if (!a_sub.equals(b_sub)) return a_sub.compareTo(b_sub);
-      return a.substring(0, a_sp_index).compareTo(b_sub.substring(0, b_sp_index));
-    }
-  };
+// 此题第一遍写没有写helper class Log, 败笔.
+// 用了PQ,多此一举，用list就好了.
+public class ReorderLogFiles {
+
+	private Comparator<Log> cpt = new Comparator<Log>() {
+		@Override public int compare(Log a, Log b) {
+			if (!a.log.equals(b.log)) return a.log.compareTo(b.log);
+			return a.id.compareTo(b.id);
+		}
+	};
 
   public String[] reorderLogFiles(String[] logs) {
+		String[] result = new String[logs.length];
 
-    PriorityQueue<String> heap = new PriorityQueue<>(letter_cpt);
-    for (String s : logs) {
-      if (isLetterLog(s)) heap.offer(s);
-    }
+		List<Log> letterLogs = new ArrayList<>();
+		List<Log> digitLogs = new ArrayList<>();
 
-    String[] result = new String[logs.length];
-    int i = 0;
-    while (!heap.isEmpty()) result[i++] = heap.poll();
+		for (String log : logs) {
+			Log tmp = generateLog(log);
+			if (isLetterLog(tmp)) letterLogs.add(tmp);
+			else digitLogs.add(tmp);
+		}
 
-    for (String s : logs) {
-      if (!isLetterLog(s)) result[i++] = s;
-    }
+		Collections.sort(letterLogs, cpt);
+
+		int index = 0;
+		for (Log log : letterLogs) result[index++] = log.id + " " + log.log;
+		for (Log log : digitLogs) result[index++] = log.id + " " + log.log;
 
     return result;
-  }
+	}
+	
+	private Log generateLog(String s) {
+		int sp_index = s.indexOf(' ');
+		return new Log(s.substring(0, sp_index), s.substring(sp_index + 1));
+	}
 
-  private boolean isLetterLog(String a) {
-    int space_index = a.indexOf(' ');
-    return Character.isLetter(a.charAt(space_index + 1));
-  }
+	private boolean isLetterLog(Log log) {
+		return Character.isLetter(log.log.charAt(0));
+	}
 }
