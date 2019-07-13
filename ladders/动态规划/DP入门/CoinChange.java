@@ -6,10 +6,15 @@
 // 解释： 11 = 5 + 5 + 1
 
 // 求最大最小值DP
-// 初始条件/边界情况
-// f(负数) = 正无穷 用转移方程算不出来的需要手动定义 f(0) = 0
-
-// F(X) = 最少用多少枚硬币拼出X
+// 1. 确定状态
+//   - 最后一步：最优策略中使用的最后一枚硬币A
+//   - 子问题： 最少硬币拼出27 - K
+// 2. 转移方程
+//		 f(27) = MIN{f(27 - 7) + 1, f(27 - 5) + 1, f(27 - 2) + 1}
+// 3. 初始条件/边界情况
+//   f(0) = 0 / f(拼不出的价格) = 正无穷
+// 4. 计算顺序
+//  	f(0), f(1) ... f(27) 
 
 // 每一个步尝试coins.length种硬币 O(amount * coins.length)
 public class CoinChange {
@@ -19,6 +24,7 @@ public class CoinChange {
 		dp[0] = 0; // 初始条件，硬币换完面值
 
 		for (int i = 1; i <= amount; i++) {
+			// dp[i] = 正无穷表示无法拼出amount i
 			dp[i] = Integer.MAX_VALUE;
 
 			for (int j = 0; j < coins.length; j++) {
