@@ -4,6 +4,7 @@
 // Input:  [1,12,-5,-6,50,3] 3
 // Output: 15.667
 
+@Todo
 public class MaxAvgSubarray2 {
 	public double maxAverage(int[] nums, int k) {
 		
