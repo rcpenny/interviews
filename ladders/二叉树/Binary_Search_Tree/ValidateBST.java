@@ -43,9 +43,9 @@ public class ValidateBST {
 		if (left.max >= node.val && node.left != null) return new State(0, 0, false);
 		if (right.min <= node.val && node.right != null) return new State(0, 0, false);
 
-		// 处理 null child Integer极值的情况
-		int currentMax = Math.max(node.val, right.max);
-		int currentMin = Math.min(node.val, left.min);
+		// 得到该点极值，考虑左右子树是否为空
+		int currentMax = node.right == null ? node.val : right.max;
+		int currentMin = node.left == null ? node.val : left.min;
 		return new State(currentMin, currentMax, true);
 	}
 }
