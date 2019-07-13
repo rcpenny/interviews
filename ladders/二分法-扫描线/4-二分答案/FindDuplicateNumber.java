@@ -13,20 +13,21 @@
  */
 
  // 思路：大于4的数字应该是2个，但是只有1个.所以4是有问题的.
+ // 在答案范围 1 -> n 之间二分
 public class FindDuplicateNumber {
 	public int findDuplicate(int[] nums) {
-		int l = 1;
-		int r = nums.length - 1;  // n
+		int smaller = 1;
+		int larger = nums.length - 1;  // n
 		
 		// O(logN)
-		while (l + 1 < r) {
-			int mid = l + (r - l) / 2;
-			if (count(nums, mid) <= mid) l = mid;
-			else r = mid;
+		while (smaller + 1 < lager) {
+			int mid = smaller + (larger - smaller) / 2;
+			if (count(nums, mid) <= mid) smaller = mid;
+			else larger = mid;
 		}
 		
-		if (count(nums, l) <= l) return r;
-		return l;
+		if (count(nums, smaller) <= smaller) return larger;
+		return smaller;
 	}
 
 	// O(n)
