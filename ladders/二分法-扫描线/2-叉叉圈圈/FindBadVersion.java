@@ -1,3 +1,4 @@
+// find 1st position of target...
 public class FindBadVersion {
   public int findFirstBadVersion(int n) {
     int start = 1, end = n;

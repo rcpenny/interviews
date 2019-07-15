@@ -14,8 +14,9 @@ public class FindKClosestElements {
       else start = middle;
     }
 
+    // 背向指针
     for (int i = 0; i < k; i++) {
-      // 特殊情况，start和end不能移动了
+      // 特殊情况，start,end到头了，直接append另一个
       if (start < 0) {
         closet[i] = a[end++];
         continue;

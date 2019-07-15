@@ -15,8 +15,8 @@
 //     ]
 //     target = 3
 // Output:2
-// 从左下角开始，往右上角逼近
 
+// 从左下角开始，往右上角逼近(变相二分，选择向上或向右)
 public class Search2DMatrix2 {
   public int searchMatrix(int[][] matrix, int target) {
     if (matrix == null || matrix.length == 0) return 0;
