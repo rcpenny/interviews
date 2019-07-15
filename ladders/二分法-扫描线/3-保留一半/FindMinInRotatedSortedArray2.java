@@ -6,6 +6,7 @@ public class FindMinInRotatedSortedArray2 {
     int head = nums[0];
 
     // 多考虑一个首位同数的情况，导致第一次二分你无法判断在哪个区间.
+    // 如 [1, 1, 1, 1, 1, 1, 1, 1, 1, 20, -5, 2, 1, 1]
     if (tail == head) {
       for (int i = 0; i < nums.length - 1; i++) {
         if (nums[i + 1] < nums[i]) return nums[i + 1];

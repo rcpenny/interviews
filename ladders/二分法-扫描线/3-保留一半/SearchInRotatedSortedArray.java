@@ -12,6 +12,9 @@ public class SearchInRotatedSortedArray {
       int middle = start + (end - start) / 2;
       if (nums[middle] == target) return middle;
 
+      // 1. 还是先target与tail比，决定target在哪条线
+      // 2. 再处理特殊情况
+
       // target在大数线(画图分析)
       if (tail < target) {
         if (nums[middle] > target || nums[middle] <= tail) end = middle;

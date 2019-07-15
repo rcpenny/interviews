@@ -20,7 +20,7 @@ public class FindDuplicateNumber {
 		int larger = nums.length - 1;  // n
 		
 		// O(logN)
-		while (smaller + 1 < lager) {
+		while (smaller + 1 < larger) {
 			int mid = smaller + (larger - smaller) / 2;
 			if (count(nums, mid) <= mid) smaller = mid;
 			else larger = mid;
@@ -31,6 +31,7 @@ public class FindDuplicateNumber {
 	}
 
 	// O(n)
+	// 找数列中不大于mid的个数
 	private int count(int[] nums, int mid) {
 		int cnt = 0;
 		for (int item : nums) if (item <= mid) cnt++;
