@@ -27,6 +27,7 @@ public class WoodCut {
     return minLength;
   }
 
+  // 像find dupe number那题，找到答案范围，在二分模板的判断条件写一个customize method来判断
   private int countPieces(int[] L, int woodLength) {
     int count = 0;
     for (int l : L) count = count + l / woodLength;

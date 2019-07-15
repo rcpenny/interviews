@@ -9,11 +9,12 @@ public class FindPeakElement {
     int start = 0, end = A.length - 1;
     while (start + 1 < end) {
         int middle = start + (end - start) / 2;
+        // 上升线
         if (A[middle] > A[middle - 1] && A[middle] < A[middle + 1]) {
             start = middle;
-        } else if (A[middle] < A[middle - 1] && A[middle] > A[middle + 1]) {
+        } else if (A[middle] < A[middle - 1] && A[middle] > A[middle + 1]) { // 谷底
             end = middle;
-        } else if (A[middle] < A[middle - 1] && A[middle] < A[middle + 1]) {
+        } else if (A[middle] < A[middle - 1] && A[middle] < A[middle + 1]) { // 下降线
             end = middle;
         } else {
             return middle;
