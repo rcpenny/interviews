@@ -1,50 +1,47 @@
+/** 字典树模板 */
 
 class TrieNode {
-	private TrieNode[] children;
-	public boolean isWord;
-	public String word;
+	private TrieNode[] children; // 这个是字典数的精华，其余是辅助
+	public boolean isWord;       // 一般也需要
+	public String word;          // optional
 
 	public TrieNode() {
 		this.children = new TrieNode[26];
 		isWord = false;
 	}
 
+	// 添加word
 	public void insert(String word) {
 		TrieNode current = this;
 		for (int i = 0; i < word.length(); i++) {
-			int position = word.charAt(i) - 'a';
-			if (current.children[position] == null) {
-				current.children[position] = new TrieNode();
-			}
-			current = current.children[position];
+			int index = word.charAt(i) - 'a';              // 得到单词中当前字符的序号
+			if (current.children[index] != null) continue;
+			current.children[index] = new TrieNode();      // 不存在，在对应位置新建TrieNode
+			current = current.children[index];
 		}
 		current.isWord = true;
 		current.word = word;
 	}
 
+	// 搜索word
 	public boolean search(String word) {
 		TrieNode current = this;
 		for (int i = 0; i < word.length(); i++) {
-			int position = word.charAt(i) - 'a';
-			if (current.children[position] == null) {
-				return false;
-			}
-			current = current.children[position];
+			int index = word.charAt(i) - 'a';
+			if (current.children[index] == null) return false;
+			current = current.children[index];
 		}
 		return true;
 	}
 
+	// 寻找prefix(与search word一样)
 	public boolean startWith(String prefix) {
 		TrieNode current = this;
 		for (int i = 0; i < prefix.length(); i++) {
-			int position = prefix.charAt(i) - 'a';
-			if (current.children[position] == null) {
-				return false;
-			}
+			int index = prefix.charAt(i) - 'a';
+			if (current.children[index] == null) return false;
 			current = current.children[position];
 		}
 		return true;
 	}
-
-
 }
