@@ -2,6 +2,7 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 /** https://www.lintcode.com/problem/max-area-of-island/description */
+// follow up: 最左边和最右边相连，如何改算法
 
 class Point {
   int x;
@@ -13,6 +14,7 @@ class Point {
 }
 
 public class MaxAreaOfIslands {
+	// 状态，方向，行列，拎出来
   private final int SEA = 0;
   private final int ISLAND = 1;
 
@@ -29,36 +31,37 @@ public class MaxAreaOfIslands {
     row = grid.length;
     col = grid[0].length;
     
-    for (int i = 0; i < row; i++) {
-      for (int j = 0; j < col; j++) {
-        if (grid[i][j] == ISLAND) {
-          maxArea = Math.max(maxArea, traverseIsland(grid, i, j));
-        }
-      }
-    }
+    for (int i = 0; i < row; i++)
+      for (int j = 0; j < col; j++)
+				if (grid[i][j] == ISLAND)
+					maxArea = Math.max(maxArea, traverseIsland(grid, i, j));
+
     return maxArea;
   }
 
+	// 宽搜岛屿
   private int traverseIsland(int[][] grid, int i, int j) {
     int area = 0;
-    Queue<Point> queue = new LinkedList<>();
+		Queue<Point> queue = new LinkedList<>();
+		grid[i][j] = SEA;
     queue.offer(new Point(i, j));
-    grid[i][j] = SEA;
 
     while (!queue.isEmpty()) {
       Point p = queue.poll();
       area++;
       for (int move = 0; move < 4; move++) {
         Point adj = new Point(p.x + dx[move], p.y + dy[move]);
-        if (!canMove(adj, grid)) continue;
-        grid[adj.x][adj.y] = SEA;
+				if (!canMove(adj, grid)) continue;
+        grid[adj.x][adj.y] = SEA; // 改状态，offer
         queue.offer(adj);
       } 
     }
     return area;
   }
 
+	// 不越界，是岛
   private boolean canMove(Point p, int[][] grid) {
-    return 0 <= p.x && p.x < row && 0 <= p.y && p.y < col && grid[p.x][p.y] == ISLAND;
+		return 0 <= p.x && p.x < row && 0 <= p.y && p.y < col 
+			&& grid[p.x][p.y] == ISLAND;
   }
 }
