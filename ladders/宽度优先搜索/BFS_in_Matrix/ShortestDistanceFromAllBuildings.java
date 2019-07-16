@@ -40,11 +40,12 @@ public class ShortestDistanceFromAllBuildings {
     row = grid.length;
     col = grid[0].length;
 
-    /** calculate total distances from all buildings to this point. */
+    // 所有房子到此Empty点的距离
     int[][] distanceSum = new int[row][col];
-    /** saves number of buildings this empty point can reach. */
+    // 这个Empty点 能reach到房子的数量
     int[][] reach = new int[row][col];
 
+    // 统计总building数
     int buildingNumber = 0;
     for (int i = 0; i < row; i++) {
       for (int j = 0; j < col; j++) {
@@ -59,7 +60,7 @@ public class ShortestDistanceFromAllBuildings {
       }
     }
 
-    // find result for distanceSum
+    // 根据 distanceSum[][] 与 reach[][] 找解
     int result = Integer.MAX_VALUE;
     for (int i = 0; i < row; i++) {
       for (int j = 0; j < col; j++) {
@@ -87,20 +88,20 @@ public class ShortestDistanceFromAllBuildings {
         for (int j = 0; j < 4; j++) {
           Point adj = new Point(p.x + dx[j], p.y + dy[j]);
           if (!canMove(adj, grid, visisted)) continue;
+          // 改状态，改数据，offer
           visisted[adj.x][adj.y] = true;
-          if (grid[adj.x][adj.y] == EMPTY) {
-            distanceSum[adj.x][adj.y] += steps;
-            reach[adj.x][adj.y]++;
-            queue.offer(adj);
-          }
+          distanceSum[adj.x][adj.y] += steps;
+          reach[adj.x][adj.y]++;
+          queue.offer(adj);
         }
       }
     }
     return;
   }
 
+  // 不越界，不是BLOCK 或 BUILDING，未访问过
   private boolean canMove(Point p, int[][] grid, boolean[][] visisted) {
     return 0 <= p.x && p.x < row && 0 <= p.y && p.y < col 
-      && grid[p.x][p.y] != BLOCK && !visisted[p.x][p.y];
+      && grid[p.x][p.y] != BLOCK && grid[p.x][p.y] != BUILDING && !visisted[p.x][p.y];
   }
 }

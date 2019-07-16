@@ -35,6 +35,7 @@ public class NumOfPlaneInSky {
   public int countOfAirplanes(List<Interval> airplanes) {
     int max = 0;
 
+    // 区间两端转点
     List<Point> points = new ArrayList<>();
     for (Interval interval : airplanes) {
       points.add(new Point(interval.start, TAKE_OFF));

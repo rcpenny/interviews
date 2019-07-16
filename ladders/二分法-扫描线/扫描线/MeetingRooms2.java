@@ -30,7 +30,7 @@ public class MeetingRooms {
   private Comparator<Stamp> cpt = new Comparator<Stamp>() {
     @Override public int compare(Stamp a, Stamp b) {
       if (a.time != b.time) return a.time - b.time;
-      return a.status - b.status;
+      return a.status - b.status; // over first
     }
   };
 

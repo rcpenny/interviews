@@ -20,7 +20,7 @@ import java.util.Queue;
  * 解释： 在(1,1)处建立邮局，所有房子到邮局的距离和是最小的
  * 
  * 此处解法用了Point，没有双QUEUE BFS快。
- * 此外从EMPTY出发找HOUSE，如果EMPTY很多的话。效率很低。
+ * 此外从EMPTY出发找HOUSE，如果EMPTY很多的话。效率极低
  * 
  * https://www.lintcode.com/problem/shortest-distance-from-all-buildings/
  * 用从BUILDING BFS的解法。
@@ -93,6 +93,7 @@ public class BuildPostOffice2 {
 		return sum;
 	}
 
+	// 不越界，非墙，未访问过
 	private boolean canMove(Point p, int[][] grid, boolean[][] visisted) {
 		return 0 <= p.x && p.x < row && 0 <= p.y && p.y < col && 
 			(grid[p.x][p.y] != WALL) && !visisted[p.x][p.y];
