@@ -1,8 +1,6 @@
-/**
- * https://www.lintcode.com/problem/implement-trie-prefix-tree
- * 
- * 实现一个 Trie，包含 insert, search, 和 startsWith 这三个方法。
- */
+// https://www.lintcode.com/problem/implement-trie-prefix-tree
+// 实现一个 Trie，包含 insert, search, 和 startsWith 这三个方法
+
 public class Trie {
   private TrieNode root;
 
@@ -34,29 +32,24 @@ class TrieNode {
     this.isWord = false;
   }
 
+	// 插入word, 递归写法
   public void insert(String word, int index) {
-    // 所有character都已经加完了,记录当前TrieNode是单词，退出递归
     if (index == word.length()) {
       isWord = true;
       return;
     }
 
     int position = word.charAt(index) - 'a';
-    if (children[position] == null) {
-      children[position] = new TrieNode();
-    }
+    if (children[position] == null) children[position] = new TrieNode();
     children[position].insert(word, index + 1);
   }
 
+	// 寻找word, 递归写法
   public TrieNode find(String word, int index) {
-    if (index == word.length()) {
-      return this;
-    }
-
+		if (index == word.length()) return this;
+		
     int position = word.charAt(index) - 'a';
-    if (children[position] == null) {
-      return null;
-    }
+    if (children[position] == null) return null;
     return children[position].find(word, index + 1);
   }
 }

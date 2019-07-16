@@ -20,54 +20,50 @@ class Coordinate {
 }
 
 public class NumberOfIslands {
-  // directions 上下左右
+	private boolean SEA = false;
+  private boolean ISLAND = true;
+
   private int[] dx = {0, 1, 0, -1};
   private int[] dy = {-1, 0, 1, 0};
-  private boolean SEA = 0;
-  private boolean ISLAND = 1;
+
+	int row;
+	int col;
 
   public int numIslands(boolean[][] grid) {
-    if (grid == null || grid.length == 0 || grid[0].length == 0) {
-      return 0;
-    }
+		int islandsCount = 0;
+    if (grid == null || grid.length == 0 || grid[0].length == 0) return islandsCount;
 
-    int row = grid.length;
-    int col = grid[0].length;
-    int islandsCount = 0;
+    row = grid.length;
+    col = grid[0].length;
 
-    for (int i = 0; i < row; i++) {
-      for (int j = 0; j < col; j++) {
+    for (int i = 0; i < row; i++)
+      for (int j = 0; j < col; j++)
         if (grid[i][j] == ISLAND) {
-          markIslandByBFS(grid, i, j, row, col);
+          traverseIslands(grid, i, j);
           islandsCount++;
         }
-      }
-    }
 
     return islandsCount;
   }
 
-  private void markIslandByBFS(boolean[][] grid, int x, int y, int gridRow, int gridCol) {
-    Queue<Coordinate> queue = new LinkedList<Coordinate>();
+  private void traverseIslands(boolean[][] grid, int x, int y) {
+		Queue<Coordinate> queue = new LinkedList<Coordinate>();
+		grid[x][y] = SEA;
     queue.offer(new Coordinate(x, y));
-    grid[x][y] = SEA;
 
     while (!queue.isEmpty()) {
-      Coordinate coordinate = queue.poll();
-
+      Coordinate coor = queue.poll();
       for (int i = 0; i < 4; i++) {
-        Coordinate adj = new Coordinate(coordinate.x + dx[i], coordinate.y + dy[i]);
-        if (inBound(adj, gridRow, gridCol) && grid[adj.x][adj.y] == ISLAND) {
+        Coordinate adj = new Coordinate(coor.x + dx[i], coor.y + dy[i]);
+				if (!inBound(adj, grid)) continue;
+					grid[adj.x][adj.y] = SEA;
           queue.offer(adj);
-          grid[adj.x][adj.y] = SEA;
-        }
       }
     }
   }
 
-  private boolean inBound(Coordinate coordinate, int gridRow, int gridCol) {
-    int adjRow = coordinate.x;
-    int adjCol = coordinate.y;
-    return 0 <= adjRow && adjRow < gridRow && 0 <= adjCol && adjCol < gridCol;
+  private boolean inBound(Coordinate coor, boolean[][] grid) {
+		return 0 <= coor.x && coor.x < row && 0 <= coor.y && coor.y < col
+			&& grid[coor.x][coor.y] == ISLAND;
   }
 }

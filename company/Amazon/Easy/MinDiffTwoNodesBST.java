@@ -21,7 +21,6 @@ public class MinDiffTwoNodesBST {
     return min_diff;
   }
 
-  @Todo("好像这个recursion exit return null 这个比 new 一个好处理，LCA试试看")
   private ResultType traverse(TreeNode node) {
     if (node == null) return null;
 
