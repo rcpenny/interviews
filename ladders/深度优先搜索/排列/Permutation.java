@@ -1,11 +1,10 @@
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Given a list of numbers, return all possible permutations.
- * You can assume that there is no duplicate numbers in the list.
- * 画树想象排列
- */
+// Given a list of numbers, return all possible permutations.
+// You can assume that there is no duplicate numbers in the list.
+// 画树想象排列
+
 public class Permutation {
   public List<List<Integer>> permute(int[] nums) {
 		List<List<Integer>> results = new ArrayList<>();
@@ -17,19 +16,17 @@ public class Permutation {
 		return results;
 	}
 
-	//               原始数据      对原始数据状态的控制     当前DFS位置的状态
-	private void dfs(int[] nums, boolean[] visisted, List<Integer> list, 
-		List<List<Integer>> results) {
-		// recursion exit 当前位置为理想状态
+	// 定义： 元数据nums, 控制visited, 状态list, 结果results
+	private void dfs(int[] nums, boolean[] visisted, List<Integer> list, List<List<Integer>> results) {
+		// 出口：排列长度等于元数据长度
 	  if (list.size() == nums.length) {
 			results.add(new ArrayList<>(list));
 			return;
 		}
 
+		// 拆解：从头开始扫，哪些数字可以选
 		for (int i = 0; i < nums.length; i++) {
-			// 进入下个递归前的额外操作：去重？去掉特殊条件？
-			// 判断这个这个位置的数字是否被选过
-			if (visisted[i]) continue;
+			if (visisted[i]) continue; // 进入递归的条件：这个位置的数字是否被选过
 
 			visisted[i] = true;
 			list.add(nums[i]);
