@@ -1,7 +1,7 @@
 // LC642
 // https://leetcode.com/problems/design-search-autocomplete-system/
 
-@Todo("July 16")
+@Todo("next time with trie")
 class AutocompleteSystem {
 
 	public AutocompleteSystem(String[] sentences, int[] times) {

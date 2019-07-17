@@ -6,12 +6,10 @@ import java.util.Map;
  * 这里遵循的意思是一个完整的匹配，在一个字母的模式和一个非空的单词str之间有一个双向连接的模式对应。
  * (如果a对应s，那么b不对应s。例如，给定的模式= "ab"， str = "ss"，返回false
  * 
- * 输入:
-		pattern = "abab"
-		str = "redblueredblue"
-		输出: true
-		说明: "a"->"red","b"->"blue"
+ * 输入: pattern = "abab" str = "redblueredblue"
+	 输出: true  说明: "a"->"red","b"->"blue"
  */
+
 final class WordPattern2 {
 	private boolean can_match = false;
 
@@ -24,18 +22,17 @@ final class WordPattern2 {
 		return can_match;
 	}
 
-	// 递归的定义: 原始数据str与letters，控制条件index:letters检查字母的起始位置，DFS当前位置的状态:对应模式map
+	// 定义: 元数据str letters, 控制index, 状态:对应模式map
 	private void match(String str, char[] letters, int index, Map<Character, String> map) {
-		// 递归的出口：str被切完了，index查到letters最后一位，能match
+		// 出口：能match, str被切完，index到边界
 		if (str.length() == 0 && index == letters.length) can_match = true;
 		if (can_match || str.length() == 0 || index == letters.length) return;
 
 		char current = letters[index];
 	
-		// 递归的拆解： 有char的对应模式
+		// 拆解： 有current的对应模式
 		if (map.containsKey(current)) {
-			// 进入递归的条件： substring不符合当前对应模式
-			String word = map.get(current);
+			String word = map.get(current); // 进入递归的条件： substring不符合当前对应模式
 			if (!str.startsWith(word)) return;
 
 			String follow = str.substring(word.length());
@@ -43,16 +40,14 @@ final class WordPattern2 {
 			return;
 		}
 
-		// else
-		// 递归的拆解： 无char的对应模式,由1 -> str.end一个个试
+		// 拆解： 无current的对应模式
 		for (int i = 1; i <= str.length(); i++) {
-			// 进入递归的条件：当前对应模式不存在下一个substring
-			String sub = str.substring(0, i);
+			String sub = str.substring(0, i); // 进入递归的条件：当前对应模式不存在下一个substring
 			if (map.containsValue(sub)) continue;
 
 			map.put(current, sub);
-			String following = str.substring(i);
-			match(following, letters, index + 1, map);
+			String follow = str.substring(i);
+			match(follow, letters, index + 1, map);
 			map.remove(current);
 		}
 	}

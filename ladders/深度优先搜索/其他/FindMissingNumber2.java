@@ -13,34 +13,34 @@ public class FindMissingNumber2 {
 		if (n <= 0) return missing;
 
 		boolean[] found = new boolean[n + 1];
-		find(str, 0, 0, n, found);
+		find(str, n, 0, 0, found);
 
 		return missing;
 	}
 	
-	private void find(String str, int index, int count, int n, boolean[] found) {
-		// recursion exit 限制条件 count或index达到某个值
-		if ( count == n - 1 && index == str.length()) {
+	// 定义：元数据str，n   控制：index, count   当前状态：visisted
+	private void find(String str, int n, int index, int count, boolean[] found) {
+		// 出口: count/index达到极值
+		if ( count == n - 1 && index == str.length())
 			for (int i = 1; i < found.length; i++) if (!found[i]) missing = i;
-		}
 		if (count >= n - 1 || index >= str.length()) return;
 
+		// 拆解: 一位数，两位数
 		for (int len = 1; len <= 2; len++) {
-			// 进入下个递归前的额外操作：去重？去掉特殊条件？
-			if (index + len > str.length()) continue;
+			if (index + len > str.length()) continue; // 进入递归的条件：index不越界，数字不合法
 			String sub = str.substring(index, index + len);
 			if (!isValidNumber(sub, n, found)) continue;
 			
 			int val = Integer.valueOf(sub);
 			found[val] = true;
-			find(str, index + len, count + 1, n, found);
+			find(str, n, index + len, count + 1, found);
 			found[val] = false;
 		}
 	}
 
+	// 数字合理（1 ～ n）且未被visit过
 	private boolean isValidNumber(String sub, int n, boolean[] found) {
-		// 去掉 “06”这样的case
-		if (sub.charAt(0) == '0') return false;
+		if (sub.charAt(0) == '0') return false; // 去掉 "0", "06" 这样的case
 		int val = Integer.valueOf(sub);
 		return (val > 0 && val <= n && !found[val]) ? true : false;
 	}

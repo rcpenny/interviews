@@ -8,33 +8,31 @@ import java.util.List;
  * 输入: "1116512311"
  * 输出: ["11.165.123.11","111.65.123.11"]
  */
+
+ // 这不就是个split string的加强版么 :)
 public class RestoreIPAddress {
+
   public List<String> restoreIpAddresses(String s) {
-		// 初始化答案与考虑corner case
 		List<String> results = new ArrayList<>();
 		if (s == null || s.length() < 4 || s.length() > 12) return results;
 
-		// 递归操作
 		split(s, 0, new ArrayList<String>(), results);
 
-		// 返回值
 		return results;
 	}
 
-	// 递归的定义：原始数据string s, 控制变量 s 查看起点index, dfs当前节点状态fields
-	private void split(String s, int index, List<String> fields, 
-		List<String> results) {
-		// 递归的出口: index超过s长度，fields大于4个
+	// 定义：元数据s, 控制index, 状态fields，结果results
+	private void split(String s, int index, List<String> fields, List<String> results) {
+		// 出口: index到边界，ip fields到达极值
 		if (index == s.length() && fields.size() == 4) {
 			String ip = generateIp(fields);
 			results.add(new ArrayList<>(ip));
 		}
 		if (fields.size() >= 4 || index >= s.length()) return;
 
-		// 递归的拆解：进入下层有三种切割可能性
+		// 拆解：切1,切2,切3
 		for (int i = 1; i <= 3; i++) {
-			// 进入递归的条件：index不越界，substring是合理的ip数字
-			if (index + i > s.length()) continue;
+			if (index + i > s.length()) continue; // 进入递归的条件：index不越界，substring是合理的ip数字
 			String field = s.substring(index, index + i);
 			if (!isValidNumber(field)) continue;
 	
@@ -52,7 +50,7 @@ public class RestoreIPAddress {
 	}
 
 	private boolean isValidNumber(String sub) {
-		// to eliminate cases like "00", "10"
+		// to eliminate cases like "00", "01","001" so on
 		if (sub.charAt(0) == '0') return sub.equals("0");
 		int value = Integer.valueOf(sub);
 		return 0 <= value && value < 256;
