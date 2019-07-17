@@ -18,25 +18,25 @@ import java.util.Set;
 
 public class SlidingPuzzle {
   private final String target = "123450";
-  private int row;
-  private int col;
 
   private int[] dx = {1, -1, 0, 0};
   private int[] dy = {0, 0, -1, 1};
 
+  private int row;
+  private int col;
+
   public int slidingPuzzle(int[][] board) {
     row = board.length;
     col = board[0].length;
+
     Queue<String> queue = new LinkedList<>();
     Set<String> visisted = new HashSet<>();
 
     // add initial state to queue
     String initialState = "";
-    for (int i = 0; i < row; i++) {
-      for (int j = 0; j < col; j++) {
+    for (int i = 0; i < row; i++)
+      for (int j = 0; j < col; j++)
         initialState += String.valueOf(board[i][j]);
-      }
-    }
 
     if (initialState.equals(target)) return 0;
 
@@ -51,8 +51,7 @@ public class SlidingPuzzle {
         List<String> nextStates = getNextStates(state, visisted);
         for (String nextState : nextStates) {
           if (nextState.equals(target)) return moves;
-          //这两步忘写了。bfs先把大模板搭好再去写小方程
-          visisted.add(nextState);
+          visisted.add(nextState); // 改状态，再offer
           queue.offer(nextState);
         }
       }
