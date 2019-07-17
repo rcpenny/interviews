@@ -6,26 +6,30 @@ import java.awt.List;
  * 每个解决方案包含一个明确的n皇后放置布局，其中“Q”和“.”分别表示一个女王和一个空位置。
  */
 public class NQueens {
+	
 	public List<List<String>> solveNQueens(int n) {
 		List<List<String>> results = new ArrayList<>();
 		if (n <= 0) return results;
 
-		search(results, new ArrayList<Integer>(), n);
+		search(n, new ArrayList<Integer>(), results);
 		
 		return results;
-}
+	}
 
-	private void search(List<List<String>> results, List<Integer> cols, int n) {
+	// 定义： 元数据n   控制cols(这行queen的位置)   结果results
+	private void search(int n, List<Integer> cols, List<List<String>> results) {
+		// 出口：放了N个queen
 		if (cols.size() == n) {
 			results.add(drawChessBoard(cols));
 			return;
 		}
 		
-		// 扫描此行
+		// 拆解：扫描board当前行
 		for (int colIndex = 0; colIndex < n; colIndex++) {
-			if (canAttack(cols, colIndex)) continue;
+			if (canAttack(cols, colIndex)) continue; // 进入递归的条件：所有queen不互相攻击
+	
 			cols.add(colIndex);
-			search(results, cols, n);
+			search(n, cols, results);
 			cols.remove(cols.size() - 1);
 		}
 	}

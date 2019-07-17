@@ -10,6 +10,7 @@ import java.util.List;
  * 解集不能包含重复的组合.
  */
 public class CombinationSum2 {
+
   public List<List<Integer>> combinationSum2(int[] candiates, int target) {
 		List<List<Integer>> results = new ArrayList<>();
 		if (candiates == null) return results;
@@ -20,17 +21,18 @@ public class CombinationSum2 {
 		return results;
 	}
 
-	private void dfs(int[] candiates, int target, int start, List<Integer> comb, 
-		List<List<Integer>> results) {
+	// 定义：元数据candidates target  控制start  状态comb  结果results
+	private void dfs(int[] candiates, int target, int start, List<Integer> comb, List<List<Integer>> results) {
+		// 出口：remain target <= 0
 		if (target == 0) results.add(new ArrayList<Integer>(comb));
 		if (target <= 0) return;
 
+		// 拆解：这层树可以选的数字，一个个选
 		for (int i = start; i < candiates.length; i++) {
-			// 注意是i != start，去重，控制在这个层级（树），这个index的数可不可以选
+			// 进入递归的条件：去重，控制在这个层级（树）
 			if (i != start && candiates[i] == candiates[i - 1]) continue;
 			comb.add(candiates[i]);
-			// i + 1 说明进入下一层级时，此数字不能被重复选
-			dfs(candiates, target - candiates[i], i + 1, comb, results);
+			dfs(candiates, target - candiates[i], i + 1, comb, results); // i + 1，此数字不能被重复选
 			comb.remove(comb.size() - 1);
 		}
 	}

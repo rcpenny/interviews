@@ -10,9 +10,9 @@ import java.util.ArrayList;
  * '2' 可以是 'a', 'b' 或 'c'
  * '3' 可以是 'd', 'e' 或 'f'
  */
+
 public class LetterCombinationPhoneNumber {
-	private static final String[] letters = 
-		{"abc", "def", "ghi", "jkl", "mno", "pqrs","tuv", "wxyz"};
+	private static final String[] letters = {"abc", "def", "ghi", "jkl", "mno", "pqrs","tuv", "wxyz"};
 
   public List<String> letterCombinations(String digits) {
 		List<String> results = new ArrayList<>();
@@ -23,12 +23,15 @@ public class LetterCombinationPhoneNumber {
 		return results;
 	}
 
+	// 定义：元数据digits  控制index  状态sb   结果results
 	private void dfs(String digits, int index, StringBuilder sb, List<String> results) {
+		// 出口：状态length = 元数据length
 		if (sb.length() == digits.length()) {
 			results.add(sb.toString());
 			return;
 		}
 
+		// 拆解：数字对应letter递归
 		for (int i = index; i < digits.length(); i++) {
 			int digit = digits.charAt(i) - '0';
 			for (char c : letters[digit - 2].toCharArray()) {

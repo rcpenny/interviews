@@ -11,6 +11,8 @@ import java.util.List;
  * 输出： [[2,2,2],[2,4]]
  * 解释： 8 = 2 x 2 x 2 = 2 x 4
  */
+
+ @Todo("这个写法费时，重写，不用generate 所有因数... 递归时直接除就完事了")
 public class Factorization {
   public List<List<Integer>> getFactors(int n) {
     List<List<Integer>> results = new ArrayList<>();

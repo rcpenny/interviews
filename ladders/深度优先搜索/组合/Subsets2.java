@@ -20,12 +20,14 @@ public class Subsets2 {
 		return results;
 	}
 
+	// 定义：元数据nums, 控制start, 状态subset, 结果results
 	private void dfs(int[] nums, int start, List<Integer> subset, List<List<Integer>> results) {
-		// 没出口，每个节点都要搞搞事情
+		// 出口：不用，加入递归树的每一个节点
 		results.add(new ArrayList<>(subset));
 
+		// 拆解：每个for就是递归树的一层，从start开始查
 		for (int i = start; i < nums.length; i++) {
-			// 这里是 i != start 去重的起点变了,去重发生在递归前那个层级
+			// 进入递归的条件：这里是 i != start 去重的起点变了,再树的同一层级去重
 			if (i != start && nums[i] == nums[i - 1]) continue;
 			subset.add(nums[i]);
 			dfs(nums, i + 1, subset, results);
