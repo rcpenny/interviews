@@ -9,12 +9,7 @@ import java.util.Set;
 // 输入：[1,2,3,4],[1,4]  输出：1
 // 说明：两个加热器分别位于1和4，只需要加热半径为1，就能加热所有房屋了
 
-// 1.Numbers of houses and heaters you are given are non-negative and will not exceed 25000.
-// 2.Positions of houses and heaters you are given are non-negative and will not exceed 10^9.
-// 3.As long as a house is in the heaters' warm radius range, it can be warmed.
-// 4.All the heaters follow your radius standard and the warm radius will the same.
-
-// 二分答案，一下子就想到啦！ 对每个house，进行heaters里面的二分答案
+// 二分答案最大半径，一下子就想到啦！ 或者对每个house，进行heaters的二分
 public class Heaters {
 
   public int findRadius(int[] houses, int[] heaters) {
