@@ -30,7 +30,7 @@ import java.util.Queue;
 	* 2. 使用DFS在tree中找出所有的ladders
 	*/
 
-@Todo("July-17")
+@Todo("next DFS revisit")
 public class WordLadder2 {
 	// 写崩了呗
   public List<List<String>> findLadders(String start, String end, Set<String> dict) {
