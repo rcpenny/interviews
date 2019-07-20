@@ -14,10 +14,9 @@ public class MinSizeSubArraySum {
         fast++;
       }
 
-      if (current_sum >= s) {
+      if (current_sum >= s)
         min_size = Math.min(min_size, fast - slow + 1);
-      }
-      // bug点，把这个写在上面的if里了，但是这个减法操作每次都有啊
+      
       current_sum = current_sum - nums[slow];
     }
 
