@@ -1,7 +1,5 @@
 /**
- * Write a program to find the node at which the 
- * intersection of two singly linked lists begins.
- * 
+ * ind the node at which the intersection of two singly linked lists begins.
  * 
  * If the two linked lists have no intersection at all, return null.
  * The linked lists must retain their original structure after the function returns.

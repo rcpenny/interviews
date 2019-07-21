@@ -14,7 +14,8 @@ public class DetectCycle {
 
     ListNode fast = head;
     ListNode slow = head;
-    ListNode intersection = head;
+		ListNode intersection = head;
+
     while (fast.next != null && fast.next.next != null) {
       fast = fast.next.next;
 			slow = slow.next;
