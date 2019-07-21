@@ -1,8 +1,3 @@
-// 确定状态:
-// 转移方程:
-// 初态边界:
-// 计算顺序:
-
 class TreeNode {
 	public int val;
 	public TreeNode left, right;
