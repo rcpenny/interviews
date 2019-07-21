@@ -69,6 +69,12 @@ public class BestTimeToBuySellStock3 {
 				sell2 = Math.max(sell2, buy2 + price);
 		}
 		return sell2;
-}
+	}
+	
+	// price         4   4   6   1   1   4   2   5
+	// buy1  MIN    -4  -4  -4  -1  -1  -1  -1  -1
+	// sell1 0       0   0   2   2   2   3   3   4
+	// buy2  MIN    -4  -4  -4   1   1   1   1   1
+	// sell2 0       0   0   2   2   2   5   5   6
 }
 
