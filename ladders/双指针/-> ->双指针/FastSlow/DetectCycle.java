@@ -7,6 +7,7 @@ class ListNode {
   }
 }
 
+// 如果存在cycle, return 交叉点
 public class DetectCycle {
   public ListNode detectCycle(ListNode head) {
     if (head == null) return null;
@@ -16,8 +17,10 @@ public class DetectCycle {
     ListNode intersection = head;
     while (fast.next != null && fast.next.next != null) {
       fast = fast.next.next;
-      slow = slow.next;
+			slow = slow.next;
+
       if (fast == slow) {
+				// 套圈，画图看
         while (intersection != slow) {
           intersection = intersection.next;
           slow = slow.next;
