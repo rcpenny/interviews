@@ -14,13 +14,15 @@ public class PalindromePartition2 {
 		int n = s.length;
 		if (n == 0) return 0;
 
+		// 用palin[i][j] 表示s[i...j]是否是回文串
 		boolean[][] palin = calcPalins(s);
-		int[] f= new int[n + 1];
+		int[] f = new int[n + 1];
+		f[0] = 0;
 
 		for (int i = 1; i <= n; i++) {
 			f[i] = Integer.MAX_VALUE;
 			for (int j = 0; j < i; j++) {
-				if (palin[i - 1][j]) 
+				if (palin[j][i - 1]) 
 					f[i] = Math.min(f[i], f[j] + 1);
 			}
 		}
@@ -36,15 +38,16 @@ public class PalindromePartition2 {
 		for (int p = 0; p < n; p++) {
 			int i = p, j = p;
 			while (0 <= i && j < n && s[i] == s[j])
-				isPalin[i++][j++] = true;
+				isPalin[i--][j++] = true;
 		}
 
 		// 偶数枚举
 		for (int p = 0; p < n - 1; p++) {
 			int i = p, j = p + 1;
 			while (0 <= i && j < n && s[i] == s[j])
-				isPalin[i++][j++] = true;
+				isPalin[i--][j++] = true;
 		}
+
 		return isPalin;
 	}
 }
