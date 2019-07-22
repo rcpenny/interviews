@@ -8,7 +8,7 @@
 // 存在性DP
 
 // 1. 确定状态 f(i) 能不能跳到index i
-// 2. 设计状态转移方程 f(i) = (枚举上一个跳到的石头j) [ f(j) and j + a[j] >= i ]
+// 2. 转移方程 f(i) = (枚举上一个跳到的石头j) [ f(j) and j + a[j] >= i ]
 // 3. 确定初始态边界 f(0) = true
 // 4. 按照一定顺序计算 从小到大
 
@@ -16,22 +16,22 @@
 
 public class JumpGame {
 	public boolean canJump(int[] A) {
-		int len = A.length;
-		boolean[] dp = new boolean[len];
-		dp[0] = true;
+		int n = A.length;
+		if (n == 0) return false;
 
-		for (int i = 1; i < len; i++) {
-			dp[i] = false;
-			// 枚举 i 前面的所有位置
+		boolean[] f = new boolean[n];
+		f[0] = true;
+
+		for (int i = 1; i < n; i++) {
+			f[i]  = false;
 			for (int j = 0; j < i; j++) {
-				// 在 j 位置可以跳到 i
-				if (dp[j] && j + A[j] >= i) {
-					dp[i] = true;
+				if (f[j] && A[j] + j >= i) {
+					f[i] = true;
 					break;
 				}
 			}
 		}
 
-		return dp[len - 1];
+		return f[n - 1];
 	}
 }

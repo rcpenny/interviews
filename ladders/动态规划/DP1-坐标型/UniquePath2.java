@@ -6,8 +6,9 @@
 // 转移方程: dp[i][j] = dp[i-1][j] + dp[i][j-1]
 // 初态边界: dp[0][0] = 1
 // 计算顺序:
+
+// 考虑改成f, m, n 初始化拎到外面去初始化 
 public class UniquePath2 {
-	public final int EMPTY = 0;
 	public final int TACKLE = 1;
 
 	public int uniquePathsWithObstacles(int[][] obstacleGrid) {
@@ -27,7 +28,7 @@ public class UniquePath2 {
 					continue;
 				}
 
-        // 不写这个最后一步会越界			  
+        // 不写这个最后一步会越界 下面三个if其实应该
 			  if (i == 0 && j == 0) {
 			    dp[i][j] = 1; 
 			    continue;

@@ -3,7 +3,7 @@
 // 由于墙比较坚固，所以墙不会被摧毁.
 
 // 确定状态: up[][] down[][] left[][] right[][]
-// 转移方程: f[][] = up[][] + down[][] + left[][] + right[][]
+// 转移方程: 
 // 初态边界:
 // 计算顺序: 根据方向
 
@@ -21,7 +21,7 @@ public class BombEnemy {
 
 		int i, j;
 
-		// up, 画图想想，初始位置，last row
+		// up, 画图想想，初始位置，last row向上
 		for (i = m - 1; i >= 0; i--) {
 			for (j = 0; j < n; j++) {
 			  up[i][j] = 0;
@@ -41,7 +41,7 @@ public class BombEnemy {
 			}
 		}
 
-		// left
+		// left  first column向左
 		for (i = 0; i < m; i++) {
 			for (j = 0; j < n; j++) {
 			  left[i][j] = 0;
@@ -64,7 +64,7 @@ public class BombEnemy {
 
 		for (i = 0; i < m; i++) {
 			for (j = 0; j < n; j++) {
-			  if (grid[i][j] != '0') continue; // 漏了这步,bug
+			  if (grid[i][j] == 'W' || grid[i][j] == 'E') continue; // 漏了这步,bug
 				max = Math.max(max, up[i][j] + down[i][j] + left[i][j] + right[i][j]);
 			}
 		}

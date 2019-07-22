@@ -10,7 +10,7 @@
 //   - 最后一步：最优策略中使用的最后一枚硬币A
 //   - 子问题： 最少硬币拼出27 - K
 // 2. 转移方程
-//		 f(27) = MIN{f(27 - 7) + 1, f(27 - 5) + 1, f(27 - 2) + 1}
+//		 f(27) = MIN{f(27 - 7), f(27 - 5), f(27 - 2)} + 1
 // 3. 初始条件/边界情况
 //   f(0) = 0 / f(拼不出的价格) = 正无穷
 // 4. 计算顺序
@@ -28,7 +28,7 @@ public class CoinChange {
 			dp[i] = Integer.MAX_VALUE;
 
 			for (int j = 0; j < coins.length; j++) {
-				// 边界条件：X < 0, X - coin 不存在
+				// 边界条件：X < 0, X - coin amount拼不出
 				if (i - coins[j] < 0) continue;
 				if (dp[i - coins[j]] == Integer.MAX_VALUE) continue;
 
