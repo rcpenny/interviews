@@ -33,6 +33,7 @@ public class RussianDollEnvelope {
 			int[] current = envelopes[i];
 			
 			// 用二分法提升至nlogn, find last position of fit in envelopes
+			// 这里是暴力循环所有前面的f[j]了
 			for (int j = 0; j < i; j++) {
 				int[] prev = envelopes[j];
 				if (prev[0] < current[0] && prev[1] < current[1])

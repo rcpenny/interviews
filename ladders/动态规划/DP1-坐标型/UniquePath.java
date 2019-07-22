@@ -2,10 +2,11 @@
 // 机器人每一时刻只能向下或者向右移动一步。机器人试图达到网格的右下角。
 // 问有多少条不同的路径
 
-// 确定状态 最后一步 子问题（与原问题性质相同, 规模更小的问题）
-// 设计状态转移方程 dp[i][j] = dp[i-1][j] + dp[i][j-1]
-// 确定初始态边界 f[i][0] = 1, f[0][j] = 1
-// 按照一定顺序计算
+// 1. 确定状态: dp[i][j] 走到坐标(i,j)的路径数
+// 2. 转移方程: dp[i][j] = dp[i-1][j] + dp[i][j-1]
+// 3. 初态边界: f[i][0] = 1, f[0][j] = 1
+// 4. 顺序计算: row by row, col by col
+
 public class UniquePath {
   public int uniquePaths(int m, int n) {
 		int[][] dp =  new int[m][n];

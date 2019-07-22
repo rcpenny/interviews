@@ -4,7 +4,7 @@
 // 确定状态: p[i] 在i位置的最大正积，n[i] 在i位置的最大负积
 // 转移方程: 根据正负情况判断，max, min一下
 // 初态边界: p[0] = nums[0] or n[0] = 0
-// 计算顺序: 0 -> nums.length
+// 计算顺序: 0 -> len
 
 public class MaxProductSubarray {
 	public int maxProduct(int[] nums) {
@@ -12,11 +12,13 @@ public class MaxProductSubarray {
 		int max = Integer.MIN_VALUE;
 		
 		int len = nums.length;
-		int[] p = new int[len];
-		int[] n = new int[len];
+		int[] p = new int[len];  // 其实合并成f[len][2]就好了
+		int[] n = new int[len];  // 不过pos neg 还挺清楚
 
+		// 初始化
 		if (nums[0] >= 0) p[0] = nums[0];
 		else n[0] = nums[0];
+		
 		max = Math.max(p[0], n[0]);
 
 		for (int i = 1; i < len; i++) {

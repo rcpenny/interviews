@@ -6,8 +6,7 @@
 // 输出: 10
 // 解释: 蓝 绿 蓝, 2 + 5 + 3 = 10
 
-// 确定状态: 油漆前i栋房子的三种颜色的花费
-//         子问题：R: f[N-2][0]  B: f[N-2][1]  G:f[N-2][2]
+// 确定状态: f[i][color]油漆前i栋房子的三种颜色各自的花费
 // 转移方程: f[n][1 ~ 3] = Math.min(f[n-1][other 2 colors]) + cost[n][1 ~ 3]
 // 初态边界: f[0][0]=f[0][1]=f[0][2]=0 
 // 计算顺序:
@@ -27,11 +26,10 @@ public class PaintHouse {
 
 		for (int i = 1; i < len + 1; i++) {
 			for (int j = 0; j < 3; j++) {
-				// 为了min的比较
-				dp[i][j] = Integer.MAX_VALUE;
-				// 去同色
+				dp[i][j] = Integer.MAX_VALUE; // 为了min的比较
+
 				for (int k = 0; k < 3; k++) {
-					if (j == k) continue;
+					if (j == k) continue; // 去同色
 					dp[i][j] = Math.min(dp[i][j], dp[i - 1][k] + costs[i - 1][j]);
 				}
 			}
