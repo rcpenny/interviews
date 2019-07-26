@@ -4,11 +4,10 @@ public class Triangle {
   public int minimumTotal(int[][] triangle) {
     int row = triangle.length;
 
-    for (int i = row - 2; i >= 0; i--) {
-      for (int j = 1; j < triangle[i + 1].length; j++) {
+		// bottom up
+    for (int i = row - 2; i >= 0; i--)
+      for (int j = 1; j < triangle[i + 1].length; j++)
         triangle[i][j - 1] += Math.min(triangle[i + 1][j - 1], triangle[i + 1][j]);
-      }
-    }
 
     return triangle[0][0];
   }
