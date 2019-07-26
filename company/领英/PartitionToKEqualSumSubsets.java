@@ -5,6 +5,7 @@ import java.util.Arrays;
 // 解释:  一个可能的划分 (1, 2, 3), (1, 5), (3, 3)，拥有相等的权重
 
 // 这是一个组合问题
+@Todo
 public class PartitionToKEqualSumSubsets {
 	private boolean result = false;
 
