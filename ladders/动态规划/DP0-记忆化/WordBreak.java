@@ -8,22 +8,20 @@
 
 // 序列型(划分型)动态规划，前i个的可行性
 
-// 加快速度，dict max length啊这样
 public class WordBreak {
   public boolean wordBreak(String s, Set<String> dict) {
     if (s == null || s.length() == 0) return false;
+
     int n = s.length();
     boolean[] memo = new boolean[n + 1];
     memo[0] = true;
     
     for (int i = 1; i < n + 1; i++) {
       for (int j = 0; j < i; j++) {
-        if (memo[j]) {
-          String tmp = s.substring(j, i);
-          if (dict.contains(tmp)) {
-            memo[i] = true;
-            break;
-          }
+        String tmp = s.substring(j, i);
+        if (memo[j] && dict.contains(tmp)) {
+          memo[i] = true;
+          break;
         }
       }
     }
