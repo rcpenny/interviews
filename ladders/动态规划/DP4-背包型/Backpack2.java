@@ -15,6 +15,12 @@
 // 3. 初态边界 f[0][0] = 0  f[0][1-w] = -1
 // 4. 顺序计算 答案枚举所有重量
 
+// 		 w=0  w=1  w=2  w=3 ... w=m
+// i=0   0
+// i=1  -1
+// i=2  -1
+// i=3  -1
+
 public class Backpack2 {
   public int backPackII(int m, int[] A, int[] V) {
 		int n =  A.length;
