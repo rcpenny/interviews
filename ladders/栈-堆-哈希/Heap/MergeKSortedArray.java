@@ -24,8 +24,11 @@ class Element {
 }
 
 public class MergeKSortedArray {
+
 	private Comparator<Element> cpt = new Comparator<Element>() {
-		@Override public int compare(Element a, Element b) {return a.val - b.val;}
+		@Override public int compare(Element a, Element b) {
+			return a.val - b.val;
+		}
 	};
 
   public int[] mergekSortedArrays(int[][] arrays) {
