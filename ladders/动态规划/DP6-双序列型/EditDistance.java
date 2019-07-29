@@ -64,5 +64,3 @@ public class EditDistance {
 		return f[m][n];
   }
 }
-
-// edit distance的实际用途
