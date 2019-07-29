@@ -1,20 +1,18 @@
-import java.util.HashMap;
-import java.util.Map;
-
-// singly linked list version，多回想几遍，步骤漏的有点厉害
-public class LRUCache {
-
-	class ListNode {
-		public int key;
-		public int val;
-		public ListNode next;
-		
-		public ListNode(int key, int val) {
-			this.key = key;
-			this.val = val;
-			this.next = null;
-		}
+class ListNode {
+	public int key;
+	public int val;
+	public ListNode next;
+	
+	public ListNode(int key, int val) {
+		this.key = key;
+		this.val = val;
+		this.next = null;
 	}
+}
+
+
+
+public class LRUCache {
 
 	private int capacity;
 	private int size;
@@ -23,9 +21,8 @@ public class LRUCache {
 	private ListNode dummy;
 	private ListNode tail;
 
-	// 哈希表 keyToPrev（current node's key -> prev node）
-	// 本质：使用哈希表对链表达到O(1)的查找速度
-	// 链表又有O(1)添加删除速度，空间换时间, wow!
+	// 哈希表 keyToPrev（current node's key -> this node's prev node）
+	// 本质：使用哈希表对链表达到O(1)的查找速度 链表又有O(1)添加删除速度，空间换时间, wow!
 	private Map<Integer, ListNode> keyToPrev;
 
 	public LRUCache(int capacity) {
@@ -36,7 +33,11 @@ public class LRUCache {
 		this.keyToPrev = new HashMap<Integer, ListNode>();
 	}
 
-	// 确定key存在了才会调用这个method
+
+
+	// 1. 删node
+	// 2. 添到尾部
+	// 3. 更新map
 	private void moveToTail(int key) {
 		ListNode prev = keyToPrev.get(key);
 		ListNode current = prev.next;
@@ -55,34 +56,36 @@ public class LRUCache {
 		tail = current;
 	}
 
+
+
 	public int get(int key) {
-		if (!keyToPrev.containsKey(key)) return -1;
-		// get后这个key是most rencently used，所以放到尾部变成tail
-		moveToTail(key);
+		if (!keyToPrev.containsKey(key)) return -1;	
+		moveToTail(key); // // get后这个key是most rencently used，所以放到尾部变成tail
 		return tail.val;
 	}
 
+
+
 	public void set(int key, int value) {
-		// 调用get看key是否存在时，若存在就会把key挪到尾部～
-		if (get(key) != -1) {
+		if (get(key) != -1) { // 调用get看key是否存在时，若存在get就会把key挪到尾部～
 			tail.val = value;
 			return;
 		}
 
 		// 哈希表中不存在这个key，分两种情况
-		// 1. 缓存未满，新数据加到末尾就好了
+		// 1. 缓存未满，新数据加到末尾, 更新map
 		if (size < capacity) {
-			size++;
 			ListNode current = new ListNode(key, value);
 			// 这步忘写了，得把两个listNode连起来，这是实体连接
-			// 更新keytoPrev只是更新了 查找的表格~
 			tail.next = current;
 			keyToPrev.put(key, tail);
 			tail = current;
+
+			size++;
 			return;
 		}
 
-		// 2. 缓存满了，把原链表头对应的 K->V pair删了，再存进新的pair
+		// 2. 缓存满了，把原链表头对应的 K->V pair删了，换成新K-V,更新map, 移到尾部
 		ListNode head = dummy.next;
 		keyToPrev.remove(head.key);
 
