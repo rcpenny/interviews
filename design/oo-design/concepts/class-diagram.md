@@ -38,5 +38,4 @@ Dependency: A dependency relationship is a relationship in which one class, the 
 
 Abstract class: An abstract class is identified by specifying its name in italics. In the above diagram, both Person and Account classes are abstract classes.
 
-![alt text](https://github.com/rcpenny/interviews/blob/master/design/oo-design/static/UML-convention
-.png)
+![alt text](https://github.com/rcpenny/interviews/blob/master/design/oo-design/static/UML-convention.png)
