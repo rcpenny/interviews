@@ -5,12 +5,39 @@
 
 // 1. 确定状态: f[i][j] i-j的balloon能获取的最大coins
 // 2. 转移方程: https://youtu.be/z3hu2Be92UA?t=407
-//   f[i][j] = max{f[i][k-1] + f[k+1][j] + a[i-1]a[j+1]a[k]} i<=k<=j
-// 3. 初态边界  f[i][i] = a[i-1]a[i]a[i+1]
+//   f[i][j] = max{f[i][k] + f[k][j] + a[i-1]a[j+1]a[k]} i<k<j
+// 3. 初态边界  f[i][i] = a[i-1] a[i] a[i+1]
 // 4. 顺序计算
 
-@Todo("tonight")
+@Todo("similar Monster Hunter")
 public class BurstBalloon {
   public int maxCoins(int[] nums) {
+		int n = nums.length;
+		if (n == 0) return 0;
+
+		int i, j, k, len;
+		int[] coins = new int[n + 2];
+		coins[0] = coins[n + 1] = 1;
+		for (i = 1; i < n + 1; i++) {
+			coins[i] = nums[i - 1];
+		}
+
+		n = n + 2;
+		int[][] f = new int[n][n];
+		for (i = 0; i < n - 1; i++) {
+			f[i][i + 1] = 0; // balloon balloon???
+		}
+
+		for (len = 3; len <= n; len++) {
+			for (i = 0; i + len <= n; i++) {
+				j = i + len - 1;
+				f[i][j] = 0;
+				for (k = i + 1; k < j; k++) {
+					f[i][j] = Math.max(f[i][j], f[i][k] + f[k][j] + coins[i] * coins[k] *coins[j]);
+				}
+			}
+		}
+
+		return f[0][n - 1];
 	}
 }
