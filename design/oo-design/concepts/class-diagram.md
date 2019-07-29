@@ -12,4 +12,4 @@ The purpose of the class diagram can be summarized as:
 \
 A class is depicted in the class diagram as a rectangle with three horizontal sections, as shown in the figure below. The upper section shows the class’s name (Flight), the middle section contains the properties of the class, and the lower section contains the class’s operations (or “methods”).
 
-![alt text](https://raw.githubusercontent.com/rcpenny/interviews/blob/master/design/oo-design/static/class-diagram.png)
+![alt text](https://github.com/rcpenny/interviews/blob/master/design/oo-design/static/class-diagram.png)
