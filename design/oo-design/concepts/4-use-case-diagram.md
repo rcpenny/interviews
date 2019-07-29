@@ -10,7 +10,6 @@ A use case illustrates a unit of functionality provided by the system. The prima
 To illustrate a use case on a use case diagram, we draw an oval in the middle of the diagram and put the name of the use case in the center of the oval. To show an actor (indicating a system user) on a use-case diagram, we draw a stick figure to the left or right of the diagram.
 
 ![alt text](https://github.com/rcpenny/interviews/blob/master/design/oo-design/static/use-case.png)
-Sample use-case diagram for online shopping system
 
 The different components of the use case diagram are:
 
