@@ -8,7 +8,7 @@ import java.util.Comparator;
 public class Interval {
   int start, end;
   Interval(int start, int end) {
-    this.start = flag;
+    this.start = start;
     this.end = end;
   }
 }
