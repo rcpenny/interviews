@@ -19,6 +19,7 @@
 
 public class BestTimeToBuySellStock3 {
 
+	// DP课解法
 	public int maxProfit(int[] prices) {
 		int n = prices.length;
 		if (n <= 1) return 0;
@@ -62,6 +63,7 @@ public class BestTimeToBuySellStock3 {
 	public int maxProfit2(int[] prices) {
 		int buy1 = Integer.MIN_VALUE, buy2 = Integer.MIN_VALUE;
 		int sell1 = 0, sell2 = 0;
+		// 四个状态 buy1 sell1 buy2 sell2
 		for (int price: prices) {
 				buy1 = Math.max(buy1, -price);
 				sell1 = Math.max(sell1, buy1 + price);

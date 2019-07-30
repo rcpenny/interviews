@@ -19,20 +19,21 @@ public class BestTimeToBuySellStock4 {
 		}
 
 		// k <= n/2 类比 stock 3
-		int[] buy = new int[k + 1];
-		for (int i = 1; i < k + 1; i++) buy[i] = Integer.MIN_VALUE;
+		int[] buy = new int[k];
+		for (int i = 0; i < k; i++) 
+			buy[i] = Integer.MIN_VALUE;
+		buy[i] = -prices[0];
 
-		int[] sell = new int[k + 1];
+		int[] sell = new int[k];
 
-		for (int price : prices) {
-			for (int i = 1; i < k + 1; i++) {
-				if (i == 1) buy[i] = Math.max(buy[i], - price);
-				else buy[i] = Math.max(buy[i], sell[i - 1] - price);
-
-				sell[i] = Math.max(sell[i], buy[i] + price);
+		for (int i = 0; i < prices.length; i++) {
+			for (int j = 0; j < k; j++) {
+				if (j == 0) buy[j] = Math.max(buy[j], sell[j - 1] - prices[i]);
+				else buy[j] = Math.max(buy[j], sell[j] - prices[i]);
+				sell[j] = Math.max(sell[j], buy[j] + prices[i]);
 			}
 		}
 
-		return sell[k];
+		return sell[k - 1];
   }
 }

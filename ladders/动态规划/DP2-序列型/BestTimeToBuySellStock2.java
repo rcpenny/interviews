@@ -4,6 +4,23 @@
 // 设计一个算法求出最大的利润.
 
 public class BestTimeToBuySellStock2 {
+
+	// DP思想 对比上题，这里可以有无限次的买入和卖出, 买入 状态之前可拥有 卖出 状态
+	public int maxProfit2(int[] prices) {
+		if (prices == null || prices.length <= 1) return 0;
+
+		int buy = -prices[0];
+		int sell = 0;
+
+		for (int i = 1; i < prices.length; i++) {
+			sell = Math.max(sell, buy + prices[i]); // 卖 前 有买
+			buy = Math.max(buy, sell - prices[i]);  // 买 前 有卖
+		}
+		return sell;
+	}
+
+
+  // 贪心的思想，有一个上坡就加上去
   public int maxProfit(int[] prices) {
 		int max = 0;
 
