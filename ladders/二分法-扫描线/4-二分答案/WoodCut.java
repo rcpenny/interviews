@@ -1,11 +1,8 @@
-/**
- * https://www.lintcode.com/problem/wood-cut/
- * 
+/** 
  * 有一些原木，现在想把这些木头切割成一些长度相同的小段木头，需要得到的小段的数目至少为 k。
  * 当然，我们希望得到的小段越长越好，你需要计算能够得到的小段木头的最大长度。
  */
 
- // O(nlogL)
 public class WoodCut {
 
   public int woodCut(int[] L, int k) {
@@ -13,7 +10,8 @@ public class WoodCut {
 
     int maxLength = 0, minLength = 0;
     // 找到木堆中最长的木头 可行解范围（0 -> 最长木头)
-    for (int l : L) maxLength = Math.max(l, maxLength);
+    for (int l : L) 
+      maxLength = Math.max(l, maxLength);
 
     while (minLength + 1 < maxLength) {
       int middleLength = minLength + (maxLength - minLength) / 2;

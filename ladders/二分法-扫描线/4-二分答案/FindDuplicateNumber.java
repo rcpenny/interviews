@@ -12,7 +12,7 @@
  * 输出:  4
  */
 
- // 思路：大于4的数字应该是2个，但是只有1个.所以4是有问题的.
+ // 思路：小于5的数字应该是4个，但是有5个.所以1-4中有dupes.
  // 在答案范围 1 -> n 之间二分
 public class FindDuplicateNumber {
 	public int findDuplicate(int[] nums) {
@@ -34,7 +34,9 @@ public class FindDuplicateNumber {
 	// 找数列中不大于mid的个数
 	private int count(int[] nums, int mid) {
 		int cnt = 0;
-		for (int item : nums) if (item <= mid) cnt++;
+		for (int item : nums) 
+			if (item <= mid) cnt++;
+
 		return cnt;
 	}
 }
