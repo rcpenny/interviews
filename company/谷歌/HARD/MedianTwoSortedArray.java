@@ -38,7 +38,7 @@ public class MedianTwoSortedArray {
 		int lower = Math.min(A[0], B[0]);
 		int upper = Math.max(A[A.length - 1], B[B.length - 1]);
 
-		// find first x, that >= k numbers is smaller or equal to x
+		// 找到第一个x，A与B中有 >= k个数字 <= x
 		while (lower + 1 < upper) {
 			int mid = lower + (upper - lower) / 2;
 			if (countSmallerOrEqual(A, mid) + countSmallerOrEqual(B, mid) < k)
