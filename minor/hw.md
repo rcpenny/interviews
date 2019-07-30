@@ -1,7 +1,3 @@
-complete binary treee
-https://zhuanlan.zhihu.com/p/67655107
-https://zhuanlan.zhihu.com/p/75465081
-https://zhuanlan.zhihu.com/p/69993534
-https://zhuanlan.zhihu.com/p/69108580
-
-pick up fruits
+1. 复习二分
+2. 看两道OO Design与Caching
+3. 两道Linkedin 3道google(pick up fruits) july 30
