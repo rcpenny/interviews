@@ -16,7 +16,7 @@ public class SearchInRotatedSortedArray {
       // 2. 再处理特殊情况
 
       // target在大数线(画图分析)
-      if (tail < target) {
+      if (target > tail) {
         if (nums[middle] > target || nums[middle] <= tail) end = middle;
         else start = middle;
         continue;

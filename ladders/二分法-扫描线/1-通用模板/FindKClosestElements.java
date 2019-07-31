@@ -28,8 +28,10 @@ public class FindKClosestElements {
 
       int diff_start = Math.abs(a[start] - target);
       int diff_end = Math.abs(a[end] - target);
-      if (diff_start <= diff_end) closet[i] = a[start--];
-      else closet[i] = a[end++];
+      if (diff_start <= diff_end) 
+        closet[i] = a[start--];
+      else 
+        closet[i] = a[end++];
     }
 
     return closet;

@@ -10,8 +10,10 @@ public class ClosestNumInSortedArray {
     
     while (start + 1 < end) {
       int middle = start + (end - start) / 2;
-      if (A[middle] < target) start = middle;
-      else if (A[middle] > target) end = middle;
+      if (A[middle] < target) 
+        start = middle;
+      else if (A[middle] > target) 
+        end = middle;
       else return middle;
     }
     

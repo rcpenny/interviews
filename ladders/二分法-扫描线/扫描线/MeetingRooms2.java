@@ -52,7 +52,8 @@ public class MeetingRooms {
         min = Math.max(min, count);
         continue;
       }
-      count--;
+      if (stamp.status == OVER)
+        count--;
     }
 
     return min;

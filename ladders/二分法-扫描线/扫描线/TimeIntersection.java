@@ -39,6 +39,7 @@ public class TimeIntersection {
     }
   };
 
+  // 保证seqA和seqB中各自没有重合
   public List<Interval> timeIntersection(List<Interval> seqA, List<Interval> seqB) {
     List<Interval> intersections =new ArrayList<>();
     

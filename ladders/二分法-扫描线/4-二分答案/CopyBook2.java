@@ -6,29 +6,38 @@
 // 输入: n = 4, times = [3, 2, 4]   输出: 4
 // 解释: 第一个人复印 1 本书, 花费 3 分钟. 第二个人复印 2 本书, 花费 4 分钟. 第三个人复印 1 本书, 花费 4 分钟.
 
-// 确定答案范围 + 验证答案大小
 // 答案：总共需要多少时间
+// 二分范围：0 ~ 最慢的人，复印所有书的时间
+
 public class CopyBook2 {
+
   public int copyBooksII(int n, int[] times) {
-		int max_time = Integer.MIN_VALUE;
-		for (int time : times) max_time = Math.max(max_time, time);
+		// 复印一本书最慢的人，要多久
+		int max_time = 0;
+		for (int time : times) 
+			max_time = Math.max(max_time, time);
 
 		int lower = 0;
 		int upper = max_time * n;
 
 		while (lower + 1 < upper) {
 			int mid = lower + (upper - lower) / 2;
-			if (canFinish(times, n, mid)) upper = mid;
-			else lower = mid;
+			if (booksCopied(times, mid) >= n) 
+				upper = mid;
+			else 
+				lower = mid; // 复印不完n本书，加时间
 		}
 
 		return canFinish(times, n, lower) ? lower : upper;
 	}
 
-	private boolean canFinish(int[] times, int n, int total) {
-		int books_count = 0;
+	// 计算给这么多时间，这么多人能复印多少书
+	private int booksCopied(int[] times, int limit) {
+		int books_finished = 0;
+
 		for (int time : times)
-			books_count += total / time;
-		return books_count >= n;
+			books_finished += limit / time;
+		
+		return books_finished;
 	}
 }
