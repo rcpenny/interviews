@@ -3,11 +3,11 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
+// lint156
 // Given a collection of intervals, merge all overlapping intervals.
 // Input:  [(1,3),(2,6),(8,16),(15,18)]
 // Output: [(1,6),(8,18)]
 // Challenge O(n log n) time and O(1) extra space.
-// lint156
 
 public class Interval {
   int start, end;
@@ -34,23 +34,26 @@ public class MergeIntervals {
 
 		List<Interval> results = new ArrayList<>();
 
-		// 精髓：在外设置一个last,记住上一个被处理的interval,开始为null
-		Interval last = null;
+		// prefer这个答案，用start end记载，更清晰
+    int start = intervals.get(0).start;
+    int end = intervals.get(0).end;
 
-		for (int i = 0; i < intervals.size(); i++) {
-			Interval current = intervals.get(i);
+		for (int i = 1; i < intervals.size(); i++) {
+      Interval current = intervals.get(i);
+      
+      // 有重叠
+      if (current.start <= end) {
+        end = Math.max(end, current.end);
+        continue;
+      }
 
 			// 无重叠 
-			if (last == null || last.end < current.start) {
-				results.add(current);
-				last = current;
-				continue;
-			}
-
-			// 有重叠
-			last.end = Math.max(last.end, current.end);
+      results.add(new Interval(start, end));
+      start = current.start;
+      end = current.end;
 		}
 		
+		results.add(new Interval(start, end));
     return results;
   }
 }
