@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 // 你有一个单词列表 words 和一个模式  pattern，你想知道 words 中的哪些单词与模式匹配。
