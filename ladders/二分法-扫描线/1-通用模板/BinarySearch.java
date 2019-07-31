@@ -8,8 +8,10 @@ public class BinarySearch {
 
     while (start + 1 < end) {
       int middle = start + (end - start) / 2;
-      if (nums[middle] > target) end = middle;
-      else if (nums[middle] < target) start = middle;
+      if (nums[middle] > target) 
+        end = middle;
+      else if (nums[middle] < target) 
+        start = middle;
       else return middle;
     }
 
