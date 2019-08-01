@@ -25,11 +25,3 @@ public class NestedListWeightSum {
 		return sum;
 	}
 }
-
-public interface NestedInteger {
-		public boolean isInteger();
-		public Integer getInteger();
-		public List<NestedInteger> getList(); // return the nested list that this NestedInteger holds if it holds a nested list
- }
-
-
