@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.List;
 // 给一个嵌套的整数列表, 返回列表中所有整数由它们的深度加权后的总和. 每一个元素可能是一个整数或一个列表(其元素也可能是整数或列表)
 
@@ -23,5 +24,20 @@ public class NestedListWeightSum {
 				sum = sum + helper(ni.getList(), depth + 1);
 		}
 		return sum;
+	}
+}
+
+// just to fix error hints in vscode. - - 
+class NestedInteger {
+	boolean isInteger() {
+		return true;
+	}
+
+	int getInteger() {
+		return 1;
+	}
+
+	List<NestedInteger> getList() {
+		return new ArrayList<>();
 	}
 }
