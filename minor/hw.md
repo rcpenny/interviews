@@ -1,4 +1,4 @@
-1. 看library
-2. binary tree专题（一半?）
-3. linkedin easy half, a few med
-4. cat
+周末finish DP and linkedin questions lintcode
+next week finish linkedin leetcode
+
+FRIDAY KAN DESIGN
