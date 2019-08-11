@@ -10,7 +10,7 @@ import java.util.Map;
 	 输出: true  说明: "a"->"red","b"->"blue"
  */
 
-final class WordPattern2 {
+public class WordPattern2 {
 	private boolean can_match = false;
 
   public boolean wordPatternMatch(String pattern, String str) {
@@ -22,7 +22,7 @@ final class WordPattern2 {
 		return can_match;
 	}
 
-	// 定义: 元数据str letters, 控制index, 状态:对应模式map
+	// 定义: 元数据str, letters, 控制index对应letters, 状态:对应mapping模式
 	private void match(String str, char[] letters, int index, Map<Character, String> map) {
 		// 出口：能match, str被切完，index到边界
 		if (str.length() == 0 && index == letters.length) can_match = true;
@@ -32,8 +32,8 @@ final class WordPattern2 {
 	
 		// 拆解： 有current的对应模式
 		if (map.containsKey(current)) {
-			String word = map.get(current); // 进入递归的条件： substring不符合当前对应模式
-			if (!str.startsWith(word)) return;
+			String word = map.get(current);
+			if (!str.startsWith(word)) return;  // 进入递归的条件： substring符合当前对应模式
 
 			String follow = str.substring(word.length());
 			match(follow, letters, index + 1, map);
@@ -42,8 +42,8 @@ final class WordPattern2 {
 
 		// 拆解： 无current的对应模式
 		for (int i = 1; i <= str.length(); i++) {
-			String sub = str.substring(0, i); // 进入递归的条件：当前对应模式不存在下一个substring
-			if (map.containsValue(sub)) continue;
+			String sub = str.substring(0, i);
+			if (map.containsValue(sub)) continue; // 进入递归的条件：当前对应模式不存在下一个substring
 
 			map.put(current, sub);
 			String follow = str.substring(i);
