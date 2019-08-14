@@ -18,11 +18,11 @@ class TreeNode {
 class ResultType {
 	boolean afound;
 	boolean bfound;
-	TreeNode node;
+	TreeNode ancestor;
 	ResultType(boolean afound, boolean bfound, TreeNode node) {
 		this.afound = afound;
 		this.bfound = bfound;
-		this.node = node;
+		this.ancestor = node;
 	}
 }
 
@@ -32,18 +32,22 @@ public class LowestCommonAncestor {
 	}
 
 	private ResultType helper(TreeNode root, TreeNode a, TreeNode b) {
-		if (root == null) return new ResultType(false, false, root);
+		if (root == null) return new ResultType(false, false, null);
 
 		ResultType left = helper(root.left, a, b);
 		ResultType right = helper(root.right, a, b);
 
 		// 左右子树 其中某个已经是LCA了
-		if (left.afound && left.bfound) return left;
-		if (right.afound && right.bfound) return right;
+		if (left.afound && left.bfound) 
+			return new ResultType(true, true, left.ancestor);
+		if (right.afound && right.bfound) 
+			return new ResultType(true, true, right.ancestor);
 
 		// 还没找到LCA,说明 A B中至少有一个没有找到,与node的值合并
 		boolean afound = left.afound || right.afound || root.val == a.val;
 		boolean bfound = left.bfound || right.bfound || root.val == b.val;
-		return new ResultType(afound, bfound, root);
+		TreeNode node = (afound && bfound) ? root : null;
+
+		return new ResultType(afound, bfound, node);
 	}
 }
