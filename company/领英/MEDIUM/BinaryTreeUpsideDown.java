@@ -17,6 +17,13 @@
 //     / \
 //    3   1
 
+// 用分治法的思想，把大部分工作交给“左下级”（left child）去做，自己只做自己分内的工作。最终的结果是自下而上的转换。
+
+// 自己分内的工作是：
+// change its right sibling to its left child;
+// change its parent to its right child
+// clean up parent's children
+
 public class BinaryTreeUpsideDown {
   public TreeNode upsideDownBinaryTree(TreeNode root) {
 		if (root == null) return null;
