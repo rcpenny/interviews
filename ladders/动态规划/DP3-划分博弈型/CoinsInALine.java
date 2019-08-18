@@ -3,14 +3,10 @@
 // 若必胜, 返回 true, 否则返回 false.
 
 // 0. 最后一步，子问题
-// 1. 确定状态: f[i] 面对i个硬币, 是否先手必胜(f[i] = TRUE / FALSE)
+// 1. 确定状态: f[i] 面对i个硬币, 先手是否必胜 (f[i] = TRUE / FALSE)
 // 2. 转移方程: 
-//         TRUE  f[i-1] = false, f[i-2] = false
-//         TRUE  f[i-1] = true, f[i-2] = false
-// f[i] =    下两步中有一个必胜步，你就必胜
-//         TRUE  f[i-1] = false, f[i-2] = true  
-//         FALSE f[i-1] = true, f[i-2] = true
-//
+// 先手必败的唯一情况：如果面对i-1或者i-2个硬币，先手都必胜的话，那么面对i个硬币
+//                  f[i]=FALSE when f[i-1] = true, f[i-2] = true
 // 3. 初态边界：f[0] = false, f[1] = true, f[2] = true
 // 4. 顺序计算: 0 -> N
 
