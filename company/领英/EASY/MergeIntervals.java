@@ -41,16 +41,16 @@ public class MergeIntervals {
 		for (int i = 1; i < intervals.size(); i++) {
       Interval current = intervals.get(i);
       
-      // 有重叠
-      if (current.start <= end) {
-        end = Math.max(end, current.end);
+      // 无重叠，加入result
+      if (current.start > end) {
+        results.add(new Interval(start, end));
+        start = current.start;
+        end = current.end;
         continue;
       }
 
-			// 无重叠 
-      results.add(new Interval(start, end));
-      start = current.start;
-      end = current.end;
+			// 有重叠，合并，比较end
+      end = Math.max(end, current.end);
 		}
 		
 		results.add(new Interval(start, end));

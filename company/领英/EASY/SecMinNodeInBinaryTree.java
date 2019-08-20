@@ -19,8 +19,9 @@
 
 public class SecMinNodeInBinaryTree {
   public int findSecondMinimumValue(TreeNode root) {
-    if (root == null || (root.left == null && root.right == null))
-      return -1;
+    // 想象成只有root, left, right三个node考虑
+    if (root == null) return -1;
+    if (root.left == null && root.right == null) return -1;
 
     int left = root.left.val;
     if (left == root.val)

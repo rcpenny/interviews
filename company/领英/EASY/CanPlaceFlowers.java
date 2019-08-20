@@ -8,16 +8,24 @@ public class CanPlaceFlowers {
 
   public boolean canPlaceFlowers(int[] flowerbed, int n) {
 		int count = 0;
+		int len = flowerbed.length;
 
 		for (int i = 0; i < flowerbed.length; i++) {
+			// 检查是否种满花了
+		  if (count >= n) return true;
+		  
+			// 是花就跳
 			if (flowerbed[i] == 1) continue;
 
-			if (i != 0 && flowerbed[i - 1] == 0) {
-				if (i != flowerbed.length - 1 && flowerbed[i + 1] == 0) {
-					flowerbed[i] = 1;
-					count++;
-				}
-			}
+			// 不是花，check左
+			if (i > 0 && flowerbed[i - 1] == 1) continue;
+
+			// 不是花，check右
+			if (i < len - 1 && flowerbed[i + 1] == 1) continue;
+
+			// 可种
+			flowerbed[i] = 1;
+			count++;
 		}
 
 		return count >= n;

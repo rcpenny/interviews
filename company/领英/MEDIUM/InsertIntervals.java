@@ -10,44 +10,32 @@ import java.util.Comparator;
 // 输入:(2, 5) into [(1,2), (5,9)] 输出: [(1,9)]
 // 输入:(3, 4) into [(1,2), (5,9)] 输出: [(1,2), (3,4), (5,9)]
 
-// 就是加了再merge intervals，（已排序！定位到点再加入，不用自己写comparator了）
+// 找到insert position 加入
 public class InsertIntervals {
 
-	private Comparator<Interval> cpt = new Comparator<Interval>() {
-		@Override public int compare(Interval a, Interval b) {
-			if (a.start != b.start) return a.start - b.start;
-			return a.end - b.end;
-		}
-	};
-
   public List<Interval> insert(List<Interval> intervals, Interval newInterval) {
-		intervals.add(newInterval);
-		if (intervals.size() == 1) 
-			return intervals;
-
-		Collections.sort(intervals, cpt);
-
 		List<Interval> result = new ArrayList<>();
 
-		int start = intervals.get(0).start;
-		int end = intervals.get(0).end;
+		int insertIndex = 0;
 
-		for (int i = 1; i < intervals.size(); i++) {
-			Interval next = intervals.get(i);
-
-			// overlap
-			if (next.start <= end) {
-				end = Math.max(end, next.end);
+		for (Interval in : intervals) {
+			if (in.end < newInterval.start) {
+				result.add(in);
+				insertIndex++;
 				continue;
 			}
 
-			// no overlap
-			result.add(new Interval(start, end));
-			start = next.start;
-			end = next.end;
+			if (in.start > newInterval.end) {
+				result.add(in);
+				continue;
+			}
+
+			newInterval.start = Math.min(newInterval.start, in.start);
+			newInterval.end = Math.max(newInterval.end, in.end);
 		}
 
-		result.add(new Interval(start, end));
+		result.add(insertIndex, newInterval);
+
 		return result;
   }
 }

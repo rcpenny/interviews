@@ -12,10 +12,10 @@ public class FindSmallestLetterGreaterThanTarget {
 
     while (start + 1 < end) {
       int middle = start + (end - start) / 2;
-      if (letters[middle] <= target)
-        start = middle;
+      if (letters[middle] > target)
+        end = middle; // 第一个比target大的
       else
-        end = middle;
+        start = middle;
     }
 
     if (letters[start] > target) return letters[start];
