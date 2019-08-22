@@ -9,7 +9,9 @@ import java.util.PriorityQueue;
 public class MergeKSortedList {
 
   private Comparator<ListNode> cpt = new Comparator<ListNode>() {
-    @Override public int compare(ListNode a, ListNode b) {return a.val - b.val;}
+    @Override public int compare(ListNode a, ListNode b) {
+      return a.val - b.val;
+    }
   };
 
   public ListNode mergeKLists(List<ListNode> lists) {
@@ -17,8 +19,10 @@ public class MergeKSortedList {
     ListNode tail = dummy;
     
     PriorityQueue<ListNode> minheap = new PriorityQueue<ListNode>(cpt);
-    for (ListNode head : lists)
+    
+    for (ListNode head : lists) {
       if (head != null) minheap.offer(head);
+    }
     
     while (!minheap.isEmpty()) {
       ListNode tmp = minheap.poll();

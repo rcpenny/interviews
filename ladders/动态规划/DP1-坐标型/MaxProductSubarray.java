@@ -25,7 +25,7 @@ public class MaxProductSubarray {
 			int cur = nums[i];
 			if (cur == 0) continue;
 			if (cur > 0) {
-				p[i] = Math.max(p[i - 1] * cur, cur);
+				p[i] = Math.max(p[i - 1] * cur, cur); // 如果p[i-1]=0, cur等于10
 				n[i] = Math.min(n[i - 1] * cur, 0);
 			} else {
 				p[i] = Math.max(n[i - 1] * cur, 0);

@@ -18,7 +18,6 @@ public class TwoSum3 {
 		this.list = new ArrayList<>();
 	}
 
-
 	public void add(int number) {
 		if (!numberToFreq.containsKey(number)) {
 			numberToFreq.put(number, 1);
@@ -33,6 +32,8 @@ public class TwoSum3 {
 		for (int i = 0; i < list.size(); i++) {
 			int val1 = list.get(i);
 			int val2 = value - val1;
+
+			// 特殊情况
 			if (val1 != val2 && numberToFreq.containsKey(val2)) return true;
 			if (val1 == val2 && numberToFreq.get(val1) == 2) return true;
 		}

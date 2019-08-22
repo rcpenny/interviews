@@ -23,17 +23,20 @@ public class IsomorphicStrings {
       char scc = sc[i];
       char tcc = tc[i];
 
+      // 两个映射里都没有
       if (!s2t.containsKey(scc) && !t2s.containsKey(tcc)) {
         s2t.put(scc, tcc);
         t2s.put(tcc, scc);
         continue;
       }
       
-      if (!s2t.containsKey(scc) || !t2s.containsKey(tcc)) {
+      // 只有一个映射有，return false
+      if (!s2t.containsKey(scc) || !t2s.containsKey(tcc))
         return false;
-      }
 
-      if (s2t.get(scc) != tcc || t2s.get(tcc) != scc) return false;
+      // 都有，但不相同
+      if (s2t.get(scc) != tcc || t2s.get(tcc) != scc) 
+        return false;
     }
 
     return true;

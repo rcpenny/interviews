@@ -18,6 +18,7 @@ import java.util.Set;
 public class FriendsWith3Jumps {
   public int[] withinThreeJumps(int[] a, int[] b, int[] c, int[] d) {
     // key is friend i, value contains all his friends
+    // 建relations表
     HashMap<Integer, Set<Integer>> relations = new HashMap<>();
 
     for (int i = 0; i < a.length; i++) {

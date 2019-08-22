@@ -13,6 +13,7 @@ public class EvaluateReversePolishNotation {
 		String operators = "+-*/";
 
 		Stack<Integer> stack = new Stack<>();
+
 		for (String token : tokens) {
 			if (!operators.contains(token)) {
 				stack.push(Integer.valueOf(token));

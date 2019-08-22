@@ -11,8 +11,6 @@ import java.util.Queue;
 
 public class SerializeDeserializeBinaryTree {
 
-
-
 	// serialize比较简单，注意最后删掉末尾的#与, 补上}
   public String serialize(TreeNode root) {
     if (root == null) return "{}";
@@ -39,7 +37,9 @@ public class SerializeDeserializeBinaryTree {
 
 		// delete trailing # and , 补全}
 		int i = sb.length() - 1;
-		while (sb.charAt(i) == '#' || sb.charAt(i) == ',') sb.deleteCharAt(i--);
+		while (sb.charAt(i) == '#' || sb.charAt(i) == ',') {
+      sb.deleteCharAt(i--);
+    }
 		sb.append("}");
 
     return sb.toString();

@@ -19,11 +19,9 @@ public class HouseRobber {
     f[0] = 0;
     f[1] = A[0];
 
-    for (int i = 2; i <= n; i++) {
-      f[i] = (long) A[i - 1];
-      f[i] = (long) Math.max(f[i], f[i - 2] + A[i - 1]);
-      f[i] = (long) Math.max(f[i], f[i - 1]);
-    }
+    for (int i = 2; i <= n; i++) {        // 第i个房子的价值
+      f[i] = Math.max(f[i - 1], f[i - 2] + A[i - 1]);
+    } 
 
     return f[n];
   }
