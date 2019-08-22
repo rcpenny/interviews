@@ -19,6 +19,7 @@ public class PathSum3 {
     return result;
   }
 
+  // 注意设计到leaf时，用node.left == null && node.right == null作为出口
   private void find(TreeNode node, int sum, int curSum, List<Integer> path, List<List<Integer>> result) {
     if (node.left == null && node.right == null) {
       if (curSum == sum) result.add(new ArrayList<>(path));
