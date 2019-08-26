@@ -9,7 +9,7 @@ Like coding interviews, candidates who haven’t put a conscious effort to prepa
 
 In this course, we’ll follow a step by step approach to solve multiple design problems. First, let’s go through these steps:
 
-## Step 1: Requirements clarifications
+## Step 1: Requirements clarifications - Scenario
 It is always a good idea to ask questions about the exact scope of the problem we are solving. Design questions are mostly open-ended, and they don’t have ONE correct answer, that’s why clarifying ambiguities early in the interview becomes critical. Candidates who spend enough time to define the end goals of the system always have a better chance to be successful in the interview. Also, since we only have 35-40 minutes to design a (supposedly) large system, we should clarify what parts of the system we will be focusing on.
 
 Let’s expand this with an actual example of designing a Twitter-like service. Here are some questions for designing Twitter that should be answered before moving on to the next steps:
@@ -24,7 +24,7 @@ Let’s expand this with an actual example of designing a Twitter-like service. 
 
 All such question will determine how our end design will look like.
 
-## Step 2: System interface definition
+## Step 2: System interface definition - Service
 Define what APIs are expected from the system. This will not only establish the exact contract expected from the system, but will also ensure if we haven’t gotten any requirements wrong. Some examples for our Twitter-like service will be:
 
 postTweet(user_id, tweet_data, tweet_location, user_location, timestamp, …)
@@ -33,14 +33,14 @@ generateTimeline(user_id, current_time, user_location, …)
 
 markTweetFavorite(user_id, tweet_id, timestamp, …)
 
-## Step 3: Back-of-the-envelope estimation
+## Step 3: Back-of-the-envelope estimation - Scale
 It is always a good idea to estimate the scale of the system we’re going to design. This will also help later when we will be focusing on scaling, partitioning, load balancing and caching.
 
 - What scale is expected from the system (e.g., number of new tweets, number of tweet views, number of timeline generations per sec., etc.)?
 - How much storage will we need? We will have different numbers if users can have photos and videos in their tweets.
 - What network bandwidth usage are we expecting? This will be crucial in deciding how we will manage traffic and balance load between servers.
 
-## Step 4: Defining data model
+## Step 4: Defining data model - Storage
 Defining the data model early will clarify how data will flow among different components of the system. Later, it will guide towards data partitioning and management. The candidate should be able to identify various entities of the system, how they will interact with each other, and different aspect of data management like storage, transportation, encryption, etc. Here are some entities for our Twitter-like service:
 
 **User**: UserID, Name, Email, DoB, CreationData, LastLogin, etc.
