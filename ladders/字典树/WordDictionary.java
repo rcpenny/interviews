@@ -31,9 +31,9 @@ public class WordDictionary {
     char currentChar = word.charAt(index);
 	
     if (currentChar != '.') {
-      int position = currentChar - 'a';
-      if (currentNode.children[position] == null) return false;
-      return find(word, index + 1, currentNode.children[position]);
+      int pos = currentChar - 'a';
+      if (currentNode.children[pos] == null) return false;
+      return find(word, index + 1, currentNode.children[pos]);
 		}
 		
 		if (currentChar == '.') {
