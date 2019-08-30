@@ -19,7 +19,9 @@ public class Solution {
 		List<Integer> topk = new ArrayList<>();
 		
 		Map<Integer, Integer> numToFreq = new HashMap<>();
-		for (int number : nums) numToFreq.put(number, numToFreq.getOrDefault(number, 0) + 1);
+		for (int number : nums)  {
+			numToFreq.put(number, numToFreq.getOrDefault(number, 0) + 1);
+		}
 		
 		PriorityQueue<Element> minheap = new PriorityQueue<>(k, cpt);
 		for (int key : numToFreq.keySet()) {
@@ -34,7 +36,10 @@ public class Solution {
 			}
 		}
 		
-		for (int i = 0; i < k; i++) topk.add(minheap.poll().val);
+		for (int i = 0; i < k; i++) {
+			topk.add(minheap.poll().val);
+		}
+		
 		Collections.reverse(topk);
 		return topk;
 	}

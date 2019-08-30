@@ -33,7 +33,9 @@ public class TopKLargestNumber2 {
   public List<Integer> topk() {
     List<Integer> topKNumbers = new ArrayList<>();
     Iterator it = minheap.iterator();
-    while (it.hasNext()) topKNumbers.add((Integer) it.next());
+    while (it.hasNext()) {
+      topKNumbers.add((Integer) it.next());
+    }
     Collections.sort(topKNumbers, Collections.reverseOrder());
     return topKNumbers;
   }

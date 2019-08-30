@@ -8,7 +8,7 @@ import java.util.PriorityQueue;
 
 // 你需要按照单词的词频排序后输出，越高频的词排在越前面。如果两个单词出现的次数相同，则词典序小的排在前面。
 
-// 1. 用一个 Hash 表来统计所有项的出现次数
+// 1. 用一个 HashMap 来统计所有项的出现次数
 // 2. 循环每一个出现过的项，用最大K项的方法，获得最大的前K项
 
 // 这个算法，我们暂且称之为 标准离线算法。主要使用了两个数据结构：哈希表和最小堆
@@ -41,7 +41,9 @@ public class TopKFrequentWords {
 		if (k == 0) return results;
 
 		Map<String, Integer> wordToFreq = new HashMap<>();
-		for (String word : words) wordToFreq.put(word, wordToFreq.getOrDefault(word, 0) + 1);
+		for (String word : words) {
+			wordToFreq.put(word, wordToFreq.getOrDefault(word, 0) + 1);
+		}
 
 		PriorityQueue<Pair> maxheap = new PriorityQueue<Pair>(k, pairComparator);
 

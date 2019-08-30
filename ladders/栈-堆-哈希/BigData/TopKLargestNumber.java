@@ -8,7 +8,7 @@ import java.util.PriorityQueue;
 public class TopKLargestNumber {
   public int[] topk(int[] nums, int k) {
 		int [] result = new int[k];
-		// 用maxheap代码少，但是需O(nlogn),minheap可以排除掉小于peekd的情况
+		// 用maxheap代码少，但是需O(nlogn),minheap可以排除掉小于peek的情况
 		PriorityQueue<Integer> minheap = new PriorityQueue<>(k);
 
 		for (int number : nums) {
