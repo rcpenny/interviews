@@ -1,7 +1,6 @@
 import java.util.LinkedList;
 import java.util.Queue;
 
-/** https://www.lintcode.com/problem/max-area-of-island/description */
 // follow up: 最左边和最右边相连，如何改算法
 
 class Point {
@@ -39,7 +38,7 @@ public class MaxAreaOfIslands {
     return maxArea;
   }
 
-	// 宽搜岛屿
+	// 宽搜岛屿,返回岛屿面积
   private int traverseIsland(int[][] grid, int i, int j) {
     int area = 0;
 		Queue<Point> queue = new LinkedList<>();
@@ -52,14 +51,14 @@ public class MaxAreaOfIslands {
       for (int move = 0; move < 4; move++) {
         Point adj = new Point(p.x + dx[move], p.y + dy[move]);
 				if (!canMove(adj, grid)) continue;
-        grid[adj.x][adj.y] = SEA; // 改状态，offer
+        grid[adj.x][adj.y] = SEA; // 改岛为海
         queue.offer(adj);
       } 
     }
     return area;
   }
 
-	// 不越界，是岛
+	// 不越界 && 是岛
   private boolean canMove(Point p, int[][] grid) {
 		return 0 <= p.x && p.x < row && 0 <= p.y && p.y < col 
 			&& grid[p.x][p.y] == ISLAND;

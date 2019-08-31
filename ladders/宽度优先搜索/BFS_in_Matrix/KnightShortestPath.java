@@ -2,9 +2,7 @@ import java.awt.Point;
 import java.util.LinkedList;
 import java.util.Queue;
 
-/**
- * https://www.lintcode.com/problem/knight-shortest-path/
- * 
+/** 
  * 给定骑士在棋盘上的 初始 位置(一个2进制矩阵 0 表示空 1 表示有障碍物)，
  * 找到到达 终点 的最短路线，返回路线的长度。如果骑士不能到达则返回 -1 。
  */
@@ -38,7 +36,8 @@ public class KnightShortestPath {
       int size = queue.size();      
       for (int i = 0; i < size; i++) {
         Point p = queue.poll();
-        if (samePoint(p, destination)) return steps;
+				if (samePoint(p, destination)) return steps;
+
         for (int move = 0; move < 8; move++) {
           Point adj = new Point(p.x + dx[move], p.y + dy[move]);
           if (validPoint(adj, grid)) {

@@ -6,9 +6,6 @@ import java.util.Queue;
 import java.util.Set;
 
 /**
- * https://www.lintcode.com/problem/sliding-puzzle/
- * https://www.lintcode.com/problem/sliding-puzzle-ii/
- * 
  * 在一块大小为 2x3 的板上，有 5 块瓦片，分别用整数 1 到 5 表示，还有一块空地用 0 表示。
  * 一次移动表示 0 与其相邻的四个方向之一的数字交换位置。
  * 当且仅当 这块板 上的瓦片摆放状态为 [[1,2,3],[4,5,0]] 时，才能说这块板存在的问题被解决了。
@@ -30,7 +27,7 @@ public class SlidingPuzzle {
     col = board[0].length;
 
     Queue<String> queue = new LinkedList<>();
-    Set<String> visisted = new HashSet<>();
+    Set<String> visited = new HashSet<>();
 
     // add initial state to queue
     String initialState = "";
@@ -42,16 +39,16 @@ public class SlidingPuzzle {
 
     int moves = 1;
     queue.offer(initialState);
-    visisted.add(initialState);
+    visited.add(initialState);
 
     while (!queue.isEmpty()) {
       int size = queue.size();
       for (int i = 0; i < size; i++) {
         String state = queue.poll();
-        List<String> nextStates = getNextStates(state, visisted);
+        List<String> nextStates = getNextStates(state, visited);
         for (String nextState : nextStates) {
           if (nextState.equals(target)) return moves;
-          visisted.add(nextState); // 改状态，再offer
+          visited.add(nextState); // 改状态，再offer
           queue.offer(nextState);
         }
       }
@@ -61,7 +58,7 @@ public class SlidingPuzzle {
     return moves;
   }
 
-  private List<String> getNextStates(String state, Set<String> visisted) {
+  private List<String> getNextStates(String state, Set<String> visited) {
     List<String> nextStates = new ArrayList<>();
     int x = state.indexOf('0') / 3;
     int y = state.indexOf('0') % 3;
@@ -71,7 +68,7 @@ public class SlidingPuzzle {
       int y_ = y + dy[i];
       if (0 <= x_ && x_ < row && 0 <= y_ && y_ < col) {
         String tmp = stateAfterSwap(array, x, y, x_, y_);
-        if (!visisted.contains(tmp)) nextStates.add(tmp);
+        if (!visited.contains(tmp)) nextStates.add(tmp);
       }
     }
     return nextStates;

@@ -1,9 +1,6 @@
 import java.util.Queue;
 
 /**
- * https://www.lintcode.com/problem/number-of-islands/
- * https://leetcode.com/problems/number-of-islands/
- * 
  * 给一个 01 矩阵，求不同的岛屿的个数
  * 0 代表海，1 代表岛，如果两个 1 相邻，那么这两个 1 属于同一个岛。
  * 我们只考虑上下左右为相邻。

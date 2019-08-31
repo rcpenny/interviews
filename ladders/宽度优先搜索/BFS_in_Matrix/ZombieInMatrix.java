@@ -1,9 +1,7 @@
 import java.util.LinkedList;
 import java.util.Queue;
 
-/**
- * https://www.lintcode.com/problem/zombie-in-matrix/
- * 
+/** 
  * 598. 僵尸矩阵
  * 给一个二维网格，每一个格子都有一个值，2 代表墙，1 代表僵尸，0 代表人类
  * 僵尸每天可以将上下左右最接近的人类感染成僵尸，但不能穿墙。
@@ -39,6 +37,7 @@ public class ZombieInMatrix {
     int humanCount = 0;
     Queue<Point> queue = new LinkedList<>();
 
+		// 统计人数，queue加入起始僵尸
     for (int i = 0; i < row; i++) {
       for (int j = 0; j < col; j++) {
         if (grid[i][j] == HUMAN) humanCount++;
