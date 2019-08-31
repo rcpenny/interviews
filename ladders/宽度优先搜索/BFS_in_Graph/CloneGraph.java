@@ -13,46 +13,44 @@ class UndirectedGraphNode {
 }
 
 public class CloneGraph {
-
   public UndirectedGraphNode cloneGraph(UndirectedGraphNode node) {
 		if (node == null) return node;
 
-		// 用bfs找到所有点
+		// 1. bfs找到所有点
 		ArrayList<UndirectedGraphNode> nodes = getNodes(node);
 
-		// 深度拷贝一个 key - value old_node -> new -> node
+		// 2. 深度拷贝一个 old-node -> new-node 的哈希表
 		HashMap<UndirectedGraphNode, UndirectedGraphNode> mapping = new HashMap<>();
-		for (UndirectedGraphNode n : nodes) {
-				mapping.put(n, new UndirectedGraphNode(n.label));
-		}
+		for (UndirectedGraphNode n : nodes)
+			mapping.put(n, new UndirectedGraphNode(n.label));
 
-		// 用新node作为新node的邻居
-		for (UndirectedGraphNode n : nodes) {
-				UndirectedGraphNode newNode = mapping.get(n);
-				for (UndirectedGraphNode neighbor : n.neighbors) {
-						UndirectedGraphNode newNeighbor = mapping.get(neighbor);
-						newNode.neighbors.add(newNeighbor);
-				}
+		// 3. 根据old-nodes，用new-nodes重构新图
+		for (UndirectedGraphNode old : nodes) {
+			UndirectedGraphNode newNode = mapping.get(old);
+			for (UndirectedGraphNode neighbor : old.neighbors) {
+				UndirectedGraphNode newNeighbor = mapping.get(neighbor);
+				newNode.neighbors.add(newNeighbor);
+			}
 		}
 
 		return mapping.get(node);
-}
+	}
 
-private ArrayList<UndirectedGraphNode> getNodes(UndirectedGraphNode node) {
+	private ArrayList<UndirectedGraphNode> getNodes(UndirectedGraphNode node) {
 		Queue<UndirectedGraphNode> queue = new LinkedList<UndirectedGraphNode>();
 		HashSet<UndirectedGraphNode> set = new HashSet<>();
 
 		queue.offer(node);
 		set.add(node);
 		while (!queue.isEmpty()) {
-				UndirectedGraphNode head = queue.poll();
-				for (UndirectedGraphNode neighbor : head.neighbors) {
-						if (!set.contains(neighbor)) {
-								set.add(neighbor);
-								queue.offer(neighbor);
-						}
+			UndirectedGraphNode head = queue.poll();
+			for (UndirectedGraphNode neighbor : head.neighbors) {
+				if (!set.contains(neighbor)) {
+					set.add(neighbor);
+					queue.offer(neighbor);
 				}
+			}
 		}
-		return new ArrayList<UndirectedGraphNode>(set);
+		return new ArrayList<>(set);
 	}
 }

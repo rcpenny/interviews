@@ -18,23 +18,27 @@ import java.util.Set;
  * 你可以假设 beginWord 和 endWord 是非空的，且二者不相同。
  */
 public class WordLadder {
-	Set<String> visisted = new HashSet<>();
+	// 这种字母变化是否出现过
+	Set<String> seen = new HashSet<>();
 
   public int ladderLength(String start, String end, Set<String> dict) {
-		// 把end补入dict
+		// 把end补入dict b/c 结束单词不需要出现在字典中
 		dict.add(end);
 		Queue<String> queue = new LinkedList<>();
 		queue.offer(start);
-		visisted.add(start);
+		seen.add(start);
 
 		int steps = 1;
 		while (!queue.isEmpty()) {
-			//求steps 分层啊哥
+			//求steps 分层
 			int size = queue.size();
+
 			for (int i = 0; i < size; i++) {
 				String cur = queue.poll();
 				if (cur.equals(end)) return steps;
-				List<String> transformations = getTransformations(cur, visisted);
+
+				List<String> transformations = getTransformations(cur, seen);
+				
 				for (String trans : transformations) {
 					if (dict.contains(trans)) {
 						queue.offer(trans);
@@ -48,19 +52,18 @@ public class WordLadder {
 		return 0;
 	}
 
-	private List<String> getTransformations(String cur, Set<String> visisted) {
+	private List<String> getTransformations(String cur, Set<String> seen) {
 		List<String> transformations = new ArrayList<>();
 		for (int i = 0; i < cur.length(); i++) {
 			for (int j = 0; j < 26; j++) {
 				char[] array = cur.toCharArray();
 				array[i] = (char) ('a' + j);
 				String tmp = String.valueOf(array);
-				if (visisted.contains(tmp)) continue;
-				visisted.add(tmp);
+				if (seen.contains(tmp)) continue;
+				seen.add(tmp);
 				transformations.add(tmp);
 			}
 		}
 		return transformations;
 	}
-
 }

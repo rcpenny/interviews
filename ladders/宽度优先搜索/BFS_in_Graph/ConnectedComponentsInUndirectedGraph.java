@@ -12,6 +12,7 @@ import java.util.Queue;
  * （一个无向图的连通块是一个子图，其中任意两个顶点通过路径相连，且不与整个图中的其它顶点相连。）
  * 你需要返回 label 集合的列表.
  */
+
 class UndirectedGraphNode {
 	int label;
 	ArrayList<UndirectedGraphNode> neighbors;
@@ -26,12 +27,16 @@ public class ConnectedComponentsInUndirectedGraph {
   public List<List<Integer>> connectedSet(List<UndirectedGraphNode> nodes) {
 
 		HashMap<UndirectedGraphNode, Boolean> nodeToVisited = new HashMap<>();
-		for(UndirectedGraphNode node : nodes) nodeToVisited.put(node, false);
+
+		for(UndirectedGraphNode node : nodes) 
+			nodeToVisited.put(node, false);
 		
 		List<List<Integer>> results = new ArrayList<>();
-		for (UndirectedGraphNode node : nodes) {
-			if (!nodeToVisited.get(node)) results.add(bfs(node, nodeToVisited));
-		}
+		
+		for (UndirectedGraphNode node : nodes)
+			if (!nodeToVisited.get(node)) 
+				results.add(bfs(node, nodeToVisited));
+		
 		return results;
 	}
 
