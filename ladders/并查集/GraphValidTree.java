@@ -1,10 +1,8 @@
 /**
- * https://www.lintcode.com/problem/graph-valid-tree/
- * https://leetcode.com/problems/graph-valid-tree/
- * 
  * 给出 n 个节点，标号分别从 0 到 n - 1 并且给出一个 无向 边的列表 
  * (给出每条边的两个顶点), 写一个函数去判断这张｀无向｀图是否是一棵树
  */
+
 public class GraphValidTree {
 
   class UnionFind {
@@ -21,9 +19,9 @@ public class GraphValidTree {
 
     int compressFind(int child) {
       int copyChild = child;
-      while (copyChild != parent[copyChild]) {
+      while (copyChild != parent[copyChild])
         copyChild = parent[copyChild];
-      }
+  
       int bigbro = copyChild;
 
       int prevParent;
@@ -45,15 +43,15 @@ public class GraphValidTree {
     }
   }
 
+  // n个孤立点，size为n，如果最后union完size为1，说明为tree
+  // 每当两个big_bro不同时，说明两个小树合并了
   public boolean validTree(int n, int[][] edges) {
-    if (n <= 0 || edges.length != n - 1) {
-      return false;
-    }
+    if (n <= 0 || edges.length != n - 1) return false;
+
     UnionFind uf = new UnionFind(n);
 
-    for (int[] edge : edges) {
+    for (int[] edge : edges)
       uf.union(edge[0], edge[1]);
-    }
 
     return uf.size == 1;
   }

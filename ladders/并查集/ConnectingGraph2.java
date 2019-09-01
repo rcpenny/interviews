@@ -1,6 +1,4 @@
 /**
- * https://www.lintcode.com/problem/connecting-graph-ii/
- * 
  * 连接图 II
  * 给一个图中的 n 个节点, 记为 1 到 n .在开始的时候图中没有边.
  * 你需要完成下面两个方法：
@@ -25,7 +23,7 @@ public class ConnectingGraph2 {
     int a_root = find(a);
     int b_root = find(b);
     if (a_root != b_root) {
-      parent[a_root] = parent[b_root];
+      parent[a_root] = b_root;
       size[b_root] = size[b_root] + size[a_root];
     }
   }

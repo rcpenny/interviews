@@ -4,9 +4,6 @@ import java.util.HashMap;
 import java.util.List;
 
 /**
- * https://www.lintcode.com/problem/accounts-merge/
- * https://leetcode.com/problems/accounts-merge/
- *
  * 一种做法是将每个原始账户作为一个节点，
  * 但是两个账户可以连接取决于它们共享至少一个邮箱，处理起来比较麻烦
  *
@@ -86,23 +83,18 @@ class UnionFind {
 
 	public int find(int child) {
 		int childCopy = child;
-		while (childCopy != parent[childCopy]) childCopy = parent[childCopy];
-		int bigbro = childCopy;
 
-		int prevParent;
-		while (child != bigbro) {
-			prevParent = parent[child];
-			parent[child] = bigbro;
-			child = prevParent;
-		}
+		while (childCopy != parent[childCopy]) 
+			childCopy = parent[childCopy];
+		
+		int bigbro = childCopy;
 		return bigbro;
 	}
 
 	public void union(int a, int b) {
 		int a_bigbro = find(a);
 		int b_bigbro = find(b);
-		if (a_bigbro != b_bigbro) {
+		if (a_bigbro != b_bigbro)
 			parent[a_bigbro] = parent[b_bigbro];
-		}
 	}
 }

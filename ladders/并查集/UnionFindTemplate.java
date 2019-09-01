@@ -36,8 +36,8 @@ public class UnionFindTemplate {
 		int prevParent;
 		/** 把一路上经过的点都指向老大哥, 路径压缩 */
 		while(child != bigbro) {
-			prevParent = parent[child]; // 用来prevParent记录之前的parent
-			parent[child] = bigbro;   // point child's father to 老大哥
+			prevParent = parent[child];
+			parent[child] = bigbro;
 			child = prevParent;
 		}
 

@@ -1,7 +1,5 @@
 /**
- * https://www.lintcode.com/problem/connecting-graph/
- * 
- * 给一个图中的n个节点, 记为 1 到 n . 在开始的时候图中没有边。
+ * 给一个图中的n个节点, 记为 1 到 n 在开始的时候图中没有边。
  * 你需要完成下面两个方法:
  * connect(a, b), 添加连接节点 a, b 的边.
  * query(a, b), 检验两个节点是否联通
