@@ -15,7 +15,7 @@ import java.util.HashMap;
 //  / \     
 // 4   5
 
-// 用map记录，不用手动扩results，dfs return depth. 不用ResultType，因为只记录了一个depth
+// 每个node在output List中对应的index + 1 = max(左子height, 右子height) + 1
 public class FindLeavesOfBinaryTree {
   private Map<Integer, List<Integer>> depthToLeaves = new HashMap<>();
 
