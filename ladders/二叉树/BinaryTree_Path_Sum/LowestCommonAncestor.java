@@ -1,6 +1,4 @@
-/**
- * https://www.lintcode.com/problem/lowest-common-ancestor-of-a-binary-tree/
- * 
+/** 
  * 给定一棵二叉树，找到两个节点的最近公共父节点(LCA)
  * 最近公共祖先是两个节点的公共的祖先节点且具有最大深度
  * 
@@ -19,7 +17,7 @@ class ResultType {
 	boolean afound;
 	boolean bfound;
 	TreeNode ancestor;
-	ResultType(boolean afound, boolean bfound, TreeNode node) {
+	ResultType (boolean afound, boolean bfound, TreeNode node) {
 		this.afound = afound;
 		this.bfound = bfound;
 		this.ancestor = node;
