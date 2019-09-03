@@ -8,7 +8,7 @@ class ListNode {
 }
 
 // 如果存在cycle, return 交叉点
-public class DetectCycle {
+public class LinkedListCycle2 {
   public ListNode detectCycle(ListNode head) {
     if (head == null) return null;
 

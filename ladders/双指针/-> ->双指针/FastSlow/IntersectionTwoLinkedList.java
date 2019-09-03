@@ -17,10 +17,22 @@ class ListNode {
 
 public class IntersectionTwoLinkedList {
 
-	// 无环的情况
-  public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
+	// headA与headB可能有环的情况
+	public ListNode getIntersection(ListNode headA, ListNode headB) {
 		if (headA == null || headB == null) return null;
 
+		// 先检查有没有环
+		ListNode a_inter = detectCycle(headA);
+		ListNode b_inter = detectCycle(headB);
+
+		if (a_inter == null && b_inter == null) {
+			return getIntersectionNode(headA, headB);
+		}
+	}
+
+	// headA与headB无环的情况
+  public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
+		if (headA == null || headB == null) return null;
 
 		ListNode tmpA = headA, tmpB = headB;
 		int lengthA = 0, lengthB = 0;
@@ -52,21 +64,28 @@ public class IntersectionTwoLinkedList {
 		return null;
 	}
 
-	// 有环的情况
-	public ListNode getIntersection(ListNode headA, ListNode headB) {
-		if (headA == null || headB == null) return null;
-
-		// 先检查有没有环
-		ListNode a_inter = detectCycle(headA);
-		ListNode b_inter = detectCycle(headB);
-
-		if (a_inter == null && b_inter == null) {
-			return getIntersectionNode(headA, headB);
-		}
-	}
-
 	// 如果存在cycle, return 交叉点, 不存在, return null
 	private ListNode detectCycle(ListNode head) {
+		if (head == null || head.next == null) return null;
 
+		ListNode fast = head;
+		ListNode slow = head;
+		ListNode intersection = head;
+
+		while (fast != null && fast.next != null) {
+			fast = fast.next.next;
+			slow = slow.next;
+			
+			// fast重合，intersection从头开始追
+			if (fast == slow) {
+				while (intersection != slow) {
+					intersection = intersection.next;
+					slow = slow.next;
+				}
+				return intersection;
+			}
+		}
+
+		return null;
 	}
 }
