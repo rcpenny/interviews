@@ -3,11 +3,11 @@ import java.util.Stack;
 // Design a max stack that supports push, pop, top, peekMax and popMax.
 
 // push(x) -- Push element x onto stack.
-// pop() -- Remove the element on top of the stack and return it.
+// pop() -- Remove the element on top of stack and return it.
 // top() -- Get the element on the top.
 // peekMax() -- Retrieve the maximum element in the stack.
-// popMax() -- Retrieve the maximum element in the stack, and remove it. If you find more than one maximum elements, only remove the top-most one.
-
+// popMax() -- Retrieve the maximum element in the stack, and remove it. 
+// If you find more than one maximum elements, only remove the top-most one.
 
 // Note:
 // -1e7 <= x <= 1e7
@@ -15,10 +15,11 @@ import java.util.Stack;
 // The last four operations won't be called when stack is empty.
 
 // 更优解用treemap
-// 说了下用两个stack存数据的思路，不满意。换了treemap的方法，满意，秒。多的时间问了下如果是要线程安全你该怎么改。
+// 说了下用两个stack存数据的思路，不满意。换了treemap的方法，多的时间问了下如果是要线程安全你该怎么改。
 // https://www.cnblogs.com/grandyang/p/5247398.html
 
 class MaxStack {
+	// 解1 双栈
 	private Stack<Integer> realStack;
 	private Stack<Integer> maxStack;
 	
@@ -29,8 +30,10 @@ class MaxStack {
 	
 	public void push(int x) {
 		realStack.push(x);
-		if (maxStack.isEmpty()) maxStack.push(x);
-		else maxStack.push(Math.max(maxStack.peek(), x));
+		if (maxStack.isEmpty()) 
+			maxStack.push(x);
+		else 
+			maxStack.push(Math.max(maxStack.peek(), x));
 	}
 
 	public int pop() {
@@ -64,4 +67,6 @@ class MaxStack {
 
 		return cur_max;
 	}
+
+	// 解2 treemap
 }
