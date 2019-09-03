@@ -14,6 +14,10 @@ import java.util.Stack;
 // Number of operations won't exceed 10000.
 // The last four operations won't be called when stack is empty.
 
+// 更优解用treemap
+// 说了下用两个stack存数据的思路，不满意。换了treemap的方法，满意，秒。多的时间问了下如果是要线程安全你该怎么改。
+// https://www.cnblogs.com/grandyang/p/5247398.html
+
 class MaxStack {
 	private Stack<Integer> realStack;
 	private Stack<Integer> maxStack;
