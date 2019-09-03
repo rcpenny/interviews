@@ -7,10 +7,10 @@
 
 // 存在性DP
 
-// 1. 确定状态 f(i) 能不能跳到index i
-// 2. 转移方程 f(i) = (枚举上一个跳到的石头j) [ f(j) and j + a[j] >= i ]
-// 3. 确定初始态边界 f(0) = true
-// 4. 按照一定顺序计算 从小到大
+// 1. 确定状态 f(i) = 能不能跳到index i
+// 2. 转移方程 f(i) = (f(j) and j + a[j] >= i)  (j < i)
+// 3. 初态边界 f(0) = true
+// 4. 顺序计算 从小到大
 
 // 时间复杂度 = 状态数 * 状态转移代价 (n * n)
 
@@ -25,10 +25,11 @@ public class JumpGame {
 		for (int i = 1; i < n; i++) {
 			f[i]  = false;
 			for (int j = 0; j < i; j++) {
-				if (f[j] && A[j] + j >= i) {
-					f[i] = true;
-					break;
-				}
+				if (f[j] == false) continue;
+				if (A[j] + j < i) continue;
+
+				f[i] = true;
+				break;
 			}
 		}
 
