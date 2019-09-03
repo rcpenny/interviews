@@ -5,6 +5,7 @@
  * The linked lists must retain their original structure after the function returns.
  * You may assume there are no cycles anywhere in the entire linked structure.
  */
+
 class ListNode {
   int val;
   ListNode next;
@@ -15,8 +16,11 @@ class ListNode {
 }
 
 public class IntersectionTwoLinkedList {
+
+	// 无环的情况
   public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
 		if (headA == null || headB == null) return null;
+
 
 		ListNode tmpA = headA, tmpB = headB;
 		int lengthA = 0, lengthB = 0;
@@ -33,11 +37,10 @@ public class IntersectionTwoLinkedList {
 		tmpA = headA;
 		tmpB = headB;
 		int diff = Math.abs(lengthA - lengthB);
-		if (lengthA >= lengthB) {
+		if (lengthA >= lengthB)
 			for (int i = 0; i < diff; i++) tmpA = tmpA.next;
-		} else {
+		else
 			for (int i = 0; i < diff; i++) tmpB = tmpB.next;
-		}
 
 		// move forward together
 		while (tmpA != null && tmpB != null) {
@@ -47,5 +50,23 @@ public class IntersectionTwoLinkedList {
 		}
 
 		return null;
+	}
+
+	// 有环的情况
+	public ListNode getIntersection(ListNode headA, ListNode headB) {
+		if (headA == null || headB == null) return null;
+
+		// 先检查有没有环
+		ListNode a_inter = detectCycle(headA);
+		ListNode b_inter = detectCycle(headB);
+
+		if (a_inter == null && b_inter == null) {
+			return getIntersectionNode(headA, headB);
+		}
+	}
+
+	// 如果存在cycle, return 交叉点, 不存在, return null
+	private ListNode detectCycle(ListNode head) {
+
 	}
 }
