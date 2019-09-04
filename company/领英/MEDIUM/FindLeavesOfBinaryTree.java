@@ -22,9 +22,9 @@ public class FindLeavesOfBinaryTree {
   public List<List<Integer>> findLeaves(TreeNode root) {
     List<List<Integer>> results = new ArrayList<>();
 
-    traverse(root);
     addLeaf(root, traverse(root));
 
+    // convert map to list
     for (int key : depthToLeaves.keySet())
       results.add(depthToLeaves.get(key));
 
@@ -43,6 +43,7 @@ public class FindLeavesOfBinaryTree {
     return Math.max(left, right) + 1;
   }
 
+  // add node to the map
   private void addLeaf(TreeNode node, int depth) {
     if (depth == -1) return;
     depthToLeaves.putIfAbsent(depth, new ArrayList<>());

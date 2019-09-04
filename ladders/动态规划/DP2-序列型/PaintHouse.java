@@ -21,20 +21,21 @@ public class PaintHouse {
 			return 0;
 
 		int len = costs.length;
-		int[][] dp = new int[len + 1][3];
-		dp[0][RED] = dp[0][GREEN] = dp[0][BLUE] = 0;
+		int[][] f = new int[len + 1][3];
+		f[0][RED] = f[0][GREEN] = f[0][BLUE] = 0;
 
 		for (int i = 1; i < len + 1; i++) {
 			for (int j = 0; j < 3; j++) {
-				dp[i][j] = Integer.MAX_VALUE; // 为了min的比较
+				f[i][j] = Integer.MAX_VALUE; // 为了min的比较
 
+				// this loop for cost[]
 				for (int k = 0; k < 3; k++) {
 					if (j == k) continue; // 去同色
-					dp[i][j] = Math.min(dp[i][j], dp[i - 1][k] + costs[i - 1][j]);
+					f[i][j] = Math.min(f[i][j], f[i - 1][k] + costs[i - 1][j]);
 				}
 			}
 		}
 
-		return Math.min(dp[len][RED], Math.min(dp[len][BLUE], dp[len][GREEN]));
+		return Math.min(f[len][RED], Math.min(f[len][BLUE], f[len][GREEN]));
 	}
 }

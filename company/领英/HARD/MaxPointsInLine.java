@@ -2,10 +2,6 @@ class Point {
   int x;
   int y;
 
-  Point() { 
-    x = 0; 
-    y = 0;
-  }
   Point(int a, int b) {
     x = a; 
     y = b;
@@ -21,7 +17,7 @@ public class MaxPointsInLine {
     int result = 0;
     
     // 选两个不同点作为构成 y=ax+b
-    for (int i = 0; i + 1 < points.length; i++) {
+    for (int i = 0; i < points.length - 1; i++) {
       for (int j = i + 1; j < points.length; j++) {
         Point a = points[i];
         Point b = points[j];
@@ -56,6 +52,7 @@ public class MaxPointsInLine {
         //ab有斜率
         if (a.x != b.x && a.y != b.y) {
           int cnt = 0;
+          // 枚举所有点
           for (int k = 0; k < points.length; k++) {
             // 是a点
             if (points[k].x == a.x && points[k].y == a.y) {

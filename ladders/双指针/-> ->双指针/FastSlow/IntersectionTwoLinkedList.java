@@ -1,3 +1,5 @@
+import java.util.HashSet;
+
 /**
  * ind the node at which the intersection of two singly linked lists begins.
  * 
@@ -25,13 +27,36 @@ public class IntersectionTwoLinkedList {
 		ListNode a_inter = detectCycle(headA);
 		ListNode b_inter = detectCycle(headB);
 
-		if (a_inter == null && b_inter == null) {
+		if (a_inter != null && b_inter != null) {
+			return twoCyclesIntersection(headA, headB);
+		} else if (a_inter == null && b_inter == null) {
 			return getIntersectionNode(headA, headB);
 		}
+
+		// 一有一无，无交点
+		return null;
+	}
+
+	private ListNode twoCyclesIntersection(ListNode headA, ListNode headB) {
+		Set<ListNode> a = new HashSet<>();
+		while (headA != null) {
+			a.add(headA);
+			headA = headA.next;
+		}
+		ListNode inter = headB;
+
+		while (headB != null) {
+			if (a.contains(headB)) {
+				inter = headB;
+				break;
+			}
+			headB = headB.next;
+		}
+		return headB;
 	}
 
 	// headA与headB无环的情况
-  public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
+  private ListNode getIntersectionNode(ListNode headA, ListNode headB) {
 		if (headA == null || headB == null) return null;
 
 		ListNode tmpA = headA, tmpB = headB;
