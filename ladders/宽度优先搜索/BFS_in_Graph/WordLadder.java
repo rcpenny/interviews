@@ -22,7 +22,7 @@ public class WordLadder {
 	Set<String> seen = new HashSet<>();
 
   public int ladderLength(String start, String end, Set<String> dict) {
-		// 把end补入dict b/c 结束单词不需要出现在字典中
+		// 把end补入dict b/c 因为结束单词不需要出现在字典中
 		dict.add(end);
 		Queue<String> queue = new LinkedList<>();
 		queue.offer(start);
@@ -52,6 +52,7 @@ public class WordLadder {
 		return 0;
 	}
 
+	// 放seen，所有dict的用过的，transform出来过的都扔进去
 	private List<String> getTransformations(String cur, Set<String> seen) {
 		List<String> transformations = new ArrayList<>();
 		for (int i = 0; i < cur.length(); i++) {
