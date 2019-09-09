@@ -18,11 +18,11 @@ public class LongestPalinSuseq {
 
 		int[][] f = new int[n][n];
 		int i, j, len;
-		
+
 		for (i = 0; i < n; i++) // len = 1
 			f[i][i] = 1;
 
-		for (i = 0; i < n - 1; i++) // len = 2
+		for (i = 0; i < n - 1; i++) // len = 2 相同2，不同，最大1
 			f[i][i + 1] = (s[i] == s[i + 1]) ? 2 : 1;
 
 		for (len = 3; len <= n; len++) {
