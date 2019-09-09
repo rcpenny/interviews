@@ -24,9 +24,9 @@ public class PaintHouse {
 		int[][] f = new int[len + 1][3];
 		f[0][RED] = f[0][GREEN] = f[0][BLUE] = 0;
 
-		for (int i = 1; i < len + 1; i++) {
+		for (int i = 1; i <= len; i++) {
 			for (int j = 0; j < 3; j++) {
-				f[i][j] = Integer.MAX_VALUE; // 为了min的比较
+				f[i][j] = Integer.MAX_VALUE; // 为了min的比较，开始设最大
 
 				// this loop for cost[]
 				for (int k = 0; k < 3; k++) {
