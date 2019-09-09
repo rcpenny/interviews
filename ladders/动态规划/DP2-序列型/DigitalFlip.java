@@ -10,24 +10,26 @@
 // 计算顺序: 左向右
 
 public class DigitalFlip {
-	public int flipDigit(int[] nums) {
-		int n = nums.length;
+	public int flipDigit(int[] A) {
+		int n = A.length;
 		if (n <= 1) return 0;
 
 		int[][] f = new int[n + 1][2];
 		f[0][0] = f[0][1] = 0;
 
 		for (int i = 1; i <= n; i++) {
-			for (int j = 0; j < 2; j++) {
+			for (int j = 0; j < 2; j++) {  // is 0 or 1
 				f[i][j] = Integer.MAX_VALUE;
 
-				// A[i - 1] --> j，should I flip?
+				// A[i - 1]是不是就是0或1，需不需要flip
 				int t = 0;
-				if (nums[i - 1] != j) t = 1;
+				if (A[i - 1] != j) {
+					t = 1; 
+				}
 
-				// 枚举前一位 A[i - 2] --> k
+				// 枚举前一位 A[i - 2] -> k
 				for(int k = 0; k < 2; k++) {
-					if (k == 0 && j == 1) continue;
+					if (k == 0 && j == 1) continue; // “01”串，不合规，不进行min操作
 					f[i][j] = Math.min(f[i][j], f[i - 1][k] + t);
 				}
 			}
