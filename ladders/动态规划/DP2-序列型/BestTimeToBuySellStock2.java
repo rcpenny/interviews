@@ -19,9 +19,8 @@ public class BestTimeToBuySellStock2 {
 		return sell;
 	}
 
-
   // 贪心的思想，有一个上坡就加上去
-  public int maxProfit(int[] prices) {
+  public int maxProfit2_(int[] prices) {
 		int max = 0;
 
     for (int i = 1; i < prices.length; i++)

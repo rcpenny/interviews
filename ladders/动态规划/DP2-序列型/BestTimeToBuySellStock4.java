@@ -27,10 +27,15 @@ public class BestTimeToBuySellStock4 {
 		int[] sell = new int[k];
 
 		for (int i = 0; i < prices.length; i++) {
+			int current_price = prices[i];
+
 			for (int j = 0; j < k; j++) {
-				if (j == 0) buy[j] = Math.max(buy[j], sell[j - 1] - prices[i]);
-				else buy[j] = Math.max(buy[j], sell[j] - prices[i]);
-				sell[j] = Math.max(sell[j], buy[j] + prices[i]);
+				if (j == 0)
+					buy[j] = Math.max(buy[j], sell[j - 1] - current_price);
+				else 
+					buy[j] = Math.max(buy[j], sell[j] - current_price);
+
+				sell[j] = Math.max(sell[j], buy[j] + current_price);
 			}
 		}
 

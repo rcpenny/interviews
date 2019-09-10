@@ -20,7 +20,7 @@
 public class BestTimeToBuySellStock3 {
 
 	// DP课解法
-	public int maxProfit(int[] prices) {
+	public int maxProfit3(int[] prices) {
 		int n = prices.length;
 		if (n <= 1) return 0;
 
@@ -60,16 +60,22 @@ public class BestTimeToBuySellStock3 {
 	}
 
 	// 解法2，分状态的解法太麻烦了
-	public int maxProfit2(int[] prices) {
-		int buy1 = Integer.MIN_VALUE, buy2 = Integer.MIN_VALUE;
-		int sell1 = 0, sell2 = 0;
+	public int maxProfit3_(int[] prices) {
 		// 四个状态 buy1 sell1 buy2 sell2
-		for (int price: prices) {
-				buy1 = Math.max(buy1, -price);
-				sell1 = Math.max(sell1, buy1 + price);
-				buy2 = Math.max(buy2, sell1 - price);
-				sell2 = Math.max(sell2, buy2 + price);
+		int buy1 = Integer.MIN_VALUE; // 花最大代价买股票
+		int buy2 = Integer.MIN_VALUE; 
+		int sell1 = 0;                // 赚不了钱
+		int sell2 = 0;
+		
+		// 你的钱等于buy sell buy sell........
+		for (int i = 0; i < prices.length; i++) {
+			int current_price = prices[i];
+			buy1 = Math.max(current_price, buy1); // // 第一次买股票的价格，花的越少越好(靠近0元)
+			sell1 = Math.max(current_price + buy1, sell1);
+			buy2 = Math.max(sell1 - current_price, buy2);
+			sell2 = Math.max(current_price + buy2, sell2);
 		}
+
 		return sell2;
 	}
 	
