@@ -5,9 +5,10 @@
 // 01背包即可。
 
 public class PartitionEqualSubsetSum {
-  private boolean result = false;
 
-  public boolean canPartition(int[] nums) {
+	// dfs解法
+  private boolean result = false;
+  public boolean canPartition_(int[] nums) {
     if (nums == null || nums.length < 2) return result;
     int sum = 0;
     for (int num : nums) sum += num;
@@ -28,5 +29,17 @@ public class PartitionEqualSubsetSum {
     for (int i = index; i < nums.length; i++) {
       find(nums, index + 1, sum, cur_sum + nums[i]);
     }
-  }
+	}
+	
+	// 动态规划解法
+
+	// 0. 最后一步，子问题:
+	// 1. 确定状态
+	// 2. 转移方程
+	// 3. 初态边界  
+	// 4. 顺序计算
+
+	public boolean canPartition(int[] nums) {
+
+	}
 }
