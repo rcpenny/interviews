@@ -25,6 +25,8 @@ public class DistinctSubseq {
 		int i, j;
 
 		int[][] f = new int[m + 1][n + 1];
+
+		// 初态赋值，
 		for (i = 0; i <= m; i++) f[i][0] = 1;
 
 		for (i = 1; i <= m; i++) {
