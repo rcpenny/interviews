@@ -16,6 +16,7 @@ public class Backpack {
 
 		boolean[][] f = new boolean[n + 1][m + 1];
 		f[0][0] = true;
+		// 前0个物品拼不出重量w
 		for (int w = 1; w <= m; w++) f[0][w] = false;
 
 		for (int i = 1; i <= n; i++) {
