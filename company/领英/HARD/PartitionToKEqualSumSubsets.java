@@ -10,22 +10,38 @@ import java.util.Arrays;
 // 后来聊了一下才知道，面试官是想在系统盏里面少存局部变量，所以，递归之前把不需要改变的变量全部用全局变量存，然后再递归，这样递归就少存一些变量在系统盏里面。
 
 public class PartitionToKEqualSumSubsets {
-	private boolean result = false;
-
   public boolean partitiontoEqualSumSubsets(int[] nums, int k) {
-		Arrays.sort(nums);
-
 		int sum = Arrays.stream(nums).sum();
 		if (sum % k != 0) return false;
-		int target = sum / k;
-		
-		int n = nums.length;
-		if (nums[n - 1] >= target) return false;
 
+		boolean[] visited = new boolean[nums.length];
 
-
-		return result;
+		return find(nums, visited, 0, k, 0, sum / k);
 	}
 
-	private void find(int[] nums, int k)
+	private boolean find(int[] nums, boolean[] visited, int start, int k, int sum, int target) {
+		if (k == 1) return true;
+
+		if (sum == target)
+			return find(nums, visited, 0, k - 1, 0, target);
+		
+		for (int i = start; i < nums.length; i++) {
+			if (visited[i] || sum + nums[i] > target) continue;
+
+			visited[i] = true;
+
+			if (find(nums, visited, i + 1, k, sum + nums[i], target))
+				return true;
+
+			visited[i] = false;
+		}
+
+		return false;
+	}
 }
+
+
+// 不过有一些加速方法可以采用，这里列举其中一些：
+// k个子集从前到后递归，如果当前的子集和与前一个子集和相同，那么这个子集就不用试了，因为把n放到这个子集和放到前一个子集没有差别。我们只关心能否搜索到，并不关心具体的分配方案。
+// 先把nums排序，并优先先放入最大的元素，这样能减少许多搜索路径。
+// 一旦找到nums[i] > target，那么就直接返回False。因为如果某一个元素，都超过了target，那么就一定不合题。
