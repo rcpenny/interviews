@@ -1,4 +1,7 @@
+import java.awt.List;
+import java.util.ArrayList;
 import java.util.Stack;
+import java.util.TreeMap;
 
 // Design a max stack that supports push, pop, top, peekMax and popMax.
 
@@ -17,8 +20,11 @@ import java.util.Stack;
 // 更优解用treemap
 // 说了下用两个stack存数据的思路，不满意。换了treemap的方法，多的时间问了下如果是要线程安全你该怎么改。
 
-class MaxStack {
-	// 解1 双栈
+// 解1 双栈
+// Complexity Analysis
+// Time Complexity: O(N) for the popMax operation, and O(1)O(1) for the other operations
+// Space Complexity: O(N), the maximum size of the stack.
+public class MaxStack {
 	private Stack<Integer> realStack;
 	private Stack<Integer> maxStack;
 	
@@ -66,6 +72,104 @@ class MaxStack {
 
 		return cur_max;
 	}
+}
 
-	// 解2 treemap
+// 解2 Double Linked List + TreeMap
+
+// 本质逻辑: double linked list 模拟 stack, treemap对应stack中每个value和其相应的nodes
+
+// By default, TreeMap sorts all its entries according to their natural ordering.
+
+// TreeMap<Integer, String> map = new TreeMap<>();
+//     map.put(3, "val");
+//     map.put(2, "val");
+//     map.put(1, "val");
+//     map.put(5, "val");
+//     map.put(4, "val");
+//     assertEquals("[1, 2, 3, 4, 5]", map.keySet().toString());
+
+// Time Complexity: O(logN) for all operations except peek which is O(1)O(1)
+// Most operations involving TreeMap are O(logN).
+
+// Space Complexity: O(N), the size of the data structures used.
+
+class MaxStack {
+	TreeMap<Integer, List<Node>> map;
+	DoubleLinkedList dll;
+
+	public MaxStack() {
+			map = new TreeMap();
+			dll = new DoubleLinkedList();
+	}
+
+	public void push(int x) {
+			Node node = dll.add(x);
+			if(!map.containsKey(x))
+					map.put(x, new ArrayList<Node>());
+			map.get(x).add(node);
+	}
+
+	public int pop() {
+			int val = dll.pop();
+			List<Node> L = map.get(val);
+			L.remove(L.size() - 1);
+			if (L.isEmpty()) map.remove(val);
+			return val;
+	}
+
+	public int top() {
+			return dll.peek();
+	}
+
+	public int peekMax() {
+			return map.lastKey();
+	}
+
+	public int popMax() {
+			int max = peekMax();
+			List<Node> L = map.get(max);
+			Node node = L.remove(L.size() - 1);
+			dll.unlink(node);
+			if (L.isEmpty()) map.remove(max);
+			return max;
+	}
+}
+
+class DoubleLinkedList {
+	Node head, tail;
+
+	public DoubleLinkedList() {
+			head = new Node(0);
+			tail = new Node(0);
+			head.next = tail;
+			tail.prev = head;
+	}
+
+	public Node add(int val) {
+			Node x = new Node(val);
+			x.next = tail;
+			x.prev = tail.prev;
+			tail.prev = tail.prev.next = x;
+			return x;
+	}
+
+	public int pop() {
+			return unlink(tail.prev).val;
+	}
+
+	public int peek() {
+			return tail.prev.val;
+	}
+
+	public Node unlink(Node node) {
+			node.prev.next = node.next;
+			node.next.prev = node.prev;
+			return node;
+	}
+}
+
+class Node {
+	int val;
+	Node prev, next;
+	public Node(int v) {val = v;}
 }
