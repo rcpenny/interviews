@@ -17,14 +17,14 @@ public class SpiralMatrix2 {
     int[][] matrix = new int[n][n];
 
     int count = 1;
-    int spiral_count = 0;
+    int circle = 0; // 旋转了几次
     int x, y, i;
 
     // square into square
     for (int len = n; len >= 2; len -= 2) {
       // 正方形上边 ->
-      x = 0 + spiral_count;
-      y = 0 + spiral_count;
+      x = 0 + circle;
+      y = 0 + circle;
       for (i = 1; i <= len - 1; i++) {
         matrix[x][y] = count;
         y++;
@@ -32,17 +32,17 @@ public class SpiralMatrix2 {
       }
 
       // 正方形右边 
-      x = 0 + spiral_count;
-      y = n - 1 - spiral_count;
+      x = 0 + circle;
+      y = n - 1 - circle;
       for (i = 1; i <= len - 1; i++) {
         matrix[x][y] = count;
         x++;
         count++;
       }
 
-      // 正方形下边 <-
-      x = n - 1 - spiral_count;
-      y = n - 1 - spiral_count;
+      // 正方形下边
+      x = n - 1 - circle;
+      y = n - 1 - circle;
       for (i = 1; i <= len - 1; i++) {
         matrix[x][y] = count;
         y--;
@@ -50,15 +50,15 @@ public class SpiralMatrix2 {
       }
 
       // 正方形左边
-      x = n - 1 - spiral_count;
-      y = 0 + spiral_count;
+      x = n - 1 - circle;
+      y = 0 + circle;
       for (i = 1; i <= len - 1; i++) {
         matrix[x][y] = count;
         x--;
         count++;
       }
       
-      spiral_count++;
+      circle++;
     }
 
     if (n % 2 == 1) matrix[n/2][n/2] = n * n;
