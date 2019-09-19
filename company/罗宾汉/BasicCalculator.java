@@ -7,6 +7,23 @@
 
 public class BasicCalculator {
   public int calculate(String s) {
-		
+		char[] array = s.toCharArray();
+		Stack<Object> stack = new Stack<>();
+
+		int num = 0;
+		for (int i = 0; i < array.length; i++) {
+			char cur = array[i];
+
+			if (cur == ' ') continue;
+			if (Character.isDigit(cur)) {
+				num = num * 10 + (cur - '0');	
+				continue;
+			}
+
+			// case when char is ( ) + -
+			if (cur == '(') {
+				stack.push(c)
+			}
+		}
 	}
 }
