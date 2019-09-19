@@ -10,59 +10,42 @@
 
 // 外圈正方形从外往里一个个缩
 public class SpiralMatrix2 {
-
   public int[][] generateMatrix(int n) {
-    if (n <= 0) return new int[0][0];
+		if (n < 1) return new int[0][0];
 
-    int[][] matrix = new int[n][n];
+		int[][] matrix = new int[n][n];
+		int x = 0, y = 0, i = 0;
+		int count = 1;
+		int len = n - 1;
 
-    int count = 1;
-    int circle = 0; // 旋转了几次
-    int x, y, i;
+		while (len >= 1) {
+			for (i = 1; i <= len; i++) {
+				matrix[x][y++] = count;
+				count++;
+			}
 
-    // square into square
-    for (int len = n; len >= 2; len -= 2) {
-      // 正方形上边 ->
-      x = 0 + circle;
-      y = 0 + circle;
-      for (i = 1; i <= len - 1; i++) {
-        matrix[x][y] = count;
-        y++;
-        count++;
-      }
+			for (i = 1; i <= len; i++) {
+				matrix[x++][y] = count;
+				count++;
+			}
 
-      // 正方形右边 
-      x = 0 + circle;
-      y = n - 1 - circle;
-      for (i = 1; i <= len - 1; i++) {
-        matrix[x][y] = count;
-        x++;
-        count++;
-      }
+			for (i = 1; i <= len; i++) {
+				matrix[x][y--] = count;
+				count++;
+			}
 
-      // 正方形下边
-      x = n - 1 - circle;
-      y = n - 1 - circle;
-      for (i = 1; i <= len - 1; i++) {
-        matrix[x][y] = count;
-        y--;
-        count++;
-      }
+			for (i = 1; i <= len; i++) {
+				matrix[x--][y] = count;
+				count++;
+			}
 
-      // 正方形左边
-      x = n - 1 - circle;
-      y = 0 + circle;
-      for (i = 1; i <= len - 1; i++) {
-        matrix[x][y] = count;
-        x--;
-        count++;
-      }
-      
-      circle++;
-    }
+			x++;
+			y++;
+			len -= 2;
+		}
 
-    if (n % 2 == 1) matrix[n/2][n/2] = n * n;
+		if (len == 0) matrix[n/2][n/2] = count;
 
-    return matrix;
+		return matrix;
   }
 }

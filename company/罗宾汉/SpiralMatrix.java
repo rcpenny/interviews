@@ -25,7 +25,7 @@ class SpiralMatrix {
     int y = 0;
 
     while(m > 0 && n > 0){
-      //if one row/column left, no circle can be formed
+      //如果横向，纵向其中某个只剩1了，操作一条线就像了
       if(m == 1){
         for (int i = 0; i < n; i++)
           result.add(matrix[x][y++]);
@@ -36,7 +36,7 @@ class SpiralMatrix {
         break;
       }
 
-      //below, process a circle
+      // 操作环
 
       //top - move right
       for (int i = 0; i < n - 1; i++)
@@ -54,8 +54,10 @@ class SpiralMatrix {
       for(int i = 0; i < m - 1; i++)
         result.add(matrix[x--][y]);
 
+			// 跳到下一个环的入口
       x++;
-      y++;
+			y++;
+			
       m -= 2;
       n -= 2;
     }
