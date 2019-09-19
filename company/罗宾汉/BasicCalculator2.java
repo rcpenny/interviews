@@ -5,7 +5,7 @@
 // 输入:"3+2*2"
 // 输出:7
 
-public class BasicCaculator2 {
+public class BasicCalculator2 {
 	public int calculate(String s) {
 
 	}

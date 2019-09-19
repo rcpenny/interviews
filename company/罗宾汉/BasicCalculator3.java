@@ -7,7 +7,7 @@
 // 输出：4
 // 解释：4/2=2，6-2=4
 
-public class BasicCaculator3 {
+public class BasicCalculator3 {
 	public int calculate(String s) {
 		
 	}
