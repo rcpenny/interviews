@@ -40,4 +40,26 @@ public class BalancedBinaryTree {
 		
 		return new ResultType(balanced, treeHeight);
 	}
+
+
+	// 不用ResultType，全局变量balanced, 递归method return height就好
+	private boolean balanced = true;
+	public boolean isBalanced2(TreeNode root) {
+		height(root);
+		
+		return balanced;
+	}
+	
+	private int height(TreeNode node) {
+		if (!balanced || node == null) return 0;
+		
+		int left_height = height(node.left);
+		int right_height = height(node.right);
+		
+		if (Math.abs(left_height - right_height) > 1) {
+			balanced = false;
+		}
+		
+		return Math.max(left_height, right_height) + 1;
+	}
 }

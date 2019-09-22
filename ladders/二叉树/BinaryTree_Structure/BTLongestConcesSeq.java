@@ -13,6 +13,7 @@ class TreeNode {
 	}
 }
 
+// 就是root 是3， root.left=4, 算合法可+1
 public class BTLongestConsecSeq {
   private int longestSeq = 0;
 

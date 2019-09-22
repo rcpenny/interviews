@@ -20,7 +20,9 @@ public class FlattenBinaryTreeToLinkedList {
 
 		if (root.left != null) {
 			TreeNode lastNode = leftTreeLastNode(root.left);
-			//将右子树append到这个node 左右子树交换，左子树为null
+			//将右子树append到这左子树前序遍历的最后一个node
+			// 左右子树交换
+			// 左子树为null
 			lastNode.right = root.right;
 			root.right = root.left;
 			root.left = null;
