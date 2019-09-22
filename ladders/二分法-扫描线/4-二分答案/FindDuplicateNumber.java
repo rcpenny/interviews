@@ -14,6 +14,7 @@
 
  // 思路：小于5的数字应该是4个，但是有5个.所以1-4中有dupes.
  // 在答案范围 1 -> n 之间二分
+ 
 public class FindDuplicateNumber {
 	public int findDuplicate(int[] nums) {
 		int smaller = 1;

@@ -8,8 +8,8 @@ public class WoodCut {
   public int woodCut(int[] L, int k) {
     if (L == null || L.length == 0) return 0;
 
-    int maxLength = 0, minLength = 0;
-    // 找到木堆中最长的木头 可行解范围（0 -> 最长木头)
+		int minLength = 0; // min从0起步因为存在1也切不出k段的情况
+		int maxLength = 0; // 找到木堆中最长的木头 可行解范围（0 -> 最长木头)
     for (int l : L) 
       maxLength = Math.max(l, maxLength);
 

@@ -7,6 +7,7 @@
 
 // consider entire matrix as an array
 public class Search2DMatrix {
+
   public boolean searchMatrix(int[][] matrix, int target) {
     if (matrix == null || matrix.length == 0) return false;  
     if (matrix[0] == null || matrix[0].length == 0) return false;

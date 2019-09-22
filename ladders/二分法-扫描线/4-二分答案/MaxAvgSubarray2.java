@@ -9,7 +9,9 @@
 // 转换成 (A[left] - T) + ... + (A[right] - T) >= 0     right - left + 1 >= k
  
 //此题前缀和暴力可解，更好的是用二分答案 太tricky了
+
 public class MaxAvgSubarray2 {
+
 	public double maxAverage(int[] nums, int k) {
 		// get max avg range (min -> max)
 		double start = nums[0], end = nums[0];

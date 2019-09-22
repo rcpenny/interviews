@@ -4,7 +4,7 @@
 // 返回完成复印任务最少需要的分钟数.
 
 // 输入: n = 4, times = [3, 2, 4]   输出: 4
-// 解释: 第一个人复印 1 本书, 花费 3 分钟. 第二个人复印 2 本书, 花费 4 分钟. 第三个人复印 1 本书, 花费 4 分钟.
+// 解释: 第一个人复印 1 本书, 花费 3 分钟. 第二个人复印 1 本书, 花费 2 分钟. 第三个人复印 1 本书, 花费 4 分钟.
 
 // 答案：总共需要多少时间
 // 二分范围：0 ~ 最慢的人，复印所有书的时间
@@ -18,7 +18,7 @@ public class CopyBook2 {
 			max_time = Math.max(max_time, time);
 
 		int lower = 0;
-		int upper = max_time * n;
+		int upper = max_time * n; // 最慢的人，一个人复印所有书
 
 		while (lower + 1 < upper) {
 			int mid = lower + (upper - lower) / 2;

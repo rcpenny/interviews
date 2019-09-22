@@ -16,14 +16,14 @@ public class CopyBook {
 		int lower = 0; // lower minutes
 		int upper = 0; // upper minutes
 		for (int page : pages) {
-			lower = Math.max(lower, page);
-			upper += page;
+			lower = Math.max(lower, page); // 最厚的一本书，木桶原理
+			upper += page; // 一个人复印所有书
 		}
 
 		while (lower + 1 < upper) {
-			int middle = lower + (upper - lower) / 2;
-			if (kPeopleCanCopy(middle, k, pages)) upper = middle; // 说明时间还有缩小的余地
-			else lower = middle;
+			int mid = lower + (upper - lower) / 2;
+			if (kPeopleCanCopy(mid, k, pages)) upper = mid; // 说明时间还有缩小的余地
+			else lower = mid;
 		}
 
 		return kPeopleCanCopy(lower, k, pages) ? lower : upper;

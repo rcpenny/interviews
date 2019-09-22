@@ -9,7 +9,7 @@ public class MaxNumInMountainSeq {
 
     while (start + 1 < end) {
       int middle = start + (end - start) / 2;
-      // key point middle 与 middle - 1比可能会 index out of bound
+      // key point: middle 与 middle - 1比可能会 index out of bound
       if (nums[middle] < nums[middle + 1]) 
         start = middle;
       else 

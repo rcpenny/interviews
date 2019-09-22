@@ -15,7 +15,7 @@ public class FirstPositionOfTarget {
         start = middle;
     }
 
-    // FIRST POSITION，先查first
+    // FIRST POSITION，先查start
     if (nums[start] == target) return start;
     if (nums[end] == target) return end;
     return -1;

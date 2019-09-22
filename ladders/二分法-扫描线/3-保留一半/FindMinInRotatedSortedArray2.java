@@ -16,6 +16,7 @@ public class FindMinInRotatedSortedArray2 {
       return tail;
     }
 
+		//同上题无dupelicates的做法
     int start = 0, end = nums.length - 1;
     
     while (start + 1 < end) {
