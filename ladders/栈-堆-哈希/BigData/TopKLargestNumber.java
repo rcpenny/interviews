@@ -22,7 +22,9 @@ public class TopKLargestNumber {
 			}
 		}
 		
-		for (int i = k - 1; i >= 0; i--) result[i] = minheap.poll();
+		for (int i = k - 1; i >= 0; i--)
+			result[i] = minheap.poll();
+		
 		return result;
 	}
 }

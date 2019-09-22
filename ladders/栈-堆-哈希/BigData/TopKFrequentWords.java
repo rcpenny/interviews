@@ -28,13 +28,10 @@ class Pair {
 public class TopKFrequentWords {
 
 	// 注意comparator的多种比较方式
-	private Comparator<Pair> pairComparator = new Comparator<Pair>() {
-		@Override
-		public int compare(Pair a, Pair b) {
-			if (a.frequency != b.frequency) return b.frequency - a.frequency;
-			return a.word.compareTo(b.word);
-		}
-	};
+	private Comparator<Pair> pairComparator = new Comparator<>((a, b) -> {
+		if (a.frequency != b.frequency) return b.frequency - a.frequency;
+		return a.word.compareTo(b.word);
+	});
 
   public String[] topKFrequentWords(String[] words, int k) {
 		String[] results = new String[k];
