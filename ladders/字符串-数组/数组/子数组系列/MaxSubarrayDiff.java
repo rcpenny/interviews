@@ -8,10 +8,13 @@ public class MaxSubarrayDiff {
     int[] minFromLeft = new int[nums.length];
     int[] minFromRight = new int[nums.length];
 
-    int max_sum = Integer.MIN_VALUE, min_sum = Integer.MAX_VALUE;
+		int max_sum = Integer.MIN_VALUE;
+		int min_sum = Integer.MAX_VALUE;
     int min_sofar = 0, max_sofar = 0;
     int prefix_sum = 0;
-    for (int i = 0; i < nums.length; i++) {
+		
+		// 从左扫
+		for (int i = 0; i < nums.length; i++) {
       prefix_sum = prefix_sum + nums[i];
       max_sum = Math.max(prefix_sum - min_sofar, max_sum);
       maxFromLeft[i] = max_sum;
@@ -27,7 +30,9 @@ public class MaxSubarrayDiff {
     min_sofar = 0;
     max_sofar = 0;
     prefix_sum = 0;
-    for (int i = nums.length - 1; i >= 0; i--) {
+		
+		// 从右扫
+		for (int i = nums.length - 1; i >= 0; i--) {
       prefix_sum = prefix_sum + nums[i];
       max_sum = Math.max(prefix_sum - min_sofar, max_sum);
       maxFromRight[i] = max_sum;
@@ -38,6 +43,7 @@ public class MaxSubarrayDiff {
       max_sofar = Math.max(max_sofar, prefix_sum);
     }
 
+		// 合并
     int max_diff = Integer.MIN_VALUE;
     for (int i = 0; i < nums.length - 1; i++) {
       max_diff = Math.max(max_diff, Math.abs(maxFromLeft[i] - minFromRight[i + 1]));

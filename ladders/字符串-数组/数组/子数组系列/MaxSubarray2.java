@@ -12,13 +12,18 @@ import java.util.List;
 public class MaxSubarray2 {
   public int maxTwoSubArrays(List<Integer> nums) {
 		int[] array = new int[nums.size()];
-		for (int i = 0; i < nums.size(); i++) array[i] = nums.get(i);
+		for (int i = 0; i < nums.size(); i++) {
+			array[i] = nums.get(i);
+		}
 
 		// 枚举两边max, 从左向右生成一次，从右向左生成一次
 		int[] maxFromLeft = new int[array.length];
 		int[] maxFromRight = new int[array.length];
 
-		int max_sum = Integer.MIN_VALUE, prefix_sum = 0, min_sofar = 0;
+		int max_sum = Integer.MIN_VALUE;
+		int prefix_sum = 0;
+		int min_sofar = 0;
+		
 		for (int i = 0; i < array.length; i++) {
 			prefix_sum = prefix_sum + array[i];
 			max_sum = Math.max(max_sum, prefix_sum - min_sofar);
@@ -39,9 +44,7 @@ public class MaxSubarray2 {
 		int max_sum_two = Integer.MIN_VALUE;
 		for (int i = 0; i < array.length - 1; i++) {
 			int left = maxFromLeft[i];
-			System.out.println(left);
 			int right = maxFromRight[i + 1];
-			System.out.println(right);
 			max_sum_two = Math.max(max_sum_two, left + right);
 		}
 
