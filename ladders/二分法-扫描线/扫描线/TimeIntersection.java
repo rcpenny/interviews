@@ -33,12 +33,6 @@ public class TimeIntersection {
   private final boolean ONLINE = true;
   private final boolean OFFLINE = false;
 
-  private Comparator<Stamp> cpt = new Comparator<Stamp>() {
-    @Override public int compare(Stamp a, Stamp b) {
-      return a.time - b.time;
-    }
-  };
-
   // 保证seqA和seqB中各自没有重合
   public List<Interval> timeIntersection(List<Interval> seqA, List<Interval> seqB) {
     List<Interval> intersections =new ArrayList<>();
@@ -52,7 +46,9 @@ public class TimeIntersection {
       seqs.add(new Stamp(b.start, ONLINE));
       seqs.add(new Stamp(b.end, OFFLINE));
     }
-    Collections.sort(seqs, cpt);
+    Collections.sort(seqs, (a, b) -> {
+			return a.time - b.time;
+		});
 
     Interval tmp = new Interval(0, 0);
     int online_count = 0;

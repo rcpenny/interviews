@@ -25,13 +25,7 @@ public class NumOfPlaneInSky {
   private final int TAKE_OFF = 1;
   private final int LAND = 0;
 
-  private Comparator<Point> airplaneComparator = new Comparator<Point>() {
-    @Override public int compare(Point a, Point b) {
-      if (a.time != b.time) return a.time - b.time;
-      return a.status - b.status;
-    }
-  };
-
+	// 同理meeting room, 转成array解
   public int countOfAirplanes(List<Interval> airplanes) {
     int max = 0;
 
@@ -42,7 +36,10 @@ public class NumOfPlaneInSky {
       points.add(new Point(interval.end, LAND));
     }
     
-    Collections.sort(points, airplaneComparator);
+    Collections.sort(points, (a, b) -> {
+			if (a.time != b.time) return a.time - b.time;
+      return a.status - b.status;
+		});
 
     int count = 0;
     for (Point point: points) {

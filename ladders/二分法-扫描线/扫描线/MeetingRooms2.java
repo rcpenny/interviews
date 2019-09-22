@@ -27,23 +27,20 @@ public class MeetingRooms {
   private final int BEGIN = 1;
   private final int OVER = 0;
 
-  private Comparator<Stamp> cpt = new Comparator<Stamp>() {
-    @Override public int compare(Stamp a, Stamp b) {
-      if (a.time != b.time) return a.time - b.time;
-      return a.status - b.status; // over first
-    }
-  };
-
+	// 解1 pq sort
   public int minMeetingRooms(List<Interval> intervals) {
     int min = 0;
-
     // 以区间的两端点，建数据并排序
     List<Stamp> stamps = new ArrayList<>();
     for (Interval interval : intervals) {
       stamps.add(new Stamp(interval.start, BEGIN));
       stamps.add(new Stamp(interval.end, OVER));
-    }
-    Collections.sort(stamps, cpt);
+		}
+
+    Collections.sort(stamps, (a, b) -> {
+			if (a.time != b.time) return a.time - b.time;
+			return a.status - b.status;
+		});
 
     int count = 0;
     for (Stamp stamp : stamps) {
@@ -52,10 +49,34 @@ public class MeetingRooms {
         min = Math.max(min, count);
         continue;
       }
-      if (stamp.status == OVER)
-        count--;
+      // stamp.status == OVER
+    	count--;
     }
-
     return min;
-  } 
+	}
+	
+
+	// 解2 扫描线
+	public int minMeetingRooms2(List<Interval> intervals) {
+		int min = 0;
+
+		int end_time = 0;
+		for (Interval i : intervals)
+			end_time = Math.max(end_time, i.end);
+
+		int[] meetings = new int[end_time + 1];
+
+		for (Interval i : intervals) {
+			meetings[i.start]++;
+			meetings[i.end]--;
+		}
+
+		int count = 0;
+		for (int m : meetings) {
+			count += m;
+			min = Math.max(min, count);
+		}
+
+		return min;
+	}
 }
