@@ -12,6 +12,7 @@ import java.util.Map;
  * find(4)//返回true
  * find(7)//返回false
  */
+
 public class TwoSum3 {
 	private Map<Integer, Integer> map;
 	private List<Integer> list;
@@ -37,6 +38,8 @@ public class TwoSum3 {
 		for (int i = 0; i < list.size(); i++) {
 			int val1 = list.get(i);
 			int val2 = value - val1;
+
+			// 两种情况
 			if (val1 != val2 && map.containsKey(val2)) return true;
 			if (val1 == val2 && map.get(val1) > 1) return true;
 		}

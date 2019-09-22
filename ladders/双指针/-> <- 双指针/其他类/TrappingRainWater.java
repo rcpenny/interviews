@@ -8,29 +8,32 @@
 // 这个解法 O(n)空间
 public class TrappingRainWater {
 	public int trapRainWater(int[] heights) {
-		int rain = 0;
-		if (heights == null || heights.length <= 2) return rain;
+		if (heights == null || heights.length <= 2) return 0;
 
-		int[] maxFromLeft = new int[heights.length];
-		int[] maxFromRight = new int[heights.length];
+		int rain = 0;
+
+		int[] maxFromLeft = new int[heights.length];  // 向左看最高的高度
+		int[] maxFromRight = new int[heights.length]; // 向右看最高的高度
 
 		int cur_max_left = 0;
-		int cur_max_right = 0;
-
 		for (int i = 0; i < heights.length; i++) {
 			cur_max_left = Math.max(cur_max_left, heights[i]);
 			maxFromLeft[i] = cur_max_left;
 		}
 
+		int cur_max_right = 0;
 		for (int i = heights.length - 1; i >= 0; i--) {
 			cur_max_right = Math.max(cur_max_right, heights[i]);
 			maxFromRight[i] = cur_max_right;
 		}
 
 		for (int i = 0; i < heights.length; i++) {
-			int maxLeft = maxFromLeft[i], maxRight = maxFromRight[i], height = heights[i];
-			if (height >= maxLeft || height >= maxRight) continue;
-			rain = rain + (Math.min(maxLeft, maxRight) - height);
+			int maxLeft = maxFromLeft[i];
+			int maxRight = maxFromRight[i];
+			int cur_height = heights[i];
+
+			if (cur_height >= maxLeft || cur_height >= maxRight) continue;
+			rain += Math.min(maxLeft, maxRight) - height;
 		}
 
 		return rain;

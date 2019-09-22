@@ -7,15 +7,19 @@
  * 解释:
  * 最小的差距是1，(4 - (2 + 1) = 1).
  */
+
 public class TwoSumClosetToTarget {
-  public int twoSumClosest(int[] nums, int target) {
+	public int twoSumClosest(int[] nums, int target) {
 		int minDiff = Integer.MAX_VALUE;
 		if (nums == null || nums.length < 2) return minDiff;
+
 		Arrays.sort(nums);
 
 		int left = 0, right = nums.length - 1;
+		int sum = 0;
+		
 		while (left < right) {
-			int sum = nums[left] + nums[right];
+			sum = nums[left] + nums[right];
 			if (sum ==  target) {
 				return 0;
 			} else if (sum < target) {

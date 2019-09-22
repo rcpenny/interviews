@@ -11,17 +11,20 @@
 public class TwoSumGreaterThanTarget {
   public int twoSum2(int[] nums, int target) {
 		if (nums == null || nums.length < 2) return 0;
+
 		Arrays.sort(nums);
 
 		int pairs = 0;
 		int left = 0, right = nums.length - 1;
+		int sum = 0;
 
 		while (left < right) {
-			int sum = nums[left] + nums[right];
+			sum = nums[left] + nums[right];
 			if (sum <= target) {
 				left++;
 			} else {
-				pairs = pairs + right - left;
+				// 固定住right, 右边到left共有几个
+				pairs += right - left;
 				right--;
 			}
 		}

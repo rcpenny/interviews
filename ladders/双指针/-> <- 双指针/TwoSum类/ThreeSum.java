@@ -17,6 +17,7 @@ public class ThreeSum {
   public List<List<Integer>> threeSum(int[] numbers) {
 		List<List<Integer>> results = new ArrayList<>();
 		if (numbers == null || numbers.length < 3) return results;
+
 		Arrays.sort(numbers);
 
 		// 循环起点需要skip dupes
@@ -24,6 +25,7 @@ public class ThreeSum {
 			if (i != 0 && numbers[i] == numbers[i - 1]) continue;
 			twoSum(numbers, i, results);
 		}
+
 		return results;
 	}
 
@@ -44,11 +46,12 @@ public class ThreeSum {
 				// 精髓： 在找到一个triple之后，再skip duplicates
 				while (left < right && numbers[left] == numbers[left - 1]) left++;
 				while (left < right && numbers[right] == numbers[right + 1]) right--;
-			} else if (sum < target) {
-				left++;
-			} else {
-				right--;
-			}
+				continue;
+			} 
+			
+			// 这里可以不用处理dupes,反正如果有dupe,也不会加triple
+			if (sum > target) right--;
+			if (sum < target) left++;
 		}
 	}
 
