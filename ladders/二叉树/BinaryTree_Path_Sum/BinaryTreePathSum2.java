@@ -20,7 +20,9 @@ class TreeNode {
 public class BinaryTreePathSum2 {
   public List<List<Integer>> binaryTreePathSum2(TreeNode root, int target) {
     List<List<Integer>> results = new ArrayList<>();
+
     findSum(root, target, 0, new ArrayList<Integer>(), results);
+
     return results;
   }
 
@@ -30,12 +32,14 @@ public class BinaryTreePathSum2 {
     path.add(node.val);
     int tmp_sum = 0;
 
-    // 画个树考虑一下i j
+    // 从当前level往root找，sum为target的list
     for (int i = level; i >= 0; i--) {
-      tmp_sum = tmp_sum + path.get(i);
+      tmp_sum += path.get(i);
       if (tmp_sum == target) {
         List<Integer> solution = new ArrayList<>();
-        for (int j = i; j <= level; j++) solution.add(path.get(j));
+        for (int j = i; j <= level; j++) {
+          solution.add(path.get(j));
+        }
         results.add(solution);
       }
     }
