@@ -34,6 +34,7 @@ public class DecodeString {
 		return popStack(stack);
 	}
 
+	// 生成新的string
 	private String popStack(Stack<Object> stack) {
 		Stack<String> buffer = new Stack<>();
 		// 这里不处理integer，在调这个method之后再pop出数字

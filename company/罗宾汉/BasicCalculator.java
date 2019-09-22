@@ -5,6 +5,7 @@
 // 输入："(1+(4+5+2)-3)+(6+8)" 
 // 输出：23
 
+// 学习decode string
 public class BasicCalculator {
   public int calculate(String s) {
 		char[] array = s.toCharArray();
