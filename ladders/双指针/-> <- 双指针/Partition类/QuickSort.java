@@ -1,16 +1,20 @@
 /** quick sort */
 
+// 模板
 public class QuickSort {
   public void sortIntegers2(int[] nums) {
 		if (nums == null) return;
+
 		quicksort(nums, 0, nums.length - 1);
 	}
 
 	private void quicksort(int[] nums, int start, int end) {
 		if (start > end) return;
+
+		int pivot = nums[(end - start) / 2 + start];
+
 		int left = start;
 		int right = end;
-		int pivot = nums[(end - start) / 2 + start];
 
 		while (left <= right) {
 			while (left <= right && nums[left] < pivot) left++;

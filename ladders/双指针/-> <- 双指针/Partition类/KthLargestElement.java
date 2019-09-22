@@ -1,6 +1,5 @@
-/**
- * Find K-th largest element in an array.
- */
+/** Find K-th largest element in an array. */
+
 public class KthLargestElement {
   public int kthLargestElement(int k, int[] nums) {
 		return quickSelect(nums, 0, nums.length - 1, nums.length - k);
@@ -8,8 +7,9 @@ public class KthLargestElement {
 
 	// partition array
 	private int quickSelect(int[] nums, int start, int end, int k) {
+		int pivot = nums[(start + end) / 2];
+
 		int left = start, right = end;
-		int pivot = nums[(left + right) / 2];
 
 		while (left <= right) {
 			while (left <= right && nums[left] < pivot) left++;
