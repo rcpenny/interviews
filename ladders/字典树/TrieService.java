@@ -1,10 +1,10 @@
 import java.util.Collections;
-import java.util.NavigableMap;
+import java.util.Map;
 
 // https://www.lintcode.com/problem/trie-service/
 
 public class TrieNode {
-	public NavigableMap<Character, TrieNode> children;
+	public Map<Character, TrieNode> children;
 	public List<Integer> top10;
 
 	public TrieNode() {
@@ -18,16 +18,16 @@ public class TrieService {
 	private TrieNode root = null;
 
 	public TrieService() {
-			root = new TrieNode();
+		root = new TrieNode();
 	}
 
 	public TrieNode getRoot() {
-			return root;
+		return root;
 	}
 
 	// <"abc", 2>
 	public void insert(String word, int frequency) {
-		TrieNode current = root;
+		TrieNode current = getRoot();
 		for (int i = 0; i < word.length(); i++) {
 			char tmp = word.charAt(i);
 			if (!current.children.containsKey(tmp))

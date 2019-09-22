@@ -25,7 +25,7 @@ public class WordDictionary {
     return find(word, 0, root);
   }
 
-  // DFS definition: word, search start index, current node
+  // DFS definition: word, search start index, current node, 写loop多好！！！
   private boolean find(String word, int index, TrieNode currentNode) {
     if (index == word.length()) return node.isWord;
     char currentChar = word.charAt(index);
