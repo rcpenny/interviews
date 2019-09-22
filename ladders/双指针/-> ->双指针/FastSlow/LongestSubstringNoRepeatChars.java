@@ -13,6 +13,7 @@ public class LongestSubstringNoRepeatChars {
 
 		for (slow = 0; slow < array.length; slow++) {
 			
+			// fast一路前移到出现重复
 			while (fast < array.length) {
 				char head = array[fast];
         if (letters[head] != 0) break;

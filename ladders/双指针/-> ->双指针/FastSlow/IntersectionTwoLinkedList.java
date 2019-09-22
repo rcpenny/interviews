@@ -1,7 +1,8 @@
 import java.util.HashSet;
+import java.util.Set;
 
 /**
- * ind the node at which the intersection of two singly linked lists begins.
+ * find the node at which the intersection of two singly linked lists begins.
  * 
  * If the two linked lists have no intersection at all, return null.
  * The linked lists must retain their original structure after the function returns.
@@ -37,19 +38,22 @@ public class IntersectionTwoLinkedList {
 		return null;
 	}
 
+	// 都有环的情况
 	private ListNode twoCyclesIntersection(ListNode headA, ListNode headB) {
 		Set<ListNode> a = new HashSet<>();
-		while (headA != null) {
+		Set<ListNode> b = new HashSet<>();
+
+		while (!a.contains(headA)) {
 			a.add(headA);
 			headA = headA.next;
 		}
-		ListNode inter = headB;
 
-		while (headB != null) {
+		while (!b.contains(headB)) {
 			if (a.contains(headB)) {
 				inter = headB;
 				break;
 			}
+			b.add(headB);
 			headB = headB.next;
 		}
 		return headB;
@@ -101,7 +105,7 @@ public class IntersectionTwoLinkedList {
 			fast = fast.next.next;
 			slow = slow.next;
 			
-			// fast重合，intersection从头开始追
+			// slow fast重合，intersection从head开始追slow
 			if (fast == slow) {
 				while (intersection != slow) {
 					intersection = intersection.next;

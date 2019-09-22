@@ -1,13 +1,5 @@
-class ListNode {
-  int val;
-  ListNode next;
-  ListNode(int x) {
-    val = x;
-    next = null;
-  }
-}
-
 // 如果存在cycle, return 交叉点
+
 public class LinkedListCycle2 {
   public ListNode detectCycle(ListNode head) {
     if (head == null) return null;
@@ -21,7 +13,7 @@ public class LinkedListCycle2 {
 			slow = slow.next;
 
       if (fast == slow) {
-				// 套圈，画图看
+				// 套圈，画图看, 可证明距离
         while (intersection != slow) {
           intersection = intersection.next;
           slow = slow.next;
