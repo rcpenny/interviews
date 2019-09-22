@@ -15,6 +15,7 @@ public class SlidingWindowMedian {
 
 		for (int i = 0; i < nums.length; i++) {
 			if (i >= k) removeNumber(nums[i - k], maxheap, minheap);
+			
 			addNumber(nums[i], maxheap, minheap);
 			if (i >= k - 1) result.add(maxheap.peek());
 		}

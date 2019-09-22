@@ -7,22 +7,17 @@ import java.util.PriorityQueue;
 // 	输出:  -1->2->4->null
 
 public class MergeKSortedList {
-
-  private Comparator<ListNode> cpt = new Comparator<ListNode>() {
-    @Override public int compare(ListNode a, ListNode b) {
-      return a.val - b.val;
-    }
-  };
-
   public ListNode mergeKLists(List<ListNode> lists) {
     ListNode dummy = new ListNode(0);
     ListNode tail = dummy;
     
-    PriorityQueue<ListNode> minheap = new PriorityQueue<ListNode>(cpt);
+    PriorityQueue<ListNode> minheap = new PriorityQueue<>((a, b) -> {
+			return a.val - b.val;
+		});
     
-    for (ListNode head : lists) {
-      if (head != null) minheap.offer(head);
-    }
+    for (ListNode head : lists)
+			if (head != null)
+				minheap.offer(head);
     
     while (!minheap.isEmpty()) {
       ListNode tmp = minheap.poll();

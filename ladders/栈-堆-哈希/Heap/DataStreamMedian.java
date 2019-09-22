@@ -28,6 +28,8 @@ public class DataStreamMedian {
   private void addNumber(PriorityQueue<Integer> maxheap, PriorityQueue<Integer> minheap, int num) {
     maxheap.offer(num);
 		minheap.offer(maxheap.poll());
-    while (minheap.size() > maxheap.size()) maxheap.offer(minheap.poll());
+
+		while (minheap.size() > maxheap.size())
+			maxheap.offer(minheap.poll());
   }
 }
