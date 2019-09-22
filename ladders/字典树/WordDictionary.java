@@ -25,7 +25,7 @@ public class WordDictionary {
     return find(word, 0, root);
   }
 
-  // DFS definition: word, search start index, current node, 写loop多好！！！
+  // DFS definition: word, search start index, current node, 不对，这里有''.'用递归是对的....loop不合理
   private boolean find(String word, int index, TrieNode currentNode) {
     if (index == word.length()) return node.isWord;
     char currentChar = word.charAt(index);
