@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.Queue;
 
 /**
- * https://www.lintcode.com/problem/course-schedule/
  * 问是否存在拓扑序（是否可以被拓扑排序）
  * 
  * 现在你总共有 n 门课需要选，记为 0 到 n - 1.
@@ -16,23 +15,23 @@ import java.util.Queue;
 public class CourseSchedule {
 
 	public boolean canFinish(int numCourses, int[][] prerequisites) {
-		HashMap<Integer, List<Integer>> graph = new HashMap<>(); 
+		HashMap<Integer, List<Integer>> preToFollow = new HashMap<>(); 
 		int[] indegreeOfCourse = new int[numCourses];
 
 		// 建立图
-		for (int i = 0; i < numCourses; i++) graph.put(i, new ArrayList<Integer>());
+		for (int i = 0; i < numCourses; i++)
+			preToFollow.put(i, new ArrayList<Integer>());
+		
 		for (int[] pair : prerequisites) {
 			int course = pair[0];
 			int preCourse = pair[1];
-			graph.get(preCourse).add(course);
+			preToFollow.get(preCourse).add(course);
 		}
 
-		// 建立入度
-		for (Integer preCourse : graph.keySet()) {
-			for (Integer course : graph.get(preCourse)) {
+		// 建立入度 preCourse -> course(course indegree++)
+		for (Integer preCourse : preToFollow.keySet())
+			for (Integer course : preToFollow.get(preCourse))
 				indegreeOfCourse[course]++;
-			}
-		}
 
 		// 将所有入度为 0 的点，也就是那些没有任何依赖的点，放到宽度优先搜索的队列中
 		int count = 0;
@@ -45,7 +44,7 @@ public class CourseSchedule {
 
 		while (!queue.isEmpty()) {
 			int precourse = queue.poll();
-			for (Integer course : graph.get(precourse)) {
+			for (Integer course : preToFollow.get(precourse)) {
 				indegreeOfCourse[course]--;
 				if (indegreeOfCourse[course] != 0) continue;
 				queue.offer(course);

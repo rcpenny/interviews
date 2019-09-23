@@ -66,7 +66,7 @@ public class SerializeDeserializeBinaryTree {
         if (!isLeftChild) queue.peek().right = node;
         queue.offer(node);
       }
-      // 还在处理左孩子的话，下一个要处理右孩子，不能poll
+      // 当前queue peek node的right child也接上了，可以处理下一个node了
       if (!isLeftChild) queue.poll();
       isLeftChild = !isLeftChild;
 		}

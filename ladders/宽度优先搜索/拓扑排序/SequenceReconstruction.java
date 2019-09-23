@@ -5,8 +5,6 @@ import java.util.List;
 import java.util.Queue;
 
 /** 
- * https://www.lintcode.com/problem/sequence-reconstruction/
- * 
  * 判断是否序列 org 能唯一地由 seqs重构得出. org是一个由从1到n的正整数排列而成的序列，
  * 1 ≤ n ≤ 10^4。 重构表示组合成seqs的一个最短的父序列 (意思是，一个最短的序列使得所有 seqs里的序列都是它的子序列).
  * 判断是否有且仅有一个能从 seqs重构出来的序列，并且这个序列是org
@@ -18,6 +16,7 @@ import java.util.Queue;
  * 
  * 求是否存在且仅存在一个拓扑序 Queue中最多同时只有1个节点
  */
+
 public class SequenceReconstruction {
   public boolean sequenceReconstruction(int[] org, int[][] seqs) {
 		// 建有向图 (pre_seq -> post_seqs)

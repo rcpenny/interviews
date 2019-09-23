@@ -5,10 +5,9 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 /**
- * https://www.lintcode.com/problem/course-schedule-ii/
  * 求任意1个拓扑序（Topological Order）
  * 
- * 你需要去上n门九章的课才能获得offer，这些课被标号为 0 到 n-1 。
+ * 你需要去上n课，这些课被标号为 0 到 n-1 。
  * 有一些课程需要“前置课程”，比如如果你要上课程0，你需要先学课程1
  * 我们用一个匹配来表示他们： [0,1]
  * 给你课程的总数量和一些前置课程的需求，返回你为了学完所有课程所安排的学习顺序。
@@ -22,7 +21,9 @@ public class CourseSchedule2 {
 
 		// 建立图 preCourse -> {following course numbers}
 		// 忘了这一步造成null pointer exception
-		for (int i = 0; i < numCourses; i++) graph.put(i, new ArrayList<Integer>());
+		for (int i = 0; i < numCourses; i++)
+			graph.put(i, new ArrayList<Integer>());
+		
 		for (int[] pair : prerequisites) {
 			int course = pair[0];
 			int preCourse = pair[1];
@@ -30,11 +31,9 @@ public class CourseSchedule2 {
 		}
 
 		// 建立入度
-		for (Integer preCourse : graph.keySet()) {
-			for (Integer course : graph.get(preCourse)) {
+		for (Integer preCourse : graph.keySet())
+			for (Integer course : graph.get(preCourse))
 				indegreeOfCourse[course]++;
-			}
-		}
 
 		// 将所有入度为 0 的点，也就是那些没有任何依赖的点，放到宽度优先搜索的队列中
 		int count = 0;
