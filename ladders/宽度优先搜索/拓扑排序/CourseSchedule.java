@@ -15,10 +15,10 @@ import java.util.Queue;
 public class CourseSchedule {
 
 	public boolean canFinish(int numCourses, int[][] prerequisites) {
-		HashMap<Integer, List<Integer>> preToFollow = new HashMap<>(); 
-		int[] indegreeOfCourse = new int[numCourses];
 
 		// 建立图
+		HashMap<Integer, List<Integer>> preToFollow = new HashMap<>(); 
+
 		for (int i = 0; i < numCourses; i++)
 			preToFollow.put(i, new ArrayList<Integer>());
 		
@@ -29,6 +29,8 @@ public class CourseSchedule {
 		}
 
 		// 建立入度 preCourse -> course(course indegree++)
+		int[] indegreeOfCourse = new int[numCourses];
+
 		for (Integer preCourse : preToFollow.keySet())
 			for (Integer course : preToFollow.get(preCourse))
 				indegreeOfCourse[course]++;
@@ -36,12 +38,14 @@ public class CourseSchedule {
 		// 将所有入度为 0 的点，也就是那些没有任何依赖的点，放到宽度优先搜索的队列中
 		int count = 0;
 		Queue<Integer> queue = new LinkedList<>();
+
 		for (int i = 0; i < numCourses; i++) {
 			if (indegreeOfCourse[i] != 0) continue;
 			queue.offer(i);
 			count++;
 		}
 
+		// BFS TOPO
 		while (!queue.isEmpty()) {
 			int precourse = queue.poll();
 			for (Integer course : preToFollow.get(precourse)) {

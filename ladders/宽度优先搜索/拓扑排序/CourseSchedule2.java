@@ -16,11 +16,10 @@ import java.util.Queue;
 
 public class CourseSchedule2 {
 	public int[] findOrder(int numCourses, int[][] prerequisites) {
-		HashMap<Integer, List<Integer>> graph = new HashMap<>(); 
-		int[] indegreeOfCourse = new int[numCourses];
-
 		// 建立图 preCourse -> {following course numbers}
 		// 忘了这一步造成null pointer exception
+		HashMap<Integer, List<Integer>> graph = new HashMap<>(); 
+
 		for (int i = 0; i < numCourses; i++)
 			graph.put(i, new ArrayList<Integer>());
 		
@@ -31,6 +30,8 @@ public class CourseSchedule2 {
 		}
 
 		// 建立入度
+		int[] indegreeOfCourse = new int[numCourses];
+
 		for (Integer preCourse : graph.keySet())
 			for (Integer course : graph.get(preCourse))
 				indegreeOfCourse[course]++;
@@ -39,6 +40,7 @@ public class CourseSchedule2 {
 		int count = 0;
 		int[] result = new int[numCourses];
 		Queue<Integer> queue = new LinkedList<>();
+
 		for (int i = 0; i < numCourses; i++) {
 			if (indegreeOfCourse[i] != 0) continue;
 			queue.offer(i);
@@ -46,6 +48,7 @@ public class CourseSchedule2 {
 			count++;
 		}
 
+		// BFS Topo
 		while (!queue.isEmpty()) {
 			int preCourse = queue.poll();
 			for (Integer course : graph.get(preCourse)) {

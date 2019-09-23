@@ -21,7 +21,9 @@ public class SequenceReconstruction {
   public boolean sequenceReconstruction(int[] org, int[][] seqs) {
 		// 建有向图 (pre_seq -> post_seqs)
 		HashMap<Integer, List<Integer>> graph = new HashMap<>();
-		for (int i = 0; i < org.length; i++) graph.put(i, new ArrayList<>());
+		for (int i = 0; i < org.length; i++)
+			graph.put(i, new ArrayList<>());
+		
 		for (int[] seq : seqs) {
 			int pre_seq = seq[0];
 			int post_seq = seq[1];
@@ -30,13 +32,12 @@ public class SequenceReconstruction {
 
 		// 建立入度
 		int[] indegrees = new int[org.length];
-		for (int pre_seq : graph.keySet()) {
-			for (int post_seq : graph.get(pre_seq)) indegrees[post_seq - 1]++;
-		}
+		for (int pre_seq : graph.keySet())
+			for (int post_seq : graph.get(pre_seq))
+				indegrees[post_seq - 1]++;
 
 		// 将所有入度为 0 的点，也就是那些没有任何依赖的点，放到宽度优先搜索的队列中
 		// 其实这道题就是看同时入度为0的seq是否只有一个,或者说queue的size一直为1
-		// 这道题做的不对。。有很多问题要考虑。还有corner case
 		Queue<Integer> queue = new LinkedList<>();
 		for (int orgNum = 1; orgNum <= org.length; orgNum++) {
 			if (indegrees[orgNum - 1] == 0) queue.offer(orgNum);
