@@ -12,38 +12,29 @@ import java.util.List;
  * 解释： 8 = 2 x 2 x 2 = 2 x 4
  */
 
- @Todo("这个写法费时，重写，不用generate 所有因数... 递归时直接除就完事了")
 public class Factorization {
-  public List<List<Integer>> getFactors(int n) {
-    List<List<Integer>> results = new ArrayList<>();
-    if (n < 2) return results;
+	public List<List<Integer>> getFactors(int n) {
+		List<List<Integer>> result = new ArrayList<>();
 
-		int[] factors = allFactorsInAscendOrder(n);
-		factorize(factors, 0, n, new ArrayList<>(), results);
+		factorize(n, 2, new ArrayList<>(), result);
+		
+		return result;
+	}
 
-    return results;
-  }
-
-  private void factorize(int[] factors, int startIndex, int n, 
-    List<Integer> list, List<List<Integer>> results) {
-		if (n == 1) results.add(new ArrayList<>(list));
+	private void factorize(int n, int start, List<Integer> comb, List<List<Integer>> result) {
+		// 避免n的情况 8 -> [8]
+		if (n == 1 && comb.size() > 1) {
+			result.add(new ArrayList<>(comb));
+		}
 		if (n <= 1) return;
 
-    for (int i = startIndex; i < factors.length; i++) {
-      // 12 / 2 / 2 / 2 / 2 = 1 :)
-      if (n % factors[i] != 0) continue;
-      list.add(factors[i]);
-      factorize(factors, i,  n / factors[i], list, results); 
-      list.remove(list.size() - 1);
-    }
-  }
+		// 有顺序，从start开始，到 n结束
+		for (int i = start; i <= n; i++) {
+			if (n % i != 0) continue;
 
-  private int[] allFactorsInAscendOrder(int n) {
-    List<Integer> list = new ArrayList<>();
-    for (int i = 2; i <= n / 2; i++) if (n % i == 0) list.add(i);
-    Collections.sort(list);
-    int[] factors = new int[list.size()];
-    for (int i = 0; i < list.size(); i++) factors[i] = list.get(i);
-    return factors;
-  }
+			comb.add(i);
+			factorize(n / i, i, comb, result);
+			comb.remove(comb.size() - 1);
+		}
+	}
 }
