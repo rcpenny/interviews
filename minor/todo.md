@@ -1,7 +1,6 @@
-隔夜处理面经
-1. DB transaction
-
-2. 自我介绍
+1. 项目介绍
+3. 面经 和 ladder复习
+2. DB transaction
 
 partition two pointers
 tree non-recursion traversal

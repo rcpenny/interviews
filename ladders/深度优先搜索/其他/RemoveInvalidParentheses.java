@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Remove the minimum number of invalid parentheses 
  * in order to make the input string valid. 
@@ -8,9 +11,8 @@
  * Output:
  * ["(a)()()", "(a())()"]
  */
-@Todo("later")
-public class RemoveInvalidParentheses {
+
+ public class RemoveInvalidParentheses {
   public List<String> removeInvalidParentheses(String s) {
-		
 	}
 }
