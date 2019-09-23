@@ -14,7 +14,7 @@ public class ConnectingGraph {
     }
   }
 
-  public void connect(int a, int b) {
+  public void connect(int a, int b) { // union(a, b)
     int root_a = find(a);
     int root_b = find(b);
     if (root_a != root_b) {
