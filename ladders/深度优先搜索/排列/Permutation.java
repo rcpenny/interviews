@@ -26,7 +26,7 @@ public class Permutation {
 
 		// 拆解：从头开始扫，哪些数字可以选
 		for (int i = 0; i < nums.length; i++) {
-			if (visited[i]) continue; // 进入递归的条件：这个位置的数字是否被选过
+			if (visited[i]) continue; // 进入递归的条件：这个位置的数字没被选过
 
 			visited[i] = true;
 			list.add(nums[i]);

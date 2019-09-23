@@ -30,7 +30,7 @@ public class StringPermutation {
 
 		// 拆解：从头开始扫，哪些字母可以选
 		for (int i = 0; i < chars.length; i++) {
-			if (visited[i]) continue; // 进入递归的条件：这个位置的char是否被选过 && 该层是否以这个char开头过了
+			if (visited[i]) continue; // 进入递归的条件：这个位置的char没被选过 && 去重
 			if (i != 0 && chars[i] == chars[i - 1] && !visited[i - 1]) continue;
 
 			sb.append(chars[i]);
