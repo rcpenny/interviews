@@ -6,25 +6,46 @@
 // 输出：23
 
 // 学习decode string
-public class BasicCalculator {
-  public int calculate(String s) {
-		char[] array = s.toCharArray();
-		Stack<Object> stack = new Stack<>();
+class BasicCalculator {
+	public int calculate(String s) {
+		Stack<Integer> stack = new Stack<Integer>();
 
-		int num = 0;
-		for (int i = 0; i < array.length; i++) {
-			char cur = array[i];
+		int operand = 0;
+		int result = 0; // For the on-going result
+		int sign = 1;  // 1 means positive, -1 means negative
 
-			if (cur == ' ') continue;
-			if (Character.isDigit(cur)) {
-				num = num * 10 + (cur - '0');	
-				continue;
-			}
-
-			// case when char is ( ) + -
-			if (cur == '(') {
-				stack.push(c)
+		for (int i = 0; i < s.length(); i++) {
+			char ch = s.charAt(i);
+			if (Character.isDigit(ch)) {
+				operand = 10 * operand + (ch - '0');
+			} 
+			
+			else if (ch == '+') {
+				result += sign * operand;
+				sign = 1;
+				operand = 0;
+			} 
+			
+			else if (ch == '-') {
+				result += sign * operand;
+				sign = -1;
+				operand = 0;
+			} 
+			
+			else if (ch == '(') {
+				stack.push(result);
+				stack.push(sign);
+				sign = 1;
+				result = 0;
+			} 
+			
+			else if (ch == ')') {
+				result += sign * operand;
+				result *= stack.pop();
+				result += stack.pop();
+				operand = 0;
 			}
 		}
+		return result + (sign * operand);
 	}
 }
