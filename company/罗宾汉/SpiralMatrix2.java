@@ -16,25 +16,25 @@ public class SpiralMatrix2 {
 		int[][] matrix = new int[n][n];
 		int x = 0, y = 0, i = 0;
 		int count = 1;
-		int len = n - 1;
+		int len = n;
 
-		while (len >= 1) {
-			for (i = 1; i <= len; i++) {
+		while (len > 0) {
+			for (i = 0; i < len - 1; i++) {
 				matrix[x][y++] = count;
 				count++;
 			}
 
-			for (i = 1; i <= len; i++) {
+			for (i = 0; i < len - 1; i++) {
 				matrix[x++][y] = count;
 				count++;
 			}
 
-			for (i = 1; i <= len; i++) {
+			for (i = 0; i < len - 1; i++) {
 				matrix[x][y--] = count;
 				count++;
 			}
 
-			for (i = 1; i <= len; i++) {
+			for (i = 0; i < len - 1; i++) {
 				matrix[x--][y] = count;
 				count++;
 			}
@@ -44,7 +44,7 @@ public class SpiralMatrix2 {
 			len -= 2;
 		}
 
-		if (len == 0) matrix[n/2][n/2] = count;
+		if (n % 2 != 0) matrix[n/2][n/2] = count;
 
 		return matrix;
   }

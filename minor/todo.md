@@ -1,6 +1,3 @@
-1. 面经
-2. DB transaction
-
 周末复习公司题目
 ladder欠缺
 动态规划

@@ -18,7 +18,7 @@ class SpiralMatrix {
 
     if (matrix == null || matrix.length == 0) return result;
 
-    int m = matrix.length;
+    int m = matrix.length; // 取边长好，缩到最后好判断
     int n = matrix[0].length;
 
     int x = 0; 
