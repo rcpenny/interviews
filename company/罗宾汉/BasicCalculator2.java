@@ -10,32 +10,36 @@ import java.util.Stack;
 public class BasicCalculator2 {
   public int calculate(String s) {
     if (s == null || s.length() == 0) return 0;
-
-    Stack<Integer> stack = new Stack<Integer>();
     
-    int num = 0;
+    Stack<Integer> stack = new Stack<>();
+		
+		// 第一个sign by default +
     char sign = '+';
+    
+    int number = 0;
+    for (int i = 0; i < s.length(); i++) {
+      char c = s.charAt(i);
       
-    for(int i = 0; i < s.length(); i ++) {
-      char ch = s.charAt(i);
-      
-      if (Character.isDigit(ch))
-        num = num * 10 + ch - '0';
-
-      if ((!Character.isDigit(ch) && ' ' != ch) || i == s.length() - 1) {
-        if(sign == '-') stack.push(-num);
-        else if(sign == '+') stack.push(num);
-        else if(sign == '*') stack.push(stack.pop() * num);
-        else if(sign == '/') stack.push(stack.pop() / num);
+      if (Character.isDigit(c)) {
+        number = number * 10 + c - '0';
+      }
+			
+			// 最后一个字符，铁要扔进去计算。因为一定是number 不能再继续放在上个if里面判断了
+      if ((!Character.isDigit(c) && c != ' ') || i == s.length() - 1) {
+        if (sign == '+') stack.push(number);
+        if (sign == '-') stack.push(-number);
         
-        sign = s.charAt(i);
-        num = 0;
+        if (sign == '*') stack.push(stack.pop() * number);
+        if (sign == '/') stack.push(stack.pop() / number);
+        
+        sign = c;
+        number = 0;
       }
     }
-  
+    
     int result = 0;
     for (int i : stack) result += i;
     
     return result;
-  }  
+  }
 }
