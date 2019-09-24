@@ -22,13 +22,16 @@ public class MaximalRectangle {
 		int[][] height = new int[matrix.length][matrix[0].length];
 
 		// generate height[][] O(m * n)
-		for (int i = 0; i < matrix[0].length; i++) height[0][i] = matrix[0][i] ? 1 : 0;
-		for (int i = 0; i < matrix[0].length; i++) { // column is i
-			for (int j = 1; j < matrix.length; j++) if (matrix[j][i]) height[j][i] = 1 + height[j - 1][i];				
-		}
+		for (int i = 0; i < matrix[0].length; i++) 
+			height[0][i] = matrix[0][i] ? 1 : 0;
+		
+		for (int i = 0; i < matrix[0].length; i++) // column is i
+			for (int j = 1; j < matrix.length; j++) 
+				if (matrix[j][i]) height[j][i] = 1 + height[j - 1][i];				
 
 		// 以每行作为直方图底部
-		for (int i = 0; i < height.length; i++) largest(height[i]);
+		for (int i = 0; i < height.length; i++) 
+			largest(height[i]);
 
 		return max;
 	}
