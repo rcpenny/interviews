@@ -2,10 +2,10 @@
 3. 面经 和 ladder复习
 2. DB transaction
 
-// dfs revisit
 
-partition two pointers
-tree non-recursion traversal
+hw
+dfs revisit
+哈希， 动态规划
 
 
 
