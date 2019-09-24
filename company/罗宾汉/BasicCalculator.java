@@ -13,9 +13,9 @@ class BasicCalculator {
 		Stack<Integer> numbers = new Stack<Integer>();
 		Stack<Integer> signs = new Stack<>();
 
-		int operand = 0;
 		int result = 0; // For the on-going result
-		int sign = 1;  // 1 means positive, -1 means negative
+		int operand = 0;
+		int sign = 1;  // 1 means positive, -1 means negative/multi???
 
 		// 第一个sign by default是 +
 		for (int i = 0; i < s.length(); i++) {
@@ -37,7 +37,7 @@ class BasicCalculator {
 			} 
 			
 			// 碰到(, numbers加入之前的运行结果, signs加入(前的运算符
-			// result, sign清零，开启这个()中的运算
+			// result, sign清零 ，开启这个()中的运算
 			else if (ch == '(') {
 				numbers.push(result);
 				signs.push(sign);
@@ -45,6 +45,7 @@ class BasicCalculator {
 				sign = 1;
 			} 
 			
+			// 结束这个()中的运算，
 			else if (ch == ')') {
 				result = result + sign * operand;
 				result = result * signs.pop();
