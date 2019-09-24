@@ -16,29 +16,35 @@ public class PourWater {
     if (heights == null || heights.length == 0 || V == 0) return heights;
     
     for (int m = 0; m < V; m++) {
-      // index代表当前最低点
-      int index = K;
+      int lowest_index = K;
       
       // 向左搜
       for (int i = K - 1; i >= 0; i--) {
-        if (heights[i] > heights[index]) break;
-        if (heights[i] < heights[index]) index = i;
-        // if heights[i] == heights[index], 保持原最低点index
+        if (heights[i] > heights[lowest_index]) break;
+        if (heights[i] < heights[lowest_index]) lowest_index = i;
+        // if heights[i] == heights[lowest_index] 保持原最低点lowest_index
       }
       
-      if (index != K) {
-        heights[index]++;
+      if (lowest_index < K) {
+        heights[lowest_index]++;
         continue;
       }
-      
+			
+			lowest_index = K;
       // 向右搜
       for (int i = K + 1; i < heights.length; i++) {
-        if (heights[i] > heights[index]) break;
-        if (heights[i] < heights[index]) index = i;
-        // if heights[i] == heights[index], 保持原最低点index
-      }
+        if (heights[i] > heights[lowest_index]) break;
+        if (heights[i] < heights[lowest_index]) lowest_index = i;
+        // if heights[i] == heights[lowest_index], 保持原最低点lowest_index
+			}
+			
+			if (lowest_index > K) {
+				heights[lowest_index]++;
+        continue;
+			}
 
-      heights[index]++;
+			// self add one height
+      heights[K]++;
     }
 
     return heights;
