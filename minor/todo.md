@@ -1,7 +1,7 @@
 1. 项目介绍
 2. 面经
 3. DB transaction
-哈希， 动态规划
+动态规划
 
 周末复习公司题目 与sys design
 

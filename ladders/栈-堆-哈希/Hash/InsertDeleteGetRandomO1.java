@@ -33,10 +33,13 @@ public class InsertDeleteGetRandomO1 {
 
 		int indexOfval = valueToIndex.get(val);
 		int last = list.get(list.size() - 1);
+
 		list.set(indexOfval, last);
 		list.remove(list.size() - 1);
+		
 		valueToIndex.remove(val);
 		valueToIndex.put(last, indexOfval);
+		
 		return true;
 	}
 

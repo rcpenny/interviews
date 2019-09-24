@@ -10,10 +10,7 @@ class ListNode {
 	}
 }
 
-
-
 public class LRUCache {
-
 	private int capacity;
 	private int size;
 

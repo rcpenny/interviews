@@ -34,6 +34,7 @@ public class LoadBalancer {
 
     cluster.set(indexOfServerId, last);
     cluster.remove(cluster.size() - 1);
+  
     idToIndex.remove(server_id);
     idToIndex.put(last, indexOfServerId);
   }

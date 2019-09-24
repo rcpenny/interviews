@@ -7,6 +7,7 @@ import java.util.Set;
 // 如果找不到这个终止数字, 返回 -1.
 
 // 面试官期望的解法：使用 Hash & Linked List 处理 Data Stream 的问题
+
 class ListNode {
 	public int val;
 	public ListNode next;
@@ -20,10 +21,13 @@ class ListNode {
 public class FristUniqNumInDataStream {
   public int firstUniqueNumber(int[] nums, int number) {
 		DataStream ds = new DataStream();
+
 		for (int i = 0; i < nums.length; i++) {
 			ds.add(nums[i]);
-			if (nums[i] == number) return ds.firstUnique();
+			if (nums[i] == number)
+				return ds.firstUnique();
 		}
+
 		return -1;
 	}
 }
