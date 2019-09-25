@@ -32,19 +32,19 @@ public class Backpack2 {
 			f[0][w] = -1; // 前0个拼不出重量w
 
 		// 用于打印路径，记录f做选择选了谁
-		int[][] pi = new int[n + 1][m + 1];
+		// int[][] pi = new int[n + 1][m + 1];
 		
 		for (int i = 1; i <= n; i++) {
 			for (int w = 0; w <= m; w++) {
 				f[i][w] = f[i - 1][w]; // not using item i - 1
-				pi[i][w] = 0; // 不用 item i - 1
+				// pi[i][w] = 0; // 不用 item i - 1
 
 				if (w >= A[i - 1] && f[i-1][w - A[i - 1]] != -1) // using item i - 1
 					f[i][w] = Math.max(f[i][w], f[i - 1][w - A[i - 1]] + V[i - 1]);
 
 					// 代表选了 item i - 1
-					if (f[i][w] == f[i - 1][w - A[i - 1]] + V[i - 1])
-						pi[i][w] = 1;
+					// if (f[i][w] == f[i - 1][w - A[i - 1]] + V[i - 1])
+						// pi[i][w] = 1;
 			}
 		}
 
