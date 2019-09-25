@@ -3,23 +3,17 @@
 
 public class StringToInteger {
 	public int atoi(String str) {
-		if(str == null) {
-			return 0;
-		}
+		if(str == null) return 0;
+
+		// eliminates leading and trailing spaces
 		str = str.trim();
-		if (str.length() == 0) {
-			return 0;
-		}
+		if (str.length() == 0) return 0;
 			
-		int sign = 1;
+		int sign = 1; // default is positive
 		int index = 0;
-		
-		if (str.charAt(index) == '+') {
-			index++;
-		} else if (str.charAt(index) == '-') {
-			sign = -1;
-			index++;
-		}
+
+		if (str.charAt(index) == '-') sign = -1;
+		index++;
 
 		long number = 0;
 		while (index < str.length()) {
@@ -27,6 +21,7 @@ public class StringToInteger {
 
 			if (tmp < '0' || tmp > '9') break;
 			number = number * 10 + (tmp - '0');
+
 			if (number > Integer.MAX_VALUE) break;
 			index++;
 		}
