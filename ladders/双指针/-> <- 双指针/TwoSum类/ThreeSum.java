@@ -13,6 +13,7 @@ import java.util.List;
  * The solution set must not contain duplicate triplets.
  */
 
+ //重点：去重
 public class ThreeSum {
   public List<List<Integer>> threeSum(int[] numbers) {
 		List<List<Integer>> results = new ArrayList<>();
