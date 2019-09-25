@@ -30,10 +30,8 @@ public class CourseSchedule {
 
 		// 建立入度 preCourse -> course(course indegree++)
 		int[] indegreeOfCourse = new int[numCourses];
-
-		for (Integer preCourse : preToFollow.keySet())
-			for (Integer course : preToFollow.get(preCourse))
-				indegreeOfCourse[course]++;
+		for (int[] pair : prerequisites)
+			indegreeOfCourse[pair[0]]++;
 
 		// 将所有入度为 0 的点，也就是那些没有任何依赖的点，放到宽度优先搜索的队列中
 		int count = 0;
