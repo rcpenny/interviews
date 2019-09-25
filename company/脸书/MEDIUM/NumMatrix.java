@@ -6,8 +6,6 @@
 public class NumMatrix {
 	private int[][] f = null;
 
-	private int[][] dp = null;
-
 	public NumMatrix(int[][] matrix) {
 		if (matrix == null || matrix.length == 0 || matrix[0].length == 0)
 			return;
