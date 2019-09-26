@@ -9,6 +9,7 @@
 // 3. 初态边界： f[0][0] = TRUE
 // 4. 顺序计算
 
+// 物品不可以重复选！
 public class Backpack {
   public int backPack(int m, int[] A) {
 		int n = A.length;
