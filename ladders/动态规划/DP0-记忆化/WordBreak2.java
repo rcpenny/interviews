@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.Set;
+
 // 给一字串s和单词的字典dict,在字串中增加空格来构建一个句子，并且所有单词都来自字典。
 // 返回所有有可能的句子
 

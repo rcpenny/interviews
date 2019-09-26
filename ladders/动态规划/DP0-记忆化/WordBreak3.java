@@ -16,9 +16,9 @@ import java.util.HashSet;
 // Ignore case
 
 // 坐标型
-// 1. 确定状态 f[i][j] 
-// 2. 转移方程 
-// 3. 初态边界  
+// 1. 确定状态 f[i][j]  number of forms between index i -> j
+// 2. 转移方程 f[i][j] = f[i][j] + sum of f[i][k] * f[k + 1][j]    i<=k<j
+// 3. 初态边界 f[i][j] = 1 when s.sub(i, j+1) in dict
 // 4. 顺序计算
 
 public class WordBreak3 {
