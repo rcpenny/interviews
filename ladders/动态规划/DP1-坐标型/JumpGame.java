@@ -15,24 +15,20 @@
 // 时间复杂度 = 状态数 * 状态转移代价 (n * n)
 
 public class JumpGame {
-	public boolean canJump(int[] A) {
-		int n = A.length;
-		if (n == 0) return false;
-
-		boolean[] f = new boolean[n];
-		f[0] = true;
-
-		for (int i = 1; i < n; i++) {
-			f[i]  = false;
-			for (int j = 0; j < i; j++) {
-				if (f[j] == false) continue;
-				if (A[j] + j < i) continue;
-
-				f[i] = true;
-				break;
-			}
-		}
-
-		return f[n - 1];
-	}
+  public boolean canJump(int[] nums) {
+    int n = nums.length;
+    
+    boolean[] f = new boolean[n];
+    f[0] = true;
+    
+    for (int i = 1; i < n; i++) {
+      for (int j = 0; j < i; j++) {
+        if (!f[j] || nums[j] + j < i) continue;
+        f[i] = true;
+        break;
+      }
+    }
+    
+    return f[n - 1];
+  }
 }

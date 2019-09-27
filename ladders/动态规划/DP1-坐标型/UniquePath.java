@@ -8,8 +8,8 @@
 // 4. 顺序计算: row by row, col by col
 
 public class UniquePath {
-  public int uniquePaths(int m, int n) {
-		int[][] f =  new int[m][n];
+	public int uniquePaths(int m, int n) {
+		int[][] f = new int[m][n];
 		
 		for (int i = 0; i < m; i++) {
 			for (int j = 0; j < n; j++) {

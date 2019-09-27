@@ -6,14 +6,13 @@
 // 8 = 8
 // 8 = 3 + 3 + 2
 // 8 = 2 + 2 + 2 + 2
+
 public class CoinChange2 {
-  public int change(int amount, int[] coins) {
-    if (amount == 0) return 0;
-    
+  public int change(int amount, int[] coins) {    
     int[] f = new int[amount + 1];
-    
     f[0] = 1;
 
+		// combination sum，所以外层是coins
     for (int coin : coins)
       for (int i = coin; i <= amount; i++)
         f[i] += f[i - coin];

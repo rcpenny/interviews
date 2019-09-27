@@ -36,11 +36,11 @@ public class UniquePath2 {
 			  
 				// 在第一行 与 第一列
 				if (i == 0 && j > 0) {
-					f[i][j] = f[i][j - 1];
+					f[0][j] = f[0][j - 1];
 					continue;
 				}
 				if (j == 0 && i > 0) {
-					f[i][j] = f[i - 1][j];
+					f[i][0] = f[i - 1][0];
 					continue;
 				}
 

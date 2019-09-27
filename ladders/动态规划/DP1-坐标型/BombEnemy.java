@@ -29,7 +29,7 @@ public class BombEnemy {
 				if (grid[i][j] == 'E') up[i][j] = 1;
 
 				// 不在最后一排
-				if (i + 1 < m) up[i][j] += up[i + 1][j]; 
+				if (i != m - 1) up[i][j] += up[i + 1][j]; 
 			}
 		}
 
@@ -39,7 +39,7 @@ public class BombEnemy {
 			  down[i][j] = 0;
 				if (grid[i][j] == 'W') continue;
 				if (grid[i][j] == 'E') down[i][j] = 1;
-				if (i - 1 >= 0) down[i][j] += down[i - 1][j];
+				if (i != 0) down[i][j] += down[i - 1][j];
 			}
 		}
 
@@ -49,7 +49,7 @@ public class BombEnemy {
 			  left[i][j] = 0;
 				if (grid[i][j] == 'W') continue;
 				if (grid[i][j] == 'E') left[i][j] = 1;
-				if (j - 1 >= 0) left[i][j] += left[i][j - 1];
+				if (j != 0) left[i][j] += left[i][j - 1];
 			}
 		}
 
@@ -59,7 +59,7 @@ public class BombEnemy {
 			  right[i][j] = 0;
 				if (grid[i][j] == 'W') continue;
 				if (grid[i][j] == 'E') right[i][j] = 1;
-				if (j + 1 < n) right[i][j] += right[i][j + 1];
+				if (j != n - 1) right[i][j] += right[i][j + 1];
 			}
 		}
 

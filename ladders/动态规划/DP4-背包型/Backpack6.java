@@ -14,6 +14,7 @@
 
 // 因为不用返回所有方案，所以不需要递归. combination sum 2
 
+// 就是coin change 2
 public class Backpack6 {
   public int backPackVI(int[] nums, int target) {
 		int n = nums.length;

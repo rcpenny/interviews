@@ -7,41 +7,41 @@
 // 计算顺序: 0 -> len
 
 public class MaxProductSubarray {
-	public int maxProduct(int[] nums) {
-		if (nums.length == 1) return nums[0];
-		
-		int len = nums.length;
-		int[] p = new int[len];  // 其实合并成f[len][2]就好了
-		int[] n = new int[len];  // 不过pos neg 还挺清楚
-
-		// 初始化
-		if (nums[0] >= 0) 
-			p[0] = nums[0];
-		else 
-			n[0] = nums[0];
-		
-		int max = Math.max(p[0], n[0]);
-
-		for (int i = 1; i < len; i++) {
-			int cur = nums[i];
-
-			if (cur == 0) {
-				p[i] = 0;
-				n[i] = 0;
-				continue;
-			}
-
-			if (cur > 0) {
-				p[i] = Math.max(p[i - 1] * cur, cur); // 特殊情况：如果p[i-1]=0, cur等于7
-				n[i] = Math.min(n[i - 1] * cur, 0);
-			} else if (cur < 0) {
-				p[i] = Math.max(n[i - 1] * cur, 0);
-				n[i] = Math.min(p[i - 1] * cur, cur); // 特殊情况：如果p[i-1]=0, cur等于-7
-			}
-
-			max = Math.max(max, p[i]);
-		}
-
-		return max;
-	}
+  public int maxProduct(int[] nums) {
+    if (nums.length == 1) return nums[0];
+    
+    int n = nums.length;
+    
+    int[] pos = new int[n];
+    int[] neg = new int[n];
+    
+    if (nums[0] > 0) pos[0] = nums[0];
+    else neg[0] = nums[0];
+    
+    int max = pos[0];
+    
+    for (int i = 1; i < n; i++) {
+      int cur = nums[i];
+      
+      if (cur == 0) {
+        pos[0] = 0;
+        neg[0] = 0;
+      }
+      
+      // 注意 pos[i - 1] 或者 neg[i - 1]是0 带来的影响
+      else if (cur > 0) {
+        pos[i] = Math.max(pos[i - 1] * cur, cur);
+        neg[i] = neg[i - 1] * cur;
+      }
+      
+      else if (cur < 0) {
+        pos[i] = neg[i - 1] * cur;
+        neg[i] = Math.min(pos[i - 1] * cur, cur);
+      }
+      
+      max = Math.max(max, pos[i]);
+    }
+    
+    return max;
+  }
 }

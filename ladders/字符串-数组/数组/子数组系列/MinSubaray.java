@@ -5,16 +5,16 @@ import java.util.List;
 
 public class MinSubaray {
   public int minSubArray(List<Integer> nums) {
-		int prefix_sum = 0;
+		int cur_sum = 0;
 		int max_sum_sofar = 0;
 		int min_sum = Integer.MAX_VALUE;
-
-		for (int i = 0; i < nums.size(); i++) {
-			prefix_sum = prefix_sum + nums.get(i);
-			min_sum = Math.min(min_sum, prefix_sum - max_sum_sofar);
-			max_sum_sofar = Math.max(max_sum_sofar, prefix_sum);
+		
+		for (Integer i : nums) {
+			cur_sum += i;
+			min_sum = Math.min(min_sum, cur_sum - max_sum_sofar);
+			max_sum_sofar = Math.max(max_sum_sofar, cur_sum);
 		}
-
+		
 		return min_sum;
 	}
 }
