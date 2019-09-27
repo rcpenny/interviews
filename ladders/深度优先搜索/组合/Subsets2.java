@@ -27,8 +27,7 @@ public class Subsets2 {
 
 		// 拆解：每个for就是递归树的一层，从start开始查
 		for (int i = start; i < nums.length; i++) {
-			// 进入递归的条件：这里是 i != start 去重的起点变了,再树的同一层级去重
-			if (i != start && nums[i] == nums[i - 1]) continue;
+			if (i > start && nums[i] == nums[i - 1]) continue;
 			subset.add(nums[i]);
 			dfs(nums, i + 1, subset, results);
 			subset.remove(subset.size() - 1);
