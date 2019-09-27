@@ -11,4 +11,3 @@ binary tree non-recursion
 
 tiny URL revisit
 word break剪纸
-Minimum Area Rectangle
