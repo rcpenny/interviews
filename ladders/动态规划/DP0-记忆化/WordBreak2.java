@@ -10,6 +10,35 @@ import java.util.Set;
 
 public class WordBreak2 {
   public List<String> wordBreak(String s, Set<String> wordDict) {
-		
-	}
+    Map<String, ArrayList<String>> memo = new HashMap<String, ArrayList<String>>();
+    
+    return search(s, wordDict, memo);
+  }
+  
+  private List<String> search(String s, Set<String> dict, Map<String, List<String>> memo) {
+    if (memo.containsKey(s)) return memo.get(key);
+
+    // s可以组合出的可能性
+    List<String> result = new ArrayList<>();
+    if (s.length() == 0) return result;
+
+    // 拆解
+    if (dict.contains(s)) result.add(s);
+
+    for (int len = 1; len < s.length(); i++) {
+      String prefix = s.substring(0, len);
+      if (!dict.contains(prefix)) continue; // 进入递归条件：dict 
+
+      String suffix = s.substring(len);
+
+      List<String> suffix_candidates = search(suffix, dict, memo);
+
+      for (String candi : suffix_candidates)
+        result.add(prefix + " " + candi);
+    }
+
+    memo.put(s, result);
+
+    return result;
+  }
 }
