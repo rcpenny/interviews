@@ -30,7 +30,7 @@ public class CombinationSum2 {
 		// 拆解：这层树可以选的数字，一个个选
 		for (int i = start; i < candiates.length; i++) {
 			// 进入递归的条件：去重，控制在这个层级（树）
-			if (i != start && candiates[i] == candiates[i - 1]) continue;
+			if (i > start && candiates[i] == candiates[i - 1]) continue;
 			comb.add(candiates[i]);
 			dfs(candiates, target - candiates[i], i + 1, comb, results); // i + 1，此数字不能被重复选
 			comb.remove(comb.size() - 1);

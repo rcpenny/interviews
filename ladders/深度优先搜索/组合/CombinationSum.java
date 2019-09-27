@@ -35,7 +35,7 @@ public class CombinationSum {
 		// 拆解：这层树可以选的数字，一个个选
 		for (int i = start; i < candidates.length; i++) {
 			// 进入递归的条件：去重，控制在这个层级（树）
-			if (i != start && candidates[i] == candidates[i - 1]) continue;
+			if (i > start && candidates[i] == candidates[i - 1]) continue;
 
 			comb.add(candidates[i]);
 			dfs(candidates, target - candidates[i], i, comb, results); // i 可以被重复选
