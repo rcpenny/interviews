@@ -17,6 +17,7 @@ public class MinDepthBinaryTree {
 		// left或right是null的情况，不构成depth
 		if (left == 0) return right + 1;
 		if (right == 0) return left + 1;
+
 		return Math.min(left, right) + 1;
 	}
 }

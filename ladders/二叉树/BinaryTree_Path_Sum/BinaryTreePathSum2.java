@@ -32,7 +32,7 @@ public class BinaryTreePathSum2 {
     path.add(node.val);
     int tmp_sum = 0;
 
-    // 从当前level往root找，sum为target的list
+    // 每往下一层level，就从当前level往root找，sum为target的list
     for (int i = level; i >= 0; i--) {
       tmp_sum += path.get(i);
       if (tmp_sum == target) {

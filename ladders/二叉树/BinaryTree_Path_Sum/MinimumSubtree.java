@@ -1,6 +1,4 @@
-/**
- * https://www.lintcode.com/problem/minimum-subtree/
- * 
+/** 
  * 给一棵二叉树, 找到和为最小的子树, 返回其根节点。
  * 也可以用result type试着做一下
  */
