@@ -12,9 +12,11 @@ public class BestTimeToBuySellStock2 {
 		int buy = -prices[0];
 		int sell = 0;
 
+		// hmmmm不怎么get到这个解法
 		for (int i = 1; i < prices.length; i++) {
-			sell = Math.max(sell, buy + prices[i]); // 卖 前 有买
-			buy = Math.max(buy, sell - prices[i]);  // 买 前 有卖
+			int cur_price = prices[i];
+			sell = Math.max(sell, cur_price + buy); // 卖 前 有买
+			buy = Math.max(buy, sell - cur_price);  // 买 前 有卖
 		}
 		return sell;
 	}

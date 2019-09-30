@@ -9,6 +9,7 @@
 // 初态边界: f[0][0] = 0, f[0][1] = 0, 
 // 计算顺序: 左向右
 
+// 这题有点意思的
 public class DigitalFlip {
 	public int flipDigit(int[] A) {
 		int n = A.length;
@@ -21,16 +22,16 @@ public class DigitalFlip {
 			for (int j = 0; j < 2; j++) {  // is 0 or 1
 				f[i][j] = Integer.MAX_VALUE;
 
-				// A[i - 1]是不是就是0或1，需不需要flip
-				int t = 0;
+				// A[i - 1]是不是原本就是0或1（需不需要flip）
+				int flip = 0;
 				if (A[i - 1] != j) {
-					t = 1; 
+					flip = 1; 
 				}
 
 				// 枚举前一位 A[i - 2] -> k
 				for(int k = 0; k < 2; k++) {
 					if (k == 0 && j == 1) continue; // “01”串，不合规，不进行min操作
-					f[i][j] = Math.min(f[i][j], f[i - 1][k] + t);
+					f[i][j] = Math.min(f[i][j], f[i - 1][k] + flip);
 				}
 			}
 		}
