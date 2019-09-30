@@ -6,26 +6,28 @@
 
 // 就是root 是3， root.left=4, 算合法可+1
 public class BTLongestConsecSeq {
-  private int longestSeq = 0;
+  private int max = 0;
 
   public int longestConsecutive(TreeNode root) {
-    helper(root, 1);
-    return longestSeq;
+    search(root, 1);
+    return max;
   }
-
-  private void helper(TreeNode node, int curLength) {
+  
+  private void search(TreeNode node, int cur_height) {
     if (node == null) return;
-    longestSeq = Math.max(curLength, longestSeq);
-
-    if (node.left == null || node.left.val != node.val + 1)
-      helper(node.left, 1);
-    else
-      helper(node.left, curLength + 1);
-
     
-    if (node.right == null || node.right.val != node.val + 1)
-      helper(node.right, 1);
+    max = Math.max(max, cur_height);
+    
+    // go left
+    if (node.left != null && node.val + 1 == node.left.val)
+      search(node.left, cur_height + 1);
     else
-      helper(node.right, curLength + 1);
+      search(node.left, 1);
+    
+    // go right
+    if (node.right != null && node.val + 1 == node.right.val)
+      search(node.right, cur_height + 1);
+    else
+      search(node.right, 1);
   }
 }
