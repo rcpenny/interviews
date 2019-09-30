@@ -4,15 +4,6 @@
  * 最长的连续路径必须是从父亲节点到孩子节点（不能逆序）。
  */
 
-class TreeNode {
-	public int val;
-	public TreeNode left, right;
-	public TreeNode(int val) {
-		this.val = val;
-		this.left = this.right = null;
-	}
-}
-
 // 就是root 是3， root.left=4, 算合法可+1
 public class BTLongestConsecSeq {
   private int longestSeq = 0;
@@ -26,16 +17,15 @@ public class BTLongestConsecSeq {
     if (node == null) return;
     longestSeq = Math.max(curLength, longestSeq);
 
-    if (node.left == null || node.left.val != node.val + 1) {
+    if (node.left == null || node.left.val != node.val + 1)
       helper(node.left, 1);
-    } else {
+    else
       helper(node.left, curLength + 1);
-    }
+
     
-    if (node.right == null || node.right.val != node.val + 1) {
+    if (node.right == null || node.right.val != node.val + 1)
       helper(node.right, 1);
-    } else {
+    else
       helper(node.right, curLength + 1);
-    }
   }
 }

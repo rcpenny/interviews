@@ -4,15 +4,8 @@
  * 将一棵二叉树按照前序遍历拆解成为一个 假链表。
  * 所谓的假链表是说，用二叉树的 right 指针，来表示链表中的 next 指针。
  */
-class TreeNode {
-	public int val;
-	public TreeNode left, right;
-	public TreeNode(int val) {
-		this.val = val;
-		this.left = this.right = null;
-	}
-}
 
+// bravo哈哈哈哈哈
 public class FlattenBinaryTreeToLinkedList {
 
   public void flatten(TreeNode root) {

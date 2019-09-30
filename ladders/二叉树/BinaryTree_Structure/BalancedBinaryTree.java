@@ -56,9 +56,8 @@ public class BalancedBinaryTree {
 		int left_height = height(node.left);
 		int right_height = height(node.right);
 		
-		if (Math.abs(left_height - right_height) > 1) {
+		if (Math.abs(left_height - right_height) > 1)
 			balanced = false;
-		}
 		
 		return Math.max(left_height, right_height) + 1;
 	}
