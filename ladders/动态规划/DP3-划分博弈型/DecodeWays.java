@@ -17,18 +17,18 @@ public class DecodeWays {
 
 		f[0] = 1;
 
-		for (int i = 1; i < n + 1; i++) {
+		for (int i = 1; i <= n; i++) { // 也可以先确定f[1] f[2] 从i=3开始
 			f[i] = 0;
+
+			// 看前一个数字
+			if (array[i - 1] != '0') {
+				f[i] += f[i - 1];
+			}
 
 			// 看前两个数字
 			if (i > 1) {
 				if (array[i - 2] == '1' || (array[i - 2] == '2' && array[i - 1] <= '6'))
 				  f[i] += f[i - 2];
-			}
-
-			// 看前一个数字
-			if (array[i - 1] != '0') {
-				f[i] += f[i - 1];
 			}
 		}
 

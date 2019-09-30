@@ -7,8 +7,9 @@
 // 3. 初态边界  f[0] = 0
 // 4. 顺序计算  f[0] -> f[n]
 
-public class PalindromePartition2 {
 
+// f[i][j]代表i-j最小cuts的思路错了
+public class PalindromePartition2 {
 	public int minCut(String ss) {
 		char[] s = ss.toCharArray();
 		int n = s.length;
@@ -21,14 +22,14 @@ public class PalindromePartition2 {
 
 		for (int i = 1; i <= n; i++) {
 			f[i] = Integer.MAX_VALUE;
-			for (int j = 0; j < i; j++) {
-				if (palin[j][i - 1]) 
+			for (int j = 0; j < i; j++)
+				if (palin[j][i - 1])
 					f[i] = Math.min(f[i], f[j] + 1);
-			}
 		}
 
 		return f[n] - 1;
 	}
+
 
 	private boolean[][] calcPalins(char[] s) {
 		int n = s.length;
