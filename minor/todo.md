@@ -16,9 +16,10 @@ Design Twitter, Instagram, News Feeds API
 dp1 dp2
 bt_strut
 
-# company cleared
+# company cleared （做公司题时往ladder类型分类，思考关系）
 
 # sys cleared
+twitter,
 
 # ood cleared
 
