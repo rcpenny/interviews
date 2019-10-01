@@ -4,14 +4,15 @@
 3. 1个behavior question
 4. 一个amazon面经
 5. 一个google面经
-6. linkedin公司重刷
-7. 一个ladder重刷
+6. 一个LinkedIn面经
+7. linkedin公司重刷
+8. 一个ladder重刷
 
 Design Twitter, Instagram, News Feeds API
 
 # ladders cleared
 dp1 dp2 dp3
-bt_strut
+bt_strut, bt_sumpath
 
 # company cleared （做公司题时往ladder类型分类，思考关系）
 
