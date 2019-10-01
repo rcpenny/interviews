@@ -3,9 +3,15 @@ Oct Daily
 2. OOD
 3. BEHAVIOR QUESTIONS
 4. GOOGLE ONSITE
-5. ONE LADDER REVIEW
+5. LADDER REVIEW
 
-Design Instagram, News Feeds API
+# TODO tonight
+Design News Feeds API, sharding slide
+dp4 backpack
+电面review
+infra chapter 1 & 2
+OOD select 1
+behavior 准备亚麻第一个principle
 
 # ladders cleared
 dp1 dp2 dp3
@@ -20,7 +26,6 @@ twitter,
 
 
 LINKEDIN PREPS
-2. sys infra review 1 chapter/day
-3. 题库刷两遍
-
-1. 电面整理  after phone scheduled
+1. sys infra review 2 chapter/day
+2. 题库刷两遍
+3. 电面整理  after phone scheduled
