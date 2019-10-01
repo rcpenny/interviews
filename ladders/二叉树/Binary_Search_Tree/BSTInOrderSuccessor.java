@@ -2,14 +2,6 @@
  * 给定一个二叉查找树(什么是二叉查找树)，
  * 以及一个节点，求该节点在中序遍历的后继，如果没有则返回null
  */
-class TreeNode {
-	public int val;
-	public TreeNode left, right;
-	public TreeNode(int val) {
-		this.val = val;
-		this.left = this.right = null;
-	}
-}
 
 public class BSTInOrderSuccessor {
   public TreeNode inorderSuccessor(TreeNode root, TreeNode target) {

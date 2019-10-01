@@ -11,10 +11,10 @@
 // 3. 检验条件     : 检验能不能分完书
 
 public class CopyBook {
-
   public int copyBooks(int[] pages, int k) {
 		int lower = 0; // lower minutes
 		int upper = 0; // upper minutes
+
 		for (int page : pages) {
 			lower = Math.max(lower, page); // 最厚的一本书，木桶原理
 			upper += page; // 一个人复印所有书
