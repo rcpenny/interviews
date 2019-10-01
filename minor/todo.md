@@ -1,5 +1,5 @@
 每天任务
-1. 1个system design
+1. 1个system design and slides
 2. 1个OOD
 3. 1个behavior question
 4. 一个amazon面经
@@ -18,7 +18,5 @@ bt_strut, bt_sumpath
 
 # sys cleared
 twitter,
-
-# ood cleared
 
 # behave cleared
