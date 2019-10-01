@@ -20,6 +20,7 @@ twitter,
 
 
 LINKEDIN PREPS
-1. 电面整理
 2. sys infra review 1 chapter/day
 3. 题库刷两遍
+
+1. 电面整理  after phone scheduled
