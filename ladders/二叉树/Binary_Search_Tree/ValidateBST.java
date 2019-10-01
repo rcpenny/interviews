@@ -15,19 +15,19 @@ class TreeNode {
 class State {
 	int min;
 	int max;
-	boolean validBST;
-	public State(int min, int max, boolean validBST) {
+	boolean isBST;
+	public State(int min, int max, boolean isBST) {
 		this.min = min;
 		this.max = max;
-		this.validBST = validBST;
+		this.isBST = isBST;
 	}
 }
 
 public class ValidateBST {
 
-  public boolean isValidBST(TreeNode root) {
+  public boolean isisBST(TreeNode root) {
 		State rootState = getNodeState(root);
-		return rootState.validBST;
+		return rootState.isBST;
 	}
 
 	private State getNodeState(TreeNode node) {
@@ -36,8 +36,8 @@ public class ValidateBST {
 		State left = getNodeState(node.left);
 		State right = getNodeState(node.right);
 
-		// 先判断validBST为false的情况可以减少计算。
-		if (!left.validBST || !right.validBST) return new State(0, 0, false);
+		// 先判断isBST为false的情况可以减少计算。
+		if (!left.isBST || !right.isBST) return new State(0, 0, false);
 
 		// child是null的情况要判断
 		if (left.max >= node.val && node.left != null) return new State(0, 0, false);
