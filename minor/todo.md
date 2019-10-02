@@ -1,16 +1,13 @@
 # 十月日常
 1. SYS DESIGN CASE & SLIDES
-2. OOD
-3. BEHAVIOR QUESTIONS
-4. GOOGLE ONSITE
-5. LADDER REVIEW
+2. BEHAVIOR QUESTIONS
+3. GOOGLE ONSITE
+4. LADDER REVIEW
 
 # TODO tonight
 Design News Feeds API, sharding slide
-电面review
-infra chapter 1 & 2
-OOD select 1
 behavior 准备亚麻第一个principle
+infra chapter 1 & 2
 
 # ladders cleared
 dp1 dp2 dp3 dp4
