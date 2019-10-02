@@ -4,10 +4,15 @@
 3. GOOGLE ONSITE
 4. LADDER REVIEW
 
-# TODO tonight
-Design News Feeds API, sharding slide
-behavior 准备亚麻第一个principle
-infra chapter 1 & 2
+# TODO today
+morning: Design News Feeds API, sharding slide
+
+afternoon coding dp5
+电面整理  after phone scheduled
+
+
+
+infra chapter 1 & 2 
 
 # ladders cleared
 dp1 dp2 dp3 dp4
@@ -19,9 +24,3 @@ bt_strut, bt_sumpath, bst
 twitter,
 
 # behave cleared
-
-
-LINKEDIN PREPS
-1. sys infra review 2 chapter/day
-2. 题库刷两遍
-3. 电面整理  after phone scheduled
