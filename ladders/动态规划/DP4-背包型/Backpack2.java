@@ -39,7 +39,7 @@ public class Backpack2 {
 				f[i][w] = f[i - 1][w]; // not using item i - 1
 				// pi[i][w] = 0; // 不用 item i - 1
 
-				if (w >= A[i - 1] && f[i-1][w - A[i - 1]] != -1) // using item i - 1
+				if (w - A[i - 1] >= 0 && f[i-1][w - A[i - 1]] != -1) // using item i - 1
 					f[i][w] = Math.max(f[i][w], f[i - 1][w - A[i - 1]] + V[i - 1]);
 
 					// 代表选了 item i - 1

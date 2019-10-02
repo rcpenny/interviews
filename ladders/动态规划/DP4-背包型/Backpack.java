@@ -20,15 +20,16 @@ public class Backpack {
 		// 前0个物品拼不出重量w
 		for (int w = 1; w <= m; w++) f[0][w] = false;
 
+		// 对物品先进行循环
 		for (int i = 1; i <= n; i++) {
 			for (int w = 0; w <= m; w++) {
-				// case 1
+				// case 1 不用第i个物品
 				if (f[i - 1][w]) {
 					f[i][w] = true;
 					continue;
 				}
 
-				// case 2
+				// case 2  用第i个物品
 				if (w - A[i - 1] >= 0 && f[i - 1][w - A[i - 1]]) 
 					f[i][w] = true;
 					continue;

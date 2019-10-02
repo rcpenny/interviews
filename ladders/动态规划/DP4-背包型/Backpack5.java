@@ -1,4 +1,5 @@
-// 给出 n 个物品, 以及一个数组, nums[i] 代表第i个物品的大小, 保证大小均为正数, 正整数 target 表示背包的大小, 找到能填满背包的方案数。
+// 给出 n 个物品, 以及一个数组, nums[i] 代表第i个物品的大小, 保证大小均为正数, 
+// 正整数 target 表示背包的大小, 找到能填满背包的方案数。
 // 给出候选物品集合 [1,2,3,3,7] 以及 target 7
 // 结果的集合为:[7] [1,3,3]
 
@@ -17,13 +18,13 @@ public class Backpack5 {
 		f[0][0] = 1;
 		for (int w = 1; w <= target; w++) f[0][w] = 0;
 
-		// 二维数组画图想像
+		// 二维数组画图想像, 总是对物品先进行循环
 		for (int i = 1; i <= n; i++) {
 			for (int w = 0; w <= target; w++) {
-				// case 1
+				// case 1  不用ith number
 				f[i][w] += f[i - 1][w];
 
-				// case 2
+				// case 2   用ith number
 				if (w - nums[i - 1] >= 0)
 					f[i][w] += f[i - 1][w - nums[i - 1]];
 			}

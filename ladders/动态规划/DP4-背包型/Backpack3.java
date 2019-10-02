@@ -12,32 +12,21 @@
 
 // 完全背包
 public class Backpack3 {
-  public int backPackIII(int[] A, int[] V, int m) {
+	public int backPackIII(int[] A, int[] V, int m) {
 		int n = A.length;
-		if (n == 0) return 0;
+		int[][] f = new int[n + 1][m + 1];
 
-		int[] f = new int[m + 1];
-		int i, w;
-
-		f[0] = 0;
-		for (i = 1; i <= n; i++) 
-			f[i] = -1;
-
-		for (i = 1; i <= n; i++) {
-			for (w = A[i - 1]; w <= m; w++) {
-				// old: f[w]  f[i-1][w]
-				// new: f[w-A[i-1]] f[i][w - A[i-1]]
-				if (f[w - A[i - 1]] != -1) {
-					f[w] = Math.max(f[w], f[w - A[i - 1]] + V[i - 1]);
+		for (int i = 1; i <= n; ++i) {
+			for (int j = 0; j <= m; ++j) {
+				f[i][j] = f[i - 1][j];
+				
+				if (j - A[i - 1] >= 0) {
+					int value = f[i][j - A[i - 1]] + V[i - 1];
+					f[i][j] = Math.max(f[i][j], value);
 				}
 			}
 		}
 
-		int res = 0;
-		for (w = 0; w <= m; w++) {
-			if (f[w] != -1) res = Math.max(res, f[w]);
-		}
-
-		return res;
+		return f[n][m];
 	}
 }

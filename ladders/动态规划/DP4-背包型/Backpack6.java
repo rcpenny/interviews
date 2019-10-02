@@ -14,7 +14,7 @@
 
 // 因为不用返回所有方案，所以不需要递归. combination sum 2
 
-// 就是coin change 2
+// 就是coin change 2， 其实不就是一个步数类型很多的climb stairs么
 public class Backpack6 {
   public int backPackVI(int[] nums, int target) {
 		int n = nums.length;
@@ -24,13 +24,14 @@ public class Backpack6 {
 
 		// initialization, 那个数的值至少有一种可能性
 		f[0] = 0;
-		for (int i = 0; i < nums.length; i++)
+		for (int i = 0; i < nums.length; i++) {
 			f[nums[i]] = 1;
+		}
 
 		for (int w = 1; w <= target; w++)
-			for (int j = 0; j < nums.length; j++)
-				if (w - nums[j] > 0) 
-					f[w] += f[w - nums[j]];
+			for (int num : nums)
+				if (w - num > 0) 
+					f[w] += f[w - num];
 		
 		return f[target];
 	}
