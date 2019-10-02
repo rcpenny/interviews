@@ -5,14 +5,11 @@
 4. LADDER REVIEW
 
 # TODO today
-morning: Design News Feeds API, sharding slide
-
-afternoon coding dp5
-电面整理  after phone scheduled
-
-
-
+afternoon: Design News Feeds API, sharding slide
 infra chapter 1 & 2 
+
+tonight coding dp5, hash
+电面整理  after phone scheduled
 
 # ladders cleared
 dp1 dp2 dp3 dp4
