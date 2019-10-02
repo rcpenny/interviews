@@ -6,7 +6,6 @@
 
 # TODO today
 afternoon: Design News Feeds API, sharding slide
-infra chapter 1 & 2 
 
 tonight coding dp5, hash
 电面整理  after phone scheduled
