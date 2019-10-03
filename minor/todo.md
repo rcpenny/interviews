@@ -20,5 +20,7 @@ twitter, instagram
 
 # behave cleared
 
-Friday Afternoon
-电面整理  after phone scheduled
+
+
+
+全力准备linkedin电面
