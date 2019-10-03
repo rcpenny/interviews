@@ -1,61 +1,68 @@
 # system infra Q:
-虚拟内存，进程和线程，数据库事务和ACID，java的checked/unchecked exception
-final/finally/finalize的不同
-TCP和UDP的区别是什么
-Transaction的意思是什么。这个比较宽泛。我就回答了数据库里面的transaction
-上来就问process, thread的区别，要求用stack, queue解释。面试进一步问malloc() function的原理，又问了thread之间怎么communicate
-thread和process的区别，heap和stack，比较TCP和UDP
-NestedClass(static和non-static)怎么instantiate,什么是paging和page fault
-Write-back和Write-though Cache，follow up是哪一个比较快
-虚拟内存是啥，描述一下Java内存模型中的stack和heap
-TCP UDP 和 use case
-Java Object的理解 以及benefits
+Process vs Thread:
+thread和process的区别, 要求用stack, queue解释. how to chooese between them
+thread之间怎么communicate
+
+heap vs stack:
+
+TCP vs UDP:
 TCP和UDP的区别是什么？什么样的应用使用TCP，什么样的使用UDP？HTTP协议使用TCP还是UDP？
-为什么Java中的所有类都是默认由 Object 类继承？这样设计的思想是什么？
-操作系统相关：进程线程区别，进程间通信协议，操作系统内存管理，系统调用过程 等
+TCP UDP 和 use case
+
+Transaction:
+数据库事务和ACID 解释Transaction
+Transaction的意思是什么。这个比较宽泛。我就回答了数据库里面的transaction。面试进一步问malloc() function的原理
+
+Virtual memory:
+虚拟内存是啥
+
+java:
+final/finally/finalize的不同
+checked/unchecked exception, 抛出异常和返回异常值哪个比较好，为什么？
+Java Object的理解以及benefits
+NestedClass(static和non-static)怎么instantiate,什么是paging和page fault
 java里面map的源码是不是看过 是不是知道怎么实现的等 如何线程‍‍‍‌‍‍‍‍‍‌‍‍‌‍‌‍‌‍‍安全 如果改写完的让支持异步等等
-process VS thread,  how to chooese between them   TCP VS UDP
-抛出异常和返回异常值哪个比较好，为什么？
-解释Transaction
-process vs thread, virtual memory, stack vs heap
+为什么Java中的所有类都是默认由 Object 类继承？这样设计的思想是什么？
+Write-back和Write-though Cache，follow up是哪一个比较快
+操作系统相关：进程线程区别，进程间通信协议，操作系统内存管理，系统调用过程
 
 # 题目：
-243. shortest word distance
-244. shortest word distance 2  考虑可能字符串不在初始化系列里，考虑相等
-339. Nested List Weight Sum weight变成倒过来(最深的权重是1然后依次每层往上都递增)
-364. Nested List Weight Sum II
-366. find leaves of binary tree 落叶子
-57. add intervals 设计一个class，支持addIntervals (int left, int right)，getTotalCovered() 可以用线段树优化
-46. permutation 1 followup是多线程怎么处理同时避免重复
-47. permutation 2
-380. Insert Delete GetRandom O(1)
-381. Insert Delete GetRandom O(1) dupes
-215. Kth Largest Element in an Array
-605. Can Place Flowers
-33. Search in Rotated Sorted Array 
-156.  binary tree upside down foll‍‍‍‌‍‍‍‍‍‌‍‍‌‍‌‍‌‍‍ow up是输入是错误的如何处理可能的edge case
-65. valid number 不考虑e，但是要考虑逗号：比如12,000,000之类的
-101. symmetric tree
-20. valid parenthesis
-369. Plus One Linked List
-449. Serialize and Deserialize BST bfs解需要添加null节点，问怎么优化，要了提示说traversal 于是给了inorder/preorder‍‍‍‌‍
-53. Maximum Subarray
-387. First Unique Character in a String   
-739. Daily Temperatures
-152. Maximum Product Subarray
-50. pow(x, n)
-161. one edit distance
-39. combination sum
-341. Flatten Nested List Iterator follow up 加一个 remove 操作
-671. Second Minimum Node In a Binary Tree
-21. merge two sorted list
-173. BSTIterator
-78. subsets 分析时空复杂度
-104. max depth of binary tree
-22. generate parenthesis
-468. valid ip address
+1.   shortest word distance
+2.   shortest word distance 2  考虑可能字符串不在初始化系列里，考虑相等
+3.   Nested List Weight Sum weight变成倒过来(最深的权重是1然后依次每层往上都递增)
+4.   Nested List Weight Sum II
+5.   find leaves of binary tree 落叶子
+6.  add intervals 设计一个class，支持addIntervals (int left, int right)，getTotalCovered() 可以用线段树优化
+7.  permutation 1 followup是多线程怎么处理同时避免重复
+8.  permutation 2
+9.   Insert Delete GetRandom O(1)
+10.  Insert Delete GetRandom O(1) dupes
+11.  Kth Largest Element in an Array
+12.  Can Place Flowers
+13. Search in Rotated Sorted Array 
+14.   binary tree upside down foll‍‍‍‌‍‍‍‍‍‌‍‍‌‍‌‍‌‍‍ow up是输入是错误的如何处理可能的edge case
+15. valid number 不考虑e，但是要考虑逗号：比如12,000,000之类的
+16.  symmetric tree
+17. valid parenthesis
+18.  Plus One Linked List
+19.  Serialize and Deserialize BST bfs解需要添加null节点，问怎么优化，要了提示说traversal 于是给了inorder/preorder‍‍‍‌‍
+20. Maximum Subarray
+21.  First Unique Character in a String   
+22.  Daily Temperatures
+23.  Maximum Product Subarray
+24. pow(x, n)
+25.  one edit distance
+26. combination sum
+27.  Flatten Nested List Iterator follow up 加一个 remove 操作
+28.  Second Minimum Node In a Binary Tree
+29. merge two sorted list
+30.  BSTIterator
+31. subsets 分析时空复杂度
+32.  max depth of binary tree
+33. generate parenthesis
+34.  valid ip address
 
-2. 还是二叉树，要么2个子节点要么没有。父节点的值不大于子节点。返回节点值构成的集合中的第k小的值 ????
+35. 还是二叉树，要么2个子节点要么没有。父节点的值不大于子节点。返回节点值构成的集合中的第k小的值 ????
 1.int  hasIntegerSquareRoot(int n).   当时脑子当机竟然想不出logn的方法 （binary serach 即可），用了linear。。（还问了一下edgecase， input超大怎么办）。 当然小哥也没让我一直想， 想了literally 30sec, 小哥说 没事 我们看下一题。。
 2.nestedList Sum.   reversed.  我以为reverse应该是follow up结果直接来reverse，没啥好说的 高频面镜。先用arry做了。然后口述了leetcode光头哥大神给的weighted += unweighted的答案小哥并没有很认，除了用arry存， 他还认 两边pass. 第一遍先求depth。 还问了不用stack咋办。我说 queue啊 或者不用queue的bfs。 他说可以用递归吗 我说可以啊  take 3 param  as same ‍‍‍‌‍‍‍‍‍‌‍‍‌‍‌‍‌‍‍as stack。。
 - 有一个Linked List，在第N个节点的位置断开，然后把前面贴到后面的结尾处。比如，1 -> 2 -> 3 -> 4 -> 5，在3和4之间断开，变成了4 -> 5 -> 1 -> 2 -> 3。
