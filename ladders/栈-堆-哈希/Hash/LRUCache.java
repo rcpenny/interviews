@@ -32,29 +32,6 @@ public class LRUCache {
 
 
 
-	// 1. 删node
-	// 2. 添到尾部
-	// 3. 更新map
-	private void moveToTail(int key) {
-		ListNode prev = keyToPrev.get(key);
-		ListNode current = prev.next;
-		
-		if (tail == current) return;
-
-		// 从linked list中删除current node, 再添加到尾部.
-		prev.next = prev.next.next;
-		tail.next = current;
-
-		// 将prev，和current新指向的node 对应的key - prev pair更新
-		if (prev.next != null) keyToPrev.put(prev.next.key, prev);
-		keyToPrev.put(current.key, tail);
-
-		// tail变成current了，yay!
-		tail = current;
-	}
-
-
-
 	public int get(int key) {
 		if (!keyToPrev.containsKey(key)) return -1;	
 		moveToTail(key); // // get后这个key是most rencently used，所以放到尾部变成tail
@@ -92,5 +69,28 @@ public class LRUCache {
 		
 		// 新头挪到尾部
 		moveToTail(key);
+	}
+
+
+
+	// 1. 删node
+	// 2. 添到尾部
+	// 3. 更新map
+	private void moveToTail(int key) {
+		ListNode prev = keyToPrev.get(key);
+		ListNode current = prev.next;
+		
+		if (tail == current) return;
+
+		// 从linked list中删除current node, 再添加到尾部.
+		prev.next = prev.next.next;
+		tail.next = current;
+
+		// 将prev，和current新指向的node 对应的key - prev pair更新
+		if (prev.next != null) keyToPrev.put(prev.next.key, prev);
+		keyToPrev.put(current.key, tail);
+
+		// tail变成current，yay!
+		tail = current;
 	}
 }

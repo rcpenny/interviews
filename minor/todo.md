@@ -1,14 +1,13 @@
 # 十月日常
 1. SYS DESIGN CASE & SLIDES
 2. BEHAVIOR QUESTIONS
-3. GOOGLE ONSITE
+3. FLAGM,面经
 4. LADDER REVIEW
 
 # TODO today
 afternoon: Design News Feeds API, sharding slide
 
 tonight coding dp5, hash
-电面整理  after phone scheduled
 
 # ladders cleared
 dp1 dp2 dp3 dp4
@@ -20,3 +19,6 @@ bt_strut, bt_sumpath, bst
 twitter,
 
 # behave cleared
+
+Friday Afternoon
+电面整理  after phone scheduled

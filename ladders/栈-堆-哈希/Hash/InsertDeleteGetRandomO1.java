@@ -32,13 +32,13 @@ public class InsertDeleteGetRandomO1 {
 		if (!valueToIndex.containsKey(val)) return false;
 
 		int indexOfval = valueToIndex.get(val);
-		int last = list.get(list.size() - 1);
+		int last_number = list.get(list.size() - 1);
 
-		list.set(indexOfval, last);
+		list.set(indexOfval, last_number);
 		list.remove(list.size() - 1);
 		
 		valueToIndex.remove(val);
-		valueToIndex.put(last, indexOfval);
+		valueToIndex.put(last_number, indexOfval);
 		
 		return true;
 	}
