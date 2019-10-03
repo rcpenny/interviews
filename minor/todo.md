@@ -5,7 +5,7 @@
 4. LADDER REVIEW
 
 # TODO today
-afternoon: Design News Feeds API, sharding slide
+afternoon: news feeds api, sharding
 
 tonight coding dp5, hash
 
@@ -16,7 +16,7 @@ bt_strut, bt_sumpath, bst
 # company cleared（做公司题时往ladder类型分类，思考关系）
 
 # sys cleared
-twitter,
+twitter, instagram
 
 # behave cleared
 
