@@ -3,7 +3,7 @@
 
 class ValidParentheses {
   public boolean isValid(String s) {
-		if (s == null || s.length() == 0) return false;
+		if (s == null || s.length() == 0) return true;
 
 		char[] chars = s.toCharArray();
 		Stack<Character> stack = new Stack<>();

@@ -1,17 +1,8 @@
 import java.util.Stack;
 
-/**
-	* https://www.lintcode.com/problem/binary-search-tree-iterator/
-	*
-	* Example of iterate a tree:
-	* BSTIterator iterator = new BSTIterator(root);
-	* while (iterator.hasNext()) {
-	*    TreeNode node = iterator.next();
-	*    do something for node
-	* }
-  */
-
+// lc173
 // 多写几遍
+
 public class BSTIterator {
 	private Stack<TreeNode> stack = new Stack<>();
 

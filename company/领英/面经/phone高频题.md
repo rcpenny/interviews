@@ -33,6 +33,8 @@ Write-back和Write-though Cache，follow up是哪一个比较快
 - 605  Can Place Flowers
 - 101  symmetric tree
 - 20   valid parentheses
+- 21   merge two sorted lists
+- 671  Second Minimum Node In a Binary Tree
 
 - 46   permutation 1 多线程怎么避免重复? 加synchronized?
 - 47   permutation 2 
@@ -42,30 +44,23 @@ Write-back和Write-though Cache，follow up是哪一个比较快
 - 33   Search in Rotated Sorted Array
 - 387  First Unique Character in a String
 - 152  Maximum Product Subarray
+- 53   Maximum Subarray
+- 215  Kth Largest Element in an Array (quick select)
+- 50   pow(x, n)
+- 173  BSTIterator
 
 
 1.   Insert Delete GetRandom O(1) dupes
-2.   Kth Largest Element in an Array
 5.  binary tree upside down foll‍‍‍‌‍‍‍‍‍‌‍‍‌‍‌‍‌‍‍ow up是输入是错误的如何处理可能的edge case
 6.  valid number 不考虑e，但是要考虑逗号：比如12,000,000之类的
 8.   Plus One Linked List
 9.   Serialize and Deserialize BST bfs解需要添加null节点，问怎么优化，要了提示说traversal 于是给了inorder/preorder‍‍‍‌‍
-10. Maximum Subarray
 12.  Daily Temperatures
-14. pow(x, n)
 15.  one edit distance
 16.  Flatten Nested List Iterator follow up 加一个 remove 操作
-17.  Second Minimum Node In a Binary Tree
-18. merge two sorted list
-19.  BSTIterator
-20. subsets 分析时空复杂度
-21. generate parenthesis
 22.  valid ip address
 - 366   find leaves of binary tree
 1.  add intervals 设计一个class，支持addIntervals (int left, int right)，getTotalCovered() 可以用线段树优化
-
-
-
 
 
 
@@ -77,6 +72,9 @@ Write-back和Write-though Cache，follow up是哪一个比较快
 第二轮代码，找两个单词在同一个array的距离。followup如果在两个不同的array如何找最大距离，最小距离。再followup如果字典很大经常query需要如何优化。
 第一题：merge两个排好序的array。follow up：如果是merge一千个sorted array怎么办？分析时间复杂度
 第三题：给你一个int array，返回所有只出现过一次的数字。follow up：返回数字的顺序应该跟数字在input array里出现的顺序相同
+
+
+bulb switecher
 第一题： Flip locker for n students, each move for i steps.  一个一位数组表示locker开还是关，最开始全部关闭，然后模拟打开、关闭。
 
 

@@ -61,9 +61,5 @@
 | 149          | max points in a line         | 枚举所有pair分四种情况找上面的点。同点，垂直x,垂直y,有斜率| 
 | 273          | Integer to English Words     | 看一遍呗                                           |
 
-## 非高频但出现的面经题
-- 261 graph valid tree        union find
-- 384	Shuffle an Array        random index,then swap
-- 636 Exclusive Time of Functions 
-- 886	Possible Bipartition
-- 460	LFU Cache
+
+把leetcode tag全做一遍

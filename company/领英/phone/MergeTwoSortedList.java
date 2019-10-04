@@ -1,5 +1,5 @@
 // follow up: merge k sorted list
-// lint165
+// lc21
 
 public class MergeTwoSortedList {
 
