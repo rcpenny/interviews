@@ -7,23 +7,26 @@ import java.util.List;
 // Input: the list [1,[4,[6]]], 
 // Output: 27. 
 // Explanation: 1 + 4 * 2 + 6 * 3 = 27
+// lc339
 
 public class NestedListWeightSum {
-
   public int depthSum(List<NestedInteger> nestedList) {
     return helper(nestedList, 1);
 	}
 
 	// 定义：元数据nestedList, 控制depth
 	private int helper(List<NestedInteger> nestedList, int depth) {
-		if (nestedList == null || nestedList.size() == 0) return 0;
+		if (nestedList == null || nestedList.size() == 0) {
+			return 0;
+		}
+		
 		int sum = 0; // 这一层每个NestedInteger的sum
 
 		for (NestedInteger ni : nestedList) {
 			if (ni.isInteger())
-				sum = sum + ni.getInteger() * depth;
+				sum += ni.getInteger() * depth;
 			else
-				sum = sum + helper(ni.getList(), depth + 1);
+				sum += helper(ni.getList(), depth + 1);
 		}
 
 		return sum;
@@ -33,12 +36,12 @@ public class NestedListWeightSum {
 // just to fix error hints in vscode. - - 
 class NestedInteger {
 	boolean isInteger() {
-		return true;
+		return true; // false
 	}
 	int getInteger() {
-		return 1;
+		return 1; // or other
 	}
 	List<NestedInteger> getList() {
-		return new ArrayList<>();
+		return new ArrayList<>(); /// new nest list
 	}
 }

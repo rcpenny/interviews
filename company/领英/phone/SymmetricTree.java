@@ -10,6 +10,8 @@
 // 3  4 4  3
 // {1,2,2,3,4,4,3}这棵二叉树是对称的
 
+// lc101
+
 public class SymmetricTree {
 	private boolean isSym = true;
 
@@ -28,14 +30,5 @@ public class SymmetricTree {
 		if (a.val != b.val) return false;
 
 		return mirrorCompare(a.left, b.right) && mirrorCompare(a.right, b.left);
-	}
-}
-
-class TreeNode {
-	public int val;
-	public TreeNode left, right;
-	public TreeNode(int val) {
-		this.val = val;
-		this.left = this.right = null;
 	}
 }

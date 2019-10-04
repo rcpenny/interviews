@@ -1,8 +1,7 @@
 import java.util.ArrayList;
 import java.util.HashMap;
 
-// leet366
-
+// lc366
 // 给定一个二叉树，像这样收集树节点：收集并移除所有叶子，重复，直到树为空。
 
 // Input: {1,2,3,4,5}
