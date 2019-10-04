@@ -9,23 +9,23 @@ public class SearchInRotatedSortedArray {
     int start = 0, end = nums.length - 1;
 
     while (start + 1 < end) {
-      int middle = start + (end - start) / 2;
-      if (nums[middle] == target) return middle;
+      int mid = start + (end - start) / 2;
+      if (nums[mid] == target) return mid;
 
-      // 1. 还是先target与tail比，决定target在哪条线
-      // 2. 再处理特殊情况
+      // 1. 先target与tail比，决定target在哪条线
+      // 2. 再处理剩余情况
 
-      // target在大数线(画图分析)
+      // target在大数线
       if (target > tail) {
-        if (nums[middle] > target || nums[middle] <= tail) end = middle;
-        else start = middle;
+        if (nums[mid] > target || nums[mid] <= tail) end = mid;
+        else start = mid;
         continue;
       }
 
       // target在小数线
       if (target <= tail) {
-        if (nums[middle] < target || nums[middle] > tail) start = middle;
-        else end = middle;
+        if (nums[mid] < target || nums[mid] > tail) start = mid;
+        else end = mid;
       }
     }
 
