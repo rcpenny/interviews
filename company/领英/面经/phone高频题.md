@@ -34,13 +34,14 @@ Write-back和Write-though Cache，follow up是哪一个比较快
 - 46   permutation 1 多线程怎么避免重复? 加synchronized?
 - 47   permutation 2 
 - 380  Insert Delete GetRandom O(1)
-
+- 39   combination sum
+- 40   combination sum 2
 
 1.   Insert Delete GetRandom O(1) dupes
 2.   Kth Largest Element in an Array
 3.   Can Place Flowers
 4.  Search in Rotated Sorted Array 
-5.    binary tree upside down foll‍‍‍‌‍‍‍‍‍‌‍‍‌‍‌‍‌‍‍ow up是输入是错误的如何处理可能的edge case
+5.  binary tree upside down foll‍‍‍‌‍‍‍‍‍‌‍‍‌‍‌‍‌‍‍ow up是输入是错误的如何处理可能的edge case
 6.  valid number 不考虑e，但是要考虑逗号：比如12,000,000之类的
 7.  valid parenthesis
 8.   Plus One Linked List
@@ -51,14 +52,13 @@ Write-back和Write-though Cache，follow up是哪一个比较快
 13.  Maximum Product Subarray
 14. pow(x, n)
 15.  one edit distance
-16. combination sum
-17.  Flatten Nested List Iterator follow up 加一个 remove 操作
-18.  Second Minimum Node In a Binary Tree
-19. merge two sorted list
-20.  BSTIterator
-21. subsets 分析时空复杂度
-22. generate parenthesis
-23.  valid ip address
+16.  Flatten Nested List Iterator follow up 加一个 remove 操作
+17.  Second Minimum Node In a Binary Tree
+18. merge two sorted list
+19.  BSTIterator
+20. subsets 分析时空复杂度
+21. generate parenthesis
+22.  valid ip address
 - 366   find leaves of binary tree
 1.  add intervals 设计一个class，支持addIntervals (int left, int right)，getTotalCovered() 可以用线段树优化
 
