@@ -1,5 +1,5 @@
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.TreeMap;
 
 // lc366
 // 给定一个二叉树，像这样收集树节点：收集并移除所有叶子，重复，直到树为空。
@@ -15,8 +15,11 @@ import java.util.HashMap;
 // 4   5
 
 // 每个node在output List中对应的index + 1 = max(左子height, 右子height) + 1
+// 进阶版的max depth of tree
+
 public class FindLeavesOfBinaryTree {
-  private Map<Integer, List<Integer>> depthToLeaves = new HashMap<>();
+	// 或者先max depth一下tree，就不用map了
+  private Map<Integer, List<Integer>> depthToLeaves = new TreeMap<>();
 
   public List<List<Integer>> findLeaves(TreeNode root) {
     List<List<Integer>> results = new ArrayList<>();
@@ -24,8 +27,9 @@ public class FindLeavesOfBinaryTree {
     addLeaf(root, traverse(root));
 
     // convert map to list
-    for (int key : depthToLeaves.keySet())
+    for (int key : depthToLeaves.keySet()) {
       results.add(depthToLeaves.get(key));
+		}
 
     return results;
   }
@@ -35,7 +39,8 @@ public class FindLeavesOfBinaryTree {
     if (node == null) return -1;
 
     int left = traverse(node.left);
-    addLeaf(node.left, left);
+		addLeaf(node.left, left);
+
     int right = traverse(node.right);
     addLeaf(node.right, right);
 
