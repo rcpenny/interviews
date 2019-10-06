@@ -1,7 +1,7 @@
 // 给定一个包含非负整数的数组，
 // 你的任务是计算从数组中选出的可以制作三角形的三元组数目，如果我们把它们作为三角形的边长
 
-// Input: [2,2,3,4]
+//lc611 
 
 public class ValidTriangleNumber {
   public int triangleNumber(int[] A) {

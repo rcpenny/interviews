@@ -3,9 +3,7 @@ import java.util.HashSet;
 import java.util.Queue;
 import java.util.Set;
 
-/**
- * https://www.lintcode.com/problem/friends-within-three-jumps/
- * 
+/** 
  * 给两个数组a,b,代表a[i]与b[i]是朋友，再给出两个数组c,d，
  * 表示询问c[i]和d[i]是否为三跳之内的朋友。
  * （比如A与B是朋友，B与C是朋友，那么B算A的一跳朋友，C算A的二跳朋友）
@@ -15,6 +13,7 @@ import java.util.Set;
  * 解释:
  * 1 → 2 → 3 → 4 → 5，4是1的三跳朋友，5是1的四跳朋友
  */
+
 public class FriendsWith3Jumps {
   public int[] withinThreeJumps(int[] a, int[] b, int[] c, int[] d) {
     // key is friend i, value contains all his friends

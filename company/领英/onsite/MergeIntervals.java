@@ -3,7 +3,8 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-// lint156
+// lc56
+
 // Given a collection of intervals, merge all overlapping intervals.
 // Input:  [(1,3),(2,6),(8,16),(15,18)]
 // Output: [(1,6),(8,18)]
@@ -18,19 +19,14 @@ public class Interval {
 }
 
 public class MergeIntervals {
-
-  private Comparator<Interval> cpt = new Comparator<Interval>() {
-    @Override public int compare(Interval a, Interval b) {
-      if (a.start != b.start) return a.start - b.start;
-      return a.end - b.end;
-    }
-  };
-
   public List<Interval> merge(List<Interval> intervals) {
 		if (intervals == null || intervals.size() <= 1) 
 			return intervals;
 
-		Collections.sort(intervals, cpt);
+		Collections.sort(intervals, (a, b) -> {
+			if (a.start != b.start) return a.start - b.start;
+      return a.end - b.end;
+		});
 
 		List<Interval> results = new ArrayList<>();
 
@@ -53,6 +49,7 @@ public class MergeIntervals {
       end = Math.max(end, current.end);
 		}
 		
+		// 补最后一个！！！！！！！！！！！！！！！！！！！！！！！！！！
 		results.add(new Interval(start, end));
     return results;
   }

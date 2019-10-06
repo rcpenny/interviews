@@ -32,8 +32,8 @@ public class LongestPalinSuseq {
 				f[i][j] = Math.max(f[i + 1][j], f[i][j - 1]);
 
 				// case 2
-				if (s[i] == s[j])
-					f[i][j] = Math.max(f[i][j], f[i + 1][j - 1] + 2);
+				int expand = s[i] == s[j] ? 2 : 0;
+				f[i][j] = Math.max(f[i][j], f[i + 1][j - 1] + expand);
  			}
 		}
 

@@ -13,15 +13,17 @@ public class FindCelebrity {
     if (n <= 0) return -1;
     if (n == 1) return 0;
 
+		// 因为有且只有一个，所以loop一遍找到这个possible candidate
     int candi = 0;
-    for (int i = 1; i < n; i++)
+    for (int i = 1; i < n; i++) {
       if (knows(candi, i)) candi = i; 
-      // key point: 如果 candi认识其他人，直接pass, i被其他人认识，也被pass
+		}  // key point: 如果 candi认识其他人，直接pass, i被其他人认识，也被pass
 
     for (int i = 0; i < n; ++i) {
       if (i == candi) continue;
       if (knows(candi, i) || !knows(i, candi)) return -1;
-    }
+		}
+		
     return candi;
   }
 }
