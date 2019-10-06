@@ -32,16 +32,3 @@ public class NestedListWeightSum {
 		return sum;
 	}
 }
-
-// just to fix error hints in vscode. - - 
-class NestedInteger {
-	boolean isInteger() {
-		return true; // false
-	}
-	int getInteger() {
-		return 1; // or other
-	}
-	List<NestedInteger> getList() {
-		return new ArrayList<>(); /// new nest list
-	}
-}

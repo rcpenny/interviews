@@ -4,16 +4,14 @@
 // lc364
 
 public class NestedListWeightSumII {
-  int depth = 0;
-
   public int depthSumInverse(List<NestedInteger> nestedList) {
     if (nestedList == null || nestedList.size() == 0) return 0;
     
-    getDepth(nestedList, 1);
+    int depth = getDepth(nestedList);
 
     return getSum(nestedList, depth);
   }
-  
+
   private int getSum(List<NestedInteger> nestedList, int depth) {
     if (nestedList == null || nestedList.size() == 0) return 0;
     int sum = 0;
@@ -26,18 +24,14 @@ public class NestedListWeightSumII {
     return sum;
   }
   
-  private void getDepth(List<NestedInteger> nestedList, int level) {
-    depth = Math.max(depth, level);
-    
-    for (NestedInteger ni : nestedList)
-      if (!ni.isInteger())
-        getDepth(ni.getList(), level + 1);
-  }
-}
+  private int getDepth(List<NestedInteger> nestedList) {
+		if (nestedList == null || nestedList.size() == 0) return 0;
+		int depth = 0;
 
-// just to fix error hints in vscode. - - 
-class NestedInteger {
-	boolean isInteger() {return true;}
-	int getInteger() {return 1;}
-	List<NestedInteger> getList() {return new ArrayList<>();}
+    for (NestedInteger ni : nestedList) {
+			if (!ni.isInteger()) depth = Math.max(depth, getDepth(ni.getList()));
+		}
+
+		return depth + 1;
+  }
 }

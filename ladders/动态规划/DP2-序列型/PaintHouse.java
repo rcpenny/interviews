@@ -25,10 +25,11 @@ public class PaintHouse {
 		f[0][RED] = f[0][GREEN] = f[0][BLUE] = 0;
 
 		for (int i = 1; i <= len; i++) {
+			// iterate current color
 			for (int j = 0; j < 3; j++) {
 				f[i][j] = Integer.MAX_VALUE; // 为了min的比较，开始设最大
 
-				// this loop for cost[]
+				// iterate prev colors
 				for (int k = 0; k < 3; k++) {
 					if (j == k) continue; // 去同色
 					f[i][j] = Math.min(f[i][j], f[i - 1][k] + costs[i - 1][j]);

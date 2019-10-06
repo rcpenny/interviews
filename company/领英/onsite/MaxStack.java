@@ -78,16 +78,6 @@ public class MaxStack {
 
 // 本质逻辑: double linked list 模拟 stack, treemap对应stack中每个value和其相应的nodes
 
-// By default, TreeMap sorts all its entries according to their natural ordering.
-
-// TreeMap<Integer, String> map = new TreeMap<>();
-//     map.put(3, "val");
-//     map.put(2, "val");
-//     map.put(1, "val");
-//     map.put(5, "val");
-//     map.put(4, "val");
-//     assertEquals("[1, 2, 3, 4, 5]", map.keySet().toString());
-
 // Time Complexity: O(logN) for all operations except peek which is O(1)O(1)
 // Most operations involving TreeMap are O(logN).
 
