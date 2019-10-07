@@ -130,7 +130,6 @@ implement一个cache
 给你一个类框架 实现一个cache 类里提供了一个data source 如果cache里找不到这个数 则从data source里找并cache起来供下次使用 每个数有自‍‍‍‌‍‍‍‍‍‌‍‍‌‍‌‍‌‍‍己的rank 如果cache满了 要把rank最低的evict再插入
 第二题： 面试官给出一个cache的借口，让你实现里面的get和set方法。
 Implement a hash table. 需要跟面试官clarify并且讨论怎么处理collision，然后写code。这题讲真不容易一次写对。。。我还忘记了re-hash。不知道结果如何。
-Print a tree and fill it to be complete tree， for example
 coding是给一个data source (很大，query慢)， 给一个rank() return rankable item的score要求设计一个bestScoreCache。大致是这样，不是很难。但是fo‍‍‍‌‍‍‍‍‍‌‍‍‌‍‌‍‌‍‍llow up问到了读cache时racing condition的问题于是又继续follow up system里lock啊之类的操作，问的很细。。。lz汗如雨下
 best rank cache， 类似于LRU
 
