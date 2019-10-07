@@ -18,21 +18,19 @@ public class PlusOneLinkedList {
       r = r.next;
       if (r.val != 9) l = r;
     }
-
-    if (r.val != 9) {
-        r.val++;
-    }
     
-    if (r.val == 9) {
+    if (r.val != 9) {
+      r.val++;
+    } else {
       l.val++;
       l = l.next;
-      while (l != null) { // l把9变成0
-        l.val = 0;
-        l = l.next;
+      while (l != null) {
+          l.val = 0;
+          l = l.next;
       }
     }
     
     if (dummy.val == 0) return dummy.next;
-    return dummy; // 999的情况，dummy 0变成了1
+    return dummy;
   }
 }
