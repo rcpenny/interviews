@@ -74,15 +74,54 @@ Transaction的意思是什么。这个比较宽泛。我就回答了数据库里
 separation of user logical memory from physical memory.
 Only part of the program needs to be in memory for execution•Logical address space can therefore be much larger than physical address space•Allows address spaces to be shared by several processes•Allows for more efficient process creation•Virtual memory can be implemented via:•Demand paging •Demand segmentation
 
+什么是paging和page fault
+
 ## java:
 final/finally/finalize的不同
+	Final is used to apply restrictions on class, method and variable. Final class can't be inherited, final method can't be overridden and final variable value can't be changed.	Finally is used to place important code, it will be executed whether exception is handled or not.	Finalize is used to perform clean up processing just before object is garbage collected.
+2)	Final is a keyword.	Finally is a block.	Finalize is a method.
+
 checked/unchecked exception, 抛出异常和返回异常值哪个比较好，为什么？
-Java Object的理解以及benefits
-NestedClass(static和non-static)怎么instantiate,什么是paging和page fault
+compile time/runtime
+Java: Return Values vs Exceptions
+You should only use exceptions for exceptional situations. An exceptional situation is an unexpected situation that is out of the ordinary. A situation is not exceptional just because it's less common than other situations. In a non-exceptional situation you should use return values instead of exceptions.
+Exceptional Examples	
+An attempt to open a file failed
+Computer ran out of memory
+Program tried to divide by 0
+Non-exceptional Examples
+Requested username already taken
+A text string was entered in a numeric field
+User does not have permission to change the data
+
+NestedClass(static和non-static)怎么instantiate
+Nested classes are divided into two categories: static and non-static. Nested classes that are declared static are called static nested classes. Non-static nested classes are called inner classes.
+Outer outer = new Outer();
+Outer.Inner inner = outer.new Inner();
+
 java里面map的源码是不是看过 是不是知道怎么实现的等 如何线程‍‍‍‌‍‍‍‍‍‌‍‍‌‍‌‍‌‍‍安全 如果改写完的让支持异步等等
-为什么Java中的所有类都是默认由 Object 类继承？这样设计的思想是什么？
+hashCode() {return Objects.hashCode(key) ^ Objects.hashCode(value)};
+use linkedlist
+http://hg.openjdk.java.net/jdk8/jdk8/jdk/file/687fd7c7986d/src/share/classes/java/util/HashMap.java
+https://blog.csdn.net/tuke_tuke/article/details/51588156
+当链表数组的容量超过初始容量的0.75时, 再散列将链表数组扩大2倍，把原链表数组的搬移到新的数组中
+
+Java Object的理解以及benefits, 为什么Java中的所有类都是默认由 Object 类继承？这样设计的思想是什么？
+2）继承
+继承性，使不同的类，有相同的方法，这样可以最大程度地重用代码。
+3）多态
+多态使得我们可以使用相同的方法处理不同对象的行为：我们可以使用相同的代码处理不同的类型的对象，只要它们继承和实现了相同的类型。
+
 Write-back和Write-though Cache，follow up是哪一个比较快
-操作系统相关：进程线程区别，进程间通信协议，操作系统内存管理，系统调用过程
+The benefit of write-through to main memory is that it simplifies the design of the computer system. With write-through, the main memory always has an up-to-date copy of the line. So when a read is done, main memory can always reply with the requested data.
+If write-back is used, sometimes the up-to-date data is in a processor cache, and sometimes it is in main memory. If the data is in a processor cache, then that processor must stop main memory from replying to the read request, because the main memory might have a stale copy of the data. This is more complicated than write-through.
+Also, write-through can simplify the cache coherency protocol because it doesn't need the Modify state. The Modify state records that the cache must write back the cache line before it invalidates or evicts the line. In write-through a cache line can always be invalidated without writing back since memory already has an up-to-date copy of the line.
+One more thing - on a write-back architecture software that writes to memory-mapped I/O registers must take extra steps to make sure that writes are immediately sent out of the cache. Otherwise writes are not visible outside the core until the line is read by another processor or the line is evicted.
+Write-through与Write-back和买卖东西相似，Write-Through就相当于你亲自去买东西，
+你买到什么就可以亲手拿到；而Write-Back就和中介差不多，你给了中介钱，然后它告
+诉你说你的东西买到了，然后就相信拿到这个东西了，但是要是出现特殊情况中介跑了，
+你再去检查，东西原来没有真正到手。
+
 
 
 LFU的变形 地里面有原题和答案 完了以后就是各种fullow-ups各种 比如
