@@ -5,6 +5,7 @@ https://zhuanlan.zhihu.com/p/30161567
 ## Process vs Thread:
 thread和process的区别, 要求用stack, heap. how to chooese between them
 thread之间怎么communicate
+https://zhuanlan.zhihu.com/p/85530908
 
 https://medium.com/@nickteixeira/stack-vs-heap-whats-the-difference-and-why-should-i-care-5abc78da1a88
 What are the five segments of memory?
