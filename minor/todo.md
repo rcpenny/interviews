@@ -4,10 +4,6 @@
 3. FLAGM,面经
 4. LADDER REVIEW
 
-# TODO today
-afternoon: news feeds api, sharding
-tonight coding dp5, hash
-
 # ladders cleared
 dp1 dp2 dp3 dp4
 bt_strut, bt_sumpath, bst
@@ -15,4 +11,16 @@ bt_strut, bt_sumpath, bst
 # sys cleared
 twitter, instagram
 
-全力准备linkedin电面
+Flatten Nested List Iterator
+Valid Number
+	
+All O`one Data Structure
+Closest Binary Search Tree Value II
+
+Daily Temperatures
+Word Ladder
+Integer to Roman
+Integer to English Words
+edit distance
+linkedin ladder2
+Is Graph Bipartite?
