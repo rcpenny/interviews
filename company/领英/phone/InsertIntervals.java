@@ -10,9 +10,8 @@ import java.util.Comparator;
 // 输入:(2, 5) into [(1,2), (5,9)] 输出: [(1,9)]
 // 输入:(3, 4) into [(1,2), (5,9)] 输出: [(1,2), (3,4), (5,9)]
 
-// 找到insert position 加入
 public class InsertIntervals {
-
+	// interval的题目就画个图就清晰了
   public List<Interval> insert(List<Interval> intervals, Interval newInterval) {
 		List<Interval> result = new ArrayList<>();
 

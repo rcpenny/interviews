@@ -6,7 +6,6 @@
 // leet88
 
 public class MergeSortedArray {
-
   public void mergeSortedArray(int[] A, int m, int[] B, int n) {
 		if (B == null || B.length == 0) return;
 	
