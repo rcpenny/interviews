@@ -136,3 +136,5 @@ best rank cache， 类似于LRU
 
 打电话给我聊了半个多小时，详详细细地跟我讲了onsite都要面什么，说hm面特别重要，一定要突出自己的leadership和design的经验，
 因为我工作经验短而且是本科学历，投的却是senior的职位，不太容易过，
+
+https://www.cnblogs.com/apanda009/p/7945036.html
