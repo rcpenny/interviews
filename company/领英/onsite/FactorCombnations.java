@@ -27,7 +27,7 @@ public class FactorCombnations {
 			if (n % i != 0) continue;
 
 			comb.add(i);
-			factorize(n / i, i, comb, result);
+			factorize(n / i, i, comb, result); // i不变，可以继续除以本数
 			comb.remove(comb.size() - 1);
 		}
 	} 

@@ -16,8 +16,9 @@ public class FindCelebrity {
 		// 因为有且只有一个，所以loop一遍找到这个possible candidate
     int candi = 0;
     for (int i = 1; i < n; i++) {
+			// key point: 如果 candi认识其他人，直接pass, i被其他人认识，也被pass
       if (knows(candi, i)) candi = i; 
-		}  // key point: 如果 candi认识其他人，直接pass, i被其他人认识，也被pass
+		}
 
     for (int i = 0; i < n; ++i) {
       if (i == candi) continue;

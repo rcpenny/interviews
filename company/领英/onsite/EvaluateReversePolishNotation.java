@@ -7,7 +7,6 @@ import java.util.Stack;
 // Explanation: ["4", "13", "5", "/", "+"] -> 4 + 13 / 5 -> 6
 
 public class EvaluateReversePolishNotation {
-
   public int evalRPN(String[] tokens) {
 		if (tokens == null || tokens.length < 3) return Integer.MIN_VALUE;
 		String operators = "+-*/";

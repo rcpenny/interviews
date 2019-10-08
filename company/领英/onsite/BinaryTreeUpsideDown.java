@@ -25,6 +25,7 @@ class BinaryTreeUpsideDown {
 		if (root.left == null && root.right == null) return root;
 
 		// 1. 一直朝左下走，new root一直就是left most node了
+		// recursive method return new root
 		TreeNode newRoot = upsideDownBinaryTree(root.left);
 
 		// 从left most 往上折返离开递归时，进行如是操作

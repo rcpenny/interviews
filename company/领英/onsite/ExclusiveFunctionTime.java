@@ -17,37 +17,32 @@ import java.util.ArrayList;
 public class ExclusiveFunctionTime {
 	public int[] exclusiveTime(int n, List<String> logs) {
 		int[] ans = new int[n];
-		if (logs == null || logs.size() == 0) 
-		{
-				return ans;
-		}
+
+		if (logs == null || logs.size() == 0) return ans;
 		
 		Stack<Integer> stack = new Stack<>();
 		
 		int lastTimestamp = 0;
-		for (String log : logs) 
-		{
-				String[] arr = log.split(":");
-				int id = Integer.parseInt(arr[0]);
-				String flag = arr[1];
-				int timestamp = Integer.parseInt(arr[2]);
-				
-				if (!stack.isEmpty()) 
-				{
-						ans[stack.peek()] += (timestamp - lastTimestamp);
-				}
-				
-				if ("start".equals(flag)) 
-				{
-						stack.push(id);
-				} 
-				else 
-				{
-						timestamp ++;
-						ans[stack.peek()] ++;
-						stack.pop();
-				}
-				lastTimestamp = timestamp;
+
+		for (String log : logs) {
+			String[] arr = log.split(":");
+			int id = Integer.parseInt(arr[0]);
+			String flag = arr[1];
+			int timestamp = Integer.parseInt(arr[2]);
+			
+			if (!stack.isEmpty()) {
+				ans[stack.peek()] += (timestamp - lastTimestamp);
+			}
+			
+			if ("start".equals(flag)) {
+				stack.push(id);
+			} else {
+				timestamp++;
+				ans[stack.peek()]++;
+				stack.pop();
+			}
+			
+			lastTimestamp = timestamp;
 		}
 		return ans;
 	}

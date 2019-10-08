@@ -19,6 +19,7 @@ public class ValidTriangleNumber {
       int right = i - 1;
       
       while (left < right) {
+				// 短边相加大于最长边
         if (A[left] + A[right] > A[i]) {
           count = count + (right - left);
           right--;

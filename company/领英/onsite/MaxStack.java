@@ -20,6 +20,7 @@ import java.util.TreeMap;
 // 更优解用treemap
 // 说了下用两个stack存数据的思路，不满意。换了treemap的方法，多的时间问了下如果是要线程安全你该怎么改。
 
+
 // 解1 双栈
 // Complexity Analysis
 // Time Complexity: O(N) for the popMax operation, and O(1)O(1) for the other operations
@@ -88,45 +89,48 @@ class MaxStack {
 	DoubleLinkedList dll;
 
 	public MaxStack() {
-			map = new TreeMap();
-			dll = new DoubleLinkedList();
+		this.map = new TreeMap();
+		this.dll = new DoubleLinkedList();
 	}
 
 	public void push(int x) {
-			Node node = dll.add(x);
-			if(!map.containsKey(x))
-					map.put(x, new ArrayList<Node>());
-			map.get(x).add(node);
+		Node node = dll.add(x);
+		if(!map.containsKey(x))
+			map.put(x, new ArrayList<Node>());
+
+		map.get(x).add(node);
 	}
 
 	public int pop() {
-			int val = dll.pop();
-			List<Node> L = map.get(val);
-			L.remove(L.size() - 1);
-			if (L.isEmpty()) map.remove(val);
-			return val;
+		int val = dll.pop();
+		List<Node> L = map.get(val);
+		L.remove(L.size() - 1);
+		if (L.isEmpty()) map.remove(val);
+		return val;
 	}
 
 	public int top() {
-			return dll.peek();
+		return dll.peek();
 	}
 
 	public int peekMax() {
-			return map.lastKey();
+		return map.lastKey();
 	}
 
 	public int popMax() {
-			int max = peekMax();
-			List<Node> L = map.get(max);
-			Node node = L.remove(L.size() - 1);
-			dll.unlink(node);
-			if (L.isEmpty()) map.remove(max);
-			return max;
+		int max = peekMax();
+		List<Node> L = map.get(max);
+		Node node = L.remove(L.size() - 1);
+		dll.unlink(node);
+		if (L.isEmpty()) map.remove(max);
+		return max;
 	}
 }
 
 class DoubleLinkedList {
-	Node head, tail;
+	// head & tail只是pointer，并不是真正的node
+	Node head;
+	Node tail;
 
 	public DoubleLinkedList() {
 			head = new Node(0);
@@ -135,6 +139,7 @@ class DoubleLinkedList {
 			tail.prev = head;
 	}
 
+	// 加一个到DLL尾部
 	public Node add(int val) {
 			Node x = new Node(val);
 			x.next = tail;
@@ -143,23 +148,30 @@ class DoubleLinkedList {
 			return x;
 	}
 
+	// 去除最后一个node
 	public int pop() {
-			return unlink(tail.prev).val;
+		return unlink(tail.prev).val;
 	}
 
+	// 返回最后一个node value
 	public int peek() {
-			return tail.prev.val;
+		return tail.prev.val;
 	}
 
+	// 从DLL中去掉node
 	public Node unlink(Node node) {
-			node.prev.next = node.next;
-			node.next.prev = node.prev;
-			return node;
+		node.prev.next = node.next;
+		node.next.prev = node.prev;
+		return node;
 	}
 }
 
+// DLL Node
 class Node {
 	int val;
-	Node prev, next;
-	public Node(int v) {val = v;}
+	Node prev;
+	Node next;
+	public Node(int v) {
+		val = v;
+	}
 }

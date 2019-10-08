@@ -10,8 +10,8 @@ public class Sqrtx {
 
     while (start + 1 < end) {
       int mid = start + (end - start) / 2;
-      if (x / mid < mid)  end = mid;
-      else if (x / mid > mid) start = mid;
+      if (mid > x / mid)  end = mid;
+      else if (mid < x / mid) start = mid;
       else end = mid;
     }
 
@@ -28,12 +28,9 @@ public class Sqrtx {
     double eps = 1e-12;
     
     while (l + eps < r) {
-        double mid = l + (r - l) / 2;
-        if (mid * mid < x) {
-            l = mid;
-        } else {
-            r = mid;
-        }
+			double mid = l + (r - l) / 2;
+			if (mid * mid < x) l = mid;
+			else r = mid;
     }
     
     return l;

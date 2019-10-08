@@ -71,7 +71,8 @@ public class PartitionEqualSubsetSum {
 		}
 
 		for (int i = 1; i <= n; i++)
-			if (f[i][target] == true) return true;
+			if (f[i][target] == true)
+				return true;
 		
 		return false;
 	}

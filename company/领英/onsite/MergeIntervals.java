@@ -11,7 +11,8 @@ import java.util.List;
 // Challenge O(n log n) time and O(1) extra space.
 
 public class Interval {
-  int start, end;
+	int start;
+	int end;
   Interval(int start, int end) {
     this.start = start;
     this.end = end;
@@ -43,14 +44,15 @@ public class MergeIntervals {
         start = current.start;
         end = current.end;
         continue;
-      }
-
+			}
+			
 			// 有重叠，合并，比较end
       end = Math.max(end, current.end);
 		}
-		
+				
 		// 补最后一个！！！！！！！！！！！！！！！！！！！！！！！！！！
 		results.add(new Interval(start, end));
+
     return results;
   }
 }

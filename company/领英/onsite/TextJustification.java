@@ -65,7 +65,7 @@ public class TextJustification {
           sb.append(list.get(j));
         }
       }
-          
+
       res.add(sb.toString());
       len = word.length();
       list = new ArrayList<>();

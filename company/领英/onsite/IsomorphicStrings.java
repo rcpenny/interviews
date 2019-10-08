@@ -9,33 +9,33 @@ import java.util.Map;
 
 public class IsomorphicStrings {
 
-  public boolean isIsomorphic(String s, String t) {
+  public boolean isIsomorphic(String ss, String tt) {
     Map<Character, Character> s2t = new HashMap<>();
     Map<Character, Character> t2s = new HashMap<>();
 
-    if (s == null || t == null) return false;
-    if (s.length() != t.length()) return false;
+    if (ss == null || tt == null) return false;
+    if (ss.length() != tt.length()) return false;
 
-    char[] sc = s.toCharArray();
-    char[] tc = t.toCharArray();
+    char[] s = ss.toCharArray();
+    char[] t = tt.toCharArray();
 
-    for (int i = 0; i < sc.length; i++) {
-      char scc = sc[i];
-      char tcc = tc[i];
+    for (int i = 0; i < s.length; i++) {
+      char sc = s[i];
+      char tc = t[i];
 
       // 两个映射里都没有
-      if (!s2t.containsKey(scc) && !t2s.containsKey(tcc)) {
-        s2t.put(scc, tcc);
-        t2s.put(tcc, scc);
+      if (!s2t.containsKey(sc) && !t2s.containsKey(tc)) {
+        s2t.put(sc, tc);
+        t2s.put(tc, sc);
         continue;
       }
       
       // 只有一个映射有，return false
-      if (!s2t.containsKey(scc) || !t2s.containsKey(tcc))
+      if (!s2t.containsKey(sc) || !t2s.containsKey(tc))
         return false;
 
       // 都有，但不相同
-      if (s2t.get(scc) != tcc || t2s.get(tcc) != scc) 
+      if (s2t.get(sc) != tc || t2s.get(tc) != sc) 
         return false;
     }
 

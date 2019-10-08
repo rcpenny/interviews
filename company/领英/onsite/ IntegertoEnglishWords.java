@@ -43,7 +43,8 @@ public class  IntegertoEnglishWords {
           "Million",
           "Billion"
       };
-  
+	
+	// 降维加thousnad million billion
   public String numberToWords(int num) {
     if (num == 0) return "Zero";
 
@@ -59,7 +60,8 @@ public class  IntegertoEnglishWords {
     }
     return res.trim();
   }
-  
+	
+	// 算三位数
   private String helper(int n) {
     String s;
     if (n < 20)

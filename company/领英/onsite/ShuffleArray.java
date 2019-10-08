@@ -12,9 +12,9 @@ public class ShuffleArray {
   public int[] reset() {
     return nums;
   }
-  
+
   public int[] shuffle() {
-    // rand出一个交换位置
+    // loop一遍，rand出一个交换位置
     int[] rand = new int[nums.length];
     for (int i = 0; i < nums.length; i++){
       int r = (int) (Math.random() * (i+1));

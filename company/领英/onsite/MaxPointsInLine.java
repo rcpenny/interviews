@@ -3,12 +3,12 @@ class Point {
   int y;
 
   Point(int a, int b) {
-    x = a; 
-    y = b;
+    this.x = a; 
+    this.y = b;
   }
 }
 
-// 略无聊
+// 枚举所有points pair
 public class MaxPointsInLine {
   public int maxPoints(Point[] points) {
     if (points == null || points.length == 0) return 0;
@@ -19,10 +19,11 @@ public class MaxPointsInLine {
     // 选两个不同点作为构成 y=ax+b
     for (int i = 0; i < points.length - 1; i++) {
       for (int j = i + 1; j < points.length; j++) {
+
         Point a = points[i];
         Point b = points[j];
   
-        // ab同点
+        // 1. ab同点
         if (a.x == b.x && a.y == b.y) {
           int cnt = 0;
           for (int k = 0; k < points.length; k++)
@@ -31,7 +32,7 @@ public class MaxPointsInLine {
           result = Math.max(result, cnt);
         }
         
-        // ab垂直X轴
+        // 2. ab垂直X轴
         if (a.x == b.x && a.y != b.y) {
           int cnt = 0;
           for (int k = 0; k < points.length; k++)
@@ -40,7 +41,7 @@ public class MaxPointsInLine {
           result = Math.max(result, cnt);
         }
         
-        // ab垂直Y轴
+        // 3. ab垂直Y轴
         if (a.x != b.x && a.y == b.y) {
           int cnt = 0;
           for (int k = 0; k < points.length; k++)
@@ -49,7 +50,7 @@ public class MaxPointsInLine {
           result = Math.max(result, cnt);
         }
         
-        //ab有斜率
+        // 4. ab有斜率
         if (a.x != b.x && a.y != b.y) {
           int cnt = 0;
           // 枚举所有点
@@ -72,7 +73,6 @@ public class MaxPointsInLine {
               continue;
             }
           }
-
           result = Math.max(result, cnt);
         }
       }
