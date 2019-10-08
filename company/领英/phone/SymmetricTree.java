@@ -24,6 +24,7 @@ public class SymmetricTree {
 	//镜像操作精华：深入tree的下一层时，一个向左，一个向右
 	private boolean mirrorCompare(TreeNode a, TreeNode b) {
 		if (!isSym) return isSym;
+
 		if (a == null && b == null) return true;
 		if (a == null || b == null) return false;
 

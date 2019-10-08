@@ -24,7 +24,8 @@ public class FindLeavesOfBinaryTree {
   public List<List<Integer>> findLeaves(TreeNode root) {
     List<List<Integer>> results = new ArrayList<>();
 
-    addLeaf(root, traverse(root));
+		int root_height = reverseDepthOfNode(root);
+    addLeaf(root, root_height);
 
     // convert map to list
     for (int key : depthToLeaves.keySet()) {
@@ -35,13 +36,13 @@ public class FindLeavesOfBinaryTree {
   }
 
   // return depth of this node, leaf is zero
-  private int traverse(TreeNode node) {
+  private int reverseDepthOfNode(TreeNode node) {
     if (node == null) return -1;
 
-    int left = traverse(node.left);
+    int left = reverseDepthOfNode(node.left);
 		addLeaf(node.left, left);
 
-    int right = traverse(node.right);
+    int right = reverseDepthOfNode(node.right);
     addLeaf(node.right, right);
 
     return Math.max(left, right) + 1;

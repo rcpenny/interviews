@@ -16,7 +16,8 @@ public class InsertIntervals {
 		List<Interval> result = new ArrayList<>();
 
 		int insertIndex = 0;
-
+ 
+		// 用insert index记住insert position
 		for (Interval in : intervals) {
 			if (in.end < newInterval.start) {
 				result.add(in);

@@ -37,6 +37,7 @@ class ValidParentheses {
 				else stack.pop();
 			}
 		}
+
 		return stack.isEmpty();
   }
 }

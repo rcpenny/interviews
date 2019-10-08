@@ -16,18 +16,20 @@ public class RotateList {
       len++;
       tmp = tmp.next;
     }
-    
+		
+		// 重要！
     k = k % len;
-    
     if (k == 0) return head;
-    
+		
+		// 1. 找到last node to 连接 head
     // find last node and connect it to head
     ListNode connect = head;
     while (connect.next != null) {
       connect = connect.next;
     }
     connect.next = head;
-    
+		
+		// 2. 找到切断点，切断
     // move foward and disconnect at position ???
     ListNode disconnect = head;
     for (int i = 0; i < len - k - 1; i++) {

@@ -1,4 +1,4 @@
-// 很无聊的题目
+// 很..鸡巴...的题目
 // lc65
 
 class ValidNumber {

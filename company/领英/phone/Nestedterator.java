@@ -30,7 +30,7 @@ public class NestedIterator implements Iterator<Integer> {
     stack.pop();
   }
 
-  // 把这一层的nested integer push进stack
+  // 把这一层的nested integer push进stack, 倒装， 画图想一下
   private void pushNestedListToStack(List<NestedInteger> nestedList) {
     Stack<NestedInteger> buffer = new Stack<>();
 

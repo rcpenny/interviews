@@ -28,7 +28,8 @@ class ShortestWordDistance2 {
     int p1 = 0;
     int p2 = 0;
     int min = Integer.MAX_VALUE;
-    
+		
+		// 只要有一个到头就结束
     while (p1 != w1.size() && p2 != w2.size()) {
       min = Math.min(min, Math.abs(w1.get(p1) - w2.get(p2)));
       

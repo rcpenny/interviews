@@ -1,6 +1,6 @@
 // 输入: nestedList = [1,[4,[6]]]
 // 输出: 17
-// 解释：一个深度为3的1， 一个深度为2的4，和一个深度为3的6。1*3 + 4*2 + 6*1 = 17
+// 解释：一个深度为3的1， 一个深度为2的4，和一个深度为3的6 1*3 + 4*2 + 6*1 = 17
 // lc364
 
 public class NestedListWeightSumII {
@@ -32,6 +32,6 @@ public class NestedListWeightSumII {
 			if (!ni.isInteger()) depth = Math.max(depth, getDepth(ni.getList()));
 		}
 
-		return depth + 1;
+		return depth + 1; // 补齐这一层的depth 1
   }
 }

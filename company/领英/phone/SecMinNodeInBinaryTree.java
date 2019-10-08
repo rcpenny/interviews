@@ -23,8 +23,8 @@ public class SecMinNodeInBinaryTree {
     if (root == null) return -1;
     if (root.left == null && root.right == null) return -1;
 
-    int left = root.left.val;
-    if (left == root.val)
+    int left = root.left.val; // initialized in case root is null
+    if (left == root.val)  // left > root的话，不用递归找了
       left = findSecondMinimumValue(root.left);
 
     int right = root.right.val;

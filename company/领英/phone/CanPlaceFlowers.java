@@ -39,6 +39,7 @@ public class CanPlaceFlowers {
 			count++;
 		}
 
+		// last check
 		return count >= n;
 	}
 }

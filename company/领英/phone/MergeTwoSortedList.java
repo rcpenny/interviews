@@ -17,9 +17,11 @@ public class MergeTwoSortedList {
 				tail.next = l2;
 				l2 = l2.next;
 			}
+
 			tail = tail.next;
 		}
 
+		// l1, l2有个为空了
 		if (l1 == null) tail.next = l2;
 		if (l2 == null) tail.next = l1;
 

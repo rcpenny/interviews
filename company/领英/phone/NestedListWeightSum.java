@@ -6,7 +6,7 @@ import java.util.List;
 
 // Input: the list [1,[4,[6]]], 
 // Output: 27. 
-// Explanation: 1 + 4 * 2 + 6 * 3 = 27
+// Explanation: 1 * 1 + 4 * 2 + 6 * 3 = 27
 // lc339
 
 public class NestedListWeightSum {
@@ -14,7 +14,7 @@ public class NestedListWeightSum {
     return helper(nestedList, 1);
 	}
 
-	// 定义：元数据nestedList, 控制depth
+	// 定义：元数据nestedList  控制depth  状态sum通过return value传递
 	private int helper(List<NestedInteger> nestedList, int depth) {
 		if (nestedList == null || nestedList.size() == 0) {
 			return 0;
