@@ -1,9 +1,5 @@
 // 允许有dupe O1
 
-public class InsertDeleteGetRandomDupe {
-  private InsertDeleteGetRandomDupe() {}
-}
-
 // 使用LinkedHashSet
 // LinkedHashSet maintains the insertion order.
 
@@ -20,7 +16,7 @@ class RandomizedCollection {
   /** Inserts a value to the collection. Returns true if the collection did not already contain the specified element. */
   public boolean insert(int val) {
     if (!numToIndex.containsKey(val))
-      numToIndex.put(val, new LinkedHashSet<>());
+      numToIndex.put(val, new LinkedHashSet<>());  // 使用LinkedHashSet
     
     // 加入这个数字的index
     numToIndex.get(val).add(list.size());
@@ -58,3 +54,7 @@ class RandomizedCollection {
   }
 }
 
+
+public class InsertDeleteGetRandomDupe {
+  private InsertDeleteGetRandomDupe() {}
+}
