@@ -16,3 +16,4 @@ bt_strut, bt_sumpath, bst
 https://engineering.linkedin.com/blog/2019/the-building-blocks-of-linkedin-skill-assessments
 
 https://www.1point3acres.com/bbs/thread-558342-1-1.html
+https://www.1point3acres.com/bbs/forum.php?mod=viewthread&tid=554551
