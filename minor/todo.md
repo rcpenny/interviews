@@ -10,10 +10,7 @@ dp1 dp2 dp3 dp4
 bt_strut, bt_sumpath, bst
 
 
-1. amazon job and intro, resume
-2. https://engineering.linkedin.com/espresso/introducing-espresso-linkedins-hot-new-distributed-document-store
 3. daily
-https://engineering.linkedin.com/blog/2019/the-building-blocks-of-linkedin-skill-assessments
 
 https://www.1point3acres.com/bbs/thread-558342-1-1.html
 https://www.1point3acres.com/bbs/forum.php?mod=viewthread&tid=554551
