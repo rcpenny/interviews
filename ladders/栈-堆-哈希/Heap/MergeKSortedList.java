@@ -6,26 +6,27 @@ import java.util.PriorityQueue;
 // 	输入:   [2->4->null,null,-1->null]
 // 	输出:  -1->2->4->null
 
+// O(NlogK) S(K)
 public class MergeKSortedList {
   public ListNode mergeKLists(List<ListNode> lists) {
     ListNode dummy = new ListNode(0);
     ListNode tail = dummy;
-    
+
     PriorityQueue<ListNode> minheap = new PriorityQueue<>((a, b) -> {
 			return a.val - b.val;
 		});
-    
+
     for (ListNode head : lists)
 			if (head != null)
 				minheap.offer(head);
-    
+
     while (!minheap.isEmpty()) {
       ListNode tmp = minheap.poll();
 			tail.next = tmp;
 			tail = tail.next;
       if (tmp.next != null) minheap.offer(tmp.next);      
     }
-    
+
     return dummy.next;
   }
 }

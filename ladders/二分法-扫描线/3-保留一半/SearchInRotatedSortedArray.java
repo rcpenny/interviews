@@ -13,7 +13,7 @@ public class SearchInRotatedSortedArray {
       if (nums[mid] == target) return mid;
 
       // 1. 先target与tail比，决定target在哪条线
-      // 2. 再处理剩余情况
+      // 2. 画线
 
       // target在大数线
       if (target > tail) {

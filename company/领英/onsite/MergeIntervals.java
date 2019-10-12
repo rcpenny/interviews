@@ -19,6 +19,7 @@ public class Interval {
   }
 }
 
+// 也可以用扫描线做
 public class MergeIntervals {
   public List<Interval> merge(List<Interval> intervals) {
 		if (intervals == null || intervals.size() <= 1) 

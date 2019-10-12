@@ -13,23 +13,14 @@
 // lc101
 
 public class SymmetricTree {
-	private boolean isSym = true;
-
   public boolean isSymmetric(TreeNode root) {
-		if (root == null) return true;
-
-		return mirrorCompare(root.left, root.right);
+		return mirrorCompare(root, root);
 	}
 	
 	//镜像操作精华：深入tree的下一层时，一个向左，一个向右
 	private boolean mirrorCompare(TreeNode a, TreeNode b) {
-		if (!isSym) return isSym;
-
 		if (a == null && b == null) return true;
 		if (a == null || b == null) return false;
-
-		if (a.val != b.val) return false;
-
-		return mirrorCompare(a.left, b.right) && mirrorCompare(a.right, b.left);
+		return a.val == b.val && mirrorCompare(a.left, b.right) && mirrorCompare(a.right, b.left);
 	}
 }
