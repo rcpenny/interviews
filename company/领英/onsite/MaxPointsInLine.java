@@ -67,7 +67,8 @@ public class MaxPointsInLine {
                 continue;
             }
             
-            // 符合y=ax+b
+						// 符合y=ax+b
+						// 防止65536 * 65536 = 0 把乘积变成Long
             if ((points[k].y - a.y) * (a.x - b.x) == (a.y - b.y) * (points[k].x - a.x)) {
               cnt++;
               continue;

@@ -24,5 +24,26 @@ public class HouseRobber {
     } 
 
     return f[n];
+	}
+	
+	// O(n) -> O(1)
+	public int robOp(int[] nums) {
+    if (nums == null || nums.length == 0) {
+      return 0;
+    }
+    
+    int n = nums.length;
+
+    int first = 0;
+    int second = nums[0];
+    int third = second;
+
+    for (int i = 2; i <= n; i++) {
+      third = Math.max(second, first + nums[i - 1]);
+      first = second;
+      second = third;
+    }
+
+    return third;
   }
 }
