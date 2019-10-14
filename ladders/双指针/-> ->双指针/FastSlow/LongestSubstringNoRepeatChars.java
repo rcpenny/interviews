@@ -1,7 +1,6 @@
 // 给定一个字符串，请找出其中无重复字符的最长子字符串
 
 public class LongestSubstringNoRepeatChars {
-
 	public int lengthOfLongestSubstring(String s) {
 		int longest = 0;
 		if (s == null || s.length() == 0) return longest;

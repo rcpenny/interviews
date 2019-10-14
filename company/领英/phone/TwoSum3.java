@@ -8,35 +8,32 @@ import java.util.Map;
 // find -是否存在任意一对数字之和等于这个值
 // lint607
 
+// 不需要list， loop over map key也是可以的
 public class TwoSum3 {
+  Map<Integer, Integer> numToFreq;
 
-	Map<Integer, Integer> numberToFreq; // 精华，用map记录出现freq保证 a+a=target
-	List<Integer> list;                 // 用List加快visit速度
-
-	TwoSum3() {
-		this.numberToFreq = new HashMap<>();
-		this.list = new ArrayList<>();
-	}
-
-	public void add(int number) {
-		if (!numberToFreq.containsKey(number)) {
-			numberToFreq.put(number, 1);
-			list.add(number);
-		} else {
-			numberToFreq.put(number, 2);
-		}
-	}
-
-
-	public boolean find(int value) {
-		for (int i = 0; i < list.size(); i++) {
-			int val1 = list.get(i);
-			int val2 = value - val1;
-
-			// 特殊情况
-			if (val1 != val2 && numberToFreq.containsKey(val2)) return true;
-			if (val1 == val2 && numberToFreq.get(val1) == 2) return true;
-		}
-		return false;
-	}
+  /** Initialize your data structure here. */
+  public TwoSum() {
+    this.numToFreq = new HashMap<>();
+  }
+  
+  /** Add the number to an internal data structure.. */
+  public void add(int number) {
+    numToFreq.putIfAbsent(number, 0);
+    numToFreq.put(number, numToFreq.get(number) + 1);
+  }
+  
+  /** Find if there exists any pair of numbers which sum is equal to the value. */
+  public boolean find(int value) {
+    for (int number : numToFreq.keySet()) {
+      int complement = value - number;
+      if (complement == number && numToFreq.get(complement) > 1) {
+        return true;
+      }
+      if (complement != number && numToFreq.containsKey(complement)) {
+        return true;
+      }
+    }
+    return false;
+  }
 }
