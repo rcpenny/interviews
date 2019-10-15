@@ -6,7 +6,6 @@ import java.util.Queue;
 // lint1195
 
 public class FindLargestValueInTreeRow {
-
   public List<Integer> largestValues(TreeNode root) {
     List<Integer> result = new ArrayList<>();
     if (root == null) return result;

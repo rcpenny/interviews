@@ -30,6 +30,7 @@ public class BSTIterator {
 			}
 		}
 
+		// 这一步再想想
 		else if (node.right == null) {
 			node = stack.pop();
 			while (!stack.isEmpty() && stack.peek().right == node) {

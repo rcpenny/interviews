@@ -13,47 +13,46 @@ import java.util.Queue;
  * 给定n门课以及他们的先决条件，判断是否可能完成所有课程？
  */
 public class CourseSchedule {
+  public boolean canFinish(int numCourses, int[][] prerequisites) {
+    int[] indegrees = new int[numCourses];
+    Map<Integer, List<Integer>> preToFollow = new HashMap<>();
 
-	public boolean canFinish(int numCourses, int[][] prerequisites) {
+		// 建立图与入度
+    for (int i = 0; i < numCourses; i++) {
+      preToFollow.put(i, new ArrayList<>());
+    }
 
-		// 建立图
-		HashMap<Integer, List<Integer>> preToFollow = new HashMap<>(); 
+    for (int[] pair : prerequisites) {
+      int preCourse = pair[1];
+      int followCourse = pair[0];
 
-		for (int i = 0; i < numCourses; i++)
-			preToFollow.put(i, new ArrayList<Integer>());
-		
-		for (int[] pair : prerequisites) {
-			int course = pair[0];
-			int preCourse = pair[1];
-			preToFollow.get(preCourse).add(course);
-		}
+      indegrees[followCourse]++;
+      preToFollow.get(preCourse).add(followCourse);
+    }
 
-		// 建立入度 preCourse -> course(course indegree++)
-		int[] indegreeOfCourse = new int[numCourses];
-		for (int[] pair : prerequisites)
-			indegreeOfCourse[pair[0]]++;
+    int courseFinished = 0;
 
-		// 将所有入度为 0 的点，也就是那些没有任何依赖的点，放到宽度优先搜索的队列中
-		int count = 0;
-		Queue<Integer> queue = new LinkedList<>();
+    Queue<Integer> queue = new LinkedList<>();
+    for (int i = 0; i < numCourses; i++) {
+      if (indegrees[i] == 0) {
+        queue.offer(i);
+        courseFinished++;
+      }
+    }
 
-		for (int i = 0; i < numCourses; i++) {
-			if (indegreeOfCourse[i] != 0) continue;
-			queue.offer(i);
-			count++;
-		}
+    while (!queue.isEmpty()) {
+      int preCourse = queue.poll();
+      List<Integer> followCourses = preToFollow.get(preCourse);
 
-		// BFS TOPO
-		while (!queue.isEmpty()) {
-			int precourse = queue.poll();
-			for (Integer course : preToFollow.get(precourse)) {
-				indegreeOfCourse[course]--;
-				if (indegreeOfCourse[course] != 0) continue;
-				queue.offer(course);
-				count++;
-			}
-		}
+      for (int follow : followCourses) {
+        indegrees[follow]--;
+        if (indegrees[follow] == 0) {
+          queue.offer(follow);
+          courseFinished++;
+        }
+      }
+    }
 
-		return count == numCourses;
-	}
+    return courseFinished == numCourses;
+  }
 }
