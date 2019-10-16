@@ -26,7 +26,7 @@ class ResultType {
 
 public class LowestCommonAncestor {
   public TreeNode lowestCommonAncestor(TreeNode root, TreeNode A, TreeNode B) {
-		return helper(root, A, B).node;
+		return helper(root, A, B).ancestor;
 	}
 
 	private ResultType helper(TreeNode root, TreeNode a, TreeNode b) {
@@ -35,11 +35,9 @@ public class LowestCommonAncestor {
 		ResultType left = helper(root.left, a, b);
 		ResultType right = helper(root.right, a, b);
 
-		// 左右子树 其中某个已经是LCA了
-		if (left.afound && left.bfound) 
-			return new ResultType(true, true, left.ancestor);
-		if (right.afound && right.bfound) 
-			return new ResultType(true, true, right.ancestor);
+		// 左右子树 其中某个已经有LCA了
+		if (left.ancestor != null) return left;
+    if (right.ancestor != null) return right;
 
 		// 还没找到LCA,说明 A B中至少有一个没有找到,与node的值合并
 		boolean afound = left.afound || right.afound || root.val == a.val;

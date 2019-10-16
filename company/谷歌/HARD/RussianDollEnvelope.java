@@ -12,19 +12,15 @@ import java.util.Comparator;
 // 4. 顺序计算: envelopes左至右，sorted
 
 public class RussianDollEnvelope {
-	
-	// 先比width，再比height
-	private Comparator<int []> cpt = new Comparator<int[]>() {
-		@Override public int compare(int[] a, int[] b) {
-			if (a[0] != b[0]) return a[0] - b[0];
-			return a[1] - b[1];
-		}};
-
   public int maxEnvelopes(int[][] envelopes) {
 		int n = envelopes.length;
 		if (n == 0) return 0;
 	
-		Arrays.sort(envelopes, cpt);
+		Arrays.sort(envelopes, (a, b) -> {
+			if (a[0] != b[0]) return a[0] - b[0];
+			return a[1] - b[1];
+		});
+
 		int[] f = new int[n];
 
 		int max_envelopes = 0;
