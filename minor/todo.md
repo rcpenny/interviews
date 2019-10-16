@@ -57,3 +57,5 @@ follow up是输出topK，我给出了三种方法，头权重，头尾权重，�
 第四轮，一个比较senior的欧洲大叔，特搞笑的是直接给了我一张纸，上面打印出来了面试题。说给几个task，每个task有Dependency和完成所需时间。有无限的processor。问最短用多长时间完成所有task。
 
 第五轮，感觉是个二代三哥，没有口音，很健谈。先问我ZAZB那个题，我说做过了，就换了个题目。给两个string A B, 判断是否B是在A的中间添加了几个words。比如i like chocolate 和i really like chocolate return true, i like chocolate和no i don't like chocolate return false。做完之后又出了个brainstorm，说有一个stream of query words, Input是几个character，output any three words queried that begin with the given characters in order.比如 [chocolate, charco, chorizo]，给cho，就要return [chocolate, chorizo]。
+
+https://www.lintcode.com/problem/x-of-a-kind-in-a-deck-of-cards/description
