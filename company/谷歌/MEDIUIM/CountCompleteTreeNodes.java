@@ -21,9 +21,7 @@ public class CountCompleteTreeNodes {
       if (exist(root, mid, height)) start = mid;
       else end = mid;
     }
-    
-    System.out.println(start);
-    System.out.println(end);
+
     if (exist(root, end, height)) return end;
     return start;
   }
@@ -42,6 +40,6 @@ public class CountCompleteTreeNodes {
       if (step == 1) root = root.right;
       else root = root.left;
     }
-    return root != null ? true : false;
+    return root != null;
   }
 }
