@@ -12,33 +12,33 @@ import java.util.ArrayList;
  */
 
 public class LetterCombinationPhoneNumber {
-	private static final String[] letters = {"abc", "def", "ghi", "jkl", "mno", "pqrs","tuv", "wxyz"};
+  private final String[] letters = {"", "", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"};
 
   public List<String> letterCombinations(String digits) {
-		List<String> results = new ArrayList<>();
-		if (digits == null || digits.length() == 0) return results;
+    List<String> combinations = new ArrayList<>();
 
-		dfs(digits, 0, new StringBuilder(), results);
-		
-		return results;
-	}
+    if (digits == null || digits.length() == 0) return combinations;
+    
+    char[] digitsChar = digits.toCharArray();
+    combineDigits(digitsChar, 0, new StringBuilder(), combinations);
 
-	// 定义：元数据digits  控制index  状态sb   结果results
-	private void dfs(String digits, int index, StringBuilder sb, List<String> results) {
-		// 出口：状态length = 元数据length
-		if (sb.length() == digits.length()) {
-			results.add(sb.toString());
-			return;
-		}
+    return combinations;
+  }
 
-		// 拆解：数字对应letter递归
-		for (int i = index; i < digits.length(); i++) {
-			int digit = digits.charAt(i) - '0';
-			for (char c : letters[digit - 2].toCharArray()) {
-				sb.append(c);
-				dfs(digits, i + 1, sb, results);
-				sb.deleteCharAt(sb.length() - 1);
-			}
-		}
-	}
+  private void combineDigits(char[] digits, int index, StringBuilder comb, List<String> combinations) {
+    if (index == digits.length) {
+      combinations.add(comb.toString());
+      return;
+    }
+
+    int digit = digits[index] - '0';
+
+    for (int i = 0; i < letters[digit].length(); i++) {
+      char tmp = letters[digit].charAt(i);
+
+      comb.append(tmp);
+      combineDigits(digits, index + 1, comb, combinations);
+      comb.deleteCharAt(comb.length() - 1);
+    }
+  }
 }

@@ -18,40 +18,35 @@ import java.util.TreeMap;
 // 进阶版的max depth of tree
 
 public class FindLeavesOfBinaryTree {
-	// 或者先max depth一下tree，就不用map了
-  private Map<Integer, List<Integer>> depthToLeaves = new TreeMap<>();
+  List<List<Integer>> leaves = new ArrayList<>();
 
   public List<List<Integer>> findLeaves(TreeNode root) {
-    List<List<Integer>> results = new ArrayList<>();
+    int rootDepth = nodeReversedDepth(root);
 
-		int root_height = reverseDepthOfNode(root);
-    addLeaf(root, root_height);
+    collectLeaf(root, rootDepth);
 
-    // convert map to list
-    for (int key : depthToLeaves.keySet()) {
-      results.add(depthToLeaves.get(key));
-		}
-
-    return results;
+    return leaves;
   }
 
-  // return depth of this node, leaf is zero
-  private int reverseDepthOfNode(TreeNode node) {
-    if (node == null) return -1;
+  // reversed depth means leaf depth is 1
+  private int nodeReversedDepth(TreeNode node) {
+    if (node == null) return 0;
 
-    int left = reverseDepthOfNode(node.left);
-		addLeaf(node.left, left);
+    int leftDepth = nodeReversedDepth(node.left);
+    int rightDepth = nodeReversedDepth(node.right);
 
-    int right = reverseDepthOfNode(node.right);
-    addLeaf(node.right, right);
+    collectLeaf(node.left, leftDepth);
+    collectLeaf(node.right, rightDepth);
 
-    return Math.max(left, right) + 1;
+    return Math.max(leftDepth, rightDepth) + 1;
   }
 
-  // add node to the map
-  private void addLeaf(TreeNode node, int depth) {
-    if (depth == -1) return;
-    depthToLeaves.putIfAbsent(depth, new ArrayList<>());
-    depthToLeaves.get(depth).add(node.val);
+  private void collectLeaf(TreeNode node, int depth) {
+    if (depth == 0) return;
+    
+    while (leaves.size() < depth) {
+      leaves.add(new ArrayList<>());
+    }
+    leaves.get(depth - 1).add(node.val);
   }
 }
