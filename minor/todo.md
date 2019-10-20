@@ -9,6 +9,8 @@
 dp1 dp2 dp3 dp4
 bt_strut, bt_sumpath, bst
 
+1. google  1. dropbox 1. LinkedIn, 3. Amazon 4. microsoft  BH   SYS-DESIGN
+
 https://leetcode-cn.com/problems/sliding-window-maximum/solution/shi-pin-jie-xi-shuang-duan-dui-lie-hua-dong-chuang/
 
 https://engineering.linkedin.com/espresso/introducing-espresso-linkedins-hot-new-distributed-document-store
