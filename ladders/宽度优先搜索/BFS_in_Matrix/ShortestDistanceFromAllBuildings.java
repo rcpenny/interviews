@@ -67,12 +67,10 @@ public class ShortestDistanceFromAllBuildings {
 
     Queue<Point> queue = new LinkedList<>();
     queue.offer(new Point(x, y));
-    visited[x][y] = true;
     
     while (!queue.isEmpty()) {
       int size = queue.size();
       steps++;
-
       for (int i = 0; i < size; i++) {
         Point p = queue.poll();
         for (int j = 0; j < 4; j++) {
