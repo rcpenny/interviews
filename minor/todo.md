@@ -15,6 +15,8 @@ https://leetcode-cn.com/problems/sliding-window-maximum/solution/shi-pin-jie-xi-
 
 https://engineering.linkedin.com/espresso/introducing-espresso-linkedins-hot-new-distributed-document-store
 
+https://www.linkedin.com/interview-prep/assessments/urn:li:fs_assessment:(1,a)/question/urn:li:fs_assessmentQuestion:(10011,aq11)/
+
 
 第三轮：算法 朋克白人大叔
 题目是auto complete的变形版。给出一个字符串，要求你输出这个字符串中所有可能包含的单词。方法是先把字典抽出来建tries，然后把字符串挨个char扫过去就行了，还需要一个hashset去看下一步的搜索是不是在字符串中有的。
