@@ -1,3 +1,5 @@
+https://docs.google.com/document/d/1PVCESbkRCWhDitCwtbhdXBEIMGsdu0u1uLXThCY7Mp0/edit
+
 # system infra Q:
 
 ## Process vs Thread:
@@ -10,6 +12,7 @@ A thread is a path of execution within a process, lightweight process.
 
 - stack
 The stack is a segment of memory where data like your local variables and function calls get added and/or removed in a last-in-first-out (LIFO) manner.
+
 - heap
 The heap is the segment of memory that is not set to a constant size before compilation and can be controlled dynamically by the programmer. Think of the heap as a “free pool” of memory you can use when running your application. The size of the heap for an application is determined by the physical constraints of your RAM (Random access memory) and is generally much larger in size than the stack.
 
