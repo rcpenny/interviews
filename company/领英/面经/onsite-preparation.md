@@ -24,13 +24,17 @@ https://engineering.linkedin.com/blog/2019/04/under-the-hood--learning-with-docu
 
 http://www.pitt.edu/~viz/classes/infsci3350/resources/linkedin_icde12.pdf
 
-1. Top k exception (Kafka)
+## Top k exception (Kafka)
 经典题，24小时的top k exception, 然后支持5min的top k，1hr的top k，1年的top k。这个绝对是领英家第一高频题了，都是套一个kafka就行
 https://www.1point3acres.com/bbs/thread-159538-1-1.html 
 https://www.jiuzhang.com/qa/219/
 https://www.bookstack.cn/read/system-design/cn-bigdata-heavy-hitters.md
 
-3. Tiny URL(url shorten + top k called url)
+## k-v store (设计VOLDEMORT)
+key value store，value体积比较大需要放在硬盘里面 另外随机写到硬盘会比较慢所以assume你要appending only 
+
+## Tiny URL （post功能）
+(https://www.linkedin.com/help/linkedin/answer/3439/short-urls-in-shared-posts?lang=en)
 短地址设计, 主要关注下面四个方面
    1. 怎么生成短地址
    2. 怎么存储 - 主要是分析Sql和Nosql的优劣
@@ -48,6 +52,3 @@ https://www.bookstack.cn/read/system-design/cn-bigdata-heavy-hitters.md
 
 8. 系统设计：centralized logging
  monitoring system. 关键字 hundreds of datacenters,  hundreds of services in e‍‍‍‌‍‍‍‍‍‌‍‍‌‍‌‍‌‌‌ach datacenter, multiple type of events may ocuur in each service. 要求，collect all the events for each service, user can monitior it in real time, if some event exceed the threshold, corresponding engineers will get a notification. 典型的steaming processing的achitecture. message queue(kafka)+workers(storm)+database+cache+notification service(response queue). 需要注意的点就是 1 collect events 是用pull还是push, notification是用pull还是push 聊清楚trade off. 2最新的数据process完 写进db的同时 可以直接放在cache里面，因为很可能被读。3要注意engineer 在线和不在线的情况。4 哪种event 需要通知哪个engineer 可以是一个pub sub的架构也可以存成一个static table or key value. 这一轮面试官40分钟问完，问了很多细节的问题，因为我比较熟，所以面试官非常满意。还剩20分钟 说我表现得非常好，他一边给我写feedback 一边让我问问题。
-
-10. system design：k-v store (design VOLDEMORT)
-key value store，value体积比较大需要放在硬盘里面 另外随机写到硬盘会比较慢所以assume你要appending only 
