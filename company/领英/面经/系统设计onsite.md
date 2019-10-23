@@ -1,3 +1,14 @@
+https://engineering.linkedin.com/architecture/brief-history-scaling-linkedin
+
+
+https://engineering.linkedin.com/blog/2019/the-building-blocks-of-linkedin-skill-assessments
+
+https://engineering.linkedin.com/blog/2019/04/under-the-hood--learning-with-documents
+
+3. https://engineering.linkedin.com/espresso/introducing-espresso-linkedins-hot-new-distributed-document-store
+
+http://www.pitt.edu/~viz/classes/infsci3350/resources/linkedin_icde12.pdf
+
 # Top k exception (Kafka) LFU cache
 经典题，24小时的top k exception, 然后支持5min的top k，1hr的top k，1年的top k
 
