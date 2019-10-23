@@ -24,24 +24,8 @@ https://engineering.linkedin.com/blog/2019/04/under-the-hood--learning-with-docu
 
 http://www.pitt.edu/~viz/classes/infsci3350/resources/linkedin_icde12.pdf
 
-## Top k exception (Kafka)
-经典题，24小时的top k exception, 然后支持5min的top k，1hr的top k，1年的top k。这个绝对是领英家第一高频题了，都是套一个kafka就行
-https://www.1point3acres.com/bbs/thread-159538-1-1.html 
-https://www.jiuzhang.com/qa/219/
-https://www.bookstack.cn/read/system-design/cn-bigdata-heavy-hitters.md
-
 ## k-v store (设计VOLDEMORT)
 key value store，value体积比较大需要放在硬盘里面 另外随机写到硬盘会比较慢所以assume你要appending only 
-
-## Tiny URL （post功能）
-(https://www.linkedin.com/help/linkedin/answer/3439/short-urls-in-shared-posts?lang=en)
-短地址设计, 主要关注下面四个方面
-   1. 怎么生成短地址
-   2. 怎么存储 - 主要是分析Sql和Nosql的优劣
-   3. Redirect
-   4. 如何统计被访问最多的地址
-
-4. 设计一个monitoring 系统, 需要实时监测System Level (cpu usage, network usage ...)和 app level (exception, error...) 的 matrix.‍‍‍‌‍‍‍‍‍‌‍‍‌‍‌‍‌‍‍ 然后要可以发notification给owner
 
 5. blacklist API 
 设计一个全球范围内的blacklist service，就是有很多恶意ip会发来ddos攻击，你要设计一个blacklist的服务，能够ban掉之前已经诊断为malicious ip发过来的请求。这里不要求你设计怎么样判断一个ip是否是恶意ip，给了个isMalicious()的api signature。难点在于不同data center之间怎么sync数据，availability和consistency怎么取舍。哪里会有single point of failure，然后怎么设计能解决。最后folowup就是结合你的工作经验问这个服务上线之后你最想加一个什么功能，不一定是functional的，可以是logistics上的。面试官比较期待的答案是support和monitoring之类的。
