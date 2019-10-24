@@ -40,10 +40,20 @@ http://www.pitt.edu/~viz/classes/infsci3350/resources/linkedin_icde12.pdf
 随着处理的窗口越来越多，HashMap也会不断增长，同时HashMap里的低频元素会被清理出去，这样内存占用会保持在一个很低的水平。
 
 ## Tiny URL （LinkedIn post功能）
-短地址设计, 主要关注下面四个方面
-   1. 怎么生成短地址
-   2. 怎么存储 - 主要是分析Sql和Nosql的优劣
-   3. Redirect
-   4. 如何统计被访问最多的地址
+- Senario: 
+   1. long URl-> short URL 
+   2. short URL -> long URL, redirect
+   3. QPS + STORAGE (DAU, shortURL creation QPS, click shortURL QPS, URL-SIZE storage daily)
+- Service
+   1. URL service(generate URL service, parse URL service)
+   2. URLservice.decode() GET/short_url return HTTP redirect response
+   3. URLservice.encode() POST/data/shorten/ Data ={url:"baidu.com"} return short url
+- Storage
+   1. SQL vs NoSQL 自行比较
+   2. encode算法(随机生成，进制转换)
+- Scale
+   1. 提速1（Cache） long -> short  short -> long 先cache，再DB
+   2. 提速2 优化web server visit speed, use DNS to distribute users to different web servers
+   3. 提速3 centralized MySQL + distributed Memcahced(共用DB，cache各自对应)
+   4. 扩展？
 
-4. 设计一个monitoring 系统, 需要实时监测System Level (cpu usage, network usage ...)和 app level (exception, error...) 的 matrix.‍‍‍‌‍‍‍‍‍‌‍‍‌‍‌‍‌‍‍ 然后要可以发notification给owner
