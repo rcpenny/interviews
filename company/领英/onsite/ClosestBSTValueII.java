@@ -1,4 +1,3 @@
-import java.awt.List;
 import java.util.ArrayList;
 
 // 给定一棵非空二叉搜索树以及一个target值，找到 BST 中最接近给定值的 k 个数

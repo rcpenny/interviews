@@ -16,13 +16,10 @@ class Element {
 }
 
 public class KthLargestInNArrays {
-
-	private Comparator<Element> cpt= new Comparator<Element>() {
-		@Override public int compare(Element a, Element b) {return b.val - a.val;}
-	};
-
   public int KthInArrays(int[][] arrays, int k) {
-		PriorityQueue<Element> maxheap = new PriorityQueue<>(k, cpt);
+		PriorityQueue<Element> maxheap = new PriorityQueue<>(k, (a, b) -> {
+			return b.val - a.val;
+		});
 
 		// 要sort呀...
 		for (int i = 0; i < arrays.length; i++) {
