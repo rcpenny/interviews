@@ -1,10 +1,9 @@
-import java.awt.List;
-import java.util.ArrayList;
-
 // 给定一棵非空二叉搜索树以及一个target值，找到 BST 中最接近给定值的 k 个数
 
 // 暴力解法：in-order traverse find two points find k elements
+// O(N) O(N)
 
+// O(K) O(K)
 // 思路等同于从指定节点开始分别向前和向后遍历，直到找到k个最接近target的节点
 // 使用prev和next两个栈分别记录前驱和后继，goPrev相当于反向中序遍历，goNext相当于正向中序遍历
 
