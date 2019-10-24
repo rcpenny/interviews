@@ -40,10 +40,12 @@ http://www.pitt.edu/~viz/classes/infsci3350/resources/linkedin_icde12.pdf
 随着处理的窗口越来越多，HashMap也会不断增长，同时HashMap里的低频元素会被清理出去，这样内存占用会保持在一个很低的水平。
 
 ## Tiny URL （LinkedIn post功能）
-- Senario: 
+- Senario(func/non-func): 
    1. long URl-> short URL 
    2. short URL -> long URL, redirect
    3. QPS + STORAGE (DAU, shortURL creation QPS, click shortURL QPS, URL-SIZE storage daily)
+   4. set expiration time(opt)
+   5. The system should be highly available / URL redirection should happen in real-time with minimal latency.
 - Service
    1. URL service(generate URL service, parse URL service)
    2. URLservice.decode() GET/short_url return HTTP redirect response
@@ -55,5 +57,5 @@ http://www.pitt.edu/~viz/classes/infsci3350/resources/linkedin_icde12.pdf
    1. 提速1（Cache） long -> short  short -> long 先cache，再DB
    2. 提速2 优化web server visit speed, use DNS to distribute users to different web servers
    3. 提速3 centralized MySQL + distributed Memcahced(共用DB，cache各自对应)
-   4. 扩展？
+   4. 扩展？ 多台数据库解决（Storaget存不下，QPS忙不过） horizontal sharding, sharding key?
 
