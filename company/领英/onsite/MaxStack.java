@@ -3,28 +3,9 @@ import java.util.ArrayList;
 import java.util.Stack;
 import java.util.TreeMap;
 
-// Design a max stack that supports push, pop, top, peekMax and popMax.
-
-// push(x) -- Push element x onto stack.
-// pop() -- Remove the element on top of stack and return it.
-// top() -- Get the element on the top.
-// peekMax() -- Retrieve the maximum element in the stack.
-// popMax() -- Retrieve the maximum element in the stack, and remove it. 
-// If you find more than one maximum elements, only remove the top-most one.
-
-// Note:
-// -1e7 <= x <= 1e7
-// Number of operations won't exceed 10000.
-// The last four operations won't be called when stack is empty.
-
-// 更优解用treemap
-// 说了下用两个stack存数据的思路，不满意。换了treemap的方法，多的时间问了下如果是要线程安全你该怎么改。
-
-
 // 解1 双栈
-// Complexity Analysis
-// Time Complexity: O(N) for the popMax operation, and O(1)O(1) for the other operations
-// Space Complexity: O(N), the maximum size of the stack.
+// Time: O(N) for the popMax operation, and O(1)O(1) for the other operations
+// Space: O(N), the maximum size of the stack.
 public class MaxStack {
 	private Stack<Integer> realStack;
 	private Stack<Integer> maxStack;
@@ -39,7 +20,7 @@ public class MaxStack {
 		if (maxStack.isEmpty()) 
 			maxStack.push(x);
 		else 
-			maxStack.push(Math.max(maxStack.peek(), x));
+			maxStack.push(Math.max(peekMax(), x));
 	}
 
 	public int pop() {
@@ -56,21 +37,17 @@ public class MaxStack {
 	}
 	
 	public int popMax() {
-		Stack<Integer> tmp = new Stack<>();
 		int cur_max = peekMax();
+		Stack<Integer> tmp = new Stack<>();
 
 		while (top() != cur_max) {
-			tmp.push(realStack.pop());
-			maxStack.pop();
+			tmp.push(pop());
 		}
-
-		realStack.pop();
-		maxStack.pop();
+		pop();
 
 		while (!tmp.isEmpty()) {
 			push(tmp.pop());
 		}
-
 		return cur_max;
 	}
 }
@@ -79,10 +56,10 @@ public class MaxStack {
 
 // 本质逻辑: double linked list 模拟 stack, treemap对应stack中每个value和其相应的nodes
 
-// Time Complexity: O(logN) for all operations except peek which is O(1)O(1)
+// Time: O(logN) for all operations except peek which is O(1)O(1)
 // Most operations involving TreeMap are O(logN).
 
-// Space Complexity: O(N), the size of the data structures used.
+// Space: O(N), the size of the data structures used.
 
 class MaxStack {
 	TreeMap<Integer, List<Node>> map;
