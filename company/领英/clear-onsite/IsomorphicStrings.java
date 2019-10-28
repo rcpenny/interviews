@@ -21,12 +21,14 @@ public class IsomorphicStrings {
 			char scc = sc[i];
 			char tcc = tc[i];
 
+			// 都无
 			if (!s2t.containsKey(scc) && !t2s.containsKey(tcc)) {
 				s2t.put(scc, tcc);
 				t2s.put(tcc, scc);
 				continue;
 			}
 
+			// 都有
 			if (s2t.containsKey(scc) && t2s.containsKey(tcc)) {
 				if (s2t.get(scc) != tcc || t2s.get(tcc) != scc) {
 					return false;
