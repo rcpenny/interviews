@@ -44,7 +44,10 @@ class RandomizedCollection {
     numToIndexes.get(lastVal).add(removeIndex);
     numToIndexes.get(lastVal).remove(list.size() - 1);
     
-    list.remove(list.size() - 1);
+		list.remove(list.size() - 1);
+		if (numToIndexes.get(val).size() == 0) {
+      numToIndexes.remove(val);
+    }
     
     return true;
   }
