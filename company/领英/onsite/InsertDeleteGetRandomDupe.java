@@ -7,13 +7,11 @@ class RandomizedCollection {
   List<Integer> list;
   Map<Integer, Set<Integer>> numToIndex;
 
-    /** Initialize your data structure here. */
   public RandomizedCollection() {
     this.list = new ArrayList<>();
     this.numToIndex = new HashMap<>();
   }
 
-  /** Inserts a value to the collection. Returns true if the collection did not already contain the specified element. */
   public boolean insert(int val) {
     if (!numToIndex.containsKey(val))
       numToIndex.put(val, new LinkedHashSet<>());  // 使用LinkedHashSet
@@ -25,7 +23,6 @@ class RandomizedCollection {
     return numToIndex.get(val).size() == 1;
   }
 
-  /** Removes a value from the collection. Returns true if the collection contained the specified element. */
   public boolean remove(int val) {
     if (!numToIndex.containsKey(val) || numToIndex.get(val).size() == 0)
       return false;
@@ -47,14 +44,8 @@ class RandomizedCollection {
     return true;
   }
 
-  /** Get a random element from the collection. */
   public int getRandom() {
     int randomIndex = (int) (list.size() * Math.random());
     return list.get(randomIndex);
   }
-}
-
-
-public class InsertDeleteGetRandomDupe {
-  private InsertDeleteGetRandomDupe() {}
 }

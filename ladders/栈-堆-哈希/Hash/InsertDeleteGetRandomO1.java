@@ -1,8 +1,3 @@
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 /**
  * 设计一个数据结构实现在平均 O(1) 的复杂度下执行以下所有的操作。
 		insert(val): 如果这个元素不在set中，则插入。
@@ -15,7 +10,7 @@ public class InsertDeleteGetRandomO1 {
 	Map<Integer, Integer> valueToIndex;
 	List<Integer> list;
 
-	public InsertDeleteGetRandomO1() {
+	public RandomizedSet() {
 		this.valueToIndex = new HashMap<>();
 		this.list = new ArrayList<>();
 	}
@@ -32,19 +27,23 @@ public class InsertDeleteGetRandomO1 {
 		if (!valueToIndex.containsKey(val)) return false;
 
 		int indexOfval = valueToIndex.get(val);
-		int last_number = list.get(list.size() - 1);
 
-		list.set(indexOfval, last_number);
-		list.remove(list.size() - 1);
-		
-		valueToIndex.remove(val);
-		valueToIndex.put(last_number, indexOfval);
-		
+		// 这一步ß
+    if (indexOfval < list.size() - 1) {
+      int last_number = list.get(list.size() - 1);
+      list.set(indexOfval, last_number);
+      valueToIndex.put(last_number, indexOfval);
+    }
+
+    list.remove(list.size() - 1);
+    valueToIndex.remove(val);
+
 		return true;
 	}
 
 	public int getRandom() {
-		int index = (int) (Math.random() * list.size());
+    Random rand = new Random();
+		int index = rand.nextInt(list.size());
     return list.get(index);
 	}
 }
