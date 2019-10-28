@@ -7,9 +7,7 @@ import java.util.Map;
 // GetMinKey() - 返回一个值最小的Key。 如果不存在这样的元素，则返回空字符串""。
 
 // 所有的操作都需要 O(1) 的时间复杂度。
-// lint1245
-
-public class AllOoneDataStructure {}
+// leet432
 
 // 用来存储这个freq对应哪些key
 class Bucket {
@@ -115,3 +113,5 @@ public class AllOne {
 		prevBucket.next = newBucket;
 	}
 }
+
+public class AllOoneDataStructure {}

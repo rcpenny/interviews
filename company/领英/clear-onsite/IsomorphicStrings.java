@@ -1,8 +1,5 @@
-import java.util.HashMap;
-import java.util.Map;
 
-// lint638
-
+// leet205
 // 输入 : s = "egg", t = "add"
 // 输出 : true 
 // 说明 : e -> a, g -> d
