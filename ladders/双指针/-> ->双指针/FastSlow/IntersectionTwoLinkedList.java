@@ -1,102 +1,31 @@
-import java.util.HashSet;
-import java.util.Set;
-
-/**
- * find the node at which the intersection of two singly linked lists begins.
- * 
- * If the two linked lists have no intersection at all, return null.
- * The linked lists must retain their original structure after the function returns.
- * You may assume there are no cycles anywhere in the entire linked structure.
- */
-
-class ListNode {
-  int val;
-  ListNode next;
-  ListNode(int x) {
-    val = x;
-    next = null;
-  }
-}
+// leet160  考虑两个list有没有环
 
 public class IntersectionTwoLinkedList {
+	public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
+		// 查环
+		ListNode aCycleIntersection = detectCycle(headA);
+		ListNode bCycleIntersection = detectCycle(headB);
 
-	// headA与headB可能有环的情况
-	public ListNode getIntersection(ListNode headA, ListNode headB) {
-		if (headA == null || headB == null) return null;
-
-		// 先检查有没有环
-		ListNode a_inter = detectCycle(headA);
-		ListNode b_inter = detectCycle(headB);
-
-		if (a_inter != null && b_inter != null) {
-			return twoCyclesIntersection(headA, headB);
-		} else if (a_inter == null && b_inter == null) {
-			return getIntersectionNode(headA, headB);
+		// 均无环
+		if (aCycleIntersection == null && bCycleIntersection == null) {
+			return NoCycleIntersection(headA, headB);
 		}
 
-		// 一有一无，无交点
-		return null;
-	}
-
-	// 都有环的情况
-	private ListNode twoCyclesIntersection(ListNode headA, ListNode headB) {
-		Set<ListNode> a = new HashSet<>();
-		Set<ListNode> b = new HashSet<>();
-
-		while (!a.contains(headA)) {
-			a.add(headA);
-			headA = headA.next;
-		}
-
-		while (!b.contains(headB)) {
-			if (a.contains(headB)) {
-				inter = headB;
-				break;
+		// 都有环
+		if (aCycleIntersection != null && bCycleIntersection != null) {
+			if (aCycleIntersection != bCycleIntersection) {
+				return aCycleIntersection; // return any of them
 			}
-			b.add(headB);
-			headB = headB.next;
-		}
-		return headB;
-	}
 
-	// headA与headB无环的情况
-  private ListNode getIntersectionNode(ListNode headA, ListNode headB) {
-		if (headA == null || headB == null) return null;
+			// 两个intersection相同，交点再cycle前面，用均无环的思想写
+			return twoCyclesIntersection(headA, headB);
+		} 
 
-		ListNode tmpA = headA, tmpB = headB;
-		int lengthA = 0, lengthB = 0;
-
-		while (tmpA != null) {
-			tmpA = tmpA.next;
-			lengthA++;
-		}
-		while (tmpB != null) {
-			tmpB = tmpB.next;
-			lengthB++;
-		}
-
-		tmpA = headA;
-		tmpB = headB;
-		int diff = Math.abs(lengthA - lengthB);
-		if (lengthA >= lengthB)
-			for (int i = 0; i < diff; i++) tmpA = tmpA.next;
-		else
-			for (int i = 0; i < diff; i++) tmpB = tmpB.next;
-
-		// move forward together
-		while (tmpA != null && tmpB != null) {
-			if (tmpA == tmpB) return tmpA;
-			tmpA = tmpA.next;
-			tmpB = tmpB.next;
-		}
-
+		// 一有一无 无交点
 		return null;
 	}
 
-	// 如果存在cycle, return 交叉点, 不存在, return null
 	private ListNode detectCycle(ListNode head) {
-		if (head == null || head.next == null) return null;
-
 		ListNode fast = head;
 		ListNode slow = head;
 		ListNode intersection = head;
@@ -104,8 +33,6 @@ public class IntersectionTwoLinkedList {
 		while (fast != null && fast.next != null) {
 			fast = fast.next.next;
 			slow = slow.next;
-			
-			// slow fast重合，intersection从head开始追slow
 			if (fast == slow) {
 				while (intersection != slow) {
 					intersection = intersection.next;
@@ -116,5 +43,63 @@ public class IntersectionTwoLinkedList {
 		}
 
 		return null;
+	}
+
+	// headA与headB无环,解法2
+	// 可以理解成两个人速度一致， 走过的路程一致。那么肯定会同一个时间点到达终点。
+	// 如果到达终点的最后一段路两人都走的话，那么这段路上俩人肯定是肩并肩手牵手的。 nb
+  private ListNode NoCycleIntersection(ListNode headA, ListNode headB) {
+		ListNode a = headA;
+		ListNode b = headB;
+
+		while (a != b) {
+			a = a == null ? headB : a.next;
+			b = b == null ? headA : b.next;
+		}
+		return a;
+	}
+
+  // headA与headB无环,解法2
+  private ListNode NoCycleIntersection2(ListNode headA, ListNode headB) {
+		ListNode a = headA;
+		ListNode b = headB;
+
+		int aLength = 0;
+		int bLength = 0;
+
+		while (a != null) {
+			a = a.next;
+			aLength++;
+		}
+
+		while (b != null) {
+			b = b.next;
+			bLength++;
+		}
+
+		int diff = Math.abs(aLength - bLength);
+		a = headA;
+		b = headB;
+
+		if (aLength >= bLength) {
+			for (int i = 0; i < diff; i++) a = a.next;
+		} else {
+			for (int i = 0; i < diff; i++) b = b.next;
+		}
+
+		while (a != null && b != null) {
+			if (a == b) return a;
+			a = a.next;
+			b = b.next;
+		}
+
+		return null;
+	}
+
+	// 都有环
+	private ListNode twoCyclesIntersection(ListNode headA, ListNode headB, ListNode start) {
+		// get length a to cycle start
+		// get length b to cycle start
+		// find intersction
 	}
 }

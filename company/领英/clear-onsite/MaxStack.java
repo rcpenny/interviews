@@ -1,11 +1,7 @@
-import java.awt.List;
-import java.util.ArrayList;
-import java.util.Stack;
-import java.util.TreeMap;
-
 // 解1 双栈
 // Time: O(N) for the popMax operation, and O(1)O(1) for the other operations
 // Space: O(N), the maximum size of the stack.
+
 public class MaxStack {
 	private Stack<Integer> realStack;
 	private Stack<Integer> maxStack;
@@ -14,7 +10,7 @@ public class MaxStack {
 		this.realStack = new Stack<>();
 		this.maxStack = new Stack<>();
 	}
-	
+
 	public void push(int x) {
 		realStack.push(x);
 		if (maxStack.isEmpty()) 
@@ -53,10 +49,9 @@ public class MaxStack {
 }
 
 // 解2 Double Linked List + TreeMap
+// double linked list 模拟 stack, treemap对应stack中每个value和其相应的nodes
 
-// 本质逻辑: double linked list 模拟 stack, treemap对应stack中每个value和其相应的nodes
-
-// Time: O(logN) for all operations except peek which is O(1)O(1)
+// Time: O(logN) for all operations except top() which is O(1) 
 // Most operations involving TreeMap are O(logN).
 
 // Space: O(N), the size of the data structures used.
@@ -119,9 +114,14 @@ class DoubleLinkedList {
 	// 加一个到DLL尾部
 	public Node add(int val) {
 			Node x = new Node(val);
+			
+			Node last = tail.prev;
+			last.next = x;
+			x.prev = last;
+
 			x.next = tail;
-			x.prev = tail.prev;
-			tail.prev = tail.prev.next = x;
+			tail.prev = x;
+	
 			return x;
 	}
 
@@ -143,12 +143,12 @@ class DoubleLinkedList {
 	}
 }
 
-// DLL Node
 class Node {
 	int val;
 	Node prev;
 	Node next;
-	public Node(int v) {
-		val = v;
+
+	public Node(int val) {
+		this.val = val;
 	}
 }
