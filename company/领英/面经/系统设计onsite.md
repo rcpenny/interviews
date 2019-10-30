@@ -37,7 +37,7 @@ http://www.pitt.edu/~viz/classes/infsci3350/resources/linkedin_icde12.pdf
 等待数据流不断流进这个窗口，直到窗口满了，开始统计每个元素出现的频率，
 统计结束后，每个元素的频率减1，然后将出现次数为0的元素从HashMap中删除
 背后朴素的思想是，出现频率高的元素，不太可能减一后变成0，如果某个元素在某个窗口内降到了0，说明它不太可能是高频元素，可以不再跟踪它的计数器了。
-随着处理的窗口越来越多，HashMap也会不断增长，同时HashMap里的低频元素会被清理出去，这样内存占用会保持在一个很低的水平。
+随着处理的窗口越来越多，HashMap也会不断增长，同时HashMap里的低频元素会被清理出去，这样内存占用会保持在一个很低的水平
 
 ## Tiny URL （LinkedIn post功能）
 - Senario(func/non-func): 
