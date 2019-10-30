@@ -6,6 +6,7 @@
 // 初态边界: p[0] = nums[0] or n[0] = 0
 // 计算顺序: 0 -> len
 
+// leet152
 public class MaxProductSubarray {
   public int maxProduct(int[] nums) {
     if (nums.length == 1) return nums[0];
@@ -25,8 +26,8 @@ public class MaxProductSubarray {
       int cur = nums[i];
       
       if (cur == 0) {
-        pos[0] = 0;
-        neg[0] = 0;
+        pos[i] = 0;
+        neg[i] = 0;
       }
       
       // 注意 pos[i - 1] 或者 neg[i - 1]是0 带来的影响
@@ -46,6 +47,10 @@ public class MaxProductSubarray {
     return max;
   }
 
+  // old_pos = pos[i - 1]
+  // old_neg = neg[i - 1]
+  // new_pos = pos[i]
+  // new_neg = neg[i]
   public int maxProduct2(int[] nums) {
     if (nums.length == 1) return nums[0];
 
