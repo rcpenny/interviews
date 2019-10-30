@@ -9,12 +9,12 @@ public class RotateImage {
     
     // 1. 上下镜像交换 1st and last row
     int n = matrix.length;
-    for (int i = 0; i < n / 2; i++)
-      for (int j = 0; j < n; j++)
+    for (int i = 0; i < n / 2; i++) // half row
+      for (int j = 0; j < n; j++)   // full column
         swapByPosition(matrix, i, j, n - 1 - i, j);
         
     // 2. 左下角与右上角镜像交换
-    for (int i = 0; i < n; i++)
+    for (int i = 0; i < n; i++) // j to i, i to j
       for (int j = i; j < n; j++)
         swapByPosition(matrix, i, j, j, i);
   }

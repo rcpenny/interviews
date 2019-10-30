@@ -9,6 +9,7 @@ class ValidParentheses {
 		Stack<Character> stack = new Stack<>();
 
 		for (char c : chars) {
+			// in case ")"
 			if (stack.isEmpty()) {
 				stack.push(c);
 				continue;

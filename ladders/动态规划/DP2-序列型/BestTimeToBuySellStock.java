@@ -18,8 +18,10 @@
 
 public class BestTimeToBuySellStock {
 	public int maxProfit(int[] prices) {
-		if (prices == null || prices.length <= 1) return 0;
-
+		if (prices == null || prices.length <= 1) {
+			return 0;
+		}
+		
 		int sell = 0;
 		int buy = -prices[0]; // 把买股票的钱想成负数
 
