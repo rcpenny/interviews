@@ -3,8 +3,22 @@ https://engineering.linkedin.com/blog/2019/the-building-blocks-of-linkedin-skill
 https://engineering.linkedin.com/blog/2019/04/under-the-hood--learning-with-documents
 https://engineering.linkedin.com/espresso/introducing-espresso-linkedins-hot-new-distributed-document-store
 http://www.pitt.edu/~viz/classes/infsci3350/resources/linkedin_icde12.pdf
+
+
+# IDI3
+# Metric Monitor System
 https://engineering.linkedin.com/blog/2019/an-inside-look-at-linkedins-data-pipeline-monitoring-system-
 
+4 system design monitoring system. 关键字 hundreds of datacenters,  hundreds of services in each datacenter, multiple type of events may ocuur in each service. 要求，collect all the events for each service, user can monitior it in real time, if some event exceed the threshold, corresponding engineers will get a notification. 典型的steaming processing的achitecture. message queue(kafka)+workers(storm)+database+cache+notification service(response queue). 需要注意的点就是 1 collect events 是用pull还是push, notification是用pull还是push 聊清楚trade off. 2最新的数据process完 写进db的同时 可以直接放在cache里面，因为很可能被读。3要注意engineer 在线和不在线的情况。4 哪种event 需要通知哪个engineer 可以是一个pub sub的架构也可以存成一个static table or key value. 这一轮面试官40分钟问完，问了很多细节的问题，因为我比较熟，所以面试官非常满意。还剩20分钟 说我表现得非常好，他一边给我写feedback 一边让我问问题。
+设计一个metric系统，包括怎么收集，aggregation，存储，查询，dashboard，alert
+（7）美国小伙（经理）：SDA轮：设计一个API Metering系统，实现一个功能，就是调用累计次数达到阈值
+就不让过了，假定：（A）大规模；（B）不需要特别严格，但是要保证用户付了钱的调用流量都允许。
+第六轮，设计一个诊断系统，类似地理说的Kafka加上aggregator的设计方式。
+5.系统设计 statistics segregation system 我这轮知无不言 但无奈所知实在有限
+sys design 设计monitoring system监控100个server，需要从display到存储到采集数据整个stack都涉及到
+3. Metrics collection and monitor system。
+收集host的1second，1minute，1hour metrics。如何scale，如果是10000 hosts怎么收集。
+第六轮，设计，三哥，设计metrics collection and monitor system， 收集host的1second，1minute，1hour metrics。如何scale，如果是10000 hosts怎么收集。提供各种方案，kafka，HDFS，pub-sub model。各种分析优缺点，然后go over workflow。这轮还算比较顺利。
 
 # Top k exception (Kafka) LFU cache
 经典题，24小时的top k exception, 然后支持5min的top k，1hr的top k，1年的top k
@@ -62,9 +76,6 @@ Design，top k exception， 是老题了，用了地里面和网上九章的解�
 
 ## k-v store (设计VOLDEMORT)
 key value store，value体积比较大需要放在硬盘里面 另外随机写到硬盘会比较慢所以assume你要appending only
-
-# Monitoring System
-4 system design monitoring system. 关键字 hundreds of datacenters,  hundreds of services in each datacenter, multiple type of events may ocuur in each service. 要求，collect all the events for each service, user can monitior it in real time, if some event exceed the threshold, corresponding engineers will get a notification. 典型的steaming processing的achitecture. message queue(kafka)+workers(storm)+database+cache+notification service(response queue). 需要注意的点就是 1 collect events 是用pull还是push, notification是用pull还是push 聊清楚trade off. 2最新的数据process完 写进db的同时 可以直接放在cache里面，因为很可能被读。3要注意engineer 在线和不在线的情况。4 哪种event 需要通知哪个engineer 可以是一个pub sub的架构也可以存成一个static table or key value. 这一轮面试官40分钟问完，问了很多细节的问题，因为我比较熟，所以面试官非常满意。还剩20分钟 说我表现得非常好，他一边给我写feedback 一边让我问问题。
 
 # delayed task
 https://soulmachine.gitbooks.io/system-design/content/cn/task-scheduler.html
