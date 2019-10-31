@@ -3,8 +3,11 @@ dp1 dp2 dp3 dp4
 bt_strut, bt_sumpath, bst
 
 
-GL HF
+# TODO
+1 ladder review
+
 # LinkedIn 
-1. 2 system-design
-2. 5 problems
-3. 3 behavior questions
+1. monitoring systems design
+4. dropbox phone problem
+2. data structure problem
+3. behavior questions linkedin learning

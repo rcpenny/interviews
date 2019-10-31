@@ -11,6 +11,14 @@ import java.util.ArrayList;
 // 您可以假设在同一目录中没有任何文件或目录共享相同的名称
 // 您可以假设每个给定的目录信息代表一个唯一的目录。目录路径和文件信息用一个空格分隔
 
+/*
+	1. result order?
+	2. file name, file content and dir path contains special chars?
+	3. file amount?
+	4. same file names in a directory??
+	5. is the pattern alway true, separated by one space?
+*/
+
 // leet609
 
 class FileInfo {
