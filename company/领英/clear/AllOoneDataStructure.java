@@ -19,6 +19,7 @@ class Bucket {
 	}
 }
 
+// bucket should remain freq increasing order
 public class AllOne {
 	private Bucket head;  // head和tail什么都不存,只是负责指向, buffer
 	private Bucket tail;
