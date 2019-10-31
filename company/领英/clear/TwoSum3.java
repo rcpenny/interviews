@@ -21,11 +21,13 @@ public class TwoSum3 {
   /** Find if there exists any pair of numbers which sum is equal to the value. */
   public boolean find(int value) {
     for (int number : numToFreq.keySet()) {
-      int complement = value - number;
-      if (complement == number && numToFreq.get(complement) > 1) {
+			int complement = value - number;
+
+			if (complement != number && numToFreq.containsKey(complement)) {
         return true;
       }
-      if (complement != number && numToFreq.containsKey(complement)) {
+
+      if (complement == number && numToFreq.get(complement) > 1) {
         return true;
       }
     }
