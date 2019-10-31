@@ -1,13 +1,10 @@
 https://engineering.linkedin.com/architecture/brief-history-scaling-linkedin
-
-
 https://engineering.linkedin.com/blog/2019/the-building-blocks-of-linkedin-skill-assessments
-
 https://engineering.linkedin.com/blog/2019/04/under-the-hood--learning-with-documents
-
-3. https://engineering.linkedin.com/espresso/introducing-espresso-linkedins-hot-new-distributed-document-store
-
+https://engineering.linkedin.com/espresso/introducing-espresso-linkedins-hot-new-distributed-document-store
 http://www.pitt.edu/~viz/classes/infsci3350/resources/linkedin_icde12.pdf
+https://engineering.linkedin.com/blog/2019/an-inside-look-at-linkedins-data-pipeline-monitoring-system-
+
 
 # Top k exception (Kafka) LFU cache
 经典题，24小时的top k exception, 然后支持5min的top k，1hr的top k，1年的top k
@@ -39,6 +36,8 @@ http://www.pitt.edu/~viz/classes/infsci3350/resources/linkedin_icde12.pdf
 背后朴素的思想是，出现频率高的元素，不太可能减一后变成0，如果某个元素在某个窗口内降到了0，说明它不太可能是高频元素，可以不再跟踪它的计数器了。
 随着处理的窗口越来越多，HashMap也会不断增长，同时HashMap里的低频元素会被清理出去，这样内存占用会保持在一个很低的水平
 
+Design，top k exception， 是老题了，用了地里面和网上九章的解法，就是用bucket的那种，但一开始bucket大小没讨论好，后来那个拉丁裔白人就抓住不放了，说要不同长度的时间怎么办啊，我说换不同的bucket大小，然后他就一脸懵逼，不知道具体要什么答案，也没有给有效的引导和提示。死扣细节然后就没时间了。后来shadow的国人小哥给了提示，提示就是换不同的bucket然后sum up起来，可是之前我说的时候那白人又不接话，让我一度以为这不是他想要的思路。不懂这一轮怎么搞的，最后也是挂一轮。
+
 ## Tiny URL （LinkedIn post功能）
 - Senario(func/non-func): 
    1. long URl-> short URL 
@@ -59,3 +58,13 @@ http://www.pitt.edu/~viz/classes/infsci3350/resources/linkedin_icde12.pdf
    3. 提速3 centralized MySQL + distributed Memcahced(共用DB，cache各自对应)
    4. 扩展？ 多台数据库解决（Storaget存不下，QPS忙不过） horizontal sharding, sharding key?
 
+第二轮：面的系统设计，tiny url设计，而且对于每个url被访问了多少次，能够输出过去24小时之内的总访问量以及给定一个时间范围的总访问量；先画设计图讲了大概的思路，然后面试官会针对设计的各种部分提问，比如pre-generator怎么保证新的url不和已经被用过的重复，url expire的policy怎么设计，统计访问量在有多个server的时候怎么实现，需不需要cache，如果某个server down了怎么保证访问量的数据没有丢失等等
+
+## k-v store (设计VOLDEMORT)
+key value store，value体积比较大需要放在硬盘里面 另外随机写到硬盘会比较慢所以assume你要appending only
+
+# Monitoring System
+4 system design monitoring system. 关键字 hundreds of datacenters,  hundreds of services in each datacenter, multiple type of events may ocuur in each service. 要求，collect all the events for each service, user can monitior it in real time, if some event exceed the threshold, corresponding engineers will get a notification. 典型的steaming processing的achitecture. message queue(kafka)+workers(storm)+database+cache+notification service(response queue). 需要注意的点就是 1 collect events 是用pull还是push, notification是用pull还是push 聊清楚trade off. 2最新的数据process完 写进db的同时 可以直接放在cache里面，因为很可能被读。3要注意engineer 在线和不在线的情况。4 哪种event 需要通知哪个engineer 可以是一个pub sub的架构也可以存成一个static table or key value. 这一轮面试官40分钟问完，问了很多细节的问题，因为我比较熟，所以面试官非常满意。还剩20分钟 说我表现得非常好，他一边给我写feedback 一边让我问问题。
+
+# delayed task
+https://soulmachine.gitbooks.io/system-design/content/cn/task-scheduler.html

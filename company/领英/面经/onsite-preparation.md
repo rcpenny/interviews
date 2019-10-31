@@ -1,7 +1,120 @@
-# Coding problems
-finish linkedin tags twice   
+# system-infra onsite 整理
+1. 离口261，这轮主要是讨论很多edge case和error checking，有些input不一定是valid的。
+最后考了一道lowest ancestor，普通二叉树和bst，只讨论了思路。
+2. 第一题，给一个数组和一个target，问有多少个subset可以相加得到这个target，第二题利口149
+3. manager轮，讨论了过往的经历，几个bq，问了怎么处理legacy code
+4. 设计key value store，从读写低延迟，可靠性，拓展性出发，按照level db的思路答了。这轮感觉不是很好，被interviewer challenge了几次
+5. top k article，5分钟，1小时，一天的，问了怎么传输，怎么存储计算，有几个模块等等，这轮感觉都答上了。
+6. 延迟任务规划器，写了完整的代码，讨论了conditional variable原理，lock，何时会抛出interrupted exception，executor的用法，threading pool的好处
+
+
+
+我说了kafka用于传输，log用于recovery，cache用于存bucket，aggregation service用于计算，web server用于处理request，但这轮feedback不好.....
+
+第一轮（算法）：印度小哥
+第一题刷题网611 后续是有重复怎么办，正确做法是先找3边都一样的再找两边一样的，最后找都不一样的。
+第二题找区间的总覆盖，两个最小堆头尾排序就能解。后续是O(n)的解法，用hashmap，但条件是数据量不大。
+
+第二轮（多线程系统设计）：中国小哥
+delay task scheduler，设计出来了，但是代码实现的时候受限于没怎么写过多线程code，各种语法和用法上错误。感觉答得比较炸，希望小哥能放我一马。
+
+第三轮（午饭）：中国小哥
+全程中文交流，体验极佳。
+
+第四轮（host manager）：国人大叔
+全程如履薄冰，问题问的都非常非常细，甚至问到了目前项目的一些具体时间线。之后出了一题看我如何找unknown bug的位置。本来还应该有个印度女经理，但是女经理迟到了近50分钟，就没有加入进来。
+
+第五轮（分布式系统设计）中国小哥+中国小姐姐
+tinyURL，没啥好说的。把能说都说完之后正好55分钟。
+
+第六轮（数据结构和算法设计）中国小姐姐+印度小哥
+设计领英0,1,2,3朋友圈的具体算法。实现就是双向bfs，2,3度用双指针。最后还可以继续用hashset来优化时间复杂度。印度小哥积极引导，我也一直在顺着他说，最后总算是都写完了。
+
+第七轮（算法）中国小姐姐+国人阿姨
+第一题刷题网160，后续是带环。我说可以先找环然后把环去掉正常做，最后再接回来。然后不让改输入，用flag解出来了。
+第二题刷题网256，后续是265。之后又详细讨论了265不同解法的时间和空间复杂度。之后问除了dp还能怎么解，我说用dfs + pruning，之后又说了下dfs，pruning和dp之间的关系。
+第二轮需要先设计一下然后再用代码实现，第六轮需要详细分析时间和空间复杂度，预计的大小和储存方式。
+
+
+
+ system design 就是这位国人大哥了 document index. 我说用map reduce 来build index，然后可以存在trie里。他不大想用trie，问我trie和hashmap有啥区别，我说tire节省空间，他表情不同意的样子。后来决定index决定存db里。问了如何scale，我说可以partition data。他说如何sharding，我说可以consistent hashing。他说具体怎么做，我要正要画个圈给他讲consitent hashing，他说不用算法，我们是high level system design，我就给他画了web server，load balancer，db的图（according to recruiter，他说他需要提醒我需要从high level design的方向思考）。中间提到了不同db的优缺点，如果搜集top k的关键字，我讲了memcached和redis的优缺点，和如何按bucket存频率。
+
+
+
+1. Coding: 利口而其而，经典面筋题。
+我先说了in order traverse拿到sorted array + bi-directional expanding window的常规O(N)解，然后说优化空间可以用findPredecessor+findSuccessor（predecessor好难读啊我舌头烂了）面试官说这个你写出来我给你算bonus，pred/succ不好写。我说没事...我试试...
+一开始按照利口解法，每次return一个predecessor/successor，面试官提醒我你不如一次return k个？反正已经traverse了。心里一慌，你说的很有道理，但我没这么刷过啊....orz “Sounds good！” 硬着头皮试试把...
+最后基本写出来了....大早上的就心力交瘁，还好小哥露出了满意的笑容拿着电脑走了。
+
+2. IDI DS&Algorithm：类似top k的设计，需要return 5min，1hour，24hour之内的数据整合。这里问的不是top k，而是mean - 股票交易系统，经常有price update（incoming message），GetAvg会get过去不同时间区间内的average price. 需要O(1)
+重点是深入rolling window这个ds：怎么删去expire的data，如果靠incoming message trigger expired data deprecation，一直没有incoming message怎么办。假设这个fixed sized window可以fit进memory
+跟面经不太一样...没有很熟bucket，卒
+
+3. IDI Concurrency：delayed task scheduler
+国人小哥迟到了15分钟...一直跟我道歉. 其实这题跟concurrency关系不大，我读过面经，一直在往condition variable那边靠，像blocking queue那种设计，wait() + notify()
+但聊到最后，发现heap+hashmap（<timestamp, taskid>）就可以了...还聊了一会heap的原理，heapify up/down，O(log(n)) add/peak，聊偏了...
+
+4. Host Manager: 非常厉害的一个director大哥，以前是做professor的，也在air force工作过，前一天stalk linkedin的时候我就五体投地...
+一开始简单BQ，聊了一些why linkedin，找组看中什么，甚至问了我现在还勾搭了哪些公司+什么组...(???)
+然后给了个实际的scenario：有个network issue需要你处理，从接到ticket开始你怎么处理。主要侧重behaviorial，比如第一件事先ack，然后找谁，要什么metrics，不同short term/long term option怎么选
+director地位高架子可不大，下一个interviewer来的时候还主动offer帮我擦黑板，说你们先聊着我来干这个...
+大哥出去的时候，我膝盖已经在地上
+
+5.Coding：利口 留坝
+感觉遇到了非典型题...我刚翻了一下这题算hard，是不是不想hire我...大哥出题前还说“let's do a warm up question first...” 最后就做了这一题还没磕磕碰碰没完全写完，大哥出去的时候脸色很难看，卒
+
+6. IDI Complex Systems：tiny url
+烙印火急火燎大哥带个还算nice的shallow烙印小哥，大哥全程一直看手机，说话也火急火燎，感觉不怎么听我说的，给feedback的时候也都说“I think that works, that looks good”...体验蛮差的一轮
+主体部分常规设计：NoSQL + hashing + offline key generation server + caching. 说了db design，算了QPS数据，db sharding
+有趣的是最后有个followup，如果要收集telemetry data，analyse client request/geo location这些东西，我说可以用data streaming queue - kafka (跪舔linkedin家的当家产品)
+两人露出了“哦，有意思哦”的表情，追问了下去...可惜楼主的kafka是面试前两天恶补的，空有其表，就细节追问的时候我只能报以尴尬不失礼貌的微笑...
+
+https://www.1point3acres.com/bbs/forum.php?mod=viewthread&tid=545174&extra=page%3D2%26filter%3Dsortid%26sortid%3D311%26searchoption%5B3089%5D%5Bvalue%5D%5B3%5D%3D3%26searchoption%5B3089%5D%5Btype%5D%3Dcheckbox%26searchoption%5B3046%5D%5Bvalue%5D%3D6%26searchoption%5B3046%5D%5Btype%5D%3Dradio%26sortid%3D311%26orderby%3Ddateline
+
+https://www.1point3acres.com/bbs/forum.php?mod=viewthread&tid=543159&extra=page%3D2%26filter%3Dsortid%26sortid%3D311%26searchoption%5B3089%5D%5Bvalue%5D%5B3%5D%3D3%26searchoption%5B3089%5D%5Btype%5D%3Dcheckbox%26searchoption%5B3046%5D%5Bvalue%5D%3D6%26searchoption%5B3046%5D%5Btype%5D%3Dradio%26sortid%3D311%26orderby%3Ddateline
+
+host manager比其他所有轮都重要，对linkedin来说这一轮面好了就成功了一半。因为hm会进hc，并且有一票，他又是interviewer他的feedback和愿不愿意帮你会极大程度上影响hc的决定。hr给我说的原话，如果hm想招你，你其他面得不那么好也有机会。我顺便问了一下，如果其他轮很好，但hm不想招会怎么样。他的回答是在他印象里面最后不招的更多。我的感觉是 hm>>system design >= deep dive > coding. 毕竟linkedin就那100道tag题目并且都不难。不觉得coding能区分candidates。
+
+https://www.1point3acres.com/bbs/forum.php?mod=viewthread&tid=529061&extra=page%3D3%26filter%3Dsortid%26sortid%3D311%26searchoption%5B3089%5D%5Bvalue%5D%5B3%5D%3D3%26searchoption%5B3089%5D%5Btype%5D%3Dcheckbox%26searchoption%5B3046%5D%5Bvalue%5D%3D6%26searchoption%5B3046%5D%5Btype%5D%3Dradio%26sortid%3D311%26orderby%3Ddateline
+
+https://www.1point3acres.com/bbs/forum.php?mod=viewthread&tid=520850&extra=page%3D3%26filter%3Dsortid%26sortid%3D311%26searchoption%5B3089%5D%5Bvalue%5D%5B3%5D%3D3%26searchoption%5B3089%5D%5Btype%5D%3Dcheckbox%26searchoption%5B3046%5D%5Bvalue%5D%3D6%26searchoption%5B3046%5D%5Btype%5D%3Dradio%26sortid%3D311%26orderby%3Ddateline
+
+https://www.1point3acres.com/bbs/forum.php?mod=viewthread&tid=515642&extra=page%3D3%26filter%3Dsortid%26sortid%3D311%26searchoption%5B3089%5D%5Bvalue%5D%5B3%5D%3D3%26searchoption%5B3089%5D%5Btype%5D%3Dcheckbox%26searchoption%5B3046%5D%5Bvalue%5D%3D6%26searchoption%5B3046%5D%5Btype%5D%3Dradio%26sortid%3D311%26orderby%3Ddateline
+
+https://www.1point3acres.com/bbs/forum.php?mod=viewthread&tid=514016&extra=page%3D3%26filter%3Dsortid%26sortid%3D311%26searchoption%5B3089%5D%5Bvalue%5D%5B3%5D%3D3%26searchoption%5B3089%5D%5Btype%5D%3Dcheckbox%26searchoption%5B3046%5D%5Bvalue%5D%3D6%26searchoption%5B3046%5D%5Btype%5D%3Dradio%26sortid%3D311%26orderby%3Ddateline
+
+https://www.1point3acres.com/bbs/forum.php?mod=viewthread&tid=492225&extra=page%3D4%26filter%3Dsortid%26sortid%3D311%26searchoption%5B3089%5D%5Bvalue%5D%5B3%5D%3D3%26searchoption%5B3089%5D%5Btype%5D%3Dcheckbox%26searchoption%5B3046%5D%5Bvalue%5D%3D6%26searchoption%5B3046%5D%5Btype%5D%3Dradio%26sortid%3D311%26orderby%3Ddateline
+
+https://www.1point3acres.com/bbs/forum.php?mod=viewthread&tid=484606&extra=page%3D4%26filter%3Dsortid%26sortid%3D311%26searchoption%5B3089%5D%5Bvalue%5D%5B3%5D%3D3%26searchoption%5B3089%5D%5Btype%5D%3Dcheckbox%26searchoption%5B3046%5D%5Bvalue%5D%3D6%26searchoption%5B3046%5D%5Btype%5D%3Dradio%26sortid%3D311%26orderby%3Ddateline
+
+https://www.1point3acres.com/bbs/forum.php?mod=viewthread&tid=467687&extra=page%3D5%26filter%3Dsortid%26sortid%3D311%26searchoption%5B3089%5D%5Bvalue%5D%5B3%5D%3D3%26searchoption%5B3089%5D%5Btype%5D%3Dcheckbox%26searchoption%5B3046%5D%5Bvalue%5D%3D6%26searchoption%5B3046%5D%5Btype%5D%3Dradio%26sortid%3D311%26orderby%3Ddateline
+
+https://www.1point3acres.com/bbs/forum.php?mod=viewthread&tid=466294&extra=page%3D5%26filter%3Dsortid%26sortid%3D311%26searchoption%5B3089%5D%5Bvalue%5D%5B3%5D%3D3%26searchoption%5B3089%5D%5Btype%5D%3Dcheckbox%26searchoption%5B3046%5D%5Bvalue%5D%3D6%26searchoption%5B3046%5D%5Btype%5D%3Dradio%26sortid%3D311%26orderby%3Ddateline
+
+https://www.1point3acres.com/bbs/forum.php?mod=viewthread&tid=466141&extra=page%3D5%26filter%3Dsortid%26sortid%3D311%26searchoption%5B3089%5D%5Bvalue%5D%5B3%5D%3D3%26searchoption%5B3089%5D%5Btype%5D%3Dcheckbox%26searchoption%5B3046%5D%5Bvalue%5D%3D6%26searchoption%5B3046%5D%5Btype%5D%3Dradio%26sortid%3D311%26orderby%3Ddateline
+
+https://www.1point3acres.com/bbs/forum.php?mod=viewthread&tid=465793&extra=page%3D5%26filter%3Dsortid%26sortid%3D311%26searchoption%5B3089%5D%5Bvalue%5D%5B3%5D%3D3%26searchoption%5B3089%5D%5Btype%5D%3Dcheckbox%26searchoption%5B3046%5D%5Bvalue%5D%3D6%26searchoption%5B3046%5D%5Btype%5D%3Dradio%26sortid%3D311%26orderby%3Ddateline
+
+https://www.1point3acres.com/bbs/forum.php?mod=viewthread&tid=462784&extra=page%3D5%26filter%3Dsortid%26sortid%3D311%26searchoption%5B3089%5D%5Bvalue%5D%5B3%5D%3D3%26searchoption%5B3089%5D%5Btype%5D%3Dcheckbox%26searchoption%5B3046%5D%5Bvalue%5D%3D6%26searchoption%5B3046%5D%5Btype%5D%3Dradio%26sortid%3D311%26orderby%3Ddateline
+
+https://www.1point3acres.com/bbs/forum.php?mod=viewthread&tid=456664&extra=page%3D5%26filter%3Dsortid%26sortid%3D311%26searchoption%5B3089%5D%5Bvalue%5D%5B3%5D%3D3%26searchoption%5B3089%5D%5Btype%5D%3Dcheckbox%26searchoption%5B3046%5D%5Bvalue%5D%3D6%26searchoption%5B3046%5D%5Btype%5D%3Dradio%26sortid%3D311%26orderby%3Ddateline
+
+https://www.1point3acres.com/bbs/forum.php?mod=viewthread&tid=455301&extra=page%3D6%26filter%3Dsortid%26sortid%3D311%26searchoption%5B3089%5D%5Bvalue%5D%5B3%5D%3D3%26searchoption%5B3089%5D%5Btype%5D%3Dcheckbox%26searchoption%5B3046%5D%5Bvalue%5D%3D6%26searchoption%5B3046%5D%5Btype%5D%3Dradio%26sortid%3D311%26orderby%3Ddateline
+
+https://www.1point3acres.com/bbs/forum.php?mod=viewthread&tid=455011&extra=page%3D6%26filter%3Dsortid%26sortid%3D311%26searchoption%5B3089%5D%5Bvalue%5D%5B3%5D%3D3%26searchoption%5B3089%5D%5Btype%5D%3Dcheckbox%26searchoption%5B3046%5D%5Bvalue%5D%3D6%26searchoption%5B3046%5D%5Btype%5D%3Dradio%26sortid%3D311%26orderby%3Ddateline
+
+https://www.1point3acres.com/bbs/forum.php?mod=viewthread&tid=450104&extra=page%3D6%26filter%3Dsortid%26sortid%3D311%26searchoption%5B3089%5D%5Bvalue%5D%5B3%5D%3D3%26searchoption%5B3089%5D%5Btype%5D%3Dcheckbox%26searchoption%5B3046%5D%5Bvalue%5D%3D6%26searchoption%5B3046%5D%5Btype%5D%3Dradio%26sortid%3D311%26orderby%3Ddateline
+
+https://www.1point3acres.com/bbs/forum.php?mod=viewthread&tid=449153&extra=page%3D6%26filter%3Dsortid%26sortid%3D311%26searchoption%5B3089%5D%5Bvalue%5D%5B3%5D%3D3%26searchoption%5B3089%5D%5Btype%5D%3Dcheckbox%26searchoption%5B3046%5D%5Bvalue%5D%3D6%26searchoption%5B3046%5D%5Btype%5D%3Dradio%26sortid%3D311%26orderby%3Ddateline
+
+https://www.1point3acres.com/bbs/forum.php?mod=viewthread&tid=443898&extra=page%3D6%26filter%3Dsortid%26sortid%3D311%26searchoption%5B3089%5D%5Bvalue%5D%5B3%5D%3D3%26searchoption%5B3089%5D%5Btype%5D%3Dcheckbox%26searchoption%5B3046%5D%5Bvalue%5D%3D6%26searchoption%5B3046%5D%5Btype%5D%3Dradio%26sortid%3D311%26orderby%3Ddateline
+
+https://www.1point3acres.com/bbs/forum.php?mod=viewthread&tid=442991&extra=page%3D6%26filter%3Dsortid%26sortid%3D311%26searchoption%5B3089%5D%5Bvalue%5D%5B3%5D%3D3%26searchoption%5B3089%5D%5Btype%5D%3Dcheckbox%26searchoption%5B3046%5D%5Bvalue%5D%3D6%26searchoption%5B3046%5D%5Btype%5D%3Dradio%26sortid%3D311%26orderby%3Ddateline
+
+
 
 # behavior Questions
+linkedin learning
 https://www.linkedin.com/interview-prep/assessments/urn:li:fs_assessment:(1,a)/question/urn:li:fs_assessmentQuestion:(10011,aq11)/
 
 https://business.linkedin.com/content/dam/me/business/en-us/talent-solutions/resources/pdfs/linkedin-30-questions-to-identify-high-potential-candidates-ebook-8-7-17-uk-en.pdf
@@ -15,16 +128,3 @@ https://www.1point3acres.com/bbs/forum.php?mod=viewthread&tid=465815
 https://www.1point3acres.com/bbs/forum.php?mod=viewthread&tid=175538&extra=page%3D1%26filter%3Dsortid%26sortid%3D311%26searchoption%5B3088%5D%5Bvalue%5D%3D1%26searchoption%5B3088%5D%5Btype%5D%3Dradio%26searchoption%5B3089%5D%5Bvalue%5D%5B3%5D%3D3%26searchoption%5B3089%5D%5Btype%5D%3Dcheckbox%26searchoption%5B3090%5D%5Bvalue%5D%3D1%26searchoption%5B3090%5D%5Btype%5D%3Dradio%26searchoption%5B3046%5D%5Bvalue%5D%3D6%26searchoption%5B3046%5D%5Btype%5D%3Dradio%26sortid%3D31
 
 https://www.1point3acres.com/bbs/forum.php?mod=viewthread&tid=556281&extra=page%3D1%26filter%3Dsortid%26sortid%3D311%26searchoption%5B3046%5D%5Bvalue%5D%3D6%26searchoption%5B3046%5D%5Btype%5D%3Dradio%26sortid%3D311%26orderby%3Ddateline
-
-## k-v store (设计VOLDEMORT)
-key value store，value体积比较大需要放在硬盘里面 另外随机写到硬盘会比较慢所以assume你要appending only 
-
-5. blacklist API 
-设计一个全球范围内的blacklist service，就是有很多恶意ip会发来ddos攻击，你要设计一个blacklist的服务，能够ban掉之前已经诊断为malicious ip发过来的请求。这里不要求你设计怎么样判断一个ip是否是恶意ip，给了个isMalicious()的api signature。难点在于不同data center之间怎么sync数据，availability和consistency怎么取舍。哪里会有single point of failure，然后怎么设计能解决。最后folowup就是结合你的工作经验问这个服务上线之后你最想加一个什么功能，不一定是functional的，可以是logistics上的。面试官比较期待的答案是support和monitoring之类的。
-
-6. 设计：设计一个基于内存的streaming系统，stream以(timestamp, binary_si‍‍‍‌‍‍‍‍‍‌‍‍‌‍‌‍‌‍‍ze)的消息进入，然后client会query以ts结束大小为k的内容。
-
-7. onboarding Q&A implementation
-
-8. 系统设计：centralized logging
- monitoring system. 关键字 hundreds of datacenters,  hundreds of services in e‍‍‍‌‍‍‍‍‍‌‍‍‌‍‌‍‌‌‌ach datacenter, multiple type of events may ocuur in each service. 要求，collect all the events for each service, user can monitior it in real time, if some event exceed the threshold, corresponding engineers will get a notification. 典型的steaming processing的achitecture. message queue(kafka)+workers(storm)+database+cache+notification service(response queue). 需要注意的点就是 1 collect events 是用pull还是push, notification是用pull还是push 聊清楚trade off. 2最新的数据process完 写进db的同时 可以直接放在cache里面，因为很可能被读。3要注意engineer 在线和不在线的情况。4 哪种event 需要通知哪个engineer 可以是一个pub sub的架构也可以存成一个static table or key value. 这一轮面试官40分钟问完，问了很多细节的问题，因为我比较熟，所以面试官非常满意。还剩20分钟 说我表现得非常好，他一边给我写feedback 一边让我问问题。
