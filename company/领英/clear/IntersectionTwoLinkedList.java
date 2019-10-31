@@ -97,9 +97,10 @@ public class IntersectionTwoLinkedList {
 	}
 
 	// 都有环
-	private ListNode twoCyclesIntersection(ListNode headA, ListNode headB, ListNode start) {
+	private ListNode twoCyclesIntersection(ListNode headA, ListNode headB) {
 		// get length a to cycle start
 		// get length b to cycle start
 		// find intersction
+		return null;
 	}
 }
