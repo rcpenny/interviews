@@ -34,15 +34,16 @@ public class MaxStack {
 	
 	public int popMax() {
 		int cur_max = peekMax();
-		Stack<Integer> tmp = new Stack<>();
+		Stack<Integer> buffer = new Stack<>();
 
+		// 画图想一下
 		while (top() != cur_max) {
-			tmp.push(pop());
+			buffer.push(pop());
 		}
 		pop();
 
-		while (!tmp.isEmpty()) {
-			push(tmp.pop());
+		while (!buffer.isEmpty()) {
+			push(buffer.pop());
 		}
 		return cur_max;
 	}
@@ -66,10 +67,8 @@ class MaxStack {
 	}
 
 	public void push(int x) {
-		Node node = dll.add(x);
-		if(!map.containsKey(x))
-			map.put(x, new ArrayList<Node>());
-
+		Node node = dll.push(x);
+		map.putIfAbsent(x, new ArrayList<>());
 		map.get(x).add(node);
 	}
 
@@ -112,7 +111,7 @@ class DoubleLinkedList {
 	}
 
 	// 加一个到DLL尾部
-	public Node add(int val) {
+	public Node push(int val) {
 			Node x = new Node(val);
 			
 			Node last = tail.prev;
