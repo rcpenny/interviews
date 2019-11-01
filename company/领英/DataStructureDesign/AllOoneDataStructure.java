@@ -9,14 +9,14 @@ import java.util.Map;
 // leet432
 
 class Bucket {
-	int count;
+	int freq;
 	Set<String> keySet;
 
 	Bucket prev;
 	Bucket next;
 
 	public Bucket(int cnt) {
-		this.count = cnt;
+		this.freq = cnt;
 		this.keySet = new HashSet<>();
 	}
 }
@@ -48,8 +48,7 @@ public class AllOne {
 			changeKey(key, 1);
 		} else {
 			keyToFreq.put(key, 1);
-			Bucket bucket = new Bucket(1);
-			if (!freqToBucket.containsKey(bucket)) {
+			if (!freqToBucket.containsKey(1)) {
 				addBucketAfter(new Bucket(1), head);
 			}
 			head.next.keySet.add(key);
@@ -60,10 +59,10 @@ public class AllOne {
 	/** Decrements an existing key by 1. If Key's value is 1, remove it from the data structure. */
 	public void dec(String key) {
 		if (keyToFreq.containsKey(key)) {
-			int count = keyToFreq.get(key);
-			if (count == 1) {        //如果刚好为1，移除即可
+			int freq = keyToFreq.get(key);
+			if (freq == 1) {        //如果刚好为1，移除即可
 				keyToFreq.remove(key);
-				removeKeyFromBucket(freqToBucket.get(count), key);
+				removeKeyFromBucket(freqToBucket.get(freq), key);
 			} else {
 				changeKey(key, -1);		//执行-1操作
 			}
@@ -86,15 +85,17 @@ public class AllOne {
 	/** HELPER PRIVATE METHODS */
 
 	private void changeKey(String key, int offset) {  
-		int count = keyToFreq.get(key);
-		keyToFreq.put(key, count + offset);
-		Bucket curBucket = freqToBucket.get(count);
+		int freq = keyToFreq.get(key);
+		keyToFreq.put(key, freq + offset);
+		
+		Bucket curBucket = freqToBucket.get(freq);
 		Bucket newBucket;
-		if (freqToBucket.containsKey(count + offset)) {
-			newBucket = freqToBucket.get(count + offset);
+
+		if (freqToBucket.containsKey(freq + offset)) {
+			newBucket = freqToBucket.get(freq + offset);
 		} else {
-			newBucket = new Bucket(count + offset);
-			freqToBucket.put(count + offset, newBucket);
+			newBucket = new Bucket(freq + offset);
+			freqToBucket.put(freq + offset, newBucket);
 			addBucketAfter(newBucket, offset == 1 ? curBucket : curBucket.prev);
 		}
 		newBucket.keySet.add(key);
@@ -105,7 +106,7 @@ public class AllOne {
 		bucket.keySet.remove(key);
 		if (bucket.keySet.size() == 0) {
 			removeBucketFromList(bucket);
-			freqToBucket.remove(bucket.count);
+			freqToBucket.remove(bucket.freq);
 		}
 	}
 
