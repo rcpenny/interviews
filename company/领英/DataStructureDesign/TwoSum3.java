@@ -1,7 +1,6 @@
 // 设计b并实现一个 TwoSum 类。他需要支持以下操作:add 和 find。
 // add -把这个数添加到内部的数据结构。
 // find -是否存在任意一对数字之和等于这个值
-// lint170
 
 // 不需要list， loop over map key也是可以的
 public class TwoSum3 {
