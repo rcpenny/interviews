@@ -47,12 +47,29 @@ public class GameOfLife {
   }
 
   private int liveCellsNumber(int[][] board, int x, int y) {
-    int count = 0;
+    int liveCellsCount = 0;
     for (int i = 0; i < 8; i++) {
       int x_ = x + dx[i], y_ = y + dy[i];
       if (0 <= x_ && x_ < row && 0 <= y_ && y_ < col)
-        if (board[x_][y_] == LIVE) count++;
+        if (board[x_][y_] == LIVE) liveCellsCount++;
     }
-    return count;
+    return liveCellsCount;
   }
 }
+
+/*
+
+1. Could you solve it in-place? Remember that the board needs to be updated at the same time:
+	 不用开新matrix，再加两个状态代表prev is live now is dead, prev is dead now is live
+
+2. In this question, we represent the board using a 2D array. In principle, the board is infinite, 
+   which would cause problems when the active area encroaches the border of the array. How would you address these problems?
+   
+3. performance bottleneck: disk read/write
+	 
+4. 如果matrix很大 有1million*1million怎么办
+	 回答说有可能memory hold不住 或者速度变慢， 问如何优化提高速度， 答每次读取三行
+	 2byte 2KB - 2MB - 2GB - 2TB
+
+	怎么样来存到disk里面？用bit. 用了bit以后，怎么样来解这个题呢？一行一行读进去，然后没处理好一行，就写出去
+*/
