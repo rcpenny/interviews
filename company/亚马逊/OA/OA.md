@@ -1,3 +1,5 @@
 https://leetcode.com/discuss/interview-question/344650/Amazon-Online-Assessment-Questions
 
-- Top N Competitors - 347 Top K frequent elements
+- Top N Competitors      leet347 Top K frequent elements
+- Zombie in matrix       lint598
+- Rotting Orange

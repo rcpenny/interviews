@@ -55,10 +55,10 @@ public class ZombieInMatrix {
         for (int j = 0; j < 4; j++) {
           Point adj = new Point(p.x + dx[j], p.y + dy[j]);
           if (!canInfect(adj, grid)) continue;
-            humanCount--;
-            if (humanCount == 0) return days;
-            grid[adj.x][adj.y] = ZOMBIE;
-            queue.offer(adj);
+          humanCount--;
+          if (humanCount == 0) return days;
+          grid[adj.x][adj.y] = ZOMBIE;
+          queue.offer(adj);
         }
       }
       days++;

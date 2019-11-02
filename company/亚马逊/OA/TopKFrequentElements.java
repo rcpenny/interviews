@@ -28,8 +28,12 @@ class TopKFrequentElements {
       topK.add(minheap.poll().getKey());
     }
 
+		// most frequent to least frequent
     Collections.reverse(topK);
 
     return topK;
   }
 }
+
+// TopNCompetitors
+// https://leetcode.com/discuss/interview-question/415729/
