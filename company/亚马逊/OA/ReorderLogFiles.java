@@ -1,23 +1,25 @@
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
+// 你有一个日志数组 logs。每条日志都是以空格分隔的字串。
+// 对于每条日志，其第一个字为字母数字标识符。然后，要么：
+// 标识符后面的每个字将仅由小写字母组成，或；
+// 标识符后面的每个字将仅由数字组成。
+// 我们将这两种日志分别称为字母日志和数字日志。保证每个日志在其标识符后面至少有一个字。
 
-// You have an array of logs.  Each log is a space delimited string of words.
-// For each log, the first word in each log is an alphanumeric identifier.  Then, either:
-// Each word after the identifier will consist only of lowercase letters, or;
-// Each word after the identifier will consist only of digits.
-// We will call these two varieties of logs letter-logs and digit-logs.  
-// It is guaranteed that each log has at least one word after its identifier.
+// 将日志重新排序，使得所有字母日志都排在数字日志之前。字母日志按内容字母顺序排序，忽略标识符；
+// 在内容相同时，按标识符排序。数字日志应该按原来的顺序排列。
 
-// Reorder the logs so that all of the letter-logs come before any digit-log.  
-// The letter-logs are ordered lexicographically ignoring identifier, with the identifier used in case of ties.  
-// The digit-logs should be put in their original order.
+// 返回日志的最终顺序。
 
-// Return the final order of the logs.
+// 示例 ：
 
-// Input: ["a1 9 2 3 1","g1 act car","zo4 4 7","ab1 off key dog","a8 act zoo"]
-// Output: ["g1 act car","a8 act zoo","ab1 off key dog","a1 9 2 3 1","zo4 4 7"]
+// 输入：["a1 9 2 3 1","g1 act car","zo4 4 7","ab1 off key dog","a8 act zoo"]
+// 输出：["g1 act car","a8 act zoo","ab1 off key dog","a1 9 2 3 1","zo4 4 7"]
+//  
+
+// 提示：
+
+// 0 <= logs.length <= 100
+// 3 <= logs[i].length <= 100
+// logs[i] 保证有一个标识符，并且标识符后面有一个字。
 
 class Log {
 	String id;
@@ -28,17 +30,7 @@ class Log {
 	}
 }
 
-// 此题第一遍写没有写helper class Log, 败笔.
-// 用了PQ,多此一举，用list就好了.
 public class ReorderLogFiles {
-
-	private Comparator<Log> cpt = new Comparator<Log>() {
-		@Override public int compare(Log a, Log b) {
-			if (!a.log.equals(b.log)) return a.log.compareTo(b.log);
-			return a.id.compareTo(b.id);
-		}
-	};
-
   public String[] reorderLogFiles(String[] logs) {
 		String[] result = new String[logs.length];
 
@@ -51,7 +43,10 @@ public class ReorderLogFiles {
 			else digitLogs.add(tmp);
 		}
 
-		Collections.sort(letterLogs, cpt);
+		Collections.sort(letterLogs, (a, b) -> {
+			if (!a.log.equals(b.log)) return a.log.compareTo(b.log);
+			return a.id.compareTo(b.id);
+		});
 
 		int index = 0;
 		for (Log log : letterLogs) result[index++] = log.id + " " + log.log;
