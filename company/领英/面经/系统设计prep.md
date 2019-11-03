@@ -11,14 +11,17 @@ All IDI problems will involve design --while they are divided into 3 different m
 ## IDI1 Concurrency
 This module focuses on the concepts related to concurrency. Specifically: threads, locks, semaphores, race conditions, shared memory and data structures.  You’ll be presented with a problem where there is resource contention (implicit or explicit) and you’ll need to address it. While you can take advantage of the primitives provided by your language of choice, you’re still expected to understand the concepts, guarantees and implications.  
 
+
 ### delayed task
 https://leetcode.com/problems/design-bounded-blocking-queue/
 https://soulmachine.gitbooks.io/system-design/content/cn/task-scheduler.html
 https://paper.dropbox.com/doc/--AnzuGuI6O2od4tDRqe6PN1VFAg-ONbDQkXzZv3bVw9i1sPvm
 
+Concurrency Coding, 先聊了很多同样的spark job在bare metal hardware上跑只要10分钟，在云端(Azure)上跑要20分钟，可能是什么造成的，有什么解决办法。这个聊了一半后让我实现一个blocking queue，讨论了下用condition，synchronized和semaphore的优劣最后拿semaphore实现的。这一轮国人大哥，中文面试，聊了很多career方面的内容。。。这一轮是最好的体验
+多线程：写一个DelayedTaskQueue，要用mutex和condition variable做协同
+system design：delay scheduler，参考java的写法。跟印度大哥半天解释不清楚，就直接把code写上去了，又写了一个client调用的code，印度大哥大姐很满意。感觉这轮更像算法轮。
 
-
-
+6 - sys design 设计用户activity收集系统 这个系统需要回答一些analytical的问题 觉得本质就是OLAP系统
 
 
 
@@ -28,11 +31,21 @@ https://paper.dropbox.com/doc/--AnzuGuI6O2od4tDRqe6PN1VFAg-ONbDQkXzZv3bVw9i1sPvm
 ## IDI2 Data Structures & Algorithms
 This module focuses on data structures and algorithms. You’ll be given a problem and you’ll be expected to design one or more data structures that are able to solve the problem. You should be prepared to explain the algorithms and logic associated with the structure.  
 
-### k-v store (设计VOLDEMORT)
+ Data Structure design, 聊了下什么是columnar database，然后话锋一转说你有一个handler to a large file，问你怎么设计能够最少的读file拿到对应的数据类型。比如说我column 1是个integer，column 2是个string，用DataInputStream的各个method读数据。。。figure out面试官想要的效果已经是50分钟左右了，太vague，也是面的最差的一轮
+
+6. 设计：设计一个基于内存的streaming系统，stream以(timestamp, binary_size)的消息进入，然后client会query以ts结束大小为k的内容。
+
+
+### k-v store
 key value store，value体积比较大需要放在硬盘里面 另外随机写到硬盘会比较慢所以assume你要appending only
 
+sys_design 设计一个K/V store，支持基于单个KEY的insert/update/delete/fetch 操作，基本上照着RocksDB/Couchbase的实现来聊的
 
+system design：k-v store。high level聊了了consistent hashing，以及如何加减virtual node。single machine聊了memcache的一些知识点，比如lru， slab allocation。着重聊了kv store的log structured database，如何insert，update， invalidate。因为平时工作接触的data base就是log structured database，所以答得比较顺利。
+sys design 设计key value store，value体积比较大需要放在硬盘里面 另外随机写到硬盘会比较慢所以assume你要appending only
 
+### inverted index
+ 第三轮，inverted index 以及不同的distribution sharding 方法的优劣讨论
 
 
 
@@ -40,6 +53,8 @@ key value store，value体积比较大需要放在硬盘里面 另外随机写�
 
 ## IDI3 Complex Systems
 This module focuses on large (distributed) systems. You will be given a scenario and end goal and will be asked to design a system that can meet the requirements.  You’re expected to understand how to break down a problem into components and how the components interact with each other. You should be able to describe the solution at a high level and go into the detail of each component. 
+
+### 2nd degree，3rd degree friends
 
 ### Metrics Collect Monitor System
 有点像GCP的logging systems和StackDriver
@@ -75,13 +90,10 @@ message queue(kafka)+workers(storm)+database+cache+notification service(response
       6. 要保证用户付了钱的调用流量都允许
       7. 提供各种方案，kafka，HDFS，pub-sub model
 
-
-
-
-
-
-
 # Top k exception (Kafka) LFU cache
+7. system design，套了壳的top K exception，面试官想知道过去5分钟，一小时，一天里LinkedIn member转发最多的content，（URL），如何设计。楼主用的sqs + aggregation service(write) + reading services三层做的。中间讨论了很多数据的size和design的tradeoff，聊的还是挺顺的。
+
+
 经典题，24小时的top k exception, 然后支持5min的top k，1hr的top k，1年的top k
 
 - 分布式统计 Distributed: 每隔5~10秒向中心节点汇报数据

@@ -3,7 +3,7 @@
 ## Coding and Algorithms 1 (60 mins): 
 1. coding 1的白板coding给出适中的算法，时间 空间复杂度即可。
 2. 这轮的重点是代码的模块化，延展性，及解决bug的能力
-3. Many of these sessions involve pointers, edge cases, abstraction, or all of the above,and are intended to imitate the kind of day-to-day coding that happens once the design and implementation strategy for a project has been settled on.   
+3. 这轮涉及pointers, edge case, abstraction等。旨在模拟一个已经设计好的项目的日常coding. 
 
 ## Coding and Algorithms 2 (60 mins): 
 1. Coding 2更注重分析能力，算法，问题解决能力
