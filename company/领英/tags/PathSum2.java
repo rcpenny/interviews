@@ -5,7 +5,7 @@ import java.util.ArrayList;
 // lint1357
 
 // 嘻嘻 bug free
-public class PathSum3 {
+public class PathSum2 {
 
   public List<List<Integer>> pathSum(TreeNode root, int sum) {
     List<List<Integer>> result = new ArrayList<>();
