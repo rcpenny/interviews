@@ -18,11 +18,25 @@ https://paper.dropbox.com/doc/--AnzuGuI6O2od4tDRqe6PN1VFAg-ONbDQkXzZv3bVw9i1sPvm
 
 
 
-## IDI 2: Data Structures & Algorithms
+
+
+
+
+
+
+
+## IDI2 Data Structures & Algorithms
 This module focuses on data structures and algorithms. You’ll be given a problem and you’ll be expected to design one or more data structures that are able to solve the problem. You should be prepared to explain the algorithms and logic associated with the structure.  
 
 ### k-v store (设计VOLDEMORT)
 key value store，value体积比较大需要放在硬盘里面 另外随机写到硬盘会比较慢所以assume你要appending only
+
+
+
+
+
+
+
 
 ## IDI3 Complex Systems
 This module focuses on large (distributed) systems. You will be given a scenario and end goal and will be asked to design a system that can meet the requirements.  You’re expected to understand how to break down a problem into components and how the components interact with each other. You should be able to describe the solution at a high level and go into the detail of each component. 
