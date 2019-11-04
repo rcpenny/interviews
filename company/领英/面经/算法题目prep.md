@@ -23,7 +23,7 @@
 5. 是否是最优解法，能否优化
 
 
-// Sun: DP && Binary Search + monitoring systems + 5 behavior + 1 more design
+// Sun: DP && Binary Search + monitoring systems + 5 behavior
 // Mon: Tree && Linked List + 2 designs
 // Tue: DFS && Data structure
 // Wed: BFS + Design rest
@@ -32,20 +32,17 @@
 ## 动态规划
 - 256          paint house    
 - 265          paint house 2
-
 - 416          parti equal subsetsum
-- 300          longest inc subseq
+- 647          Palindromic Substrings
 - 516          longest palin subseq
-
-
+- 300          longest inc subseq (二分方法有待搞定))
 - 53           Max Subarray
 - 152          Maxiumn Product Subarray
-
-- 720          Count Different Palindromic Subsequence
 - 72           edit distance
+
 - 464          can I win
-- 322          coin change
-- 647          Palindromic Substrings
+- 730          Count Different Palindromic Subsequence
+
 
 ## 二分
 - 50	         Pow(x, n)

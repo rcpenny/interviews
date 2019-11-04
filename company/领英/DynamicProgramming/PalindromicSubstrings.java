@@ -5,8 +5,10 @@
 // 3. 初态边界 f[i][i] = true, f[i][i + 1] = c[i] == c[i + 1] ? true : false
 // 4. 顺序计算 len 3 -> n
 
-// 序列型 lint837
-
+// 序列型 leet647
+// O(N^2)
+// O(N^2)
+// 无法优化了
 public class PalindromicSubstrings {
   public int countPalindromicSubstrings(String str) {
     if (str == null) return 0;

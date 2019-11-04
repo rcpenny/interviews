@@ -9,8 +9,7 @@ public class OneEditDistance {
 
 		if (Math.abs(m - n) > 1) return false;
 
-		if (m > n)
-			return isOneEditDistance(t, s);
+		if (m > n) return isOneEditDistance(t, s);
 
 		// t length > s length
 		for (int i = 0; i < m; i++) {

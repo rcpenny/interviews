@@ -5,6 +5,58 @@
 // 01背包即可
 
 public class PartitionEqualSubsetSum {
+	// 动态规划解法
+	// 1. 确定状态 f[i][j] 前i个数字是否可以拼出sum j,(j <= sum / 2)
+	// 2. 转移方程 f[i][j] initiliazed to false
+	// 					  = true when f[i-1][j] is true
+	//         or = true when f[i-1][j - nums[i - 1]] = true
+	// 3. 初态边界  
+	// 4. 顺序计算
+
+	// 就是backpack 1
+	// O(N^2)
+	// O(N^2)
+	// 无法优化了
+	public boolean canPartition(int[] nums) {
+		if (nums == null || nums.length < 2) return false;
+
+    int sum = Arrays.stream(nums).sum();
+		if (sum % 2 != 0) return false;
+
+		int n = nums.length;
+		int target = sum / 2;
+
+		boolean[][] f = new boolean[n + 1][target + 1];
+
+		// 前0个数字可以拼出和为0
+		f[0][0] = true; 
+
+		// 前0个数字不能拼出和为j(j > 0) 
+		for (int j = 1; j <= target; j++) {
+			f[0][j] = false; 
+		}
+
+		for (int i = 1; i <= n; i++) {
+			for (int j = 0; j <= target; j++) {
+				f[i][j] = false;
+
+				if (f[i - 1][j] == true) {
+					f[i][j] = true;
+					continue;
+				}
+
+				if (j - nums[i - 1] >= 0 && f[i - 1][j - nums[i - 1]] == true) {
+					f[i][j] = true;
+				}
+			}
+		}
+
+		for (int i = 1; i <= n; i++)
+			if (f[i][target] == true)
+				return true;
+		
+		return false;
+	}
 
 	// dfs解法
   private boolean result = false;
@@ -28,52 +80,5 @@ public class PartitionEqualSubsetSum {
 
     for (int i = index; i < nums.length; i++)
       find(nums, index + 1, sum, cur_sum + nums[i]);
-	}
-	
-	// 动态规划解法
-	// 1. 确定状态 f[i][j] 前i个数字是否可以拼出sum j,(j <= sum / 2)
-	// 2. 转移方程 f[i][j] initiliazed to false
-	// 					  = true when f[i-1][j] is true
-	//         or = true when f[i-1][j - nums[i - 1]] = true
-	// 3. 初态边界  
-	// 4. 顺序计算
-
-	// 就是backpack 1
-	public boolean canPartition(int[] nums) {
-		if (nums == null || nums.length < 2) return false;
-
-    int sum = 0;
-		for (int num : nums) sum += num;
-		if (sum % 2 != 0) return false;
-
-		int n = nums.length;
-		int target = sum / 2;
-
-		boolean[][] f = new boolean[n + 1][target + 1];
-
-		f[0][0] = true; // 前0个数字可以拼出和为0
-		for (int j = 1; j <= target; j++) f[0][j] = false; // 前0个数字不能拼出和为j(j > 0)
-
-		for (int i = 1; i <= n; i++) {
-			for (int j = 0; j <= target; j++) {
-				f[i][j] = false;
-
-				if (f[i - 1][j] == true) {
-					f[i][j] = true;
-					continue;
-				}
-
-				if (j - nums[i - 1] >= 0 && f[i - 1][j - nums[i - 1]] == true) {
-					f[i][j] = true;
-					continue;
-				}
-			}
-		}
-
-		for (int i = 1; i <= n; i++)
-			if (f[i][target] == true)
-				return true;
-		
-		return false;
 	}
 }
