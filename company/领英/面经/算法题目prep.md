@@ -22,6 +22,13 @@
 4. 完成问题的时间
 5. 是否是最优解法，能否优化
 
+
+// Sun: DP && Binary Search + monitoring systems + 5 behavior + 1 more design
+// Mon: Tree && Linked List + 2 designs
+// Tue: DFS && Data structure
+// Wed: BFS + Design rest
+// Thu: Others +
+
 ## 动态规划
 - 256          paint house    
 - 265          paint house 2
@@ -56,7 +63,7 @@
 -	76	         Minimum Window Substring
 - 125	         Valid Palindrome
 
-## 哈希 栈 堆
+## 数据结构
 - 244	         Shortest Word Distance II
 - 173	         BST Iterator
 - 205          Isomorphic Strings
@@ -70,6 +77,7 @@
 - 739	         Daily Temperatures
 - 692	         Top K Frequent Words
 - 973	         K Closest Points to Origin
+- 173          BST Iterator
 
 ## BFS
 - 261          graph valid trees
@@ -110,7 +118,7 @@
 - 655	         Print Binary Tree
 - 104	         Maximum Depth of Binary Tree
 
-## 数据结构设计
+## 设计
 - 716        max stack                               
 - 380        Insert Delete GetRandom O(1) 
 - 381	       Insert Delete GetRandom O(1)  Dupe allowed
@@ -122,7 +130,6 @@
 - 146        LRU Cache
 - 460        LFU Cache
 - 706        Design HashMap
-- 173        Binary Search Tree Iterator
 - 155        Min Stack
 
 ## 其他类 Array String Math
