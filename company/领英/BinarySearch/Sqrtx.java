@@ -10,8 +10,7 @@ public class Sqrtx {
 
     while (start + 1 < end) {
       int mid = start + (end - start) / 2;
-      if (mid > x / mid)  end = mid;
-      else if (mid < x / mid) start = mid;
+      if (x / mid > mid) start = mid;
       else end = mid;
     }
 
@@ -19,20 +18,21 @@ public class Sqrtx {
     return end;
   }
 
+  // double 要考虑 x <= 1.0的情况
   public double sqrt(double x) {
-    double l = 0; 
-    double r = Math.max(x, 1.0);
-    // if (x > 1.0) r = x;
-    // else x = 1;
+    double start = end = 0.0;    
+
+    if (x > 1.0) end = x;
+    else end = 1.0;
 
     double eps = 1e-12;
     
-    while (l + eps < r) {
-			double mid = l + (r - l) / 2;
-			if (mid * mid < x) l = mid;
-			else r = mid;
+    while (start + eps < end) {
+			double mid = start + (end - start) / 2;
+			if (x / mid > mid) start = mid;
+			else end = mid;
     }
     
-    return l;
+    return start;
   }
 }

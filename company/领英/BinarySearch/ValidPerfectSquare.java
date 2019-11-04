@@ -4,23 +4,23 @@
 
 public class ValidPerfectSquare {
   public boolean isPerfectSquare(int num) {
-    if (num == 1) return true;
+    int start = 1;
+    int end = num;
 
-    int start = 1, end = num / 2;
     while (start + 1 < end) {
-      int middle = start + (end - start) / 2;
-      if (isSquare(num, middle)) return true;
-      else if (num / middle > middle) start = middle;
-      else end = middle;
+      int mid = start + (end - start) / 2;
+
+      if (isSquare(num, mid)) return true;
+
+      if (num / mid > mid) start = mid;
+      else end = mid;
+
     }
 
-    if(isSquare(num, start)) return true;
-    if(isSquare(num, end)) return true;
-
-    return false;
+    return start * start == num || end * end == num;
   }
 
-  private boolean isSquare(int num, int a) {
-    return (num / a == a) && (num % a == 0);
+  private boolean isSquare(int number, int a) {
+    return (number % a == 0 && number / a == a);
   }
 }

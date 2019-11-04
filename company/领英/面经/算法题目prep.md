@@ -23,7 +23,7 @@
 5. 是否是最优解法，能否优化
 
 
-// Sun: Binary Search + monitoring systems + 5 behavior
+// Sun: monitoring systems + 5 behavior
 // Mon: Tree && Linked List + 2 designs
 // Tue: DFS && Data structure
 // Wed: BFS + Design rest
@@ -45,7 +45,6 @@
 - 69           Sqrt(x) I & II
 - 367          Valid Perfect Square
 - 33           Search in Rotated Sorted Array I && II
-- 744          Find Smallest Letter Greater Than Target
 
 ## 链表 及 双指针
 - 160          intersect of 2 linkedlist
@@ -73,7 +72,6 @@
 - 127          word ladder 1
 - 126          word ladder 2
 - 200          number of islands
-
 - 133          clone graph
 - 323          Number of Connected Components in an Undirected Graph
 - 785          Is Graph Bipartite?
@@ -85,20 +83,16 @@
 - 254          factor combnation
 - 113	         Path Sum II
 - 698          Partition to K Equal Sum Subsets
-
 - 1028	       Recover a Tree From Preorder Traversal
 - 464          can I win
-- 46           Permutations            
-- 47	         Permutations II
-- 39	         Combination Sum
-- 40           Combination Sum II
+- 47           Permutations I & II
+- 40           Combination Sum I & II
 
 ## 树
 - 270          Closest BST Value
 - 272          Closest BST Value II
 - 156          Binary Tree Upside Down
 - 366          Find Leaves Of Binary Tree
-
 - 22           Lowest Common Ancestor
 - 101	         Symmetric Tree
 - 100	         Same Tree
@@ -111,7 +105,6 @@
 - 432        All O(1) Data structure
 - 179        Two Sum 3
 - 244        shortest word distance 2
-
 - 297        Serialize and Deserialize Binary Tree
 - 146        LRU Cache
 - 460        LFU Cache
