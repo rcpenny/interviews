@@ -33,16 +33,18 @@
 - 256          paint house    
 - 265          paint house 2
 
+- 416          parti equal subsetsum
+- 300          longest inc subseq
+- 516          longest palin subseq
+
 
 - 53           Max Subarray
 - 152          Maxiumn Product Subarray
+
 - 720          Count Different Palindromic Subsequence
 - 72           edit distance
-- 516          longest palin subseq
 - 464          can I win
 - 322          coin change
-- 300          longest inc subseq
-- 416          parti equal subsetsum
 - 647          Palindromic Substrings
 
 ## 二分
