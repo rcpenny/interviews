@@ -46,7 +46,6 @@
 - 367          Valid Perfect Square
 - 33           Search in Rotated Sorted Array I && II
 - 744          Find Smallest Letter Greater Than Target
-- 528	         Random Pick with Weight
 
 ## 链表 及 双指针
 - 160          intersect of 2 linkedlist
@@ -101,18 +100,14 @@
 - 464          can I win
 
 ## 树
-- 22           Lowest Common Ancestor 235
+- 22           Lowest Common Ancestor
 - 270          Closest BST Value
 - 272          Closest BST Value II
 - 156          Binary Tree Upside Down
 - 366          Find Leaves Of Binary Tree
-- 297	         Serialize and Deserialize Binary Tree
-- 449          Serialize and Deserialize BST
 - 101	         Symmetric Tree
 - 100	         Same Tree
 - 671          Second Minimum Node In a Binary  Tree
-- 655	         Print Binary Tree
-- 104	         Maximum Depth of Binary Tree
 
 ## 设计
 - 716        max stack                               
@@ -126,7 +121,6 @@
 - 146        LRU Cache
 - 460        LFU Cache
 - 706        Design HashMap
-- 155        Min Stack
 
 ## 其他类 Array String Math
 - 57	         Insert Interval
@@ -140,4 +134,4 @@
 - 68	         Text Justification
 - 8	           String to Integer (atoi)
 - 54	         Spiral Matrix
-- 611          valid triangle number 0(n^2)最佳,次佳O(n^2logn)二分
+- 611          valid triangle number
