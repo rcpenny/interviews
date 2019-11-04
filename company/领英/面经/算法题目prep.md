@@ -64,14 +64,9 @@
 - 373          Find KPairs with SmallestSums                                 |
 - 150	         Evaluate Reverse Polish Notation
 - 636	         Exclusive Time of Functions
-- 215	         Kth Largest Element in an Array
 - 341          Flatten Nested List Iterator
 - 20	         Valid Parentheses
-- 187	         Repeated DNA Sequences
 - 739	         Daily Temperatures
-- 692	         Top K Frequent Words
-- 973	         K Closest Points to Origin
-- 173          BST Iterator
 
 ## BFS
 - 261          graph valid trees
