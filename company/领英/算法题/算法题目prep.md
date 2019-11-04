@@ -24,8 +24,8 @@
 
 
 // Sun: monitoring systems + 5 behavior
-// Mon: Tree && Linked List + 2 designs
-// Tue: DFS && Data structure
+// Mon: Tree && Linked List + delayed task scheduler
+// Tue: DFS && Data structure + 
 // Wed: BFS + Design rest
 // Thu: Others +
 
@@ -46,6 +46,14 @@
 - 367          Valid Perfect Square
 - 33           Search in Rotated Sorted Array I && II
 
+## 链表 及 双指针
+- 160          intersect of 2 linkedlist
+- 142          linked list cycle I & II
+- 61           rotate list
+- 23           merge 2/K sorted list
+-	76	         Minimum Window Substring
+- 125	         Valid Palindrome
+
 ## 树
 - 272          Closest BST Value I & II
 - 156          Binary Tree Upside Down
@@ -54,15 +62,6 @@
 - 101	         Symmetric Tree
 - 100	         Same Tree
 - 671          Second Minimum Node In a Binary Tree
-
-## 链表 及 双指针
-- 160          intersect of 2 linkedlist
-- 142          linked list cycle I & II
-- 23           merge K sorted list
-- 61           rotate list
-- 21           merge 2 sorted list
--	76	         Minimum Window Substring
-- 125	         Valid Palindrome
 
 ## 数据结构
 - 244	         Shortest Word Distance II

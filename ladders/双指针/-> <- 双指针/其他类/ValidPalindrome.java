@@ -1,12 +1,9 @@
-/**
- * Given a string, determine if it is a palindrome, 
- * considering only alphanumeric characters and ignoring cases.
- * 
- * Input: "A man, a plan, a canal: Panama"
- * Output: true
- * Explanation: "amanaplanacanalpanama"
- */
-public class ValidPalidrome {
+// 输入: "A man, a plan, a canal: Panama"
+// 输出: true
+
+// leet125
+
+public class ValidPalindrome {
   public boolean isPalindrome(String s) {
 		if (s == null || s.length() == 0) return true;
 		int start = 0, end = s.length() - 1;

@@ -11,37 +11,49 @@
 // 保证答案是唯一的.
 // target 可能包含重复的字符, 而你的答案需要包含至少相同数量的该字符.
 
+// leet76
+
 public class MinimumWindowSubstring {
   int[] letters = new int[256];
 
   public String minWindow(String source , String target) {
-    for (int i = 0; i < target.length(); i++) {
+		
+		for (int i = 0; i < target.length(); i++) {
       letters[target.charAt(i)]++;
     }
-    
-    int slow = 0, fast = 0, min_length = Integer.MAX_VALUE;
-    String min_window = "";
-      
+
+		int slow = 0;
+		int fast = 0;
+		int min_length = Integer.MAX_VALUE;
+		
+		String min_window = "";
+			
+		// 以slow为轴
     for (slow = 0; slow < source.length(); slow++) {
-      // fast未到头，且还没包含target
+			
+			// fast未到头，且还没包含target
       while (fast < source.length() && !isAllFound()) {
         letters[source.charAt(fast)]--;
         fast++;
       }
-      
+			
       if (fast - slow < min_length && isAllFound()) {
           min_length = fast - slow;
           min_window = source.substring(slow, fast);
       }
-      letters[source.charAt(slow)]++;
+			
+			// 对source进行操作，source不在target里的都是0 所以对应value <= 0
+			// 不影响isAllFound() check
+			letters[source.charAt(slow)]++;
     }
 
     return min_window;     
   }
   
   private boolean isAllFound() {
-    for (int i = 0; i < letters.length; i++)
-      if (letters[i] > 0) return false;
+    for (int i = 0; i < letters.length; i++) {
+			if (letters[i] > 0) return false;
+		}
     return true;
   }
 }

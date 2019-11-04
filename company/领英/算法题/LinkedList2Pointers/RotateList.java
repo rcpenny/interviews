@@ -7,27 +7,22 @@
 
 public class RotateList {
   public ListNode rotateRight(ListNode head, int k) {
-		if (head == null || head.next == null) return head;
+		if (head == null || head.next == null || k == 0) return head;
 		
-		// get length of linked list
-    ListNode tmp = head;
-    int len = 0; 
-    while (tmp != null) {
+		int len = 1; 
+    ListNode last = head;
+		
+		// 1. 找到最后一个node和list长度
+		while (last.next != null) {
       len++;
-      tmp = tmp.next;
+      last = last.next;
     }
-		
+
 		// 重要！
     k = k % len;
     if (k == 0) return head;
 		
-		// 1. 找到last node to 连接 head
-    // find last node and connect it to head
-    ListNode connect = head;
-    while (connect.next != null) {
-      connect = connect.next;
-    }
-    connect.next = head;
+    last.next = head;
 		
 		// 2. 找到切断点，切断
     // move foward and disconnect at position ???
@@ -37,7 +32,8 @@ public class RotateList {
     }
 
     head = disconnect.next;
-    disconnect.next = null;
+		disconnect.next = null;
+
     return head;
   }
 }

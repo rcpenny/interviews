@@ -8,23 +8,31 @@ import java.util.PriorityQueue;
 
 // O(NlogK) S(K)
 public class MergeKSortedList {
-  public ListNode mergeKLists(List<ListNode> lists) {
+  public ListNode mergeKLists(ListNode[] lists) {
+    if (lists == null || lists.length == 0) {
+      return null;
+    } 
+
     ListNode dummy = new ListNode(0);
     ListNode tail = dummy;
 
     PriorityQueue<ListNode> minheap = new PriorityQueue<>((a, b) -> {
-			return a.val - b.val;
-		});
+      return a.val - b.val;
+    });
 
-    for (ListNode head : lists)
-			if (head != null)
-				minheap.offer(head);
+    for (ListNode node : lists) {
+      if (node != null) {
+        minheap.offer(node);
+      }
+    }
 
     while (!minheap.isEmpty()) {
       ListNode tmp = minheap.poll();
-			tail.next = tmp;
-			tail = tail.next;
-      if (tmp.next != null) minheap.offer(tmp.next);      
+      tail.next = tmp;
+      tail = tmp;
+      if (tmp.next != null) {
+        minheap.offer(tmp.next);
+      }
     }
 
     return dummy.next;

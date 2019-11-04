@@ -9,6 +9,8 @@ public class MergeTwoSortedList {
 		ListNode tail = dummy;
 
 		// 重点：先全不为空，再把非空的append上去
+		// tail.next = new Node
+		// tail = tail.next;
 		while (l1 != null && l2 != null) {
 			if (l1.val <= l2.val) {
 				tail.next = l1;
