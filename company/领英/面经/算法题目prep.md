@@ -75,36 +75,36 @@
 
 ## BFS
 - 261          graph valid trees
-- 200          number of islands
 - 127          word ladder 1
 - 126          word ladder 2
+- 200          number of islands
+
 - 133          clone graph
-- 102          binary tree level order traversal
 - 323          Number of Connected Components in an Undirected Graph
-- 103          Binary Tree Zigzag Level Order Traversal
 - 785          Is Graph Bipartite?
-- 515          Find Largest Value in Each Tree Row
 
 ## DFS
 - 339	         Nested List Weight Sum
 - 364	         Nested List Weight Sum II
 - 22           Generate Parentheses                  
 - 254          factor combnation
+- 113	         Path Sum II
 - 698          Partition to K Equal Sum Subsets
+
+- 1028	       Recover a Tree From Preorder Traversal
+- 464          can I win
 - 46           Permutations            
 - 47	         Permutations II
 - 39	         Combination Sum
 - 40           Combination Sum II
-- 113	         Path Sum II
-- 1028	       Recover a Tree From Preorder Traversal
-- 464          can I win
 
 ## 树
-- 22           Lowest Common Ancestor
 - 270          Closest BST Value
 - 272          Closest BST Value II
 - 156          Binary Tree Upside Down
 - 366          Find Leaves Of Binary Tree
+
+- 22           Lowest Common Ancestor
 - 101	         Symmetric Tree
 - 100	         Same Tree
 - 671          Second Minimum Node In a Binary  Tree
@@ -115,7 +115,7 @@
 - 381	       Insert Delete GetRandom O(1)  Dupe allowed
 - 432        All O(1) Data structure
 - 179        Two Sum 3
-- 244        shortest word distance 3
+- 244        shortest word distance 2
 
 - 297        Serialize and Deserialize Binary Tree
 - 146        LRU Cache
