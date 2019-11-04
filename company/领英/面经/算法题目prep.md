@@ -32,7 +32,9 @@
 ## 动态规划
 - 256          paint house    
 - 265          paint house 2
-- 53           Maxiumn Subarray
+
+
+- 53           Max Subarray
 - 152          Maxiumn Product Subarray
 - 720          Count Different Palindromic Subsequence
 - 72           edit distance
