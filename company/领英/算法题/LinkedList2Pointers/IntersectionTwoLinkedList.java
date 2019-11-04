@@ -8,7 +8,8 @@ public class IntersectionTwoLinkedList {
 
 		// 均无环
 		if (aCycleIntersection == null && bCycleIntersection == null) {
-			return NoCycleIntersection(headA, headB);
+			List noode = NoCycleIntersection(headA, headB);
+			return NoCycleIntersection2(headA, headB);
 		}
 
 		// 都有环
