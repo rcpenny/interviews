@@ -32,10 +32,10 @@
 ## 动态规划
 - 256          paint house    
 - 265          paint house 2
-- 416          parti equal subsetsum
+- 416          partition equal subset sum
 - 647          Palindromic Substrings
-- 516          longest palin subseq
-- 300          longest inc subseq (二分方法有待搞定)
+- 516          longest palindromic subsequence
+- 300          longest increasing subsequence (二分方法有待搞定)
 - 72           edit distance
 - 53           max subarray
 - 152          max product subarray
@@ -46,10 +46,18 @@
 - 367          Valid Perfect Square
 - 33           Search in Rotated Sorted Array I && II
 
+## 树
+- 272          Closest BST Value I & II
+- 156          Binary Tree Upside Down
+- 366          Find Leaves Of Binary Tree
+- 22           Lowest Common Ancestor
+- 101	         Symmetric Tree
+- 100	         Same Tree
+- 671          Second Minimum Node In a Binary Tree
+
 ## 链表 及 双指针
 - 160          intersect of 2 linkedlist
-- 141          linked list cycle
-- 142          linked list cycle 2
+- 142          linked list cycle I & II
 - 23           merge K sorted list
 - 61           rotate list
 - 21           merge 2 sorted list
@@ -67,15 +75,6 @@
 - 20	         Valid Parentheses
 - 739	         Daily Temperatures
 
-## BFS
-- 261          graph valid trees
-- 127          word ladder 1
-- 126          word ladder 2
-- 200          number of islands
-- 133          clone graph
-- 323          Number of Connected Components in an Undirected Graph
-- 785          Is Graph Bipartite?
-
 ## DFS
 - 339	         Nested List Weight Sum
 - 364	         Nested List Weight Sum II
@@ -88,15 +87,14 @@
 - 47           Permutations I & II
 - 40           Combination Sum I & II
 
-## 树
-- 270          Closest BST Value
-- 272          Closest BST Value II
-- 156          Binary Tree Upside Down
-- 366          Find Leaves Of Binary Tree
-- 22           Lowest Common Ancestor
-- 101	         Symmetric Tree
-- 100	         Same Tree
-- 671          Second Minimum Node In a Binary  Tree
+## BFS
+- 261          graph valid trees
+- 127          word ladder 1
+- 126          word ladder 2
+- 200          number of islands
+- 133          clone graph
+- 323          Number of Connected Components in an Undirected Graph
+- 785          Is Graph Bipartite?
 
 ## 设计
 - 716        max stack                               
@@ -110,7 +108,7 @@
 - 460        LFU Cache
 - 706        Design HashMap
 
-## 其他类 Array String Math
+## Array String Math
 - 57	         Insert Interval
 - 56	         Merge Intervals
 - 243	         Shortest Word Distance

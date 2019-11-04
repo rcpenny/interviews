@@ -1,7 +1,6 @@
 ### Metrics Collect Monitor System
 - 案例
 1. LKND monitoring: https://engineering.linkedin.com/blog/topic/monitoring
-2. GCP StackDriver: https://www.youtube.com/watch?v=6GQqneNFVkU
 
 - Senario
 1. hundreds of datacenters
@@ -15,7 +14,7 @@
 3. 存储 - Database + Cache
 4. 查询 - user can monitior it in real time
 5. 通知 - if events exceed threshold, alert notify groups
-      
+
 典型的streaming processing achitecture:
 message queue(kafka) + workers(storm) + (database,cache) + notification service(response queue)
 
@@ -27,3 +26,13 @@ message queue(kafka) + workers(storm) + (database,cache) + notification service(
 5. 如何scale，如果是10000 hosts怎么收集
 6. 要保证用户付了钱的调用流量都允许
 7. 提供各种方案，kafka，HDFS，pub-sub model
+
+
+Collect, Aggregate, Store
+2. GCP StackDriver Logging: https://www.youtube.com/watch?v=6GQqneNFVkU
+
+Monitor(Query)
+
+Alert
+3. LKND Small Alerts https://engineering.linkedin.com/blog/2019/06/smart-alerts-in-thirdeye--linkedins-real-time-monitoring-platfor
+      

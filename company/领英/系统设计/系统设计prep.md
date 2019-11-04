@@ -12,36 +12,7 @@ All IDI problems will involve design --while they are divided into 3 different m
 This module focuses on the concepts related to concurrency. Specifically: threads, locks, semaphores, race conditions, shared memory and data structures.  You’ll be presented with a problem where there is resource contention (implicit or explicit) and you’ll need to address it. While you can take advantage of the primitives provided by your language of choice, you’re still expected to understand the concepts, guarantees and implications.  
 
 
-### delayed task
-https://leetcode.com/problems/design-bounded-blocking-queue/
-https://soulmachine.gitbooks.io/system-design/content/cn/task-scheduler.html
-https://paper.dropbox.com/doc/--AnzuGuI6O2od4tDRqe6PN1VFAg-ONbDQkXzZv3bVw9i1sPvm
 
-第二轮（多线程系统设计）：中国小哥
-delay task scheduler，设计出来了，但是代码实现的时候受限于没怎么写过多线程code，各种语法和用法上错误。感觉答得比较炸，希望小哥能放我一马。
-
-延迟任务规划器，写了完整的代码，讨论了conditional variable原理，lock，何时会抛出interrupted exception，executor的用法，threading pool的好处
-
-Concurrency Coding, 先聊了很多同样的spark job在bare metal hardware上跑只要10分钟，在云端(Azure)上跑要20分钟，可能是什么造成的，有什么解决办法。这个聊了一半后让我实现一个blocking queue，讨论了下用condition，synchronized和semaphore的优劣最后拿semaphore实现的。这一轮国人大哥，中文面试，聊了很多career方面的内容。。。这一轮是最好的体验
-多线程：写一个DelayedTaskQueue，要用mutex和condition variable做协同
-system design：delay scheduler，参考java的写法。跟印度大哥半天解释不清楚，就直接把code写上去了，又写了一个client调用的code，印度大哥大姐很满意。感觉这轮更像算法轮。
-
-6 - sys design 设计用户activity收集系统 这个系统需要回答一些analytical的问题 觉得本质就是OLAP系统
-
-Design1: Delay Task Scheduler。下面这个讲的应该够了。是要实现的，不是pseudocode。
-https://soulmachine.gitbooks.io/system-design/cn/task-scheduler.html
- 设计单机延迟任务执行器，纠结了半天加锁分布式没时间答了
-实现线程池/ExecutorService，跑需要延时的任务。
-
-设计，韩国大叔，问了个消息队列的设计问题。开始扯了一大堆什么，问了requirement，从哪些方面考虑之类的。结果后来，他说你别扯这么多，设计个单机的，主要侧重在功能如何实现，Schema和API之类如何实现。中间走了不少弯路。教训是，一定先要把问题弄明白。上来就套Design那一套行不通
-
-设计dealy task scheduler。不然用数据库，随便扯了会，当时准备了好几个follow up，但面试官都没有问。。。有点小郁闷
-
-6> Design. 三哥 + 国人小哥 shadow
-Design 一个 delayed task scheduler。use case 是user提交一个runnable 并设定开始时间，后台就在设定的时间运行这个任务，时间精度容差在1分钟。 需要实现的interface 就是 boolean submitJob() 。后台的server要怎样执行这些任务。
-不是纯talking 要写code
-楼主用treeset + linkedlist 维护按照时间sorted的任务list。在worker端while true 检查该不该run the latest job
-目测没答到点子上。全程只有楼主自说自话，三个人的会议室仿佛是楼主的舞台。
 
 ## IDI2 Data Structures & Algorithms
 This module focuses on data structures and algorithms. You’ll be given a problem and you’ll be expected to design one or more data structures that are able to solve the problem. You should be prepared to explain the algorithms and logic associated with the structure.  
