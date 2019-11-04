@@ -23,7 +23,7 @@
 5. 是否是最优解法，能否优化
 
 
-// Sun: DP && Binary Search + monitoring systems + 5 behavior
+// Sun: Binary Search + monitoring systems + 5 behavior
 // Mon: Tree && Linked List + 2 designs
 // Tue: DFS && Data structure
 // Wed: BFS + Design rest
@@ -35,23 +35,17 @@
 - 416          parti equal subsetsum
 - 647          Palindromic Substrings
 - 516          longest palin subseq
-- 300          longest inc subseq (二分方法有待搞定))
-- 53           Max Subarray
-- 152          Maxiumn Product Subarray
+- 300          longest inc subseq (二分方法有待搞定)
 - 72           edit distance
-
-- 464          can I win
-- 730          Count Different Palindromic Subsequence
-
+- 53           max subarray
+- 152          max product subarray
 
 ## 二分
 - 50	         Pow(x, n)
 - 69           Sqrt(x) I & II
-- 33           Search in Rotated Sorted Array I && II
-- 34           Find First and Last Position of Element in Sorted Array
-- 744          Find Smallest Letter Greater Than Target
 - 367          Valid Perfect Square
-- 611          valid triangle number | 0(n^2)最佳,次佳O(n^2logn)二分 | 
+- 33           Search in Rotated Sorted Array I && II
+- 744          Find Smallest Letter Greater Than Target
 - 528	         Random Pick with Weight
 
 ## 链表 及 双指针
@@ -104,6 +98,7 @@
 - 40           Combination Sum II
 - 113	         Path Sum II
 - 1028	       Recover a Tree From Preorder Traversal
+- 464          can I win
 
 ## 树
 - 22           Lowest Common Ancestor 235
@@ -145,3 +140,4 @@
 - 68	         Text Justification
 - 8	           String to Integer (atoi)
 - 54	         Spiral Matrix
+- 611          valid triangle number 0(n^2)最佳,次佳O(n^2logn)二分
