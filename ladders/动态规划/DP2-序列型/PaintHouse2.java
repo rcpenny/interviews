@@ -11,6 +11,8 @@
 // 转移方程： f[i][j] = min(k!=j) {f[i-1][k]} + cost[i-1][j]
 // 初态边界： f[0][k] = 0;
 
+// time O(n * k)
+// space is O(nk)
 public class PaintHouse2 {
   public int minCostII(int[][] costs) {
 		int n = costs.length; // house number
