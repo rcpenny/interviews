@@ -1,5 +1,8 @@
 ## Message Streaming (simplified Kafka)
-https://leetcode.com/problems/design-bounded-blocking-queue/
+
+- 资料
+1. 题目 https://leetcode.com/problems/design-bounded-blocking-queue/
+2. 
 
  “client会发1B-16M的message到server，server要把message存在memory里并返回一个id给client，client可以用id fetch message。
 很细致的讨论了存哪些metadata，每个metadata到底占多少空间，为什么每个message都存metadata会非常不efficient，怎么样优化存metadata的方式等等。”
