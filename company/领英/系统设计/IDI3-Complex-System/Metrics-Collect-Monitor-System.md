@@ -1,8 +1,8 @@
 ### Metrics Collect Monitor System
-- 案例
+
+- 资料
 1. LKND monitoring: https://engineering.linkedin.com/blog/topic/monitoring
 2. GCP StackDriver Logging: https://www.youtube.com/watch?v=6GQqneNFVkU
-3. LKND Small Alerts https://engineering.linkedin.com/blog/2019/06/smart-alerts-in-thirdeye--linkedins-real-time-monitoring-platfor
 
 - Senario
 1. hundreds of datacenters
