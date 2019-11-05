@@ -1,23 +1,17 @@
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Queue;
-import java.util.Set;
-
 /** 
- * 给两个数组a,b,代表a[i]与b[i]是朋友，再给出两个数组c,d，
- * 表示询问c[i]和d[i]是否为三跳之内的朋友。
+ * 给两个数组a,b,代表a[i]与b[i]是朋友，
+ * 再给出两个数组c,d 表示询问c[i]和d[i]是否为三跳之内的朋友。
  * （比如A与B是朋友，B与C是朋友，那么B算A的一跳朋友，C算A的二跳朋友）
  * 
  * 输入: a = [1,2,3,4], b = [2,3,4,5], c = [1,1], d = [4,5]
  * 输出: [1,0]
  * 解释:
  * 1 → 2 → 3 → 4 → 5，4是1的三跳朋友，5是1的四跳朋友
+ * 是返回1, 不是返回0
  */
 
 public class FriendsWith3Jumps {
   public int[] withinThreeJumps(int[] a, int[] b, int[] c, int[] d) {
-    // key is friend i, value contains all his friends
-    // 建relations表
     HashMap<Integer, Set<Integer>> relations = new HashMap<>();
 
     for (int i = 0; i < a.length; i++) {
@@ -27,21 +21,25 @@ public class FriendsWith3Jumps {
       relations.get(b[i]).add(a[i]);
     }
 
-    // start bfs
     int[] jumps = new int[c.length];
     for (int jump = 0; jump < jumps.length; jump++) {
-      jumps[jump] = searchJumps(c[jump], d[jump], relations);
-    }
+			jumps[jump] = searchJumps(c[jump], d[jump], relations);
+			
+			// potential 2 - dirction BFS
+			getDegrees(c[jump], d[jump], relations);
+		}
+
     return jumps;
   }
 
+	// 单向BFS解法, 从 a 出发找 b
   private int searchJumps(int a, int b, HashMap<Integer, Set<Integer>> relations) {
     if (!relations.containsKey(a) || !relations.containsKey(b)) return 0;
 
     Queue<Integer> queue = new LinkedList<>();
-    Set<Integer> visisted = new HashSet<>();
+    Set<Integer> visited = new HashSet<>();
     queue.offer(a);
-    visisted.add(a);
+    visited.add(a);
 
     int jump = 0;
     while (jump < 3 && !queue.isEmpty()) {
@@ -50,13 +48,19 @@ public class FriendsWith3Jumps {
       for (int i = 0; i < size; i++) {
         int tmp = queue.poll();    
         for (int friend : relations.get(tmp)) {
-          if (visisted.contains(friend)) continue;
+          if (visited.contains(friend)) continue;
           if (friend == b) return 1;
           queue.offer(friend);
-          visisted.add(friend);
+          visited.add(friend);
         }
       }
-    }
+		}
+
     return 0;
-  }
+	}
+
+	// 双向BFS解法
+	private int getDegrees(int a, int b, HashMap<Integer, Set<Integer>> relations) {
+		return 0;
+	}
 }

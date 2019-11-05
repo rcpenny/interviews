@@ -24,8 +24,8 @@
 
 
 // Sun: monitoring systems + 5 behavior
-// Mon: Tree && Linked List + delayed task scheduler
-// Tue: DFS && Data structure + 
+// Mon: friends degree
+// Tue: DFS && Data structure + task scheduler
 // Wed: BFS + Design rest
 // Thu: Others +
 
@@ -89,7 +89,7 @@
 ## BFS
 - 261          graph valid trees
 - 127          word ladder 1
-- 126          word ladder 2
+- 126          word ladder 2     搞清楚双向BFS friends degrees
 - 200          number of islands
 - 133          clone graph
 - 323          Number of Connected Components in an Undirected Graph
