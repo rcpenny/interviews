@@ -17,30 +17,30 @@
 //     / \
 //    3   1
 
-//lc156 此题设计的真好
+/**
+	 When we turn a simple tree upside down: 
+				Root                Left
+				/  \                /  \
+			Left  Right        Right  Root
+	*/
+
+//leet156 此题设计的真好
 class BinaryTreeUpsideDown {
 	public TreeNode upsideDownBinaryTree(TreeNode root) {
-		// exit: root为Null 或者 root是leaf
-		if (root == null) return root;
-		if (root.left == null && root.right == null) return root;
+		return helper(null, root);
+	}
 
-		// 1. 一直朝左下走，new root一直就是left most node了
-		// recursive method return new root
-		TreeNode newRoot = upsideDownBinaryTree(root.left);
+	private TreeNode helper(TreeNode parent, TreeNode node) {
+		if (node == null) return parent; // 得到新的root node
 
-		// 从left most 往上折返离开递归时，进行如是操作
+		TreeNode newRoot = helper(node, node.left);
 
-		/**
-		   When we turn a simple tree upside down: 
-						Root                Left
-						/  \                /  \
-					Left  Right        Right  Root
-		 */
-
-		root.left.left = root.right;
-		root.left.right = root;
-		root.left = null;
-		root.right = null;
+		if (parent != null) {
+			node.left = parent.right;
+		} else {
+			node.left = null;
+		}
+		node.right = parent;
 
 		return newRoot;
 	}

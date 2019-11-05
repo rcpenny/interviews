@@ -11,7 +11,9 @@ All IDI problems will involve design --while they are divided into 3 different m
 ## IDI1 Concurrency
 This module focuses on the concepts related to concurrency. Specifically: threads, locks, semaphores, race conditions, shared memory and data structures.  You’ll be presented with a problem where there is resource contention (implicit or explicit) and you’ll need to address it. While you can take advantage of the primitives provided by your language of choice, you’re still expected to understand the concepts, guarantees and implications.  
 
+6 - sys design 设计用户activity收集系统 这个系统需要回答一些analytical的问题 觉得本质就是OLAP系统
 
+设计，韩国大叔，问了个消息队列的设计问题。开始扯了一大堆什么，问了requirement，从哪些方面考虑之类的。结果后来，他说你别扯这么多，设计个单机的，主要侧重在功能如何实现，Schema和API之类如何实现。中间走了不少弯路。教训是，一定先要把问题弄明白。上来就套Design那一套行不通
 
 
 ## IDI2 Data Structures & Algorithms

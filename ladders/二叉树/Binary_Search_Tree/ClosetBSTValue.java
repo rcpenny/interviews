@@ -8,20 +8,19 @@
 
 public class ClosetBSTValue {
   public int closestValue(TreeNode root, double target) {
-    int result = root.val;
+    int closest = 0;
     double diff = Double.MAX_VALUE;
-    
+
     while (root != null) {
       if (Math.abs(root.val - target) < diff) {
-        result = root.val;
         diff = Math.abs(root.val - target);
+        closest = root.val;
       }
-      
-      // move nodes
-      if (root.val < target) root = root.right;
-      else root = root.left;
+
+      if (target < root.val) root = root.left;
+      else root = root.right;
     }
-    
-    return result;
+
+    return closest;
   }
 }

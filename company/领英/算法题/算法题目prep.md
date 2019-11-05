@@ -55,13 +55,13 @@
 - 125	         Valid Palindrome
 
 ## 树
+- 366          Find Leaves Of Binary Tree
 - 272          Closest BST Value I & II
 - 156          Binary Tree Upside Down
-- 366          Find Leaves Of Binary Tree
-- 22           Lowest Common Ancestor
+- 671          Second Minimum Node In a Binary Tree
+- 236          Lowest Common Ancestor
 - 101	         Symmetric Tree
 - 100	         Same Tree
-- 671          Second Minimum Node In a Binary Tree
 
 ## 数据结构
 - 244	         Shortest Word Distance II

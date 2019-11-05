@@ -14,7 +14,8 @@
 
 public class SymmetricTree {
   public boolean isSymmetric(TreeNode root) {
-		return mirrorCompare(root, root);
+		if (root == null) return true;
+		return mirrorCompare(root.left, root.right);
 	}
 	
 	//镜像操作精华：深入tree的下一层时，一个向左，一个向右

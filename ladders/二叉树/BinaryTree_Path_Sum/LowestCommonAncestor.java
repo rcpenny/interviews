@@ -4,15 +4,6 @@
  * 
  * 假设给出的两个节点都在树中存在
  */
-class TreeNode {
-	public int val;
-	public TreeNode left, right;
-	public TreeNode(int val) {
-		this.val = val;
-		this.left = this.right = null;
-	}
-}
-
 class ResultType {
 	boolean afound;
 	boolean bfound;
@@ -24,6 +15,7 @@ class ResultType {
 	}
 }
 
+// leet236
 public class LowestCommonAncestor {
   public TreeNode lowestCommonAncestor(TreeNode root, TreeNode A, TreeNode B) {
 		return helper(root, A, B).ancestor;

@@ -16,20 +16,26 @@
 
 // 输出: 5
 // 解释: 最小的值是2，次小值是5.
+// leet671
 
 public class SecMinNodeInBinaryTree {
-  public int findSecondMinimumValue(TreeNode root) {
-    // 想象成只有root, left, right三个node考虑
-    if (root == null) return -1;
-    if (root.left == null && root.right == null) return -1;
 
-    int left = root.left.val; // initialized in case root is null
-    if (left == root.val)  // left > root的话，不用递归找了
+  // 想象成只有root, left, right三个node考虑
+  public int findSecondMinimumValue(TreeNode root) {
+    if (root.left == null && root.right == null) {
+      return -1;
+    }
+
+    int left = root.left.val;
+    if (left == root.val) {
+      // left > root的话，不用递归找了
       left = findSecondMinimumValue(root.left);
+    } 
 
     int right = root.right.val;
-    if (right == root.val)
+    if (right == root.val) {
       right = findSecondMinimumValue(root.right);
+    }
 
     if (left == -1) return right;
     if (right == -1) return left;
