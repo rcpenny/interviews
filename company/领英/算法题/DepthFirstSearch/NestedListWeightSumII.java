@@ -3,6 +3,7 @@
 // 解释：一个深度为3的1， 一个深度为2的4，和一个深度为3的6 1*3 + 4*2 + 6*1 = 17
 // lc364
 
+// 这个解法不好，recursive return depths and sum up 
 public class NestedListWeightSumII {
   public int depthSumInverse(List<NestedInteger> nestedList) {
     if (nestedList == null || nestedList.size() == 0) return 0;

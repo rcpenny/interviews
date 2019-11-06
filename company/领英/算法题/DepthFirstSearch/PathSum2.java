@@ -6,7 +6,6 @@ import java.util.ArrayList;
 
 // 嘻嘻 bug free
 public class PathSum2 {
-
   public List<List<Integer>> pathSum(TreeNode root, int sum) {
     List<List<Integer>> result = new ArrayList<>();
     if (root == null) return result;

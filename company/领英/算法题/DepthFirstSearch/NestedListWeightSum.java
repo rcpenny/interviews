@@ -16,6 +16,7 @@ public class NestedListWeightSum {
 
 	// 定义：元数据nestedList  控制depth  状态sum通过return value传递
 	private int helper(List<NestedInteger> nestedList, int depth) {
+		// 其实不用这步
 		if (nestedList == null || nestedList.size() == 0) {
 			return 0;
 		}
@@ -24,7 +25,7 @@ public class NestedListWeightSum {
 
 		for (NestedInteger ni : nestedList) {
 			if (ni.isInteger())
-				sum += ni.getInteger() * depth;
+				sum += ni.getInteger() * depth; // 不要忘了乘以depth
 			else
 				sum += helper(ni.getList(), depth + 1);
 		}

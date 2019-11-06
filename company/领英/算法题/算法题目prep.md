@@ -63,6 +63,16 @@
 - 101	         Symmetric Tree
 - 100	         Same Tree
 
+## DFS
+- 364	         Nested List Weight Sum I && II
+- 22           Generate Parentheses                  
+- 254          factor combnation
+- 113	         Path Sum II
+- 698          Partition to K Equal Sum Subsets
+- 464          can I win
+- 47           Permutations I & II
+- 40           Combination Sum I & II
+
 ## 数据结构
 - 244	         Shortest Word Distance II
 - 173	         BST Iterator
@@ -73,18 +83,6 @@
 - 341          Flatten Nested List Iterator
 - 20	         Valid Parentheses
 - 739	         Daily Temperatures
-
-## DFS
-- 339	         Nested List Weight Sum
-- 364	         Nested List Weight Sum II
-- 22           Generate Parentheses                  
-- 254          factor combnation
-- 113	         Path Sum II
-- 698          Partition to K Equal Sum Subsets
-- 1028	       Recover a Tree From Preorder Traversal
-- 464          can I win
-- 47           Permutations I & II
-- 40           Combination Sum I & II
 
 ## BFS
 - 261          graph valid trees

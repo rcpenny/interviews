@@ -17,10 +17,10 @@ public class FactorCombnations {
 
 	private void factorize(int n, int start, List<Integer> comb, List<List<Integer>> result) {
 		// 避免n的情况 8 -> [8]
-		if (n == 1 && comb.size() > 1) {
-			result.add(new ArrayList<>(comb));
+		if (n <= 1) {
+			if (comb.size() > 1) result.add(new ArrayList<>(comb));
+			return;
 		}
-		if (n <= 1) return;
 
 		// 有顺序，从start开始，到 n结束
 		for (int i = start; i <= n; i++) {

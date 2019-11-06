@@ -10,13 +10,14 @@ import java.util.Set;
 
 public class WordBreak2 {
   public List<String> wordBreak(String s, Set<String> wordDict) {
-    Map<String, ArrayList<String>> memo = new HashMap<String, ArrayList<String>>();
+    Map<String, ArrayList<String>> memory = new HashMap<String, ArrayList<String>>();
     
-    return search(s, wordDict, memo);
+    return search(s, wordDict, memory);
   }
   
-  private List<String> search(String s, Set<String> dict, Map<String, List<String>> memo) {
-    if (memo.containsKey(s)) return memo.get(key);
+  // search all return all possible 
+  private List<String> search(String s, Set<String> dict, Map<String, List<String>> memory) {
+    if (memory.containsKey(s)) return memory.get(key);
 
     // s可以组合出的可能性
     List<String> result = new ArrayList<>();
@@ -31,13 +32,13 @@ public class WordBreak2 {
 
       String suffix = s.substring(len);
 
-      List<String> suffix_candidates = search(suffix, dict, memo);
+      List<String> suffix_candidates = search(suffix, dict, memory);
 
       for (String candi : suffix_candidates)
         result.add(prefix + " " + candi);
     }
 
-    memo.put(s, result);
+    memory.put(s, result);
 
     return result;
   }

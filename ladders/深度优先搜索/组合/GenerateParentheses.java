@@ -1,45 +1,39 @@
 import java.util.ArrayList;
 
 /**
- * Given n, and there are n pairs of parentheses, 
- * write a function to generate all combinations of well-formed parentheses.
- * 
  * Input: 3
  * Output: ["((()))", "(()())", "(())()", "()(())", "()()()"]
  */
 
+ // leet22
+ 
 public class GenerateParentheses {
-
   public List<String> generateParenthesis(int n) {
-    List<String> combs = new ArrayList<>();
-    if (n <= 0) return combs;
+    List<String> result = new ArrayList<>();
 
-		generate(n, 0, 0, new StringBuilder(), combs);
+    generate(new StringBuilder(), n, 0, 0, result);
 
-    return combs;
+    return result;
   }
 
-  // 
-  // 定义：元数据n  控制used：加过几个'('， 控制left:')'append后还剩几个'('  状态comb 结果combs
-  private void generate(int n, int left, int used, StringBuilder comb, List<String> combs) {
-    // 出口：不可以是used = n
-    if (comb.length() == 2 * n) {
-      combs.add(comb.toString());
+  private void generate(StringBuilder sb, int n, int leftUsed, int rightUsed, List<String> result) {
+    if (sb.length() == n * 2) {
+      result.add(sb.toString());
       return;
     }
 
-    // 拆解：可加'('
-    if (used < n) {
-      comb.append('(');
-      generate(n, left + 1, used + 1, comb, combs);
-      comb.deleteCharAt(comb.length() - 1);
+    // add left
+    if (leftUsed < n) {
+      sb.append('(');
+      generate(sb, n, leftUsed + 1, rightUsed, result);
+      sb.deleteCharAt(sb.length() - 1);
     }
-    
-    // 拆解：可加')'
-    if (left > 0) {
-      comb.append(')');
-      generate(n, left - 1, used, combs);
-      comb.deleteCharAt(comb.length() - 1);
+
+    // add right
+    if (rightUsed < n && rightUsed < leftUsed) {
+      sb.append(')');
+      generate(sb, n, leftUsed, rightUsed + 1, result);
+      sb.deleteCharAt(sb.length() - 1);
     }
   }
 }

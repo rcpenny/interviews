@@ -13,6 +13,7 @@ public class Permutation2 {
 		// 排序是为了应对duplicates
 		Arrays.sort(nums);
 		boolean[] visited = new boolean[nums.length];
+		
 		dfs(nums, visited, new ArrayList<Integer>(), results);
 
 		return results;
@@ -29,7 +30,7 @@ public class Permutation2 {
 		// 拆解：从头开始扫，哪些数字可以选
 		for (int i = 0; i < nums.length; i++) {
 			if (visited[i]) continue; // 进入递归的条件：这个位置的数字没被选过 && 去重
-			if (i != 0 && nums[i] == nums[i - 1] && !visited[i - 1]) continue;
+			if (i > 0 && nums[i] == nums[i - 1] && !visited[i - 1]) continue;
 
 			permute.add(nums[i]);
 			visited[i] = true;
