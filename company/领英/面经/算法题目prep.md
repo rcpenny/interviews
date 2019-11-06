@@ -22,12 +22,12 @@
 4. 完成问题的时间
 5. 是否是最优解法，能否优化
  
-// Wed: Design + task scheduler + bounded blocking queue
-// Thu: MongoDB了解 + Behavior Questions + K-V Store
-// Fri: Tiny URL + Alert System + 看多线程概念
-// Sat: 多线程 + Top K exceptions
-// Sun: Inverted Index + 看多线程概念
-// Monday: review everything once again
+// Wed: Design + task scheduler + bounded blocking queue + + Behavior Questions(https://www.amazon.jobs/en/principles 准备小故事 learning) 
+// Thu: MongoDB了解 + K-V Store + behavior again
+// Fri: Array String Math + Tiny URL + Alert System 
+// Sat: K-V Store + Top K exceptions +  看多线程概念
+// Sun: Inverted Index
+// Monday: review code and system-design once again
 
 ## Array String Math
 - 56/57	       Merge/Insert Interval
@@ -42,8 +42,9 @@
 - 611          Valid Triangle Number
 
 ## BFS / UnionFind
+- 126/127      Word Ladder I && II         (有待搞定)
+
 - 261          Graph Valid Trees
-- 126/127      Word Ladder I && II
 - 200/305      Number of Islands I && II
 - 323          Number of Connected Components in an Undirected Graph
 - 785          Is Graph Bipartite?
