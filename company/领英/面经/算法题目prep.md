@@ -22,12 +22,40 @@
 4. 完成问题的时间
 5. 是否是最优解法，能否优化
  
-// Wed: BFS + Design + task scheduler + bounded blocking queue
+// Wed: Design + task scheduler + bounded blocking queue
 // Thu: MongoDB了解 + Behavior Questions + K-V Store
 // Fri: Tiny URL + Alert System + 看多线程概念
 // Sat: 多线程 + Top K exceptions
 // Sun: Inverted Index + 看多线程概念
 // Monday: review everything once again
+
+## Array String Math
+- 56/57	       Merge/Insert Interval
+- 605	         Can Place Flowers
+- 149          Max Points in a Line
+- 273          Integer to English Words
+- 65	         Valid Number
+- 277	         Find Celebrity
+- 68	         Text Justification
+- 8	           String to Integer (atoi)
+- 54	         Spiral Matrix
+- 611          Valid Triangle Number
+
+## BFS / UnionFind
+- 261          Graph Valid Trees
+- 126/127      Word Ladder I && II
+- 200/305      Number of Islands I && II
+- 323          Number of Connected Components in an Undirected Graph
+- 785          Is Graph Bipartite?
+
+## 设计
+- 716          Max Stack                               
+- 380/381      Insert Delete GetRandom O(1) & Dupe allowed
+- 432          All O(1) Data Structure
+- 179          Two Sum III
+- 297          Serialize and Deserialize Binary Tree
+- 146/460      LRU Cache / LFU Cache
+- 706          Design HashMap
 
 ## 动态规划
 - 256/265      Paint House I & II
@@ -81,32 +109,3 @@
 - 341          Flatten Nested List Iterator
 - 636          Exclusive Time of Functions 
 - 739	         Daily Temperatures
-
-## BFS
-- 261          Graph Valid Trees
-- 126/127      Word Ladder I && II
-- 200          Number of Islands
-- 133          Clone Graph
-- 323          Number of Connected Components in an Undirected Graph
-- 785          Is Graph Bipartite?
-
-## 设计
-- 716          Max Stack                               
-- 380/381      Insert Delete GetRandom O(1) & Dupe allowed
-- 432          All O(1) Data Structure
-- 179          Two Sum III
-- 297          Serialize and Deserialize Binary Tree
-- 146/460      LRU Cache / LFU Cache
-- 706          Design HashMap
-
-## Array String Math
-- 56/57	       Merge/Insert Interval
-- 605	         Can Place Flowers
-- 149          Max Points in a Line
-- 273          Integer to English Words
-- 65	         Valid Number
-- 277	         Find Celebrity
-- 68	         Text Justification
-- 8	           String to Integer (atoi)
-- 54	         Spiral Matrix
-- 611          Valid Triangle Number
