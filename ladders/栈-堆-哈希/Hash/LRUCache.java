@@ -10,6 +10,7 @@ class ListNode {
 	}
 }
 
+// @Todo(" 有空写Double linked list 版本吧，DLL指针控制比这个多一点....")
 public class LRUCache {
 	private int capacity;
 	private int size;
@@ -31,7 +32,7 @@ public class LRUCache {
 	}
 
 
-
+	/**Get the value (will always be positive) of the key if the key exists in the cache, otherwise return -1. */
 	public int get(int key) {
 		if (!keyToPrev.containsKey(key)) return -1;	
 		moveToTail(key); // // get后这个key是most rencently used，所以放到尾部变成tail
@@ -39,7 +40,8 @@ public class LRUCache {
 	}
 
 
-
+	// Set or insert the value if the key is not already present. When the cache reached its capacity, 
+	// it should invalidate the least recently used item before inserting a new item.
 	public void set(int key, int value) {
 		if (get(key) != -1) { // 调用get看key是否存在时，若存在get就会把key挪到尾部～
 			tail.val = value;

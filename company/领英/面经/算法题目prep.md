@@ -53,8 +53,9 @@
 - 380/381      Insert Delete GetRandom O(1) & Dupe allowed
 - 432          All O(1) Data Structure
 - 179          Two Sum III
-- 297          Serialize and Deserialize Binary Tree
-- 146/460      LRU Cache / LFU Cache
+- 297/449      Serialize and Deserialize BST
+- 146          LRU Cache
+- 460          LFU Cache                     (有待搞定)
 - 706          Design HashMap
 
 ## 动态规划
@@ -74,8 +75,8 @@
 - 33/81        Search in Rotated Sorted Array I & II
 
 ## 链表 及 双指针
-- 160          Intersect of 2 Linkedlist
 - 141/142      Linkedlist Cycle I & II
+- 160          Intersect of 2 Linkedlist
 - 21/23        Merge 2/K sorted list
 - 61           Rotate List
 -	76	         Minimum Window Substring
