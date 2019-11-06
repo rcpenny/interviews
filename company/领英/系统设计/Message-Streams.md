@@ -1,10 +1,11 @@
-## Message Streams
+## Message Streams (Mini Kafka Streams)
 Design a Message Streaming System to support Producers Consumers
-(Mini Kafka Streams?)
 
 ## 资料
-- 题目 https://leetcode.com/problems/design-bounded-blocking-queue/ Java Array Blocking Queue
+- 题目 https://leetcode.com/problems/design-bounded-blocking-queue/
+- LinkedBlockingQueue: https://github.com/openjdk-mirror/jdk7u-jdk/blob/master/src/share/classes/java/util/concurrent/LinkedBlockingQueue.java
 - Kafka Streams API: https://github.com/apache/kafka/tree/trunk/streams/src/main/java/org/apache/kafka/streams
+- example: http://n00tc0d3r.blogspot.com/2013/08/implement-bounded-blocking-queue.html
 
 ## Senario
 - 先不考虑系统级别设计，假设是single machine，设计具体的Schema, Data Structure, API etc.
@@ -24,6 +25,7 @@ Design a Message Streaming System to support Producers Consumers
 - memory overflow?
 - race condition?
 
-https://tech.meituan.com/2016/07/01/mq-design.html
-https://segmentfault.com/a/1190000018640106
-http://n00tc0d3r.blogspot.com/2013/08/implement-bounded-blocking-queue.html
+## LinkedBlockingQueue摘选
+```java
+
+```

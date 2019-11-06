@@ -1,4 +1,4 @@
-### inverted index
+### Inverted Index (LinkedIn Search)
  第三轮，inverted index 以及不同的distribution sharding 方法的优劣讨论
 
 publish and query. 存event id和内容，内容大小不定。然后query API是 getEventSince(id, int bufferSize), 求怎么存储数据可以更利于high concurrency。这题答得不太好，要了好多hint。最后面试官还说到想问lock，但是没时间了。

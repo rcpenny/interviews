@@ -1,5 +1,4 @@
-
-## Tiny URL （LinkedIn post功能）
+# Tiny URL （LinkedIn Post）
 - Senario(func/non-func): 
    1. long URl-> short URL 
    2. short URL -> long URL, redirect

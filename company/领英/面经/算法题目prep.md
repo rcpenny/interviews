@@ -21,11 +21,13 @@
 3. 代码的整洁度
 4. 完成问题的时间
 5. 是否是最优解法，能否优化
-
-// Sun: monitoring systems + 5 behavior
-// Tue: task scheduler + bounded blocking queue + youtube video + alert system
-// Wed: BFS + Design rest
-// Thu: Others +
+ 
+// Wed: BFS + Design + task scheduler + bounded blocking queue
+// Thu: MongoDB了解 + Behavior Questions + K-V Store
+// Fri: Tiny URL + Alert System + 看多线程概念
+// Sat: 多线程 + Top K exceptions
+// Sun: Inverted Index + 看多线程概念
+// Monday: review everything once again
 
 ## 动态规划
 - 256/265      Paint House I & II
