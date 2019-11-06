@@ -18,7 +18,7 @@ import java.util.Set;
  * 你可以假设 beginWord 和 endWord 是非空的，且二者不相同。
  */
 
- // use 2-direction BFS
+ // use 2-direction BFS to optimize time and space
 public class WordLadder {
 	// 这种字母变化是否出现过
 	Set<String> seen = new HashSet<>();

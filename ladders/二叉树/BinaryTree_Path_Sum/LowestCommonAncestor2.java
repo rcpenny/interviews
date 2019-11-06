@@ -11,7 +11,25 @@ class ParentTreeNode {
 	public ParentTreeNode parent, left, right;
 }
 
+// 用set waste memory，use 2 times traverse
 public class LowestCommonAncestor2 {
+	
+	// solution like linked list intersecion detection with no cycles
+	public ParentTreeNode lowestCommonAncestorII2(ParentTreeNode root, ParentTreeNode A, ParentTreeNode B) {
+    ParentTreeNode copyA = A;
+    ParentTreeNode copyB = B;
+    
+    while (copyA != copyB) {
+      copyA = (copyA == root) ? B : copyA.parent;
+      copyB = (copyB == root) ? A : copyB.parent;
+    }    
+
+    return copyA;
+  }
+
+	
+	
+	
 	public ParentTreeNode lowestCommonAncestorII(ParentTreeNode root, ParentTreeNode A, ParentTreeNode B) {
 		if (root == null) return null;
         
