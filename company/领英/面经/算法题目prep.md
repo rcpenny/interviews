@@ -23,8 +23,7 @@
 5. 是否是最优解法，能否优化
  
 
- https://www.1point3acres.com/bbs/thread-562250-1-1.html
-// Wed: Design + task scheduler + bounded blocking queue + + Behavior Questions(https://www.amazon.jobs/en/principles 准备小故事 learning) + Udemy(concurrencyx)
+task scheduler + bounded blocking queue + + Behavior Questions(https://www.amazon.jobs/en/principles 准备小故事 learning) + Udemy(concurrency) + 多线程总结
 // Thu: MongoDB了解 + K-V Store + Leadership Principle Storie
 // Fri: Array String Math + Tiny URL + Alert System 
 // Sat: K-V Store + Top K exceptions +  看多线程概念
