@@ -27,7 +27,8 @@ message queue(kafka) + workers(storm) + (database,cache) + notification service(
 4. 哪种event 需要通知哪个engineer 可以是一个pub sub的架构也可以存成一个static table or key value
 5. 如何scale，如果是10000 hosts怎么收集
 6. 要保证用户付了钱的调用流量都允许
-7. 提供各种方案，kafka，HDFS，pub-sub model
+7. 收集host的1second，1minute，1hour metrics。如何scale，如果是10000 hosts怎么收集
+8. 提供各种方案，kafka，HDFS，pub-sub model
 
 Monitor System
 设计Amazon Product Page, 就是在SQL里面一个产品有多个图片多个价格的话怎么设计数据库。然后后台提取数值render到页面上得时候，class怎么设计，服务器怎么安排之类的, 中间也有讨论怎样给suggest product，我提到可以建一个Product weighted graph, 然后用BFS

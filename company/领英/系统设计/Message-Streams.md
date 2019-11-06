@@ -3,7 +3,7 @@ Design a Message Streaming System to support Producers Consumers
 (Mini Kafka Streams?)
 
 ## 资料
-- 题目 https://leetcode.com/problems/design-bounded-blocking-queue/
+- 题目 https://leetcode.com/problems/design-bounded-blocking-queue/ Java Array Blocking Queue
 - Kafka Streams API: https://github.com/apache/kafka/tree/trunk/streams/src/main/java/org/apache/kafka/streams
 
 ## Senario

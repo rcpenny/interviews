@@ -8,7 +8,7 @@
 
 https://soulmachine.gitbooks.io/system-design/content/cn/task-scheduler.html
 
-
+写一个DelayedTaskQueue，要用mutex和condition variable做协同
 
 延迟任务规划器，写了完整的代码，讨论了conditional variable原理，lock，何时会抛出interrupted exception，executor的用法，threading pool的好处
 

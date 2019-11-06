@@ -1,4 +1,27 @@
 # system-infra onsite 整理
+1. Design key-value store
+
+假设已有一些file system的API设计一个KV db。前提条件：
+
+- key很短可以假设只有8bit，可以保证全部keys能够都存在内存中，但是value很大必须存在disk中。
+- disk的random读写会非常慢，但是顺序写入会很快
+- 假设已经有个file system提供了write read API，但是具体API的接口怎样还得自己定义.
+- 实现get put delete
+
+2. Delayed task scheduler。
+就看了上面那个链接。
+
+3. Metrics collection and monitor system。
+收集host的1second，1minute，1hour metrics。如何scale，如果是10000 hosts怎么收集。
+
+4. LinkedIn 二级三级朋友。
+https://engineering.linkedin.com/real-time-distributed-graph/using-set-cover-algorithm-optimize-query-latency-large-scale-distributed
+
+5. Inverted Index。
+
+6. Design Message Streaming System。
+应该就是我的第三轮。
+
 
 1. http://bit.ly/34n0FkS
 2. http://bit.ly/334K70D
@@ -22,13 +45,14 @@
 20. http://bit.ly/323Qjoj
 21. http://bit.ly/2q9758l
 
+// review this at last
 https://www.1point3acres.com/bbs/forum.php?mod=viewthread&tid=446923
+
 https://www.1point3acres.com/bbs/forum.php?mod=viewthread&tid=465815
 
 https://www.1point3acres.com/bbs/forum.php?mod=viewthread&tid=175538&extra=page%3D1%26filter%3Dsortid%26sortid%3D311%26searchoption%5B3088%5D%5Bvalue%5D%3D1%26searchoption%5B3088%5D%5Btype%5D%3Dradio%26searchoption%5B3089%5D%5Bvalue%5D%5B3%5D%3D3%26searchoption%5B3089%5D%5Btype%5D%3Dcheckbox%26searchoption%5B3090%5D%5Bvalue%5D%3D1%26searchoption%5B3090%5D%5Btype%5D%3Dradio%26searchoption%5B3046%5D%5Bvalue%5D%3D6%26searchoption%5B3046%5D%5Btype%5D%3Dradio%26sortid%3D31
 
 https://www.1point3acres.com/bbs/forum.php?mod=viewthread&tid=556281&extra=page%3D1%26filter%3Dsortid%26sortid%3D311%26searchoption%5B3046%5D%5Bvalue%5D%3D6%26searchoption%5B3046%5D%5Btype%5D%3Dradio%26sortid%3D311%26orderby%3Ddateline
-
 
 # behavior Questions
 linkedin learning

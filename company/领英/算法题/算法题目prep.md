@@ -23,7 +23,7 @@
 5. 是否是最优解法，能否优化
 
 // Sun: monitoring systems + 5 behavior
-// Tue: DFS && Data structure + task scheduler + bounded blocking queue + youtube video + alert system
+// Tue: task scheduler + bounded blocking queue + youtube video + alert system
 // Wed: BFS + Design rest
 // Thu: Others +
 
