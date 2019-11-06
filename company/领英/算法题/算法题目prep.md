@@ -28,48 +28,46 @@
 // Thu: Others +
 
 ## 动态规划
-- 256          paint house    
-- 265          paint house 2
-- 416          partition equal subset sum
+- 256/265      Paint House I & II
+- 416          Partition Equal Subset Sum
 - 647          Palindromic Substrings
-- 516          longest palindromic subsequence
-- 300          longest increasing subsequence (二分方法有待搞定)
-- 72           edit distance
-- 53           max subarray
-- 152          max product subarray
+- 516          Longest Palindromic Subsequence
+- 300          Longest Increasing Subsequence (二分方法有待搞定)
+- 72           Edit Distance
+- 53           Max Subarray
+- 152          Max Product Subarray
 
 ## 二分
-- 50	         Pow(x, n)
-- 69           Sqrt(x) I & II
+- 50	         Pow(X, N)
+- 69           Sqrt(x) I & II (int/double)
 - 367          Valid Perfect Square
-- 33           Search in Rotated Sorted Array I && II
+- 33/81        Search in Rotated Sorted Array I & II
 
 ## 链表 及 双指针
-- 160          intersect of 2 linkedlist
-- 142          linked list cycle I & II
-- 61           rotate list
-- 23           merge 2/K sorted list
+- 160          Intersect of 2 Linkedlist
+- 141/142      Linkedlist Cycle I & II
+- 21/23        Merge 2/K sorted list
+- 61           Rotate List
 -	76	         Minimum Window Substring
 - 125	         Valid Palindrome
 
 ## 树
 - 366          Find Leaves Of Binary Tree
-- 272          Closest BST Value I & II
+- 270/272      Closest BST Value I & II
 - 156          Binary Tree Upside Down
 - 671          Second Minimum Node In a Binary Tree
 - 236          Lowest Common Ancestor
-- 101	         Symmetric Tree
-- 100	         Same Tree
+- 100/101	     Same/Symmetric Tree
 
 ## DFS
-- 364	         Nested List Weight Sum I && II
+- 339/364	     Nested List Weight Sum I && II
 - 22           Generate Parentheses                  
-- 254          factor combnation
+- 254          Factor Combnation
 - 113	         Path Sum II
 - 698          Partition to K Equal Sum Subsets
-- 464          can I win                               (有待搞定)
-- 47           Permutations I & II
-- 40           Combination Sum I & II
+- 46/47        Permutations I & II
+- 39/40        Combination Sum I & II
+- 464          Can I Win                               (有待搞定)
 
 ## 数据结构
 - 205          Isomorphic Strings
@@ -83,36 +81,30 @@
 - 739	         Daily Temperatures
 
 ## BFS
-- 261          graph valid trees
-- 127          word ladder 1
-- 126          word ladder 2     搞清楚双向BFS friends degrees
-- 200          number of islands
-- 133          clone graph
+- 261          Graph Valid Trees
+- 126/127      Word Ladder I && II
+- 200          Number of Islands
+- 133          Clone Graph
 - 323          Number of Connected Components in an Undirected Graph
 - 785          Is Graph Bipartite?
 
 ## 设计
-- 716        max stack                               
-- 380        Insert Delete GetRandom O(1) 
-- 381	       Insert Delete GetRandom O(1)  Dupe allowed
-- 432        All O(1) Data structure
-- 179        Two Sum 3
-- 244        shortest word distance 2
-- 297        Serialize and Deserialize Binary Tree
-- 146        LRU Cache
-- 460        LFU Cache
-- 706        Design HashMap
+- 716          Max Stack                               
+- 380/381      Insert Delete GetRandom O(1) & Dupe allowed
+- 432          All O(1) Data Structure
+- 179          Two Sum III
+- 297          Serialize and Deserialize Binary Tree
+- 146/460      LRU Cache / LFU Cache
+- 706          Design HashMap
 
 ## Array String Math
-- 57	         Insert Interval
-- 56	         Merge Intervals
-- 243	         Shortest Word Distance
+- 56/57	       Merge/Insert Interval
 - 605	         Can Place Flowers
-- 149          max points in a line
+- 149          Max Points in a Line
 - 273          Integer to English Words
 - 65	         Valid Number
-- 277	         Find the Celebrity
+- 277	         Find Celebrity
 - 68	         Text Justification
 - 8	           String to Integer (atoi)
 - 54	         Spiral Matrix
-- 611          valid triangle number
+- 611          Valid Triangle Number
