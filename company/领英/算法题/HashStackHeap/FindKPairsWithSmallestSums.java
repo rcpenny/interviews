@@ -19,7 +19,7 @@ public class FindKPairsWithSmallestSums {
 		
 		for(int num1: nums1){
 			// 提速1: num1 + nums[0] 已经大于cur max sum
-      if (maxheap.size() == k && (num1 + nums2[0] > (maxheap.peek().get(0) + maxheap.peek().get(1)))) {
+      if (maxheap.size() == k) {
 				if (num1 + nums2[0] > (maxheap.peek().get(0) + maxheap.peek().get(1))) {
 					break;
 				}
@@ -35,16 +35,15 @@ public class FindKPairsWithSmallestSums {
         if ((num1 + num2) < (maxheap.peek().get(0) + maxheap.peek().get(1))) {
           maxheap.offer(tmp);
           maxheap.poll();
-          continue;
+				} else {
+					// 提速2: num1 + num2 已经大于cur max sum
+					break;
 				}
-				
-				// 提速2: num1 + num2 已经大于cur max sum
-        break;
 			}
 		}
 
 		List<List<Integer>> answer = new ArrayList<>(maxheap);
-    Collections.reverse(answer);
+    Collections.sort(answer);
 	
 		return answer;        
 	}

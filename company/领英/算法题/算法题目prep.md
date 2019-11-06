@@ -22,10 +22,8 @@
 4. 完成问题的时间
 5. 是否是最优解法，能否优化
 
-
 // Sun: monitoring systems + 5 behavior
-// Mon: friends degree
-// Tue: DFS && Data structure + task scheduler
+// Tue: DFS && Data structure + task scheduler + bounded blocking queue + youtube video + alert system
 // Wed: BFS + Design rest
 // Thu: Others +
 
@@ -69,19 +67,19 @@
 - 254          factor combnation
 - 113	         Path Sum II
 - 698          Partition to K Equal Sum Subsets
-- 464          can I win
+- 464          can I win                               (有待搞定)
 - 47           Permutations I & II
 - 40           Combination Sum I & II
 
 ## 数据结构
-- 244	         Shortest Word Distance II
-- 173	         BST Iterator
 - 205          Isomorphic Strings
-- 373          Find KPairs with SmallestSums                                 |
-- 150	         Evaluate Reverse Polish Notation
-- 636	         Exclusive Time of Functions
-- 341          Flatten Nested List Iterator
+- 244	         Shortest Word Distance II
+- 373          Find KPairs with SmallestSums                       
 - 20	         Valid Parentheses
+- 150	         Evaluate Reverse Polish Notation
+- 173	         BST Iterator
+- 341          Flatten Nested List Iterator
+- 636          Exclusive Time of Functions 
 - 739	         Daily Temperatures
 
 ## BFS

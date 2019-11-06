@@ -1,43 +1,35 @@
 import java.util.Stack;
 
-// lc173
-// 多写几遍
+// leet173
+// 类似 flatten nested iterator的解法
+class BSTIterator {
+  Stack<TreeNode> stack;
 
-public class BSTIterator {
-	private Stack<TreeNode> stack = new Stack<>();
+  public BSTIterator(TreeNode root) {
+    this.stack = new Stack<>();
+    pushToStack(root);
+  }
 
-	public BSTIterator(TreeNode root) {
-		while (root != null) {
-			stack.push(root);
-			root = root.left;
-		}
-	}
+  /** @return the next smallest number */
+  public int next() {
+    TreeNode peek = stack.pop();
 
-	public boolean hasNext() {
-		return !stack.empty();
-	}
+    if (peek.right != null) {
+      pushToStack(peek.right);
+    }
 
-	// return stack peek(current min in BST), then move stack peek to next node(min)
-	public TreeNode next() {
-		TreeNode result = stack.peek();
-		TreeNode node = stack.peek();
+    return peek.val;
+  }
+  
+  /** @return whether we have a next smallest number */
+  public boolean hasNext() {
+    return !stack.isEmpty();
+  }
 
-		if (node.right != null) {
-			node = node.right;
-			while (node != null) {
-				stack.push(node);
-				node = node.left;
-			}
-		}
-
-		// 这一步再想想
-		else if (node.right == null) {
-			node = stack.pop();
-			while (!stack.isEmpty() && stack.peek().right == node) {
-				node = stack.pop();
-			}
-		}
-
-		return result;
-	}
+  private void pushToStack(TreeNode node) {
+    while (node != null) {
+      stack.push(node);
+      node = node.left;
+    }
+  }
 }

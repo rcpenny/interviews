@@ -6,9 +6,13 @@ import java.util.Stack;
 // Input: ["4", "13", "5", "/", "+"]  Output: 6
 // Explanation: ["4", "13", "5", "/", "+"] -> 4 + 13 / 5 -> 6
 
+// leet150
 public class EvaluateReversePolishNotation {
   public int evalRPN(String[] tokens) {
-		if (tokens == null || tokens.length < 3) return Integer.MIN_VALUE;
+		if (tokens == null || tokens.length < 3) {
+			return Integer.MIN_VALUE;
+		}
+
 		String operators = "+-*/";
 
 		Stack<Integer> stack = new Stack<>();
@@ -18,21 +22,21 @@ public class EvaluateReversePolishNotation {
 				stack.push(Integer.valueOf(token));
 				continue;
 			}
-			Integer second = stack.pop();
-			Integer first = stack.pop();
-			Integer next = caculate(token, first, second);
-			stack.push(next);
+			Integer secondOperand = stack.pop();
+			Integer firstOperand = stack.pop();
+			Integer result = caculate(token, firstOperand, secondOperand);
+			stack.push(result);
 		}
 
 		return stack.pop();
 	}
 
-	private Integer caculate(String operator, Integer first, Integer second) {
-		if (operator.equals("+")) return first + second;
-		if (operator.equals("-")) return first - second;
-		if (operator.equals("*")) return first * second;
+	private Integer caculate(String operator, Integer firstOperand, Integer secondOperand) {
+		if (operator.equals("+")) return firstOperand + secondOperand;
+		if (operator.equals("-")) return firstOperand - secondOperand;
+		if (operator.equals("*")) return firstOperand * secondOperand;
 		
-		if (second != 0) return first / second;
+		if (secondOperand != 0) return firstOperand / secondOperand;
 		else return Integer.MAX_VALUE;
 	}
 }

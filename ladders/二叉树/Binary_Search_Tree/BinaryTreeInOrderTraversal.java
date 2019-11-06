@@ -13,7 +13,24 @@ import java.util.Stack;
 // 访问所有节点用时O(n)，所以均摊下来访问每个节点的时间复杂度时O(1)
 
 public class BinaryTreeIntOrderTraversal {
-  public List<Integer> inorderTraversal(TreeNode root) {
+	public List < Integer > inorderTraversal1(TreeNode root) {
+		List < Integer > res = new ArrayList < > ();
+		Stack < TreeNode > stack = new Stack < > ();
+		TreeNode curr = root;
+		while (curr != null || !stack.isEmpty()) {
+				while (curr != null) {
+						stack.push(curr);
+						curr = curr.left;
+				}
+				curr = stack.pop();
+				res.add(curr.val);
+				curr = curr.right;
+		}
+		return res;
+	}
+
+	// 九章解法，略蠢
+  public List<Integer> inorderTraversal2(TreeNode root) {
 		Stack<TreeNode> stack = new Stack<>();
 		ArrayList<Integer> list = new ArrayList<>();
 

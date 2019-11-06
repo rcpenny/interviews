@@ -1,5 +1,5 @@
 // 同上，设计成class
-// lc244
+// leet244
 
 class ShortestWordDistance2 {
   Map<String, List<Integer>> wordToIndex;
@@ -33,5 +33,5 @@ class ShortestWordDistance2 {
     }
 
     return shortest;
-  }s
+  }
 }

@@ -1,6 +1,6 @@
 ## Message Streaming (simplified Kafka)
 
-- 资料
+## 资料
 1. 题目 https://leetcode.com/problems/design-bounded-blocking-queue/
 2. 
 

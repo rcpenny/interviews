@@ -12,3 +12,6 @@ This module focuses on data structures and algorithms. You’ll be given a probl
 
 ## IDI3 Complex Systems
 This module focuses on large (distributed) systems. You will be given a scenario and end goal and will be asked to design a system that can meet the requirements.  You’re expected to understand how to break down a problem into components and how the components interact with each other. You should be able to describe the solution at a high level and go into the detail of each component. 
+
+good resource
+https://soulmachine.gitbooks.io/system-design/content/cn/

@@ -1,6 +1,7 @@
-import java.util.Stack;
+// leet341
 
-// lc341
+// 输入: [[2,1],2,[5,6]]
+// 输出: [2,1,2,5,6]
 
 public class NestedIterator implements Iterator<Integer> {
   private Stack<NestedInteger> stack;
@@ -16,30 +17,27 @@ public class NestedIterator implements Iterator<Integer> {
     return stack.pop().getInteger();
   }
 
+	/** 若stack peek is NestedList, push it */
   @Override
-  public boolean hasNext() { // has next make sure current stack top is integer
+  public boolean hasNext() {
     while (!stack.isEmpty() && !stack.peek().isInteger()) {
-      pushNestedListToStack(nestedList);
+      pushNestedListToStack(stack.pop().getList());
     }
     return !stack.isEmpty();
   }
 
-  @Override
-  public void remove() {
-    if (!hasNext()) return;
-    stack.pop();
-  }
-
-  // 把这一层的nested integer push进stack, 倒装， 画图想一下
+  /** 把这一层的nested integer push进stack, 倒装， 画图想一下 */
   private void pushNestedListToStack(List<NestedInteger> nestedList) {
-    Stack<NestedInteger> buffer = new Stack<>();
+		Stack<NestedInteger> buffer = new Stack<>();
+		
+		for (NestedInteger ni : nestedList) {
+			buffer.push(ni);
+		}
 
-    for (NestedInteger ni : nestedList) {
-      buffer.push(ni);
-    }
-
-    while (!container.isEmpty()) {
-      this.stack.push(buffer.pop());
-    }
-  }
+		while (!buffer.isEmpty()) {
+			this.stack.push(buffer.pop());
+		}
+	}
 }
+
+class FlattenNestedterator {}

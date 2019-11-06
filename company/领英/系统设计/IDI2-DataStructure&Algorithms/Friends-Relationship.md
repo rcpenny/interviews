@@ -30,10 +30,5 @@ Design LinkedIn Friend Relationship System
 - **Challenge**: when the graph is partitioned across a cluster of machines
 - **Scale**: The Scaling Problem in blog, Set Cover Algorithm
 
-
 设计领英0,1,2,3朋友圈的具体算法。实现就是双向bfs，2,3度用双指针
 最后还可以继续用hashset来优化时间复杂度
-
-
-legacy: cache plicy, 如何归并数据
-load balancing: 如何把查询分到不同的db 和cache
