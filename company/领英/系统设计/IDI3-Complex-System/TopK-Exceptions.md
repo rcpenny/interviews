@@ -1,6 +1,8 @@
 
 ### Top k exception (Kafka) LFU cache
 
+https://www.youtube.com/watch?v=kx-XDoPjoHw&t=1751s
+
 2. IDI DS&Algorithm：类似top k的设计，需要return 5min，1hour，24hour之内的数据整合。这里问的不是top k，而是mean - 股票交易系统，经常有price update（incoming message），GetAvg会get过去不同时间区间内的average price. 需要O(1)
 
 7. system design，套了壳的top K exception，面试官想知道过去5分钟，一小时，一天里LinkedIn member转发最多的content，（URL），如何设计。楼主用的sqs + aggregation service(write) + reading services三层做的。中间讨论了很多数据的size和design的tradeoff，聊的还是挺顺的。

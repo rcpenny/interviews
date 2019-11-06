@@ -1,4 +1,7 @@
 # Delayed Task Scheduler
+设计Delay Scheduler，能够把task schedule在特定的时间执行。
+
+
 
 - 资料
 1. 多线程 https://paper.dropbox.com/doc/--AnzuGuI6O2od4tDRqe6PN1VFAg-ONbDQkXzZv3bVw9i1sPvm
@@ -6,12 +9,6 @@
 https://soulmachine.gitbooks.io/system-design/content/cn/task-scheduler.html
 
 
-
-- 设计Delay Scheduler，能够把task schedule在特定的时间执行。
-
-
-第二轮（多线程系统设计）：中国小哥
-delay task scheduler，设计出来了，但是代码实现的时候受限于没怎么写过多线程code，各种语法和用法上错误。感觉答得比较炸，希望小哥能放我一马。
 
 延迟任务规划器，写了完整的代码，讨论了conditional variable原理，lock，何时会抛出interrupted exception，executor的用法，threading pool的好处
 
