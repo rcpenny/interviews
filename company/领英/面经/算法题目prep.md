@@ -23,11 +23,10 @@
 5. 是否是最优解法，能否优化
  
 
-task scheduler + bounded blocking queue + + Behavior Questions(https://www.amazon.jobs/en/principles 准备小故事 learning) + Udemy(concurrency) + 多线程总结
-// Thu: MongoDB了解 + K-V Store + Leadership Principle Storie
-// Fri: Array String Math + Tiny URL + Alert System 
-// Sat: K-V Store + Top K exceptions +  看多线程概念
-// Sun: Inverted Index
+// Thu: task scheduler + MongoDB了解 + Behavior Questions (https://www.amazon.jobs/en/principles 准备小故事 learning)
+// Fri: Array String Math 
+// Sat: K-V Store + Top K exceptions + + Tiny URL () + Delayed Task Scheduler + 
+// Sun: Inverted Index +  +  bounded blocking queue + metrics system + Friendship
 // Monday: review code and system-design once again
 
 ## Array String Math

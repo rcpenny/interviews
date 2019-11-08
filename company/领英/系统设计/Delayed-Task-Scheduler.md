@@ -18,3 +18,11 @@ https://soulmachine.gitbooks.io/system-design/content/cn/task-scheduler.html
 一直在往condition variable那边靠，像blocking queue那种设计，wait() + notify()
 但聊到最后，发现heap+hashmap（<timestamp, taskid>）就可以了...还聊了一会heap的原理，heapify up/down，O(log(n)) add/peak，聊偏了...
 重点是深入rolling window这个ds：怎么删去expire的data，如果靠incoming message trigger expired data deprecation，一直没有incoming message怎么办。假设这个fixed sized window可以fit进memory
+
+
+## Actual code
+1. TaskScheduler class
+2. DelayedQueue class
+3. task class
+4. producer class
+5. conusmer class

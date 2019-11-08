@@ -15,7 +15,7 @@ Design a distributed file systems
    实现get put delete
    着重聊了kv store的log structured database，如何insert，update， invalidate。
 4. 已知一个文件系统，可以create files, delete files, sequentially scan file content, read file content randomly, append file content.
-5. 
+
 ## High Level 
 1. high level聊了了consistent hashing
 2. 以及如何加减virtual node
