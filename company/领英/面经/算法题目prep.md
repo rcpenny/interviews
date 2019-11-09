@@ -23,7 +23,7 @@
 5. 是否是最优解法，能否优化
  
 
-// Sat: + Tiny URL () + K-V Store + Top K exceptions  + Delayed Task Scheduler + 
+// Sat: K-V Store + Top K exceptions  + Delayed Task Scheduler + 
 // Sun: Inverted Index +  +  bounded blocking queue + metrics system + Friendship
 // Monday: review code and system-design once again
 
@@ -34,8 +34,8 @@
 - 277	         Find Celebrity
 - 611          Valid Triangle Number
 - 8	           String to Integer (atoi)
-
 - 68	         Text Justification
+
 - 273          Integer to English Words
 - 65	         Valid Number
 - -468         Valid IP Address
