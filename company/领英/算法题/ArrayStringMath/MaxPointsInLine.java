@@ -8,7 +8,8 @@ class Point {
   }
 }
 
-// 枚举所有points pair
+// leet149
+// 枚举所有points pair O(n3)
 public class MaxPointsInLine {
   public int maxPoints(Point[] points) {
     if (points == null || points.length == 0) return 0;

@@ -15,7 +15,7 @@ public class CanPlaceFlowers {
 			// 检查是否种满花了
 		  if (count >= n) return true;
 
-			// 是花就跳
+			// 是花就跳2步
 			if (flowerbed[i] == 1) {
 				i += 2;
 				continue;

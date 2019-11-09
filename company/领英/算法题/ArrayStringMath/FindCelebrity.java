@@ -6,9 +6,19 @@
 // 实现一个函数 int findCelebrity(n)，你的函数应该使 knows 的调用次数最少。
 
 // 如果在这个聚会中有名人， 那么有且只有一个。如果有名人在聚会中则返回名人的标签，如果没有名人，返回 -1
-// lint645
+// leet277
+
+// 1.先提供O(n^2)思路，暴力check 每个人作为candidate，查看其他人是否know他
+
+// need some way to remove potential candidates
+
+// 2. O(n) && O(1)   
+// knows(a, b) is true, a is not celebrity
+// knows(a, b) is false, b is not celebrity
+// either way we could erase one from the potential set
 
 public class FindCelebrity {
+  // O(n) && O(1)
   public int findCelebrity(int n) {
     if (n <= 0) return -1;
     if (n == 1) return 0;
@@ -26,5 +36,24 @@ public class FindCelebrity {
 		}
 		
     return candi;
+  }
+
+  // O(n^2)
+  public int findCelebrity3(int n) {
+    // i is the potential candidate
+    for (int i = 0; i < n; i++) {
+
+      int count = 0;
+      for (int j = 0; j < n; j++) {
+        if (i == j) continue;
+
+        if (!knows(j, i) || knows(i, j)) break;
+        count++;
+      }
+
+      if (count == n - 1) return i;
+    }
+
+    return -1;
   }
 }

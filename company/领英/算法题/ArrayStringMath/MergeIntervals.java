@@ -3,12 +3,14 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-// lc56
-
 // Given a collection of intervals, merge all overlapping intervals.
 // Input:  [(1,3),(2,6),(8,16),(15,18)]
 // Output: [(1,6),(8,18)]
-// Challenge O(n log n) time and O(1) extra space.
+// Challenge  time and O(1) extra space.
+
+// leet56
+// 排好序后，画图展示合并的情况，end1 < start2
+// 另两种情况要合并. 分析复杂度，排序 O(nlogn)
 
 public class Interval {
 	int start;

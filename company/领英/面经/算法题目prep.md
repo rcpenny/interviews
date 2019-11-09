@@ -23,9 +23,7 @@
 5. 是否是最优解法，能否优化
  
 
-// Thu: task scheduler + MongoDB了解 + Behavior Questions (https://www.amazon.jobs/en/principles 准备小故事 learning)
-// Fri: Array String Math 
-// Sat: K-V Store + Top K exceptions + + Tiny URL () + Delayed Task Scheduler + 
+// Sat: + Tiny URL () + K-V Store + Top K exceptions  + Delayed Task Scheduler + 
 // Sun: Inverted Index +  +  bounded blocking queue + metrics system + Friendship
 // Monday: review code and system-design once again
 
@@ -33,13 +31,13 @@
 - 56/57	       Merge/Insert Interval
 - 605	         Can Place Flowers
 - 149          Max Points in a Line
+- 277	         Find Celebrity
+- 611          Valid Triangle Number
+- 8	           String to Integer (atoi)
+
+- 68	         Text Justification
 - 273          Integer to English Words
 - 65	         Valid Number
-- 277	         Find Celebrity
-- 68	         Text Justification
-- 8	           String to Integer (atoi)
-- 54	         Spiral Matrix
-- 611          Valid Triangle Number
 - -468         Valid IP Address
 
 ## BFS / UnionFind
