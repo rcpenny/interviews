@@ -2,8 +2,6 @@
 (LinkedIn Search)
  第三轮，inverted index 以及不同的distribution sharding 方法的优劣讨论
 
-publish and query. 存event id和内容，内容大小不定。然后query API是 getEventSince(id, int bufferSize), 求怎么存储数据可以更利于high concurrency。这题答得不太好，要了好多hint。最后面试官还说到想问lock，但是没时间了。
-
 设计搜索引擎，inverted index
 倒排索引很多怎么存可以快速查找
 
@@ -13,8 +11,7 @@ publish and query. 存event id和内容，内容大小不定。然后query API�
 
 
 document repository (indexing system)	https://zhuanlan.zhihu.com/p/32990496
-streaming	1. create index
-2. search with index	create index with streaming of the file - inverted index - mapreduce
+1. search with index	create index with streaming of the file - inverted index - mapreduce
 replica - important - make traffic less
 
 Document index:

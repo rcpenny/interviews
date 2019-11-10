@@ -2,7 +2,8 @@
 
 - 资料
 1. LKND monitoring: https://engineering.linkedin.com/blog/topic/monitoring
-2. GCP StackDriver Logging: https://www.youtube.com/watch?v=6GQqneNFVkU
+2. https://engineering.linkedin.com/blog/2019/an-inside-look-at-linkedins-data-pipeline-monitoring-system-
+3. GCP StackDriver Logging: https://www.youtube.com/watch?v=6GQqneNFVkU
 
 - Senario
 1. hundreds of datacenters
