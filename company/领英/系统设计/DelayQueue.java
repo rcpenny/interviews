@@ -144,7 +144,6 @@ class DelayTask implements Delayed {
 	}
 
 	@Override
-	@Override
 	public long getDelay(TimeUnit unit) {
 		long diff = duration - System.currentTimeMillis();
 		return unit.convert(diff, TimeUnit.MILLISECONDS);
