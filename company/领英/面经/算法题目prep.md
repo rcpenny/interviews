@@ -23,7 +23,7 @@
 5. 是否是最优解法，能否优化
  
 
-// Sat: K-V Store + Friendship + Delayed Task Scheduler + 
+// Sat: Delayed Task Scheduler + 
 // Sun: Inverted Index +  +  bounded blocking queue + metrics system + Top K exceptions 
 // Monday: review code and system-design once again
 
