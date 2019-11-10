@@ -1,5 +1,5 @@
 # K-V Store 
-Design a distributed file systems
+Design a distributed Database
 
 ## 资料
 1. https://www.youtube.com/watch?v=rnZmdmlR-2M

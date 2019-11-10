@@ -1,5 +1,5 @@
-# Friends Relationship (LinkedIn 123 Friends Degrees)
-Design LinkedIn Friend Relationship System
+# Friends Relationship
+Design LinkedIn Friend Relationship 1, 2, 3 degrees
 
 ## 资料
 - 算法 https://www.lintcode.com/problem/friends-within-three-jumps/
