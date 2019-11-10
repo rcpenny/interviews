@@ -24,8 +24,3 @@ Design a Message Streaming System to support Producers Consumers
 - work load?
 - memory overflow?
 - race condition?
-
-## LinkedBlockingQueue摘选
-```java
-
-```
