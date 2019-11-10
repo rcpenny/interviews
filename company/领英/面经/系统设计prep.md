@@ -15,3 +15,4 @@ This module focuses on large (distributed) systems. You will be given a scenario
 
 good resource
 https://soulmachine.gitbooks.io/system-design/content/cn/
+http://n00tc0d3r.blogspot.com/2013/09/big-data-consistent-hashing.html
