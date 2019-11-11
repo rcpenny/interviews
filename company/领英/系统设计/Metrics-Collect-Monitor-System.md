@@ -29,4 +29,3 @@ message queue(kafka) + workers(storm) + (database,cache) + notification service(
 5. 如何scale，如果是10000 hosts怎么收集
 6. 要保证用户付了钱的调用流量都允许
 7. 收集host的1second，1minute，1hour metrics。如何scale，如果是10000 hosts怎么收集
-8. 提供各种方案，kafka，HDFS，pub-sub model
