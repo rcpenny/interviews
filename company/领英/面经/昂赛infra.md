@@ -1,4 +1,6 @@
 # system-infra onsite 整理
+https://engineering.linkedin.com/architecture/brief-history-scaling-linkedin
+
 1. Design key-value store
 
 假设已有一些file system的API设计一个KV db。前提条件：
