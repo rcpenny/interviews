@@ -42,7 +42,7 @@ class RandomizedCollection {
 		
 		// 更新map
     numToIndexes.get(lastVal).add(removeIndex);
-    numToIndexes.get(lastVal).remove(list.size() - 1);
+    numToIndexes.get(lastVal).remove(list.size() - 1); // remove the lastIndex number. not the last number
     
 		list.remove(list.size() - 1);
 		if (numToIndexes.get(val).size() == 0) {

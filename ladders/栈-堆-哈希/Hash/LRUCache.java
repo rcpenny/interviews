@@ -52,7 +52,6 @@ public class LRUCache {
 		// 1. 缓存未满，新数据加到末尾, 更新map
 		if (size < capacity) {
 			ListNode current = new ListNode(key, value);
-			// 这步忘写了，得把两个listNode连起来，这是实体连接
 			tail.next = current;
 			keyToPrev.put(key, tail);
 			tail = current;

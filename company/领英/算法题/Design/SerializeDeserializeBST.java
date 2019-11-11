@@ -38,7 +38,7 @@ public class SerializeDeserializeBST {
 
 	// deserialize，还是宽搜，用一个flag isleftchild 是否要处理下一个node
   public TreeNode deserialize(String data) {
-    if (data == "{}" || data == null) return null;
+    if ("{}".equals(data) || data == null) return null;
 
 		// 生成字符串组，包含val与#
 		String[] val = data.substring(1, data.length() - 1).split(",");

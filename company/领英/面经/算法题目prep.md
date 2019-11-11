@@ -23,11 +23,12 @@
 5. 是否是最优解法，能否优化
 
 ## 设计
-- 716          Max Stack                               
+- 716          Max Stack
 - 380/381      Insert Delete GetRandom O(1) & Dupe allowed
-- 432          All O(1) Data Structure
 - 179          Two Sum III
 - 297/449      Serialize and Deserialize BST
+
+- 432          All O(1) Data Structure
 - 146          LRU Cache
 - 460          LFU Cache                     (有待搞定)
 - 706          Design HashMap

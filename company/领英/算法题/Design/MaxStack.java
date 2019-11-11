@@ -150,4 +150,7 @@ class Node {
 	public Node(int val) {
 		this.val = val;
 	}
+
+	// 解3 Pure O(1)
+	// https://www.jiuzhang.com/solution/max-stack/#tag-other
 }
