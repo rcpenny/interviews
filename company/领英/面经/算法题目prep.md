@@ -21,9 +21,17 @@
 3. 代码的整洁度
 4. 完成问题的时间
 5. 是否是最优解法，能否优化
- 
-// Sun: Inverted Index +  +  bounded blocking queue + metrics system + Top K exceptions 
-// Monday: review code and system-design once again
+
+## 设计
+- 716          Max Stack                               
+- 380/381      Insert Delete GetRandom O(1) & Dupe allowed
+- 432          All O(1) Data Structure
+- 179          Two Sum III
+- 297/449      Serialize and Deserialize BST
+- 146          LRU Cache
+- 460          LFU Cache                     (有待搞定)
+- 706          Design HashMap
+
 
 ## Array String Math
 - 56/57	       Merge/Insert Interval
@@ -38,30 +46,24 @@
 - 65	         Valid Number
 - -468         Valid IP Address
 
-## BFS / UnionFind
-- 126/127      Word Ladder I && II         (有待搞定)
-- 261          Graph Valid Trees
-- 200/305      Number of Islands I && II
-- 323          Number of Connected Components in an Undirected Graph
-- 785          Is Graph Bipartite?
 
-## 设计
-- 716          Max Stack                               
-- 380/381      Insert Delete GetRandom O(1) & Dupe allowed
-- 432          All O(1) Data Structure
-- 179          Two Sum III
-- 297/449      Serialize and Deserialize BST
-- 146          LRU Cache
-- 460          LFU Cache                     (有待搞定)
-- 706          Design HashMap
+
+
+
+
+
+
+
+
+
 
 ## 动态规划
 - 256/265      Paint House I & II
 - 416          Partition Equal Subset Sum
 - 647          Palindromic Substrings
 - 516          Longest Palindromic Subsequence
-- 300          Longest Increasing Subsequence (二分方法有待搞定)
-- 72           Edit Distance(161 one)
+- 300          Longest Increasing Subsequence
+- 72           Edit Distance
 - 53           Max Subarray
 - 152          Max Product Subarray
 
@@ -71,35 +73,13 @@
 - 367          Valid Perfect Square
 - 33/81        Search in Rotated Sorted Array I & II
 
-## 链表 及 双指针
-- 141/142      Linkedlist Cycle I & II
-- 160          Intersect of 2 Linkedlist
-- 21/23        Merge 2/K sorted list
-- lint474      Lowest Common Ancestor with Parent Node
-- 369          Plus One Linked List    (有待搞定)
-- 61           Rotate List
--	76	         Minimum Window Substring
-- 125	         Valid Palindrome
-- 24           Swap Nodes in Pairs     (有待搞定)
-
 ## 树
 - 366          Find Leaves Of Binary Tree
-- 270/272      Closest BST Value I & II
 - 156          Binary Tree Upside Down
+- 100/101	     Same/Symmetric Tree
 - 671          Second Minimum Node In a Binary Tree
 - 236          Lowest Common Ancestor
-- 100/101	     Same/Symmetric Tree
-
-## DFS
-- 339/364	     Nested List Weight Sum I && II
-- 22           Generate Parentheses                  
-- 254          Factor Combnation
-- 113	         Path Sum II
-- 698          Partition to K Equal Sum Subsets
-- 46/47        Permutations I & II
-- 39/40        Combination Sum I & II
-- 464          Can I Win                               (有待搞定)
-- 124          Binary Tree Maximum Path Sum            (有待搞定)
+- 270/272      Closest BST Value I & II
 
 ## 数据结构
 - 205          Isomorphic Strings
@@ -109,5 +89,31 @@
 - 150	         Evaluate Reverse Polish Notation
 - 173	         BST Iterator
 - 341          Flatten Nested List Iterator
-- 636          Exclusive Time of Functions 
 - 739	         Daily Temperatures
+
+## 链表 及 双指针
+- 141/142      Linkedlist Cycle I & II
+- 160          Intersect of 2 Linkedlist
+- 21/23        Merge 2/K sorted list
+- 369          Plus One Linked List
+- 61           Rotate List
+-	76	         Minimum Window Substring
+- 125	         Valid Palindrome
+- 24           Swap Nodes in Pairs
+
+## DFS
+- 339/364	     Nested List Weight Sum I && II
+- 22           Generate Parentheses
+- 254          Factor Combnation
+- 113	         Path Sum II
+- 46/47        Permutations I & II
+- 39/40        Combination Sum I & II
+- 698          Partition to K Equal Sum Subsets
+- 124          Binary Tree Maximum Path Sum
+
+## BFS / UnionFind
+- 200/305      Number of Islands I && II
+- 126/127      Word Ladder I && II
+- 261          Graph Valid Trees
+- 323          Number of Connected Components in an Undirected Graph
+- 785          Is Graph Bipartite?

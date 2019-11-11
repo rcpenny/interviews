@@ -10,6 +10,7 @@ public class Sqrtx {
 
     while (start + 1 < end) {
       int mid = start + (end - start) / 2;
+      // 25/4 > 4 17/4 =4 
       if (x / mid > mid) start = mid;
       else end = mid;
     }

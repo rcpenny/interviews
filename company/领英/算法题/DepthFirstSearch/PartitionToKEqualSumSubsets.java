@@ -17,8 +17,11 @@
 
 public class PartitionToKEqualSumSubsets {
   public boolean partitiontoEqualSumSubsets(int[] nums, int k) {
-		int sum = Arrays.stream(nums).sum();
+		int sum = Arrays.stream(nums).sum(); 
 		if (sum % k != 0) return false;
+
+		// 1. check if any number > target, return false
+		// 2. sort nums decreasing, 
 
 		boolean[] visited = new boolean[nums.length];
 
@@ -40,7 +43,8 @@ public class PartitionToKEqualSumSubsets {
 			visited[i] = true;
 
 			// start index used as i since it's sort of like a combination sum
-			if (canSplit(nums, visited, i + 1, k, sum + nums[i], target)) {
+			boolean canFindOneSubset = canSplit(nums, visited, i + 1, k, sum + nums[i], target);
+			if (canFindOneSubset) {
 				return true;
 			}
 

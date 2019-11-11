@@ -35,12 +35,12 @@ public class EditDistance {
 		for (i = 0; i <= m; i++) {
 			for (j = 0; j <= n; j++) {
 				if (i == 0) {  // 前i个字符A，是空串
-					f[i][j] = j;
+					f[i][j] = j; // insert j 次
 					continue;
 				}
 
 				if (j == 0) { // 前j个字符B，是空串
-					f[i][j] = i;
+					f[i][j] = i; // delete i 次
 					continue;
 				}
 

@@ -16,7 +16,7 @@
 
 // 输出: [4,3]
 
-// leet272
+// leet272 画图找感觉
 public class ClosestBSTValueII {
 	public List<Integer> closestKValues(TreeNode root, double target, int k) {
 		List<Integer> result = new ArrayList<>();
@@ -44,10 +44,10 @@ public class ClosestBSTValueII {
 
 			if (diff_prev < diff_next) {
 				res.add(prev.peek().val);
-				movePrev(prev);
+				getPredecessor(prev);
 			} else {
 				res.add(prev.peek().val);
-				moveNext(next);
+				getSuccessor(next);
 			}
 		}
 
@@ -55,7 +55,7 @@ public class ClosestBSTValueII {
 	}
 
 	// move prev同理
-	private void movePrev(Stack<TreeNode> prev) {
+	private void getPredecessor(Stack<TreeNode> prev) {
 		TreeNode tmp = prev.pop().left;
 		while (tmp != null) {
 			prev.push(tmp);
@@ -64,7 +64,7 @@ public class ClosestBSTValueII {
 	}
 
 	// 因为next stack（比target大）取出了更接近的值，补充next stack,加入peek()作为root下面第二大的值
-	private void moveNext(Stack<TreeNode> next) {
+	private void getSuccessor(Stack<TreeNode> next) {
 		TreeNode tmp = next.pop().right;
 		while (tmp != null) {
 			next.push(tmp);

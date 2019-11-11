@@ -21,16 +21,16 @@ public class FindLeavesOfBinaryTree {
   List<List<Integer>> leaves = new ArrayList<>();
 
   public List<List<Integer>> findLeaves(TreeNode root) {
-    getNodeReversedDepth(root);
+    getReversedDepth(root);
     return leaves;
   }
 
   // leave depth is 1
-  private int getNodeReversedDepth(TreeNode node) {
+  private int getReversedDepth(TreeNode node) {
     if (node == null) return 0;
 
-    int leftDepth = getNodeReversedDepth(node.left);
-    int rightDepth = getNodeReversedDepth(node.right);
+    int leftDepth = getReversedDepth(node.left);
+    int rightDepth = getReversedDepth(node.right);
 
     int depthOfNode = Math.max(leftDepth, rightDepth) + 1;
 

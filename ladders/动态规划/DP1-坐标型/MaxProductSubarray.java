@@ -17,8 +17,8 @@ public class MaxProductSubarray {
     int[] pos = new int[n];
     int[] neg = new int[n];
     
-    if (nums[0] > 0) pos[0] = nums[0];
-    else neg[0] = nums[0];
+    pos[0] = Math.max(nums[0], 0);
+    neg[0] = Math.min(nums[0], 0);
     
     int max = pos[0];
     
