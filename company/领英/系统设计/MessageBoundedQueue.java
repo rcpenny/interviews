@@ -30,21 +30,24 @@ class BoundedBlockingQueue<E> {
 	// lock held by dequeue
 	private final ReentrantLock takeLock = new ReentrantLock();
 
-	/** Wait queue for waiting dequeue */
+	/** Wait queue for waiting dequeue() */
 	private final Condition notEmpty = takeLock.newCondition();
 
 	// lock held by enqueue
 	private final ReentrantLock putLock = new ReentrantLock();
 
-	/** Wait queue for waiting puts */
+	/** Wait queue for waiting put() */
 	private final Condition notFull = putLock.newCondition();
 
 	private final int capacity;
-	private final AtomicInteger count = new AtomicInteger(0);
+	private final AtomicInteger count;
 
   public BoundedBlockingQueue(int capacity) {
 		if (capacity <= 0) throw new IllegalAccessException();
+
 		this.capacity = capacity;
+		this.count = new AtomicInteger(0);
+
 		this.queue = new LinkedList<>();
   }
 
@@ -61,7 +64,8 @@ class BoundedBlockingQueue<E> {
 				notFull.await();
 			}
 			queue.offer(e);
-			if (count.get() + 1 < capacity) notFull.signal();
+			
+			if (count.incrementAndGet() < capacity) notFull.signal();
 		} finally {
 			putLock.unlock();
 		}
@@ -86,6 +90,8 @@ class BoundedBlockingQueue<E> {
 		} finally {
 			takeLock.unlock();
 		}
+
+		// 召唤 nonfull线程
 		if (count.get() == capacity) signalNotFull();
 
 		return x;
@@ -151,8 +157,3 @@ public class BoundedBlockingQueue11883 {
 			return queue.size();
 	}
 }
-
-// 作者：gnuhpc
-// 链接：https://leetcode-cn.com/problems/design-bounded-blocking-queue/solution/sheng-chan-zhe-xiao-fei-zhe-wen-ti-by-gnuhpc/
-// 来源：力扣（LeetCode）
-// 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。

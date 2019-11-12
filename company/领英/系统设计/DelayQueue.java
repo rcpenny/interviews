@@ -36,12 +36,11 @@ public class DelayQueue<E extends Delayed> {
 
 	/**
 	 * Condition signalled when a newer element becomes available
-	 * at the head of the queue or a new thread may need to
-	 * become leader.
+	 * at the head of the queue to consume
+	 * or a new thread may need to become leader.
 	 */
 	private final Condition available = lock.newCondition();
 
-	/** Creates a new {@code DelayQueue} that is initially empty. */
 	public DelayQueue() {}
 
 	/**
@@ -105,11 +104,9 @@ public class DelayQueue<E extends Delayed> {
 					// 如果leader不为空说明已经有线程在取了，让当前消费者无限等待。
 					if (leader != null) {
 						available.await();
-					} 
-					
-					// 如果为空说明没有其他消费者去取任务,设置leader为当前消费者，并让改消费者等待指定的时间
-					// 下次循环会走如下分支，取到任务结束，if (delay <= 0) return q.poll();
-					else {
+					} else {		
+						// 如果为空说明没有其他消费者去取任务,设置leader为当前消费者，并让改消费者等待指定的时间
+						// 下次循环会走如下分支，取到任务结束，if (delay <= 0) return q.poll();
 						Thread thisThread = Thread.currentThread();
 						leader = thisThread;
 
@@ -123,16 +120,11 @@ public class DelayQueue<E extends Delayed> {
 			}
 		} finally {
 			if (leader == null && queue.peek() != null) available.signal();
-			lock.unlock();
+			takeLock.unlock();
 		}
 	}
 }
 
-
-
-
-/** Actual Task */
-class Task {Task() {}}
 /** Delayed Task, implements Delayed. */
 class DelayTask implements Delayed {
 	private Task task;
@@ -154,20 +146,6 @@ class DelayTask implements Delayed {
 		return this.duration - o.duration;
 	}
 }
-// public interface Delayed extends Comparable<Delayed> {
-// 	/**
-// 	 * Returns the remaining delay associated with this object, in the
-// 	 * given time unit.
-// 	 *
-// 	 * @param unit the time unit
-// 	 * @return the remaining delay; zero or negative values indicate
-// 	 * that the delay has already elapsed
-// 	 */
-// 	long getDelay(TimeUnit unit);
-// }
-
-
-
 
 /** Producer of DelayTask */
 // 生产者很简单，就是一个死循环，不断地产生一些是时间随机的任务。
@@ -193,9 +171,6 @@ class DelayTaskProducer implements Runnable {
 		}
 	}
 }
-
-
-
 
 /** Consumer of DelayTask */
 // 当 DelayQueue 里没有任务时，TaskConsumer会无限等待，直到被唤醒，因此它不会消耗CPU
@@ -228,3 +203,6 @@ class TaskScheduler {
 		new Thread(new DelayTaskConsumer(queue), "Consumer thread").start();
 	} 
 }
+
+/** Actual Task */
+class Task {Task() {}}
