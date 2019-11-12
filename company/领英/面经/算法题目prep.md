@@ -30,10 +30,8 @@
 - 611          Valid Triangle Number
 - 8	           String to Integer (atoi)
 - 68	         Text Justification
-
 - 273          Integer to English Words
 - 65	         Valid Number
-- -468         Valid IP Address
 
 ## 动态规划
 - 256/265      Paint House I & II

@@ -1,5 +1,5 @@
 // 很..鸡巴...的题目
-// lc65
+// leet65
 
 class ValidNumber {
 	public boolean isNumber(String s) {
