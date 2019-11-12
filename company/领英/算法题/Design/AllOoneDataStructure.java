@@ -25,9 +25,11 @@ class Bucket {
 // bucket list should remain freq increasing order
 
 public class AllOne {
+	// maintain bucket list
 	Bucket head;
 	Bucket tail;
 
+	// use two map. 核心：key to freq, freq to buckets
 	Map<String, Integer> keyToFreq;
 	Map<Integer, Bucket> freqToBucket;
 
@@ -37,9 +39,9 @@ public class AllOne {
 
 		this.head.next = tail;
 		this.tail.prev = head;
-		
+
+		this.keyToFreq = new HashMap<>();
 		this.freqToBucket = new HashMap<>();
-		keyToFreq = new HashMap<>();
 	}
 	
 	/** Inserts a new key <Key> with value 1. Or increments an existing key by 1. */

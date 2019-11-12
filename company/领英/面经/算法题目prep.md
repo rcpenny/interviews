@@ -22,18 +22,6 @@
 4. 完成问题的时间
 5. 是否是最优解法，能否优化
 
-## 设计
-- 716          Max Stack
-- 380/381      Insert Delete GetRandom O(1) & Dupe allowed
-- 179          Two Sum III
-- 297/449      Serialize and Deserialize BST
-
-- 432          All O(1) Data Structure
-- 146          LRU Cache
-- 460          LFU Cache                     (有待搞定)
-- 706          Design HashMap
-
-
 ## Array String Math
 - 56/57	       Merge/Insert Interval
 - 605	         Can Place Flowers
@@ -46,17 +34,6 @@
 - 273          Integer to English Words
 - 65	         Valid Number
 - -468         Valid IP Address
-
-
-
-
-
-
-
-
-
-
-
 
 ## 动态规划
 - 256/265      Paint House I & II
@@ -118,3 +95,13 @@
 - 261          Graph Valid Trees
 - 323          Number of Connected Components in an Undirected Graph
 - 785          Is Graph Bipartite?
+
+## 设计
+- 716          Max Stack
+- 380/381      Insert Delete GetRandom O(1) & Dupe allowed
+- 179          Two Sum III
+- 297/449      Serialize and Deserialize BST
+- 146          LRU Cache
+- 432          All O(1) Data Structure
+- 460          LFU Cache
+- 706          Design HashMap
