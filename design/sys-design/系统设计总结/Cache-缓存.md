@@ -10,28 +10,22 @@
 3. 提前生成的索引数据 pre-generated expensives (e.g. Youtube推荐视频)
 
 ## 在哪缓存
-系统价构中几乎所有地方都可以缓存 (硬件,OS,浏览器 etc.) 以下主要谈一下后端两个主要caching的方式
-#### Application Cache
+系统价构中几乎所有地方都可以缓存 (CDN, 硬件,OS,浏览器 etc.)
+### 应用层缓存 Application Cache
+1. 需要在应用代码中具体集成实现
+2. 先查数据是否在缓存，不在则去数据库取，然后再存入缓存 (LRU) Read Through Cache
 ![alt text](https://github.com/rcpenny/interviews/blob/master/design/sys-design/statics/app-cache.png)
+### 数据库缓存 Database Cache
+1. 数据库缓存的魅力之一是不用写应用层级的代码就能获得性能提升
+2. 数据库参数优化缓存之后能减少I/O，降低请求延迟
+![alt text](https://github.com/rcpenny/interviews/blob/master/design/sys-design/statics/db-cache.png)
+### 内存缓存 In-memory Cache
+1. 最有力，最直接提高性能的缓存（Redis, MemCached）
+2. 因为存在RAM上，所以缓存容量不如硬盘，常用策略是LRU 
 
-#### Database Cache
-
-## why && where to use cache
-Caches take advantage of the locality of reference principle: recently requested data is likely to be requested again. They are used in almost every layer of computing: hardware, operating systems, web browsers, web applications, and more. A cache is like short-term memory: it has a limited amount of space, but is typically faster than the original data source and contains the most recently accessed items. Caches can exist at all levels in architecture, but are often found at the level nearest to the front end where they are implemented to return data quickly without taxing downstream levels.
-
-## Application server cache
-Placing a cache directly on a request layer node enables the local storage of response data. Each time a request is made to the service, the node will quickly return local cached data if it exists. If it is not in the cache, the requesting node will query the data from disk. The cache on one request layer node could also be located both in memory (which is very fast) and on the node’s local disk (faster than going to network storage).
-
-
-## Scaling cache systems
-What happens when you expand this to many nodes? If the request layer is expanded to multiple nodes, it’s still quite possible to have each node host its own cache. However, if your load balancer randomly distributes requests across the nodes, the same request will go to different nodes, thus increasing cache misses. Two choices for overcoming this hurdle are 
-1. global caches
-2. distributed caches.
-
-## Content Distribution Network (CDN)
-CDNs are a kind of cache that comes into play for sites serving large amounts of static media. In a typical CDN setup, a request will first ask the CDN for a piece of static media; the CDN will serve that content if it has it locally available. If it isn’t available, the CDN will query the back-end servers for the file, cache it locally, and serve it to the requesting user.
-
-If the system we are building isn’t yet large enough to have its own CDN, we can ease a future transition by serving the static media off a separate subdomain (e.g. static.yourservice.com) using a lightweight HTTP server like Nginx, and cut-over the DNS from your servers to a CDN later.
+## Scale 缓存系统
+1. 如果请求会定点到特定服务器上，那每个服务器自建缓存是可以这么做的。
+2. 如果负载均衡器给请求随机分配服务器，这会降低缓存命中，两个解决办法是：全局缓存，分布式缓存。
 
 ## Cache Invalidation
 While caching is fantastic, it does require some maintenance for keeping cache coherent with the source of truth (e.g., database). If the data is modified in the database, it should be invalidated in the cache; if not, this can cause inconsistent application behavior.
