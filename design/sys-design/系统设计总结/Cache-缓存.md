@@ -1,8 +1,19 @@
-# Caching
+# Caching - 缓存
 
 ## 好处
-- make vastly better use of the resources you already have.
-- make otherwise unattainable product requirements feasible. 
+1. 更好更快的利用你已有的resource, data
+2. 让一些很难实现的feature变得可行
+
+## 存什么
+1. 高频查询数据的副本 (e.g. 高频read的短网址) 
+2. 提前计算好的答案 pre-caculated result (e.g. 过去24小时的热搜)
+3. 提前生成的索引数据 pre-generated expensives (e.g. Youtube推荐视频)
+
+## 在哪缓存
+系统价构中几乎所有地方都可以缓存 (硬件,OS,浏览器 etc.) 以下主要谈一下后端两个主要caching的方式
+#### Application Cache
+
+#### Database Cache
 
 ## why && where to use cache
 Caches take advantage of the locality of reference principle: recently requested data is likely to be requested again. They are used in almost every layer of computing: hardware, operating systems, web browsers, web applications, and more. A cache is like short-term memory: it has a limited amount of space, but is typically faster than the original data source and contains the most recently accessed items. Caches can exist at all levels in architecture, but are often found at the level nearest to the front end where they are implemented to return data quickly without taxing downstream levels.

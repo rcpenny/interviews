@@ -1,4 +1,6 @@
 https://www.amazon.jobs/en/principles
+https://www.1point3acres.com/bbs/forum.php?mod=viewthread&tid=307462
+
 
 # Customer Obsession
 Leaders start with the customer and work backwards. They work vigorously to earn and keep customer trust. Although leaders pay attention to competitors, they obsess over customers.
