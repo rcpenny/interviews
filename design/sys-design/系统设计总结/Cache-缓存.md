@@ -12,6 +12,7 @@
 ## 在哪缓存
 系统价构中几乎所有地方都可以缓存 (硬件,OS,浏览器 etc.) 以下主要谈一下后端两个主要caching的方式
 #### Application Cache
+![alt text](https://github.com/rcpenny/interviews/design/../../../../../../statics/app-cache.pngicon48.png "Logo Title Text 1")
 
 #### Database Cache
 
