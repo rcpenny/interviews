@@ -1,6 +1,3 @@
-https://www.1point3acres.com/bbs/forum.php?mod=viewthread&tid=307462
-https://www.jiuzhang.com/qa/5796/
-
 # Amazon Leadership Principles
 - 领导力准则，不仅仅是几条用来鼓舞人心的口号，更是成就了Amazon特有公司文化的秘诀。
 - 不管是为新项目讨论创意、寻找解决客户问题的方案，还是面试求职者时，它都是Amazon员工的重要参考标准和行为准则。
