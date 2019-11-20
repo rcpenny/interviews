@@ -1,10 +1,6 @@
 # Arrays and Strings
 1. Two Sum  
 2. Longest Substring Without Repeating Characters
-
-
-
-
 3. String to Integer (atoi)
 4. Container With Most Water
 5. Integer to Roman  Roman to Integer  
@@ -28,8 +24,7 @@
 2. Merge Two Sorted Lists
 3. Reverse Nodes in k-Group  
 4. Copy List with Random Pointer  
-5. Reverse Linked List 
-    
+5. Reverse Linked List
 6. Merge k Sorted Lists
 
 # Trees and Graphs
@@ -43,7 +38,8 @@
 8. Number of Islands
 9. Course Schedule
 10. Lowest Common Ancestor of a Binary Tree  
-11. Diameter of Binary Tree  
+11. Diameter of Binary Tree
+
 12. Cut Off Trees for Golf Event 
 13. Flood Fill
 

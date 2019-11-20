@@ -3,6 +3,30 @@
  * 节点的左子树中的值要严格小于该节点的值。
  * 节点的右子树中的值要严格大于该节点的值。
  */
+
+// 自下向上
+public class ValidateBST1 {
+	public boolean isValidBST(TreeNode root) {
+		return helper(root, Long.MIN_VALUE, Long.MAX_VALUE);
+	}
+
+	private boolean helper(TreeNode root, long min, long max) {
+		if (root == null) {
+			return true;
+		}
+
+		if (root.val <= min || root.val >= max) {
+			return false;
+		}
+
+		boolean leftResult = helper(root.left, min, root.val);
+		boolean rightResult = helper(root.right, root.val, max);
+
+		return leftResult && rightResult;
+	}
+}
+
+
 class TreeNode {
 	public int val;
 	public TreeNode left, right;
@@ -23,7 +47,8 @@ class State {
 	}
 }
 
-public class ValidateBST {
+// 自下向上
+public class ValidateBST2 {
 
   public boolean isisBST(TreeNode root) {
 		State rootState = getNodeState(root);
