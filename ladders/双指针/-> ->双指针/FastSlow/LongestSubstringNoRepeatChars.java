@@ -8,21 +8,22 @@ public class LongestSubstringNoRepeatChars {
 		int fast = 0;
 		int slow = 0;
 		int[] letters = new int[256];
-		char[] array = s.toCharArray();
+		char[] c = s.toCharArray();
 
-		for (slow = 0; slow < array.length; slow++) {
+		for (slow = 0; slow < c.length; slow++) {
 			
 			// fast一路前移到出现重复
-			while (fast < array.length) {
-				char head = array[fast];
-        if (letters[head] != 0) break;
-        letters[head] = 1;
+			while (fast < c.length) {
+				char head = c[fast];
+				if (letters[head] == 1) break;
+				
+        letters[head]++;
         longest = Math.max(longest, fast - slow + 1);
         fast++;
 			}
 
-			char tail = array[slow];
-			letters[tail] = 0;
+			char tail = c[slow];
+			letters[tail]--;
 		}
 
 		return longest;

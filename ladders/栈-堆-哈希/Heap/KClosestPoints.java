@@ -17,7 +17,7 @@ class Point {
 
 public class KClosestPoints {
   public Point[] kClosest(Point[] points, Point origin, int k) {
-		// 写comparator时考虑清楚，会造成peek是什么情况，最后pop时的顺序要不要reverse
+
 		Comparator<Point> pointComparator = new Comparator<Point>() {
 			@Override
 			public int compare(Point a, Point b) {

@@ -32,8 +32,9 @@ public class TrappingRainWater {
 			int maxRight = maxFromRight[i];
 			int cur_height = heights[i];
 
-			if (cur_height >= maxLeft || cur_height >= maxRight) continue;
-			rain += Math.min(maxLeft, maxRight) - height;
+			if (cur_height < maxLeft && cur_height > maxRight) {
+				rain += Math.min(maxLeft, maxRight) - height;
+			}
 		}
 
 		return rain;

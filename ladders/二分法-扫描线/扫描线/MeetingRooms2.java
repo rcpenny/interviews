@@ -13,7 +13,6 @@ public class Interval {
   }
 }
 
-// 自定义class的好处就是可以写comparator来排顺序.像heap
 class Stamp {
   int time;
   int status; // 1 is meeting begin, 0 is meeting over
