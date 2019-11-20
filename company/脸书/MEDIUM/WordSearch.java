@@ -5,6 +5,8 @@
 
 // Input：["ABCE","SFCS","ADEE"]，"ABCCED" Output：true
 
+// TLE leet79
+
 public class WordSearch {
   private boolean found = false;
 
@@ -19,21 +21,26 @@ public class WordSearch {
     if (word == null || word.length() == 0) return false;
 
     row = board.length;
-    col = board[0].length;
-    boolean[][] visisted = new boolean[row][col];
+		col = board[0].length;
+		
+    boolean[][] visited = new boolean[row][col];
 
-    for (int i = 0; i < row; i++)
-      for (int j = 0; j < col; j++)
+    for (int i = 0; i < row; i++) {
+      for (int j = 0; j < col; j++) {
+				if (found == true) return found;
+
         if (!found && board[i][j] == word.charAt(0)) {
-          visisted[i][j] = true;
-          dfs(board, i, j, word.substring(1), visisted);
-          visisted[i][j] = false;
-        }
+          visited[i][j] = true;
+          search(board, i, j, word.substring(1), visited);
+          visited[i][j] = false;
+				}
+			}
+		}
 
     return found;
   }
 
-  private void dfs(char[][] board, int x, int y, String s, boolean[][] visisted) {
+  private void search(char[][] board, int x, int y, String s, boolean[][] visited) {
     if (s.length() == 0) {
       found = true;
       return;
@@ -43,15 +50,15 @@ public class WordSearch {
 
     for (int i = 0; i < 4; i++) {
       int x_ = x + dx[i], y_ = y + dy[i];
-      if (!canMove(x_, y_, visisted) || board[x_][y_] != head) continue;
-      visisted[x_][y_] = true;
-      dfs(board, x_, y_, s.substring(1), visisted);
-      visisted[x_][y_] = false;
+      if (!canMove(x_, y_, visited) || board[x_][y_] != head) continue;
+      visited[x_][y_] = true;
+      search(board, x_, y_, s.substring(1), visited);
+      visited[x_][y_] = false;
     }
   }
 
   // 不越界，未访问过
-  private boolean canMove(int x, int y, boolean[][] visisted) {
-    return 0 <= x && x < row && 0 <= y && y < col && !visisted[x][y];
+  private boolean canMove(int x, int y, boolean[][] visited) {
+    return 0 <= x && x < row && 0 <= y && y < col && !visited[x][y];
   }
 }

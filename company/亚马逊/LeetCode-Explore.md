@@ -24,8 +24,7 @@
 2. Merge Two Sorted Lists
 3. Reverse Nodes in k-Group  
 4. Copy List with Random Pointer  
-5. Reverse Linked List 
-    
+5. Reverse Linked List
 6. Merge k Sorted Lists
 
 # Trees and Graphs
@@ -39,7 +38,8 @@
 8. Number of Islands
 9. Course Schedule
 10. Lowest Common Ancestor of a Binary Tree  
-11. Diameter of Binary Tree  
+11. Diameter of Binary Tree
+
 12. Cut Off Trees for Golf Event 
 13. Flood Fill
 
