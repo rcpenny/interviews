@@ -46,7 +46,6 @@ public class LRUCache {
 		if (get(key) != -1) { // 调用get看key是否存在时，若存在get就会把key挪到尾部～
 			tail.val = value;
 			return;
-		}
 
 		// 哈希表中不存在这个key，分两种情况
 		// 1. 缓存未满，新数据加到末尾, 更新map
