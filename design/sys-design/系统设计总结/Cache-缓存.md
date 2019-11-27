@@ -15,11 +15,12 @@
 1. 需要在应用代码中具体集成实现
 2. 先查数据是否在缓存，不在则去数据库取，然后再存入缓存 (LRU) Read Through Cache
 ![alt text](https://github.com/rcpenny/interviews/blob/master/design/sys-design/statics/app-cache.png)
-### 数据库缓存 Database Cache
+
+## 数据库缓存 Database Cache
 1. 数据库缓存的魅力之一是不用写应用层级的代码就能获得性能提升
 2. 数据库参数优化缓存之后能减少I/O，降低请求延迟
 ![alt text](https://github.com/rcpenny/interviews/blob/master/design/sys-design/statics/db-cache.png)
-### 内存缓存 In-memory Cache
+## 内存缓存 In-memory Cache
 1. 最有力，最直接提高性能的缓存（Redis, MemCached）
 2. 因为存在RAM上，所以缓存容量不如硬盘，常用策略是LRU 
 
