@@ -1,5 +1,5 @@
 https://www.jiuzhang.com/qa/5796/
-
+https://leetcode.com/discuss/interview-question/437082/amazon-behavioral-questions-leadership-principles-lp
 可用例子 GDPR， opt-out kudos, bulk-kudos, share-link, china intern, hibernate migration, bulk-cancel,\
 ABP access, a11y assistance, too slow with launches， UX EXPERIENCE, polymer upgrade(made decision to go with polymer)
 
