@@ -6,6 +6,8 @@ public class CountPrimes {
 		int count = 0;
 
 		// 非常机智的解法
+		// 3 * 7 = 21, 3 * 8 = 24.
+		// i 是 尝试数 3，7 是 倍数 增量。
 		for (int i = 2; i < n; i++) {
 			if (!not_prime[i]) count++;
 
