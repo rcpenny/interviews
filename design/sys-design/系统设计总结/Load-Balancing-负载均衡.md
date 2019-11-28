@@ -1,0 +1,1 @@
+https://lethain.com/introduction-to-architecting-systems-for-scale/
