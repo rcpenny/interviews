@@ -125,7 +125,7 @@ S: Hibernate migration. continue on finishing all the deprecated apis.
 # 9. Bias for Action 崇尚行动
 ## Describe a time when you saw problems and took the initiative to correct it rather than waiting for someone else
 
-## Tell me about a time when you took a calculated risk.
+## Tell me about a time when you took a calculated risk success/failed.
 
 ## Tell me about a time you needed to get information from someone who wasn’t very responsive. What did you do?
 
@@ -176,18 +176,23 @@ S: Column count of MySQL user is 43 but found 42, column password_expired was mi
 A: First found connections spikes to 2000 max, then started reading the DB error log, and confirmed with CloudSQL team. Set up a detection plan and migration plan.
 R: Made the upgrade smoothly and didn't complete the migration in 10 minutes at night.
 
+## Tell me about yourself/ Tell me about your background
+school, why software engineer, worked on what, learned what, what I can provide,
+what do I want to achieve.
 
+## Why this position && Why leaving your current company
+I like cloud computing, I want to build cloud computing related services, products.
 
+## Your strength
+1. 同理心。Emphathy. Don't disagree other people directly even if we have the opposite opinions, 
+   I will try to understand from their point of view. I have my own way of dealing with different opinions.
+   很生气，先放一会儿，平静了再处理。 不生气的话，先理解别人的想法，问他为什么会这么想。
+   S: QA tester 一直ping我让我很烦，我有一个很重要的任务在做。
+   A: 我就先不理他，先做任务，事后再想为什么他会不懂这些问题。
+   R: 我想明白了原因，约他重新走了一遍app，让他跟我讲一下哪里不太理解。解决了之后的问题。
 
-
-
-
-
-•Tell me about yourself/ Tell me about your background
-•Why Amazon
-•Why this position
-•Why leaving your current company
-•Your strength
-•Your weakness
-•Tell me about a time you took risk and succeed/failed
-•Tell me about a time you have to change the status quo
+## Your weakness
+1. get nervous during important events.
+   S：比如面试做coding题，会过于紧张。在task紧急时，会有些紧急.
+   A: Inborn character. breeth. be more prepared. practice more.
+   R: do a little better.
