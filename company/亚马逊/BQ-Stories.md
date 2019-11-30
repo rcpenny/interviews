@@ -1,7 +1,18 @@
-https://www.jiuzhang.com/qa/5796/
 https://leetcode.com/discuss/interview-question/437082/amazon-behavioral-questions-leadership-principles-lp
 可用例子 GDPR， opt-out kudos, bulk-kudos, share-link, china intern, hibernate migration, bulk-cancel,\
 ABP access, a11y assistance, too slow with launches， UX EXPERIENCE, polymer upgrade(made decision to go with polymer)
+
+# 0. General Questions
+## Why company & Why this position && Why leaving your current company
+1. Praise: 
+   - AWS is leading cloud services, there are so many intreseting areas to do in AWS.
+   - I really appriciate Amazon's culture, especially the LP. FEATURE PIVOT EXAMPLE
+2. Your value:
+   - I've been working as a full-stack engineer, application knowledge that I could bring
+   - I have great passion to work on projects has larger datasets, impact, new technology
+
+## Tell me about a project you worked on?
+
 
 # 1. Customer Obsession 顾客至尚
 ## tell me a time when you did not meet a client’s expectation? most difficult customer?
@@ -64,6 +75,7 @@ bulk cancel?????
 
 
 # 4. Are Right, A Lot 决策正确
+
 ## Tell me about a time when you were wrong?
 
 ## Tell me about a time when you had to work with incomplete data or information?
@@ -81,7 +93,9 @@ present a demenstration. invite privacy, legal and security team. 55+ hr product
 # 5. Learn and Be Curious 好奇求知
 ## Tell me about a time when you influenced a change by only asking questions.
 ## Tell me about a time when you solved a problem through just superior knowledge or observation.
-## Have you ever learn something new by yourself and‍‍‍‌‍‌‍‌‌‍‍‍‌‌‌‍‌ end up using what you learn to solve problems at work
+
+## Tell me about a time when you had to solve a difficult problem?
+
 ## Have you ever learn something new by yourself and‍‍‍‌‍‌‍‌‌‍‍‍‌‌‌‍‌ end up using what you learn to solve problems at work
 ## How do you select metric to measure your project success
 ## How do you find the time to stay inspired, acquire new knowledge, innovate in your work?
@@ -124,6 +138,9 @@ S: Hibernate migration. continue on finishing all the deprecated apis.
 
 # 9. Bias for Action 崇尚行动
 ## Describe a time when you saw problems and took the initiative to correct it rather than waiting for someone else
+
+## tell me about a time you failed and what you learnt from it?
+1. 快速讲failure,然后讲你学到了什么。
 
 ## Tell me about a time when you took a calculated risk success/failed.
 
@@ -171,7 +188,7 @@ reverse the downtrend of using kudos.
 
 
 ## Tell me about a time where you overcame an obstacle and delivered results?
-@达成业绩\
+@达成业绩
 S: Column count of MySQL user is 43 but found 42, column password_expired was missing in mysql.user. The reason is though gThanks is running MySQL version 5.6. But data from an older version was directly copied into it.\
 A: First found connections spikes to 2000 max, then started reading the DB error log, and confirmed with CloudSQL team. Set up a detection plan and migration plan.
 R: Made the upgrade smoothly and didn't complete the migration in 10 minutes at night.
@@ -180,10 +197,9 @@ R: Made the upgrade smoothly and didn't complete the migration in 10 minutes at 
 school, why software engineer, worked on what, learned what, what I can provide,
 what do I want to achieve.
 
-## Why this position && Why leaving your current company
-I like cloud computing, I want to build cloud computing related services, products.
 
 ## Your strength
+@赢得信任
 1. 同理心。Emphathy. Don't disagree other people directly even if we have the opposite opinions, 
    I will try to understand from their point of view. I have my own way of dealing with different opinions.
    很生气，先放一会儿，平静了再处理。 不生气的话，先理解别人的想法，问他为什么会这么想。

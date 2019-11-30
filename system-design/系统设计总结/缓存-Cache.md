@@ -1,4 +1,5 @@
 # Caching - 缓存
+- http://bit.ly/2Y1GxCw
 
 ## 好处
 1. 更好更快的利用你已有的resource, data
@@ -33,17 +34,17 @@
 
 ## Cache invalidation
 - 缓存很棒，但是缓存需要额外的维护来保持与source of truth一致。否则会导致应用的不一致行为。
-- http://bit.ly/2Y1GxCw
 - 解决这个问题的办法称为cache invalidation，主要有三种方式：
-### write-through cache:
+### write-through cache: 直写模式
 1. 数据同时写入缓存与数据库，保持一致性，也保证了缓存系统奔溃时不会导致数据丢失。
 2. 虽然这种方式降低了数据丢失的风险，但因为每次写操作需要执行两次，所以这种策略有更高的延迟。
 ### write-around cache:
-Write-around cache: This technique is similar to write through cache, but data is written directly to permanent storage, bypassing the cache. This can reduce the cache being flooded with write operations that will not subsequently be re-read, but has the disadvantage that a read request for recently written data will create a “cache miss” and must be read from slower back-end storage and experience higher latency.
-### write-back cache:
+1. 跳过cache, 先写入数据库，防止cache被充斥着不会被经常读的低频数据。
+2. 缺点：一旦需要读最近刚写入的数据，那么会有cache miss和高延迟。
+### write-back cache: 回写模式
 1. 先写入缓存，立即返回给用户，一段时间后在满足一些条件之后，最终写入数据库。
 2. 优点：低延迟且 提供高写系统很大的
-Under this scheme, data is written to cache alone and completion is immediately confirmed to the client. The write to the permanent storage is done after specified intervals or under certain conditions. This results in low latency and high throughput for write-intensive applications, however, this speed comes with the risk of data loss in case of a crash or other adverse event because the only copy of the written data is in the cache.
+
 
 ## 缓存删除策略
 1. FIFO
