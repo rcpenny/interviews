@@ -1,4 +1,7 @@
+
 public class LongestPalindromicSubstring {
+
+  @TwoPointer
   public String longestPalindrome(String s) {
     if (s == null) return s;
     if (s.length() == 0) return s;
@@ -44,6 +47,7 @@ public class LongestPalindromicSubstring {
         right++;
       }      
     }
+
     return s.substring(start, end + 1);
   }
 }

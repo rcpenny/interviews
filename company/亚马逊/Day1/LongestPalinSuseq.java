@@ -5,6 +5,7 @@
 // leet516
 // O(N^2)
 
+@TwoPointer
 public class LongestPalinSuseq {
   public int longestPalindromeSubseq(String ss) {
 		char[] s = ss.toCharArray();

@@ -1,5 +1,3 @@
-import java.util.Queue;
-
 /**
  * 给一个 01 矩阵，求不同的岛屿的个数
  * 0 代表海，1 代表岛，如果两个 1 相邻，那么这两个 1 属于同一个岛。
@@ -26,6 +24,7 @@ public class NumberOfIslands {
 	int row;
 	int col;
 
+  @BFS
   public int numIslands(boolean[][] grid) {
 		int islandsCount = 0;
     if (grid == null || grid.length == 0 || grid[0].length == 0) return islandsCount;
