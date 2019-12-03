@@ -56,6 +56,7 @@ public class TrappingRainWater {
 
     while (left < right) {
       // 先比较两个pointer left和right
+
       if (height[left] < height[right]) {
         if (leftMax > height[left]) {
           water += leftMax - height[left];

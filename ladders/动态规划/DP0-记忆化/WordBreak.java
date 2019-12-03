@@ -21,9 +21,10 @@ public class WordBreak {
 		for (int i = 1; i <= n; i++) {
 			for (int j = 0; j < i; j++) {
 				String sub = s.substring(j, i);
-				if (!dict.contains(sub) || f[j] == false) continue;
-				f[i] = true;
-				break;
+				if (f[j] && dict.contains(sub)) {
+					f[i] = true;
+					break;
+				}
 			}
 		}
 

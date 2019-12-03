@@ -1,5 +1,5 @@
 # AMAZON
-## 1. 刷 LeetCode TAG 10题
+## 1. 刷 LeetCode TAG 15题
 ## 2. BQ 5 题
 ## 3. 系统设计 1个类别 1 个
 - http://highscalability.com/all-time-favorites/

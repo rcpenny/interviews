@@ -1,82 +1,38 @@
 # Arrays and Strings
-1. Two Sum  
-2. Longest Substring Without Repeating Characters
-3. String to Integer (atoi)
-4. Container With Most Water
-5. Integer to Roman  Roman to Integer  
-6. 3Sum  3Sum Closest  
-7. Implement strStr()
-8. Rotate Image  
-9.  Group Anagrams  
-10. Minimum Window Substring  
-11. Compare Version Numbers  
-12. Product of Array Except Self  
-13. Missing Number  
-14. Integer to English Words  
-15. First Unique Character in a String  
-16. Valid Parentheses  
-17. Most Common Word  
-18. Reorder Log Files  
-19. Trapping Rain Water
+937. Reorder Data in Log Files
+5. Longest Palindromic Substring
+819. Most Common Word
 
 # Linked Lists
-1. Add Two Numbers 
-2. Merge Two Sorted Lists
-3. Reverse Nodes in k-Group  
-4. Copy List with Random Pointer  
-5. Reverse Linked List
-6. Merge k Sorted Lists
+138.  Copy List with Random Pointer
+21. Merge Two Sorted Lists	
 
-# Trees and Graphs
-1. Validate Binary Search Tree 
-2. Symmetric Tree
-3. Binary Tree Level Order Traversal
-4. Binary Tree Zigzag Level Order Traversal
-5. Binary Tree Maximum Path Sum
-6. Word Ladder II
-7. Word Ladder
-8. Number of Islands
-9. Course Schedule
-10. Lowest Common Ancestor of a Binary Tree  
-11. Diameter of Binary Tree
+# Tree
+572. Subtree of Another Tree
 
-12. Cut Off Trees for Golf Event 
-13. Flood Fill
+# Two Pointer
+42. Trapping Rain Water
 
-# Recursion
-1. Letter Combinations of a Phone Number  
-2. Generate Parentheses  
-3. Word Search  
-4. Word Search II
+# DFS
+1192. Critical Connections in a Network
+
+# BFS
+200. Number of Islands
 
 # Design
-1. LRU Cache
-2. Find Median from Data Stream
-3. Serialize and Deserialize Binary Tree
-4. Design Tic-Tac-Toe
-5. Design Search Autocomplete System
-6. Maximum Frequency Stack
-7. Min Stack
+146. LRU Cache
 
-# Others
-1. Reverse Integer
-2. Second Highest Salary
-3. Partition Labels
-4. Prison Cells After N Days
-
-# Sorting and Searching
-1. Median of Two Sorted Arrays
-2. Search in Rotated Sorted Array
-3. Merge Intervals
-4. Two Sum II - Input array is sorted  
-5. Kth Largest Element in an Array 
-6. Meeting Rooms II 
-7. Top K Frequent Elements  
-8. K Closest Points to Origin
+# Data Structure
+1. Two Sum
+973. K Closest Points to Origin
+957. Prison Cells After N Days
 
 # Dynamic Programming
-1. Longest Palindromic Substring
-2. Maximum Subarray
-3. Best Time to Buy and Sell Stock
-4. Word Break
-5. Coin Change
+
+
+# Binary Search
+240. Search a 2D Matrix II
+
+
+
+472. Concatenated Words
