@@ -19,6 +19,7 @@ public class DataStreamMedian {
       addNumber(maxheap, minheap, nums[i]);
       results[i] = maxheap.peek();
     }
+
     return results;
   }
 

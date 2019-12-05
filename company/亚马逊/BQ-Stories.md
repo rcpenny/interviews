@@ -13,6 +13,11 @@ ABP access, a11y assistance, too slow with launches， UX EXPERIENCE, polymer up
 
 ## Tell me about a project you worked on?
 
+## most challenge
+S: 
+A: 
+R:
+
 
 # 1. Customer Obsession 顾客至尚
 ## tell me a time when you did not meet a client’s expectation? most difficult customer?
@@ -38,7 +43,7 @@ R: 我在biweekly主动提了这个功能，并且展示了这个功能解决的
 
 # 2. Ownership 主人翁精神
 ## Tell me about a time when you had to leave a task unfinished?
-@主人翁精神 @决策正确\
+@主人翁精神 @决策正确
 S: Bulk Kudos. 开始于4月初，计划用一个quarter完成这个任务，开始完成了一半，设计文档写完了，还有两个月有mid year perf review,
    后来来了两个的FR, link feature, 我和BA和PM review our backlog tickets,发现不少REQUEST for this feature.
 A: 两个都有不少tickets. 决策理由，nice to have vs better to have. 
@@ -162,7 +167,9 @@ reverse the downtrend of using kudos.
 ## Tell me about a time you received negative feedback from your manager
 
 ## Tell me about a time you had conflict with your manager/peer/colleagues
-不同意做太多的launch review
+S: don't think 做太多的launch review
+A: suggest that discuss with Director
+R: we merge all privacy/security review for the entire department
 
 ## tell me a time when you earned trust of a group.
 
@@ -182,7 +189,12 @@ reverse the downtrend of using kudos.
 
 # 14. Deliver Results 达成业绩
 ## By providing an example, tell me when you have had to handle a variety of assignments. Describe the results.
+
 ## Tell me about a time you had to deal with tight deadline and you were able/not able to meet the target
+S: hibernate5 migration. assigned to me 1 weeks b4 the ddl. 
+A: Leave deprecated API part unfinished first.
+R: get migration done ontime. and finishe the migration later.
+
 ## What is the most difficult situation you have ever faced in your life? How did you handle it?
 ## Give me an example of a time when you were 75% of the way through a project, and you had to pivot strategy–how were you able to make that into a success story?
 

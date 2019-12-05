@@ -7,3 +7,13 @@
 
 # Google
 ## 1. 刷面经
+
+472. Concatenated Words
+1192. Critical Connections in a Network
+1000. Minimum Cost to Merge Stones
+545. Boundary of Binary Tree
+
+
+
+
+
