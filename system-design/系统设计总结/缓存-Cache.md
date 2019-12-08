@@ -17,11 +17,9 @@
 ### 应用层缓存 Application Cache
 1. 需要在应用代码中具体集成实现
 2. 先查数据是否在缓存，不在则去数据库取，然后再存入缓存 (LRU) Read Through Cache
-![alt text](https://github.com/rcpenny/interviews/blob/master/design/sys-design/statics/app-cache.png)
 ## 数据库缓存 Database Cache
 1. 数据库缓存的魅力之一是不用写应用层级的代码就能获得性能提升
 2. 数据库参数优化缓存之后能减少I/O，降低请求延迟
-![alt text](https://github.com/rcpenny/interviews/blob/master/design/sys-design/statics/db-cache.png)
 ## 内存缓存 In-memory Cache
 1. 最有力，最直接提高性能的缓存（Redis, MemCached）
 2. 因为存在RAM上，所以缓存容量不如硬盘，常用策略是LRU 
@@ -38,7 +36,7 @@
 ### write-through cache: 直写模式
 1. 数据同时写入缓存与数据库，保持一致性，也保证了缓存系统奔溃时不会导致数据丢失。
 2. 虽然这种方式降低了数据丢失的风险，但因为每次写操作需要执行两次，所以这种策略有更高的延迟。
-### write-around cache:
+### write-behind cache:
 1. 跳过cache, 先写入数据库，防止cache被充斥着不会被经常读的低频数据。
 2. 缺点：一旦需要读最近刚写入的数据，那么会有cache miss和高延迟。
 ### write-back cache: 回写模式
