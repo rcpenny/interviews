@@ -81,6 +81,7 @@ R: finalize on the details and help us on completing the design.
 ## Tell me about a time when you took a decision on your own without the manager's prior approval
 ## Tell me about a time when you went way beyond the scope of the project and delivered.
 ## Tell me about a time when you took important decision without any data?
+## tell me when you have had to handle a variety of assignments? (implementation, goodtime api, other projects)
 
 
 
@@ -106,7 +107,6 @@ S:
 T:
 A:
 R: 
-## tell me when you have had to handle a variety of assignments?
 ## Tell me about a time a time when you faced a setback initially but still achieved the goal.
 ## tell me about a time you failed and what you learnt from it?
 ## Describe a time when you saw problems and took the initiative to correct it rather than waiting for someone else
