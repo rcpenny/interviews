@@ -5,52 +5,28 @@
  */
 
 // 自下向上
-public class ValidateBST1 {
+public class ValidateBST {
 	public boolean isValidBST(TreeNode root) {
-		return helper(root, Long.MIN_VALUE, Long.MAX_VALUE);
-	}
+    return helper(root, Long.MIN_VALUE, Long.MAX_VALUE);
+  }
 
-	private boolean helper(TreeNode root, long min, long max) {
-		if (root == null) {
-			return true;
-		}
+  private boolean helper(TreeNode node, long lowerBound, long upperBound) {
+    if (node == null) return true;
 
-		if (root.val <= min || root.val >= max) {
-			return false;
-		}
+    if (node.val <= lowerBound || node.val >= upperBound) return false;
 
-		boolean leftResult = helper(root.left, min, root.val);
-		boolean rightResult = helper(root.right, root.val, max);
+    boolean leftResult = helper(node.left, lowerBound, node.val);
+    boolean rightResult = helper(node.right, node.val, upperBound);
 
-		return leftResult && rightResult;
-	}
-}
+    return leftResult && rightResult;
+  }
 
 
-class TreeNode {
-	public int val;
-	public TreeNode left, right;
-	public TreeNode(int val) {
-		this.val = val;
-		this.left = this.right = null;
-	}
-}
 
-class State {
-	int min;
-	int max;
-	boolean isBST;
-	public State(int min, int max, boolean isBST) {
-		this.min = min;
-		this.max = max;
-		this.isBST = isBST;
-	}
-}
 
-// 自下向上
-public class ValidateBST2 {
 
-  public boolean isisBST(TreeNode root) {
+	// ResultType, 也算一个好思路
+	public boolean isisBST(TreeNode root) {
 		State rootState = getNodeState(root);
 		return rootState.isBST;
 	}
@@ -72,5 +48,16 @@ public class ValidateBST2 {
 		int currentMax = node.right == null ? node.val : right.max;
 		int currentMin = node.left == null ? node.val : left.min;
 		return new State(currentMin, currentMax, true);
+	}
+
+	class State {
+		int min;
+		int max;
+		boolean isBST;
+		public State(int min, int max, boolean isBST) {
+			this.min = min;
+			this.max = max;
+			this.isBST = isBST;
+		}
 	}
 }
