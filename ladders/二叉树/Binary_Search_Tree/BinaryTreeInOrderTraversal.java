@@ -12,7 +12,7 @@ import java.util.Stack;
 // 如果当前点不存在右子树，则是走到当前点的路径中，第一个左拐的点
 // 访问所有节点用时O(n)，所以均摊下来访问每个节点的时间复杂度时O(1)
 
-public class BinaryTreeIntOrderTraversal {
+public class BinaryTreeInOrderTraversal {
 	public List < Integer > inorderTraversal1(TreeNode root) {
 		List < Integer > res = new ArrayList < > ();
 		Stack < TreeNode > stack = new Stack < > ();
