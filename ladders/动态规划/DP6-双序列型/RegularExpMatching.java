@@ -47,14 +47,11 @@ public class RegularExpMatching {
 						f[i][j] = f[i - 1][j - 1];
 					}
 				} else {
-					// c*
-					// 0 c's
 					if (j > 1) {
-						f[i][j] = f[i][j - 2];
+						f[i][j] |= f[i][j-2];
 					}
 
-					// >=1 c's c: p[j-2]
-					if (i > 0 && j > 1 && p[j - 2] == '.' || p[j - 2] == s[i - 1]) {
+					if (i > 0 && (p[j - 2] == '.' || p[j - 2] == s[i - 1])) {
 						f[i][j] = f[i][j] || f[i - 1][j];
 					}
 				}
