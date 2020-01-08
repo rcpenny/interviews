@@ -1,6 +1,4 @@
-/**
- * https://www.lintcode.com/problem/flatten-binary-tree-to-linked-list/
- * 
+/** 
  * 将一棵二叉树按照前序遍历拆解成为一个 假链表。
  * 所谓的假链表是说，用二叉树的 right 指针，来表示链表中的 next 指针。
  */
