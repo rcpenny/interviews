@@ -13,7 +13,6 @@ public class TrieNode {
 	}
 }
 
-// 这道题就是练习用map写个Trie
 public class TrieService {
 	private TrieNode root = null;
 
@@ -25,7 +24,6 @@ public class TrieService {
 		return root;
 	}
 
-	// <"abc", 2>
 	public void insert(String word, int frequency) {
 		TrieNode current = getRoot();
 		for (int i = 0; i < word.length(); i++) {

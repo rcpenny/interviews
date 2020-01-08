@@ -31,7 +31,7 @@ class TrieNode {
 			if (current.children[index] == null) return false;
 			current = current.children[index];
 		}
-		return true;
+		return current.isWord;
 	}
 
 	// 寻找prefix(与search word一样)

@@ -1,6 +1,4 @@
-/**
- * https://www.lintcode.com/problem/add-and-search-word-data-structure-design
- * 
+/** 
  * 设计一个包含下面两个操作的数据结构：
  * addWord(word), search(word)
  * addWord(word)会在数据结构中添加一个单词。
@@ -25,8 +23,7 @@ public class WordDictionary {
     return find(word, 0, root);
   }
 
-  // DFS definition: word, search start index, current node, 不对，这里有''.'用递归是对的....loop不合理
-  private boolean find(String word, int index, TrieNode currentNode) {
+ß  private boolean find(String word, int index, TrieNode currentNode) {
     if (index == word.length()) return node.isWord;
     char currentChar = word.charAt(index);
 	
