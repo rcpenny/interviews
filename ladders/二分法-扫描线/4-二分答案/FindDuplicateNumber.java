@@ -1,6 +1,4 @@
-/**
- * https://www.lintcode.com/problem/find-the-duplicate-number/
- * 
+/** 
  * 给出一个数组 nums 包含 n + 1 个整数，每个整数是从 1 到 n (包括边界)，保证至少存在一个重复的整数。
  * 假设只有一个重复的整数，找出这个重复的数。
  * 
