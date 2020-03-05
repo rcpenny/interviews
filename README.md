@@ -1,10 +1,10 @@
 # interviews
 interview preps
 
-- ladders: contains ladder problems and notes from jiuzhang algorithm courses.
+- **ladders**: contains problems and notes from jiuzhang algorithm courses' ladders.
 
-- experiences: some interviews preps for certain companies.. but mostly part are removed.
+- **experiences**: specific interviews preps for certain companies.. but most part are removed.
 
-- system-design: some engineering blog and good articles read about system design
+- **system-design**: some engineering blog and good articles of system design
 
-- baguwen: contains foundamental knowledge required to beat chinese interviews :)
+- **baguwen**: contains foundamental knowledge required to beat chinese interviews :)
